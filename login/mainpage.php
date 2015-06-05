@@ -6,8 +6,7 @@ echo "reaached mainpage  ";
 if(isset($_SESSION['user_id']))
 {
 	echo "set";
-	session::destruct();
-	redirect_to("mainpage.php");
+	echo "<a href='logout.php'>Logout</a>";
 }
 else
 echo "not set"; 
