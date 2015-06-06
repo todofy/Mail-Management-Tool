@@ -50,7 +50,7 @@ if (!isset($_DEF_USER_)) {
           if (database::$con == NULL) database::Start();
 
           if(!isset($this->read_stmt)) {
-            return database::Prepare("SELECT id FROM admin WHERE email = ? AND password= ? LIMIT 1", array('ss', $this->email, $this->password));
+            return database::SQL("SELECT id FROM admin WHERE email = ? AND password= ? LIMIT 1", array('ss', $this->email, $this->password));
          }
 
          return null;

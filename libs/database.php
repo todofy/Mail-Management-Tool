@@ -99,7 +99,7 @@ if (!isset($_DEF_DATABASE_)) {
 		 * int, rowcount in case of update and delete
 		 * array, data in case of select statment
 		 */
-		public function SQL ($query, $args) {
+		public static function SQL ($query, $args) {
 	        //If the database isn't connected, connet to it
 	        if (self::$con == NULL) self::Start();
 
@@ -130,7 +130,7 @@ if (!isset($_DEF_DATABASE_)) {
 	            return $statement->rowCount();
 	        } elseif ($type == "SEL") {
 	        	 //If query is select type, then return all the rows returned by the DB
-	            return $statement->fetchAll();
+	            return $statement->fetch();
 	        }
 	        return null;
 	        // ^ If none of the above types match, then probable that query is wrong and thus return null
