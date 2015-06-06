@@ -17,13 +17,19 @@ if (!isset($_DEF_DATABASE_)) {
 	include __DIR__ .'/globals.php';
 	include __DIR__ .'/logging.php';
 
-	// @todo - shift this to mysqli
+	/**
+	 * DATABASE CLASS DEALS WITH ALL DATABASE RELATED ACTIVITIES
+	 */
 	class database
 	{
-		public static $con = NULL;
-		public static $lastError;
-		public static $isDatabaseConnected = false;
+		public static $con = NULL;						// will store the database connection object
+		public static $lastError;						// to store last occured error
+		public static $isDatabaseConnected = false;		// (bool) states if db is connected or not
 
+		/**
+		 * Function to trigger database connection
+		 * @return (int) MYSQL_QUERY_SUCCESS or MYSQL_QUERY_FAILED as per case
+		 */
 		public static function Start() {
 			self::$con = new mysqli(HOST, USERNAME, PASSWORD, DATABASE);
 
@@ -35,15 +41,21 @@ if (!isset($_DEF_DATABASE_)) {
 			return  MYSQL_QUERY_FAILED;
 		}
 
+		/**
+		 * Function to stop active database connection
+		 * @return void
+		 */
 		public static function Stop() {
 			self::$con->close();
 			self::$con = null;
+			self::$isDatabaseConnected = false;
 		}
 
-		public static function Prepare($q) {
-			return self::$con->prepare($q);
-		}
-
+		/**
+		 * Function to filter any variable before mysql query execurtion
+		 * @param $value - (string) filters the variable
+		 * @return string, filtered variable
+		 */
 		public static function mysql_prep($value) {
 			$magic_quotes_active = get_magic_quotes_gpc();
 			$new_enough_php = function_exists( "mysql_real_escape_string" ); // i.e. PHP >= v4.3.0
@@ -59,7 +71,12 @@ if (!isset($_DEF_DATABASE_)) {
 			return $value;
 		}
 
-
+		/**
+		 * helper function to convert an array to array reference
+		 * for call_user_func_array and mysqli::bind_param 
+		 * @param $arr - (array) 
+		 * @return array reference
+		 */
 		public static function helper($arr) {
 		    if (strnatcmp(phpversion(),'5.3') >= 0) //Reference is required for PHP 5.3+
 		    {
@@ -72,11 +89,21 @@ if (!isset($_DEF_DATABASE_)) {
 
 		}
 
+		/**
+		 * Function to execute a SQL query
+		 * @param $query - (string) the raw SQL Query before binding
+		 * @param $args - (array) arr[0] - type of parameters, arr[1,2,3....,n] the parameter as in mysqli::bind_param
+		 *
+		 * @return 
+		 * null - in case of INSERT or alter and stuff
+		 * int, rowcount in case of update and delete
+		 * array, data in case of select statment
+		 */
 		public function SQL ($query, $args) {
 	        //If the database isn't connected, connet to it
 	        if (self::$con == NULL) self::Start();
 
-	        $statement = self::Prepare($query);   //Prepares an SQL statement
+	        $statement = self::$con->prepare($query);   //Prepares an SQL statement
 
 	        //If arguments are passed, then check if the first argument is an array. If yes, then that array contains all the arguments
 	        if (!empty($args)) {
@@ -93,18 +120,20 @@ if (!isset($_DEF_DATABASE_)) {
             $statement->execute();
 
 	        $type = substr (trim(strtoupper ($query)), 0, 3);  //get the first three letters of the query
-	        if ($type == "INS") //If the query is of insert type
-	        {
+	        //If the query is of insert type
+	        if ($type == "INS") {
 	            return null;
-	        } elseif ($type == "DEL" or $type == "UPD")   //If the query is delete or update, then returns the number of rows affected by the corresponding PDOStatement object.
-	        {
+	            // #todo - return the id of the inseted data if possible
+	            // requires all tables to have a id
+	        } elseif ($type == "DEL" or $type == "UPD") {
+	        	//If the query is delete or update, then returns the number of rows affected by the corresponding PDOStatement object.
 	            return $statement->rowCount();
-	        }
-	        elseif ($type == "SEL")             //If query is select type, then return all the rows returned by the DB
-	        {
+	        } elseif ($type == "SEL") {
+	        	 //If query is select type, then return all the rows returned by the DB
 	            return $statement->fetchAll();
 	        }
-	        return null;    //If none of the above types match, then probable that query is wrong and thus return null
+	        return null;
+	        // ^ If none of the above types match, then probable that query is wrong and thus return null
 	    }
 	};
 }

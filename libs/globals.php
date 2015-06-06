@@ -43,8 +43,6 @@ if (!isset($_DEF_GLOBALS_)) {
 	define('MYSQL_QUERY_FAILED', 0);
 	define('MYSQL_QUERY_SUCCESS', 1);
 
-
-
 	// --- global function from now
 	function redirect_to( $location = NULL ) {
 		if ($location != NULL) {
