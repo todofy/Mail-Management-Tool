@@ -39,9 +39,19 @@ if (!isset($_DEF_GLOBALS_)) {
 	define('HOST', 'localhost');
 	define('USERNAME', 'root');
 	define('PASSWORD', '');
-	define('DATABASE', 'todoci');
+	define('DATABASE', 'mmt');
 	define('MYSQL_QUERY_FAILED', 0);
 	define('MYSQL_QUERY_SUCCESS', 1);
+
+
+
+	// --- global function from now
+	function redirect_to( $location = NULL ) {
+		if ($location != NULL) {
+			header("Location: {$location}");
+			exit;
+		}
+	}
 }
 
 ?>

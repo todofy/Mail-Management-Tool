@@ -38,8 +38,8 @@ if (!isset($_DEF_SESSION_)) {
 		}
 
 		public static function destruct() {
-			if (isset($_SESSION['user_id'])) unset($$_SESSION['user_id']);
-			if (isset($_SESSION['HTTP_USER_AGENT'])) unset($$_SESSION['HTTP_USER_AGENT']);
+			if (isset($_SESSION['user_id'])) unset($_SESSION['user_id']);
+			if (isset($_SESSION['HTTP_USER_AGENT'])) unset($_SESSION['HTTP_USER_AGENT']);
 			unset($_SESSION);		
 		}
 

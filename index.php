@@ -1,37 +1,38 @@
 <?php
 session_start();
+$SECURE = true;
+
+require 'libs/globals.php';
+require 'libs/database.php';
 require "libs/session.php";
 require "libs/user.php";
-require "includes/functions.php";
-?>
-<?php
-//$session=new session();
-//$session->logout();
+
 if(isset($_POST['commit']))
 {
-  $email=$_POST['login'];
-  $password=$_POST['password'];
-  //$password=hash('sha512', $_POST['password']);
-  //add remember me
-  //check the info again
-  $newuser=new user();
-  $newuser->set_initial($email,$password);
-  $success=$newuser->checkFromDB();
-  if($success)
-  {
-    session::Set($success);
-    if(isset($_SESSION['user_id']))
-    redirect_to("mainpage.php");
-  }
-  else
-  {
-    echo "no such user found";
-    //no such  user found
-    //give the error
-  }
+    $email = $_POST['login'];
+    $password = $_POST['password'];
+    //$password=hash('sha512', $_POST['password']);
+    //add remember me
+    //check the info again
+    $newuser=new user();
+    $newuser->set_initial($email,$password);
+    $success=$newuser->checkFromDB();
+    if($success != null) {
+        session::Set($success);
+        if(isset($_SESSION['user_id']))
+            redirect_to("mainpage.php");
+    } else {
+        // #todo - perform the invalid username/password thingy
+        echo "no such user found";
+        //no such  user found
+        //give the error
+    }
 }
 
 ?>
+
+
+
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
