@@ -130,7 +130,11 @@ if (!isset($_DEF_DATABASE_)) {
 	            return $statement->rowCount();
 	        } elseif ($type == "SEL") {
 	        	 //If query is select type, then return all the rows returned by the DB
-	            return $statement->fetch();
+	        	//to get the resdult in the form of an associative array use:
+	        	//$row=$result->fetch_array(MYSQLI_ASSOC); 
+	        	//$row['id']
+	        	//where $result = return value of this function 
+	            return $statement->get_result();
 	        }
 	        return null;
 	        // ^ If none of the above types match, then probable that query is wrong and thus return null
