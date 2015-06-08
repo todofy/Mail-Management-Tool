@@ -16,27 +16,33 @@ if (!isset($_DEF_USER_)) {
 
   class user
   {
-      private  $password;
-      public  $email;
-      private  $remember;
+      private  $password;    //stores the password of the user
+      public  $email;        //stores the email of the user
+      private  $remember;    //stores whether or not to remember the user
 
+      //returns the state of the object whether to be remembered or not
       function toremember() {
         return $this->remember;
       }
-
+      
+      //returns the password for the current user
+      //not required yet may be removed
       private function get_pw() {
         return $this->password;
       }
 
+      //sets the initial values for the email and the password
       function set_initial($email_id, $pw) {
         $this->email = $email_id;
         $this->password = $pw;
       }
 
+      //the constructor method: set new users remembered me to false which is true only when user selects the remember me
       function __construct() {
         $this->remember= false ;
       }
 
+      //pushes the user's info into the database
       function pushToDB() {
           //used in sign up
           if(!isset($this->w_stmt)) {
@@ -44,6 +50,8 @@ if (!isset($_DEF_USER_)) {
           }
          return true;
       }
+
+      //gets the id of the current user object (if found) otherwise returns null
       function checkFromDB()
       {
           //used in login
