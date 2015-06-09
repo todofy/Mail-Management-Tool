@@ -79,6 +79,7 @@ else
     text-decoration: none;
     width: 250px;
     background: #252525;
+    cursor: pointer;
     border-top: 1px solid #373737;
     border-bottom: 1px solid #1A1A1A;
     -webkit-transition: background .5s;
@@ -137,9 +138,19 @@ else
 #main_icon
 {
     float:right;
-   padding-right: 65px;
+   padding-right: 30px;
    padding-top:20px;
+    transition: transform 0.5s;
+    -webkit-transition: transform 0.5s;
 }
+
+#main_icon.flip{
+   transform: rotateY(180deg) translateX(10px);
+   -webkit-transform: rotateY(180deg) translateX(10px); /* Safari and Chrome */
+   -o-transform: rotateY(180deg) translateX(10px); /* Opera */
+   -moz-transform: rotateY(180deg) translateX(10px); /* Firefox */
+}
+
 .sub_icon
 {
     float:right;
@@ -188,13 +199,14 @@ else
         e.preventDefault();
         $("#wrapper").toggleClass("active");
         $("#wrapper").toggleClass("declick");
+        $("#main_icon").toggleClass("flip");
         $("#menu-toggle").addClass("click");
 });
 </script>
 <div id="wrapper" class="active">
       <div id="sidebar-wrapper">
         <ul id="sidebar_menu" class="sidebar-nav">
-          <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
+          <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<span id="main_icon" class="fa fa-angle-left pull-right"></span></a></li>
         </ul>
         <ul class="sidebar-nav" id="sidebar">
           <li>
@@ -207,7 +219,7 @@ else
           {
             while($row = $result->fetch_array(MYSQLI_ASSOC))
             {
-              echo"<li title={$row['description']}><a>{$row['name']}<span class='sub_icon glyphicon glyphicon-link'></span></a></li>";
+              echo"<li title='{$row['description']}'><a>{$row['name']}<span class='sub_icon glyphicon glyphicon-link'></span></a></li>";
             } 
           }
           ?>    
