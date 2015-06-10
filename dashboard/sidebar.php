@@ -3,15 +3,9 @@ session_start();
 $SECURE=true;
 require "../libs/database.php";
 // to get the access ids of the current set admin
-if(!isset($_SESSION['user_id']))
-{
-  echo "access denied: no admin found";
-}
-else
-{
   $id=$_SESSION['user_id'];
   $result = database::SQL("SELECT name,description from acl,admin_access where admin_access.access_id= acl.id AND admin_access.admin_id=?",array('i',$id));
-}
+
 ?>
 
 <style type="text/css">
@@ -217,7 +211,7 @@ else
           <?php 
           if(isset($result))
           {
-            while($row = $result->fetch_array(MYSQLI_ASSOC))
+            foreach ($result as $row)
             {
               echo"<li title='{$row['description']}'><a>{$row['name']}<span class='sub_icon glyphicon glyphicon-link'></span></a></li>";
             } 

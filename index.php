@@ -20,7 +20,7 @@ if(isset($_POST['commit']))
     if($success != null) {
         session::Set($success);
         if(isset($_SESSION['user_id']))
-            redirect_to("mainpage.php");
+            redirect_to("dashboard/");
     } else {
         // #todo - perform the invalid username/password thingy
         echo "no such user found";

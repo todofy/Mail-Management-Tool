@@ -1,7 +1,7 @@
 <?php
 session_start();
-require "../login/libs/session.php";
-require "../login/includes/functions.php"; 
+$SECURE=true;
+require "../libs/session.php";
 ?>
 
 <html>

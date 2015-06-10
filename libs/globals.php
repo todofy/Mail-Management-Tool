@@ -30,7 +30,7 @@ if (!isset($_DEF_GLOBALS_)) {
 		
 	define('LOG_NORMAL', 1);
 	define('LOG_ERROR', 2);
-	define('LOG_WARNING', 3);
+	//define('LOG_WARNING', 3);
 	define('LOG_ATTACK', 5);
 	define('LOG_WEBHOOK', 6);
 	define('LOG_EMAIL_ID', '');
