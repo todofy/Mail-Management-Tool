@@ -59,8 +59,12 @@ if (!isset($_DEF_USER_)) {
 
           if(!isset($this->read_stmt)) {
             $result = database::SQL("SELECT id FROM admin WHERE email = ? AND password= ? LIMIT 1", array('ss', $this->email, $this->password));
-            $row=$result->fetch_array(MYSQLI_ASSOC);
-            return $row['id'];
+            //$row=$result->fetch_array(MYSQLI_ASSOC);
+            if(isset($result))
+            {
+              return $result[0]['id'];
+            }
+            //return $row['id'];
          }
 
          return null;
