@@ -16,16 +16,24 @@ if(isset($_POST['commit']))
     //check the info again
     $newuser=new user();
     $newuser->set_initial($email,$password);
-    $success=$newuser->checkFromDB();
-    if($success != null) {
-        session::Set($success);
-        if(isset($_SESSION['user_id']))
-            redirect_to("dashboard/");
-    } else {
-        // #todo - perform the invalid username/password thingy
-        echo "no such user found";
-        //no such  user found
-        //give the error
+    $correct = $newuser->verifyEmail();
+    if($correct)
+    {
+        $success=$newuser->checkFromDB();
+        if($success != null) {
+            session::Set($success);
+            if(isset($_SESSION['user_id']))
+                redirect_to("dashboard/");
+        } else {
+            // #todo - perform the invalid username/password thingy
+                $err="Incorrect Email or Password";
+            //no such  user found
+            //give the error
+        }
+    }
+    else
+    {
+      $err="Incorrect Email";
     }
 }
 
@@ -53,6 +61,14 @@ if(isset($_POST['commit']))
         <p><input type="text" name="login" value="" placeholder="Username or Email"></p>
         <p><input type="password" name="password" value="" placeholder="Password"></p>
         <p class="remember_me">
+          <label>
+            <p style="color:red">
+              <?php
+              if(isset($err))
+              echo $err; 
+              ?>
+            </p>
+          </label>
           <label>
             <input type="checkbox" name="remember_me" id="remember_me">
             Remember me on this computer

@@ -60,7 +60,7 @@ if (!isset($_DEF_USER_)) {
           if(!isset($this->read_stmt)) {
             $result = database::SQL("SELECT id FROM admin WHERE email = ? AND password= ? LIMIT 1", array('ss', $this->email, $this->password));
             //$row=$result->fetch_array(MYSQLI_ASSOC);
-            if(isset($result))
+            if(!empty($result))
             {
               return $result[0]['id'];
             }
@@ -69,7 +69,20 @@ if (!isset($_DEF_USER_)) {
 
          return null;
       }
+
+      //function to verify the email address
+      function verifyEmail()
+      {
+        $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/';
+        if(preg_match($regex, $this->email))
+        { 
+          return true;
+        }
+        return false;
+      }
   }
+
+
 
 }
 ?>
