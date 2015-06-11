@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 $SECURE=true;
 require "../libs/database.php";
 // to get the access ids of the current set admin
