@@ -13,12 +13,11 @@ require "../libs/session.php";
 		<script> 
 			$(function(){
   				$("#header").load("header.html");
-  				$("#sidebar").load("sidebar.php"); 
-  				$("#footer").load("footer.html"); 
+  				$("#sidebar").load("sidebar.php");  
 			});
 		</script>
 	</head>
-	<body class="skin-blue">
+	<body>
 		<div id="header"></div>
         <div id="sidebar"></div>
 	</body>

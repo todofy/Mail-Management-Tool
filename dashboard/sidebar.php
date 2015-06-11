@@ -7,7 +7,9 @@ require "../libs/database.php";
   $result = database::SQL("SELECT name,description from acl,admin_access where admin_access.access_id= acl.id AND admin_access.admin_id=?",array('i',$id));
 
 ?>
-
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
   .row{
     margin-left:0px;
@@ -134,8 +136,8 @@ require "../libs/database.php";
     float:right;
    padding-right: 30px;
    padding-top:20px;
-    transition: transform 0.5s;
-    -webkit-transition: transform 0.5s;
+    transition: transform 0.4s;
+    -webkit-transition: transform 0.4s;
 }
 
 #main_icon.flip{
@@ -167,6 +169,19 @@ require "../libs/database.php";
   padding-left: -20px;
   margin-left: -20px;
 }
+#header{
+  left: 230px;
+  width: 84%;
+  height: 65px;
+  vertical-align: center;
+  padding-top: 0px;
+  position: absolute;
+  transition: all 0.4s;
+}
+#header.push{
+  left: 0px;
+  width: 100%;
+}
 
 @media (max-width:767px) {
     #wrapper {
@@ -195,12 +210,13 @@ require "../libs/database.php";
         $("#wrapper").toggleClass("declick");
         $("#main_icon").toggleClass("flip");
         $("#menu-toggle").addClass("click");
+        $("#header").toggleClass("push");
 });
 </script>
 <div id="wrapper" class="active">
       <div id="sidebar-wrapper">
         <ul id="sidebar_menu" class="sidebar-nav">
-          <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<span id="main_icon" class="fa fa-angle-left pull-right"></span></a></li>
+          <li class="sidebar-nav sidebar-brand"><a id="menu-toggle" href="#">Menu<span id="main_icon" class="fa fa-angle-left pull-right"></span></a></li>
         </ul>
         <ul class="sidebar-nav" id="sidebar">
           <li>
