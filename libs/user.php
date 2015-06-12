@@ -80,9 +80,30 @@ if (!isset($_DEF_USER_)) {
         }
         return false;
       }
-  }
 
+      static function validCookie()
+      {
+        $cookie = $_COOKIE['remember'];
+        $result = database::SQL("select id from admin where secret=?",array('s',$cookie));
+        if(!empty($result))
+        {
+          return $result[0]['id'];
+        }
+        return null;
+      }
 
+      //function to store the hash value in the database of the current user for the cookie
+      function setHash($token)
+      {
+        $result = database::SQL("UPDATE admin set secret=? where email=?",array('ss',$token,$this->email));
+        if($result==0) //ie no rows were affected
+        {
+            //do something
+        }
+      }
 
+  } //class end
+
+  
 }
 ?>

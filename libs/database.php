@@ -98,9 +98,8 @@ if (!isset($_DEF_DATABASE_)) {
 		 * null - in case of INSERT or alter and stuff
 		 * int, rowcount in case of update and delete
 		 * array, data in case of select statment
-		 * [deprecated]
 		 */
-		public static function SQL ($query, $args = array()) {
+		public static function SQL ($query, $args) {
 	        //If the database isn't connected, connet to it
 	        if (self::$con == NULL) self::Start();
 
@@ -128,68 +127,22 @@ if (!isset($_DEF_DATABASE_)) {
 	            // requires all tables to have a id
 	        } elseif ($type == "DEL" or $type == "UPD") {
 	        	//If the query is delete or update, then returns the number of rows affected by the corresponding PDOStatement object.
-	            return $statement->rowCount();
+	            //return $statement->rowCount();
+	            return self::$con->affected_rows;
 	        } elseif ($type == "SEL") {
 	        	 //If query is select type, then return all the rows returned by the DB
 	        	//to get the resdult in the form of an associative array use:
 	        	//$row=$result->fetch_array(MYSQLI_ASSOC); 
 	        	//$row['id']
 	        	//where $result = return value of this function 
-	            return $statement->get_result();
+	            $result= $statement->get_result();
+	            $out = array();
+		        while ($row = $result->fetch_assoc()) $out[] = $row;
+		        return $out;
 	        }
 	        return null;
 	        // ^ If none of the above types match, then probable that query is wrong and thus return null
 	    }
-
-	    /**
-		 * Function to execute a SQL query
-		 * @param $query - (string) the raw SQL Query before binding
-		 * @param $args - (array) arr[0] - type of parameters, arr[1,2,3....,n] the parameter as in mysqli::bind_param
-		 *
-		 * @return 
-		 * null - in case of INSERT or alter and stuff
-		 * int, rowcount in case of update and delete
-		 * array, data in case of select statment
-		 */
-		public static function _SQL ($query, $args = array()) {
-		    //If the database isn't connected, connet to it
-		    if (self::$con == NULL) self::Start();
-
-		    $statement = self::$con->prepare($query);   //Prepares an SQL statement
-
-		    //If arguments are passed, then check if the first argument is an array. If yes, then that array contains all the arguments
-		    if (!empty($args)) {
-		        if (is_array ($args)) {
-		        	call_user_func_array(array($statement, "bind_param"), self::helper($args));
-		        } else {
-		        	logging::log("[DATABASE] invalid arg passed", LOG_ERROR);
-		        	logging::log("^ BACKTRACE - " .json_encode(debug_backtrace()), LOG_ERROR);
-		        	echo debug_backtrace();
-		        	exit;
-		        }
-		    }
-
-		    $statement->execute();
-
-		    $type = substr (trim(strtoupper ($query)), 0, 3);  //get the first three letters of the query
-		    //If the query is of insert type
-		    if ($type == "INS") {
-		        return null;
-		        // #todo - return the id of the inseted data if possible
-		        // requires all tables to have a id
-		    } elseif ($type == "DEL" or $type == "UPD") {
-		    	//If the query is delete or update, then returns the number of rows affected by the corresponding PDOStatement object.
-		        return $statement->rowCount();
-		    } elseif ($type == "SEL") {
-		        $result = $statement->get_result();
-		        
-		        $out = array();
-		        while ($row = $result->fetch_assoc()) $out[] = $row;
-		        return $out;
-		    }
-		    return null;
-		    // ^ If none of the above types match, then probable that query is wrong and thus return null
-		}
 	};
 }
 

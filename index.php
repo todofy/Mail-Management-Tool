@@ -7,12 +7,35 @@ require 'libs/database.php';
 require "libs/session.php";
 require "libs/user.php";
 
+//check for the cookie
+if(isset($_COOKIE['remember']))
+{
+  //database verification if cookie is saved for a particular user
+  $success=user::validCookie();
+  //if yes set session and then redirect to mainpage
+  if($success!=null)
+  {
+    session::Set($success);
+        if(isset($_SESSION['user_id']))
+        redirect_to("dashboard/");
+  }
+  else
+  {
+    //destroy the cookie
+    setcookie('remember',null,time()-100);
+  }
+}
+
 if(isset($_POST['commit']))
 {
     $email = $_POST['login'];
     $password = $_POST['password'];
     //$password=hash('sha512', $_POST['password']);
-    //add remember me
+    //if the remember me checkbox is ticked then the user is to be remembered
+    if(isset($_POST['remember_me']))
+      $remember = true;
+    else
+      $remember=false;
     //check the info again
     $newuser=new user();
     $newuser->set_initial($email,$password);
@@ -21,6 +44,20 @@ if(isset($_POST['commit']))
     {
         $success=$newuser->checkFromDB();
         if($success != null) {
+            //that is user is found
+            //set the cookie in the database
+            if($remember)
+            {
+              //generate a hash
+              $token = md5(uniqid(mt_rand(), true));
+              // save the hash in the database
+              //save other things like time and all if needed
+              $newuser->setHash($token);
+              //save the cookie for 1 month
+              setcookie('remember',$token,time()+30*24*60*60);
+            }
+
+          //set the session
             session::Set($success);
             if(isset($_SESSION['user_id']))
                 redirect_to("dashboard/");
