@@ -11,99 +11,51 @@ if(!isset($SECURE)) {
 }
 
 if (!isset($_DEF_USER_)) {
-  // to avoid mutiple redefinations
-  $_DEF_USER_ = true;
+	$_DEF_USER_ = true;
 
-  class user
-  {
-      private  $password;    //stores the password of the user
-      public  $email;        //stores the email of the user
-      private  $remember;    //stores whether or not to remember the user
+	class user
+	{
+		public $username;
+		public $email;
+		public $user_id;
 
-      //returns the state of the object whether to be remembered or not
-      function toremember() {
-        return $this->remember;
-      }
-      
-      //returns the password for the current user
-      //not required yet may be removed
-      private function get_pw() {
-        return $this->password;
-      }
+		// Load all the access for this user in this array
+		public $access = array();
 
-      //sets the initial values for the email and the password
-      function set_initial($email_id, $pw) {
-        $this->email = $email_id;
-        $this->password = $pw;
-      }
+		function __construct($user_id) {
+			// get data about this user
+			$q = database::Query("SELECT `email` FROM `admin` WHERE `id` = '?';", array('s', $user_id));
+			if (isset($q[0])) {
+				$this->user_id = $user_id;
+				$this->email = $q[0]['email'];
+			} else {
+				throw new Exception("Invalid user id sent for creating a user", 1);
+			}
 
-      //the constructor method: set new users remembered me to false which is true only when user selects the remember me
-      function __construct() {
-        $this->remember= false ;
-      }
+			// Get all the access for this user
+			$q = database::Query("SELECT `acl`.`name` FROM `admin_access`
+				INNER JOIN `acl` ON `acl`.`id` = `admin_access`.`access_id`
+				WHERE admin_id = '?';", array('s', $user_id));
+			foreach ($q as $value) {
+				$this->access[] = $value['name'];
+			}
+		}
 
-      //pushes the user's info into the database
-      function pushToDB() {
-          //used in sign up
-          if(!isset($this->w_stmt)) {
-              $this->w_stmt = database::SQL("INSERT INTO admin (email,password) VALUES (?, ?)", array('ss', $this->email, $this->password));
-          }
-         return true;
-      }
+		// Function to update information about this user
+		// to the database
+		public function updateInfo() {
+			// #todo - implement this functionality
+		}
 
-      //gets the id of the current user object (if found) otherwise returns null
-      function checkFromDB()
-      {
-          //used in login
-          if (database::$con == NULL) database::Start();
-
-          if(!isset($this->read_stmt)) {
-            $result = database::SQL("SELECT id FROM admin WHERE email = ? AND password= ? LIMIT 1", array('ss', $this->email, $this->password));
-            //$row=$result->fetch_array(MYSQLI_ASSOC);
-            if(!empty($result))
-            {
-              return $result[0]['id'];
-            }
-            //return $row['id'];
-         }
-
-         return null;
-      }
-
-      //function to verify the email address
-      function verifyEmail()
-      {
-        $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/';
-        if(preg_match($regex, $this->email))
-        { 
-          return true;
-        }
-        return false;
-      }
-
-      static function validCookie()
-      {
-        $cookie = $_COOKIE['remember'];
-        $result = database::SQL("select id from admin where secret=?",array('s',$cookie));
-        if(!empty($result))
-        {
-          return $result[0]['id'];
-        }
-        return null;
-      }
-
-      //function to store the hash value in the database of the current user for the cookie
-      function setHash($token)
-      {
-        $result = database::SQL("UPDATE admin set secret=? where email=?",array('ss',$token,$this->email));
-        if($result==0) //ie no rows were affected
-        {
-            //do something
-        }
-      }
-
-  } //class end
-
-  
+		/**
+		 * Function to check if a certain access with access name as
+		 * {$accessName} is set for this user
+		 */
+		public function hasAccessForThis($accessName) {
+			foreach ($this->access as $value) {
+				if ($value == $accessName) return true;
+			}
+			return false;
+		}
+	};
 }
-?>
