@@ -24,11 +24,7 @@ if (!isset($_DEF_USER_)) {
 
 		function __construct($user_id) {
 			// get data about this user
-<<<<<<< HEAD
 			$q = database::SQL("SELECT `email` FROM `admin` WHERE `id` = ?;", array('s', $user_id));
-=======
-			$q = database::Query("SELECT `email` FROM `admin` WHERE `id` = ?;", array('s', $user_id));
->>>>>>> origin/master
 			if (isset($q[0])) {
 				$this->user_id = $user_id;
 				$this->email = $q[0]['email'];
