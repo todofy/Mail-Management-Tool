@@ -6,16 +6,16 @@ require 'libs/globals.php';
 require 'libs/database.php';
 require "libs/session.php";
 require "libs/user.php";
-
+require "libs/login.php";
 //check for the cookie
 if(isset($_COOKIE['remember']))
 {
   //database verification if cookie is saved for a particular user
-  $success=user::validCookie();
+  $success=login::verifyCookieToRemember();
   //if yes set session and then redirect to mainpage
   if($success!=null)
   {
-    session::Set($success);
+        session::Set($success);
         if(isset($_SESSION['user_id']))
         redirect_to("dashboard/");
   }
@@ -25,6 +25,7 @@ if(isset($_COOKIE['remember']))
     setcookie('remember',null,time()-100);
   }
 }
+
 
 if(isset($_POST['commit']))
 {
@@ -36,29 +37,17 @@ if(isset($_POST['commit']))
       $remember = true;
     else
       $remember=false;
+
+
+
+
     //check the info again
-    $newuser=new user();
-    $newuser->set_initial($email,$password);
-    $correct = $newuser->verifyEmail();
+    $correct = login::verifyEmail($email);
     if($correct)
     {
-        $success=$newuser->checkFromDB();
+        $success=login::login_user($email,$password,$remember);
         if($success != null) {
             //that is user is found
-            //set the cookie in the database
-            if($remember)
-            {
-              //generate a hash
-              $token = md5(uniqid(mt_rand(), true));
-              // save the hash in the database
-              //save other things like time and all if needed
-              $newuser->setHash($token);
-              //save the cookie for 1 month
-              setcookie('remember',$token,time()+30*24*60*60);
-            }
-
-          //set the session
-            session::Set($success);
             if(isset($_SESSION['user_id']))
                 redirect_to("dashboard/");
         } else {

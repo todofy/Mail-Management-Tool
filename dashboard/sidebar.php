@@ -2,10 +2,11 @@
 //session_start();
 $SECURE=true;
 require "../libs/database.php";
+require "../libs/user.php";
 // to get the access ids of the current set admin
   $id=$_SESSION['user_id'];
-  $result = database::SQL("SELECT name,description from acl,admin_access where admin_access.access_id= acl.id AND admin_access.admin_id=?",array('i',$id));
-
+  $newuser= new user($id);
+  //$result = database::SQL("SELECT name,description from acl,admin_access where admin_access.access_id= acl.id AND admin_access.admin_id=?",array('i',$id));
 ?>
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
@@ -225,13 +226,11 @@ require "../libs/database.php";
               </a>
           </li>
           <?php 
-          if(isset($result))
-          {
-            foreach ($result as $row)
+            foreach ($newuser->access as $row)
             {
-              echo"<li title='{$row['description']}'><a>{$row['name']}<span class='sub_icon glyphicon glyphicon-link'></span></a></li>";
+              echo"<li><a>{$row}<span class='sub_icon glyphicon glyphicon-link'></span></a></li>";
             } 
-          }
+          
           ?>    
           
           

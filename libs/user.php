@@ -24,7 +24,7 @@ if (!isset($_DEF_USER_)) {
 
 		function __construct($user_id) {
 			// get data about this user
-			$q = database::Query("SELECT `email` FROM `admin` WHERE `id` = '?';", array('s', $user_id));
+			$q = database::SQL("SELECT `email` FROM `admin` WHERE `id` = ?;", array('s', $user_id));
 			if (isset($q[0])) {
 				$this->user_id = $user_id;
 				$this->email = $q[0]['email'];
@@ -33,9 +33,9 @@ if (!isset($_DEF_USER_)) {
 			}
 
 			// Get all the access for this user
-			$q = database::Query("SELECT `acl`.`name` FROM `admin_access`
+			$q = database::SQL("SELECT `acl`.`name` FROM `admin_access`
 				INNER JOIN `acl` ON `acl`.`id` = `admin_access`.`access_id`
-				WHERE admin_id = '?';", array('s', $user_id));
+				WHERE admin_id = ?;", array('s', $user_id));
 			foreach ($q as $value) {
 				$this->access[] = $value['name'];
 			}

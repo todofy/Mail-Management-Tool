@@ -22,30 +22,46 @@ if (!isset($_DEF_LOGIN_)) {
          * username and password pair, if yes set session
          * for that login and return true, else return false
          */
-        public static login($email, $password, $rememberMe = false) {
+        public static function login_user($email, $password, $rememberMe = false) {
             // #todo - implement this and remember to hash the password,
             // before verefication
+            //to be implemented later as we don't have hashed password inn the DB    
+            //$password = self::hashPassword($password);
 
-            $password = self::hashPassword($password);
-            // #todo - implement the login functionality here,
             // Verify the username and password hash
             // if fails return false
             // else set session, remember setCookieToRemember() relies on session
-
-            if ($rememberMe) {
+            $result = database::SQL("SELECT id FROM admin WHERE email = ? AND password= ? LIMIT 1", array('ss', $email, $password));
+            if(!empty($result))
+            {
+                $id=$result[0]['id'];
+                //set the session
+                session::Set($id);
+                if ($rememberMe) {
                 self::setCookieToRemember();
+                }
+                return $id;
             }
+
+         return null;
+
         }
 
-        public static hashPassword($password) {
+        public static function hashPassword($password) {
             // #todo - use a appropriate hashing algorithm, do write the
             // documentation for this
         }
 
-        public static setCookieToRemember() {
+        public static function setCookieToRemember() {
             // #todo - generate a random string, and save a database entry for this
             // user id as in session
+            $id=$_SESSION['user_id'];
             $randStr = self::getHash();
+            // save the hash in the database
+              //save other things like time and all if needed
+            $result = database::SQL("UPDATE admin set secret=? where id=?",array('ss',$randStr,$id));
+              //save the cookie for 1 month
+              setcookie('remember',$randStr,time()+30*24*60*60);
         }
 
         /**
@@ -53,11 +69,18 @@ if (!isset($_DEF_LOGIN_)) {
          * if true, sets the session & return true
          * else delete the cookie, return false
          */
-        public static verifyCookieToRemember() {
-
+        public static function verifyCookieToRemember() {
+            //validate the cookie from the database
+            $cookie = $_COOKIE['remember'];
+            $result = database::SQL("select id from admin where secret=?",array('s',$cookie));
+            if(!empty($result))
+            {
+              return $result[0]['id'];
+            }
+            return null;
         }
 
-        public static getHash($length = 16) {
+        public static function getHash($length = 16) {
             /* Use `openssl_random_psuedo_bytes` if available; PHP5 >= 5.3.0 */
             if (function_exists("openssl_random_pseudo_bytes")) {
                 return substr(bin2hex(openssl_random_pseudo_bytes($length)), 0, $length);
@@ -75,6 +98,17 @@ if (!isset($_DEF_LOGIN_)) {
             }
             return $rnd;
         }
+
+        //function to verify the email address
+          public static function verifyEmail($email)
+          {
+            $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/';
+            if(preg_match($regex, $email))
+            { 
+              return true;
+            }
+            return false;
+          }
     };
 
   
