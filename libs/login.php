@@ -59,7 +59,7 @@ if (!isset($_DEF_LOGIN_)) {
             $randStr = self::getHash();
             // save the hash in the database
               //save other things like time and all if needed
-            $result = database::SQL("UPDATE admin set secret=? where id=?",array('ss',$randStr,$id));
+            $result = database::SQL("UPDATE admin set cookie=? where id=?",array('ss',$randStr,$id));
               //save the cookie for 1 month
               setcookie('remember',$randStr,time()+30*24*60*60);
         }
@@ -72,7 +72,7 @@ if (!isset($_DEF_LOGIN_)) {
         public static function verifyCookieToRemember() {
             //validate the cookie from the database
             $cookie = $_COOKIE['remember'];
-            $result = database::SQL("select id from admin where secret=?",array('s',$cookie));
+            $result = database::SQL("select id from admin where cookie=?",array('s',$cookie));
             if(!empty($result))
             {
               return $result[0]['id'];

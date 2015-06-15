@@ -7,6 +7,11 @@ require 'libs/database.php';
 require "libs/session.php";
 require "libs/user.php";
 require "libs/login.php";
+
+//check if already logged in
+if(isset($_SESSION['user_id']))
+    redirect_to("dashboard/");
+
 //check for the cookie
 if(isset($_COOKIE['remember']))
 {

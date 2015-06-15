@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 02, 2015 at 02:49 PM
+-- Generation Time: Jun 15, 2015 at 08:09 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `MMT`
+-- Database: `mmt`
 --
-CREATE DATABASE IF NOT EXISTS `MMT` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `MMT`;
+CREATE DATABASE IF NOT EXISTS `mmt` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `mmt`;
 
 -- --------------------------------------------------------
 
@@ -30,11 +30,22 @@ USE `MMT`;
 
 CREATE TABLE IF NOT EXISTS `acl` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(10) NOT NULL,
-  `desc` text NOT NULL,
+  `name` varchar(15) NOT NULL,
+  `description` text NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `acl`
+--
+
+INSERT INTO `acl` (`id`, `name`, `description`) VALUES
+(1, 'ADMIN_VIEW', 'View all admins'),
+(2, 'ADMIN_ADD', 'Add an admin'),
+(3, 'ADMIN_EDIT', 'Edit an admin'),
+(4, 'ADMIN_REVOKE', 'Revoke rights of an admin.'),
+(5, 'ADMIN_DELETE', 'Delete an admin');
 
 -- --------------------------------------------------------
 
@@ -48,9 +59,17 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `secret` varchar(64) NOT NULL,
   `password` varchar(32) NOT NULL,
   `last_login` int(11) NOT NULL,
+  `cookie` varchar(32) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `email`, `secret`, `password`, `last_login`, `cookie`) VALUES
+(1, 'abc@gmail.com', '', '123', 0, 'd3d6628419298e92');
 
 -- --------------------------------------------------------
 
@@ -62,6 +81,17 @@ CREATE TABLE IF NOT EXISTS `admin_access` (
   `admin_id` int(11) NOT NULL,
   `access_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin_access`
+--
+
+INSERT INTO `admin_access` (`admin_id`, `access_id`) VALUES
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 1),
+(1, 5);
 
 -- --------------------------------------------------------
 
