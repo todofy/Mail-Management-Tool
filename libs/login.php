@@ -48,8 +48,7 @@ if (!isset($_DEF_LOGIN_)) {
         }
 
         public static function hashPassword($password) {
-            // #todo - use a appropriate hashing algorithm, do write the
-            // documentation for this
+            return md5(SALT .md5($password));
         }
 
         public static function setCookieToRemember() {
