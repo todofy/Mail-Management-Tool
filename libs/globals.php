@@ -42,6 +42,8 @@ if (!isset($_DEF_GLOBALS_)) {
 	define('DATABASE', 'mmt');
 	define('MYSQL_QUERY_FAILED', 0);
 	define('MYSQL_QUERY_SUCCESS', 1);
+	
+	define('SALT', 'namak');
 
 	// --- global function from now
 	function redirect_to( $location = NULL ) {
