@@ -10,7 +10,7 @@ require "libs/login.php";
 
 //check if already logged in
 if(isset($_SESSION['user_id']))
-    redirect_to("dashboard/");
+    redirect_to("dashboard.php");
 
 //check for the cookie
 if(isset($_COOKIE['remember']))
@@ -22,7 +22,7 @@ if(isset($_COOKIE['remember']))
   {
         session::Set($success);
         if(isset($_SESSION['user_id']))
-        redirect_to("dashboard/");
+        redirect_to("dashboard.php");
   }
   else
   {
@@ -54,7 +54,7 @@ if(isset($_POST['commit']))
         if($success != null) {
             //that is user is found
             if(isset($_SESSION['user_id']))
-                redirect_to("dashboard/");
+                redirect_to("dashboard.php");
         } else {
             // #todo - perform the invalid username/password thingy
                 $err="Incorrect Email or Password";
