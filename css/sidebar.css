@@ -109,14 +109,15 @@
   font-size: 18px;
 }
 
-.sidebar-nav > .sidebar-brand a {
+.sidebar-nav  .sidebar-brand a {
   color: #999999;
 }
 
-.sidebar-nav > .sidebar-brand a:hover {
+#menu-toggle:hover {
   color: #fff;
-  background: none;
+  background: rgba(255,255,255,0.2);
 }
+
 
 #main_icon
 {
@@ -140,6 +141,8 @@
    padding-right: 65px;
    padding-top:10px;
 }
+
+
 .content-header {
   height: 65px;
   line-height: 65px;

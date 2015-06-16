@@ -1,8 +1,6 @@
-
-
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
-<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="css/sidebar.css" rel="stylesheet" type="text/css">
 <div id="wrapper" class="active">
       <div id="sidebar-wrapper">
@@ -11,14 +9,14 @@
         </ul>
         <ul class="sidebar-nav" id="sidebar">
           <li>
-              <a href="index.html">
-                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+              <a href="dashboard.php" style="font-size:15px;">
+                    Dashboard<span class="sub_icon fa fa-laptop" style="padding-right: 25px;"></span>
               </a>
           </li>
           <?php 
             foreach ($newuser->access as $row)
             {
-              echo"<li><a>{$row}<span class='sub_icon glyphicon glyphicon-link'></span></a></li>";
+              echo"<li><a>{$row}<span class='sub_icon glyphicon glyphicon-user'></span></a></li>";
             } 
           
           ?>

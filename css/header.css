@@ -1,5 +1,5 @@
 .header-user-dropdown {
-	background-color:#292c2f;
+	background-color:#000;
 	box-shadow:0 1px 1px #ccc;
 	padding: 20px 40px;
 	height: 65px;
@@ -15,10 +15,12 @@
 
 /* Logo */
 
-.header-user-dropdown .header-limiter h1{
+.header-user-dropdown .header-limiter #logo{
 	float: left;
-	font: normal 28px Cookie, Arial, Helvetica, sans-serif;
-	line-height: 40px;
+	height: 50px;
+	width: auto;
+	position: relative;
+	top: -10px;
 	margin:0;
 }
 
@@ -74,7 +76,7 @@
 .header-user-dropdown .header-limiter .header-user-menu{
 	position: relative;
 	float:right;
-	background-color:#3a3c3e;
+	background-color:#0D0D0D;
 	width:75px;
 	height:40px;
 	border-radius:2px;
@@ -133,6 +135,7 @@
 	max-width: 28px;
 	right:10px;
 }
+
 
 
 @media all and (max-width: 800px) {
