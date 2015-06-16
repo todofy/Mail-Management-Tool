@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 16, 2015 at 10:59 AM
+-- Generation Time: Jun 15, 2015 at 08:09 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -41,11 +41,11 @@ CREATE TABLE IF NOT EXISTS `acl` (
 --
 
 INSERT INTO `acl` (`id`, `name`, `description`) VALUES
-(1, 'Admin View', 'View all admins'),
-(2, 'Admin Add', 'Add an admin'),
-(3, 'Admin Edit', 'Edit an admin'),
-(4, 'Admin Revoke', 'Invalidate secret key for admin'),
-(5, 'Admin Delete', 'Delete an admin');
+(1, 'ADMIN_VIEW', 'View all admins'),
+(2, 'ADMIN_ADD', 'Add an admin'),
+(3, 'ADMIN_EDIT', 'Edit an admin'),
+(4, 'ADMIN_REVOKE', 'Revoke rights of an admin.'),
+(5, 'ADMIN_DELETE', 'Delete an admin');
 
 -- --------------------------------------------------------
 
@@ -60,8 +60,6 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `password` varchar(32) NOT NULL,
   `last_login` int(11) NOT NULL,
   `cookie` varchar(32) NOT NULL,
-  `salt` varchar(16) NOT NULL,
-  `temp` varchar(32) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
@@ -70,8 +68,8 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `email`, `secret`, `password`, `last_login`, `cookie`, `salt`, `temp`) VALUES
-(1, 'anshumanpattanayak@gmail.com', '', 'e5b725fd14b675a4085766f70883ba68', 0, '69863f22fee569f2fdd70b44ca8b2e05', '', 'e5b725fd14b675a4085766f70883ba68');
+INSERT INTO `admin` (`id`, `email`, `secret`, `password`, `last_login`, `cookie`) VALUES
+(1, 'abc@gmail.com', '', '123', 0, 'd3d6628419298e92');
 
 -- --------------------------------------------------------
 

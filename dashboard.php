@@ -11,6 +11,7 @@ include __DIR__ .'/code/sidebar.php';
 // including the ui files
 include __DIR__ .'/ui/header.html';
 include __DIR__ .'/ui/sidebar.php';
+include __DIR__ .'/ui/content.html';
 ?>
 
 

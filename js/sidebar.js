@@ -7,6 +7,7 @@ $(document).ready(function(){
         $("#main_icon").toggleClass("flip");
         $("#menu-toggle").addClass("click");
         $("header").toggleClass("push");
+        $("#content-wrapper").toggleClass("push");
     });
 
 });

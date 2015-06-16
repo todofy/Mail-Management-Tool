@@ -1,0 +1,20 @@
+#content-wrapper{
+	background-color: #AAAAAB;
+	position: relative;
+	margin-top: 65px;
+	float: right;
+	height: auto;
+	width: 82%;
+	min-height: 580px;
+    transition: width 0.4s;
+    padding: 15px;
+}
+
+#content-wrapper.push{
+  width: 95%;
+  float: right;
+}
+
+#content-wrapper p{
+	color: black;
+}

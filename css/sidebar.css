@@ -99,7 +99,7 @@
   text-decoration: none;
 }
 
-.sidebar-nav > .sidebar-brand {
+.sidebar-nav.sidebar-brand {
   height: 65px;
   line-height: 60px;
   font-size: 18px;
@@ -109,7 +109,7 @@
   font-size: 18px;
 }
 
-.sidebar-nav  .sidebar-brand a {
+.sidebar-nav.sidebar-brand a {
   color: #999999;
 }
 
@@ -159,19 +159,7 @@
   padding-left: -20px;
   margin-left: -20px;
 }
-header{
-  left: 230px;
-  width: 84%;
-  height: 65px;
-  vertical-align: center;
-  padding-top: 0px;
-  position: absolute;
-  transition: all 0.4s;
-}
-header.push{
-  left: 0px;
-  width: 100%;
-}
+
 
 @media (max-width:767px) {
     #wrapper {
