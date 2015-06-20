@@ -14,6 +14,8 @@ if (!isset($_DEF_SESSION_)) {
 	// to avoid mutiple redefinations
 	$_DEF_SESSION_ = true;
 
+	include __DIR__ .'/login.php';;
+
 	class session {
 		public $state;
 		public $user_id;
@@ -31,6 +33,12 @@ if (!isset($_DEF_SESSION_)) {
 
 				$this->user_id = $_SESSION['user_id'];
 				$this->state = true;
+				return;
+			} else if (isset($_COOKIE['remember'])) {
+				// Possiblity of remember me option
+				// if a correct cookie is set, it will automatically set
+				// session
+				$this->state = login::verifyCookieToRemember();
 				return;
 			}
 

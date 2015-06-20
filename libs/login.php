@@ -12,7 +12,7 @@ if(!isset($SECURE)) {
 
 if (!isset($_DEF_LOGIN_)) {
     // to avoid mutiple redefinations
-    $_DEF_USER_ = true;
+    $_DEF_LOGIN_ = true;
 
     class login
     {
@@ -39,7 +39,7 @@ if (!isset($_DEF_LOGIN_)) {
         }
 
         public static function hashPassword($password) {
-            return md5(SALT .$password);
+            return md5(SALT .md5($password));
         }
 
         public static function setCookieToRemember() {
