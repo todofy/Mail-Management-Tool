@@ -34,11 +34,14 @@ if (!isset($_DEF_SESSION_)) {
 				$this->user_id = $_SESSION['user_id'];
 				$this->state = true;
 				return;
-			} else if (isset($_COOKIE['remember'])) {
+			} else if (isset($_COOKIE[REMEMBER_ME_COOKIE])) {
 				// Possiblity of remember me option
 				// if a correct cookie is set, it will automatically set
 				// session
 				$this->state = login::verifyCookieToRemember();
+
+				// if cookie values is false, destroy the cookie
+				if (!$this->state) setcookie(REMEMBER_ME_COOKIE, null,time()-100);
 				return;
 			}
 

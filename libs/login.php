@@ -22,9 +22,8 @@ if (!isset($_DEF_LOGIN_)) {
          * for that login and return true, else return false
          */
         public static function login_user($email, $password, $rememberMe = false) {
-            // Verify the username and password hash
-            // if fails return false
-            // else set session, remember setCookieToRemember() relies on session
+            if (!self::verifyEmail($email)) return false;
+
             $hashedPw = self::hashPassword($password);
             //$result = database::SQL("UPDATE admin set temp = ?  WHERE email = ? ",array('ss',$hashedPw,$email));
             $result = database::SQL("SELECT id FROM admin WHERE email = ? AND password= ? LIMIT 1", array('ss', $email, $hashedPw));
@@ -49,7 +48,7 @@ if (!isset($_DEF_LOGIN_)) {
             //save other things like time and all if needed
             $result = database::SQL("UPDATE admin set cookie=? where id=?",array('ss',$randStr,$id));
             //save the cookie for 1 month
-            setcookie('remember', $randStr, time() + 30*24*60*60);
+            setcookie(REMEMBER_ME_COOKIE, $randStr, time() + 30*24*60*60);
         }
 
         /**
@@ -58,10 +57,10 @@ if (!isset($_DEF_LOGIN_)) {
          * else delete the cookie, return false
          */
         public static function verifyCookieToRemember() {
-            if (!isset($_COOKIE['remember'])) return false;
+            if (!isset($_COOKIE[REMEMBER_ME_COOKIE])) return false;
             
             //validate the cookie from the database
-            $cookie = $_COOKIE['remember'];
+            $cookie = $_COOKIE[REMEMBER_ME_COOKIE];
             $result = database::SQL("SELECT `email`, `password` FROM `admin` WHERE `cookie`=?",array('s',$cookie));
             if(!empty($result)) {
                 // will automatically login the user

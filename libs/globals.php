@@ -44,6 +44,7 @@ if (!isset($_DEF_GLOBALS_)) {
 	define('MYSQL_QUERY_SUCCESS', 1);
 	
 	define('SALT', 'namak');
+	define('REMEMBER_ME_COOKIE', 'remember');
 
 	// --- global function from now
 	function redirect_to( $location = NULL ) {
