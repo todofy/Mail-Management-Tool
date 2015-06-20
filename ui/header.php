@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<link rel="stylesheet" href="css/header.css" type="text/css">
-	<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
-
-
-</head>
+<?php
+if (!isset($_CODE_HEADER_)) {
+    throw new Exception("Code file not included for header.php!");
+}
+?>
 
 
 <header class="header-user-dropdown">
@@ -39,11 +30,6 @@
 	</div>
 
 </header>
-
-
+<!-- TODO: do something such that these scripts are always included at the bottom -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="../js/header.js"></script>
-
-</body>
-
-</html>
