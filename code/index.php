@@ -17,4 +17,6 @@ if(isset($_POST['commit'])) {
 
     $err = "Incorrect Email or Password";
 }
+
+$_CODE_INDEX_ = true;
 ?>
