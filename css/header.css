@@ -110,7 +110,8 @@ header.push{
 }
 
 .header-user-dropdown .header-limiter .header-user-menu ul{
-	display: none;
+	display: block;
+	opacity: 0;
 	font:bold 13px Arial, Helvetica, sans-serif;
 	background-color: inherit;
 	list-style: none;
@@ -123,12 +124,13 @@ header.push{
 	border-radius: 2px;
 	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 	box-sizing: border-box;
+	transition: all 0.3s;
 }
 
 .header-user-dropdown .header-user-menu:active ul,
 .header-user-dropdown .header-user-menu:hover ul,
 .header-user-dropdown .header-user-menu.show ul{
-	display:block;
+	opacity: 1;
 }
 
 .header-user-dropdown .header-user-menu ul li{

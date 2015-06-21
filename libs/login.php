@@ -38,7 +38,7 @@ if (!isset($_DEF_LOGIN_)) {
         }
 
         public static function hashPassword($password) {
-            return md5(SALT .md5($password));
+            return md5(SALT .$password);
         }
 
         public static function setCookieToRemember() {

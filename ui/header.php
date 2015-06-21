@@ -4,6 +4,9 @@ if (!isset($_CODE_HEADER_)) {
 }
 ?>
 
+	<link rel="stylesheet" href="css/header.css" type="text/css">
+	<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/content.css" type="text/css">
 
 <header class="header-user-dropdown">
 

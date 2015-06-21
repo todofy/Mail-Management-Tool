@@ -106,7 +106,7 @@
 }
 
 .sidebar-nav span{
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .sidebar-nav.sidebar-brand a {
@@ -121,25 +121,23 @@
 
 #main_icon
 {
-    float:right;
-   padding-right: 30px;
-   padding-top:20px;
+    padding-top: 23px;
     transition: transform 0.4s;
     -webkit-transition: transform 0.4s;
 }
 
 #main_icon.flip{
-   transform: rotateY(180deg) translateX(10px);
-   -webkit-transform: rotateY(180deg) translateX(10px); /* Safari and Chrome */
-   -o-transform: rotateY(180deg) translateX(10px); /* Opera */
-   -moz-transform: rotateY(180deg) translateX(10px); /* Firefox */
+   transform: rotateY(180deg) translateX(8px);
+   -webkit-transform: rotateY(180deg) translateX(8px); /* Safari and Chrome */
+   -o-transform: rotateY(180deg) translateX(8px); /* Opera */
+   -moz-transform: rotateY(180deg) translateX(8px); /* Firefox */
 }
 
 .sub_icon
 {
     float:right;
    padding-right: 65px;
-   padding-top:10px;
+   padding-top: 13px;
 }
 
 
