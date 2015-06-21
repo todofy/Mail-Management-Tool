@@ -22,8 +22,7 @@ if (!isset($_CODE_HEADER_)) {
 
 
 		<div class="header-user-menu">
-			<img src="assets/2.jpg" alt="User Image"/>
-
+			<span class="glyphicon glyphicon-user"></span>
 			<ul>
 				<li><a href="#">Profile</a></li>
 				<li><a href="logout.php">Logout</a></li>

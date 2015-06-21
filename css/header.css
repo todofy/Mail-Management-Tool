@@ -146,10 +146,10 @@ header.push{
 	color:#e9ac09;
 }
 
-.header-user-dropdown .header-user-menu img{
-	border-radius:50%;
+.header-user-dropdown .header-user-menu span{
 	position:absolute;
-	top:6px;
+	font-size: 25px;
+	top:10px;
 	max-width: 28px;
 	right:10px;
 }
