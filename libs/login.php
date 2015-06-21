@@ -38,7 +38,7 @@ if (!isset($_DEF_LOGIN_)) {
         }
 
         public static function hashPassword($password) {
-            return md5(SALT .$password);
+            return md5(SALT .($password));
         }
 
         public static function setCookieToRemember() {
@@ -61,10 +61,12 @@ if (!isset($_DEF_LOGIN_)) {
             
             //validate the cookie from the database
             $cookie = $_COOKIE[REMEMBER_ME_COOKIE];
-            $result = database::SQL("SELECT `email`, `password` FROM `admin` WHERE `cookie`=?",array('s',$cookie));
+            $result = database::SQL("SELECT `id` FROM `admin` WHERE `cookie`=?",array('s',$cookie));
             if(!empty($result)) {
                 // will automatically login the user
-                return self::login_user($result[0]['email'], $result[0]['password'], true);
+                    session::Set($result[0]['id']);
+                    return true;
+                // @this was wrong as it sets the cookie again and checks for a hashed password which is already hashed:   return self::login_user($result[0]['email'], $result[0]['password'], true);
             }
             return false;
         }
