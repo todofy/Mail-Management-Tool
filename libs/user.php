@@ -33,11 +33,11 @@ if (!isset($_DEF_USER_)) {
 			}
 
 			// Get all the access for this user
-			$q = database::SQL("SELECT `acl`.`name` FROM `admin_access`
+			$q = database::SQL("SELECT `acl`.`name`, `acl`.`link` FROM `admin_access`
 				INNER JOIN `acl` ON `acl`.`id` = `admin_access`.`access_id`
 				WHERE admin_id = ?;", array('s', $user_id));
 			foreach ($q as $value) {
-				$this->access[] = $value['name'];
+				$this->access[] = $value;
 			}
 		}
 
