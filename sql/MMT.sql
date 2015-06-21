@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 15, 2015 at 08:09 AM
+-- Generation Time: Jun 21, 2015 at 06:47 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `acl` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(15) NOT NULL,
   `description` text NOT NULL,
+  `link` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
@@ -40,12 +41,12 @@ CREATE TABLE IF NOT EXISTS `acl` (
 -- Dumping data for table `acl`
 --
 
-INSERT INTO `acl` (`id`, `name`, `description`) VALUES
-(1, 'ADMIN_VIEW', 'View all admins'),
-(2, 'ADMIN_ADD', 'Add an admin'),
-(3, 'ADMIN_EDIT', 'Edit an admin'),
-(4, 'ADMIN_REVOKE', 'Revoke rights of an admin.'),
-(5, 'ADMIN_DELETE', 'Delete an admin');
+INSERT INTO `acl` (`id`, `name`, `description`, `link`) VALUES
+(1, 'Admin View', 'View all admins', 'admin_view.php'),
+(2, 'Admin Add', 'Add an admin', 'admin_add.php'),
+(3, 'Admin Edit', 'Edit an admin', 'admin_edit.php'),
+(4, 'Admin Revoke', 'Invalidate secret key for admin', 'admin_revoke.php'),
+(5, 'Admin Delete', 'Delete an admin', 'admin_delete.php');
 
 -- --------------------------------------------------------
 
@@ -60,6 +61,8 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `password` varchar(32) NOT NULL,
   `last_login` int(11) NOT NULL,
   `cookie` varchar(32) NOT NULL,
+  `salt` varchar(16) NOT NULL,
+  `temp` varchar(32) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
@@ -68,8 +71,8 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `email`, `secret`, `password`, `last_login`, `cookie`) VALUES
-(1, 'abc@gmail.com', '', '123', 0, 'd3d6628419298e92');
+INSERT INTO `admin` (`id`, `email`, `secret`, `password`, `last_login`, `cookie`, `salt`, `temp`) VALUES
+(1, 'anshumanpattanayak@gmail.com', '', 'e5b725fd14b675a4085766f70883ba68', 0, 'fd8a6a8d10e14b286f68180f4c32f0a9', '', 'e5b725fd14b675a4085766f70883ba68');
 
 -- --------------------------------------------------------
 
@@ -87,10 +90,10 @@ CREATE TABLE IF NOT EXISTS `admin_access` (
 --
 
 INSERT INTO `admin_access` (`admin_id`, `access_id`) VALUES
+(1, 1),
 (1, 2),
 (1, 3),
 (1, 4),
-(1, 1),
 (1, 5);
 
 -- --------------------------------------------------------
