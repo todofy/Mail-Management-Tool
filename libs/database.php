@@ -99,7 +99,7 @@ if (!isset($_DEF_DATABASE_)) {
 		 * int, rowcount in case of update and delete
 		 * array, data in case of select statment
 		 */
-		public static function SQL ($query, $args) {
+		public static function SQL ($query, $args = array()) {
 	        //If the database isn't connected, connet to it
 	        if (self::$con == NULL) self::Start();
 

@@ -22,6 +22,9 @@ if (!isset($_CODE_DASHBOARD_)) {
 	<!-- Main workspace starts from here -->
 	<div id="content-wrapper">
 		<div class="row">
+			<ol class="breadcrumb">
+			    <li class="active">Dashboard</li>
+			</ol>
 			<div class="col-md-6">
 				<p class="text-justify">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac libero eros. Proin aliquet lacinia lorem accumsan vehicula. Suspendisse potenti. Sed laoreet ullamcorper tortor eu faucibus. Aenean eu mi laoreet, porttitor neque et, placerat dui. Donec sit amet maximus nisl. Quisque vulputate augue ac lorem lacinia vestibulum. Proin erat nibh, mollis ac turpis quis, sollicitudin feugiat ligula. Aliquam eu turpis metus. In est purus, scelerisque sit amet vestibulum quis, aliquam ac eros.

@@ -31,33 +31,42 @@ if (!isset($_ADMIN_ADD_)) {
 	<!-- Main workspace starts from here -->
 	<div id="content-wrapper">
 		<div class="row">
+			<ol class="breadcrumb">
+			    <li><a href="./dashboard.php">Home</a></li>
+			    <li class="active">Add Admin</li>
+			</ol>
 			<div class="col-md-7">
 				<h3>Add an admin</h3>
 				<form role="form" id="add" type="post">
   					<div class="form-group">
-    					<label for="email">Email address:</label>
-    					<input type="email" class="form-control" name="email">
+    					<label for="email"><h4>Email address:</h4></label>
+    					<input type="email" class="form-control" name="email" placeholder="someone@dmain.com" style="width: 50%; min-width: 200px">
   					</div>
-  					<label class="control-label">Access rights:</label>
+  					<h4 class="control-label">Access rights:</h4>
   					<div class="form-group">
-  						<label class="checkbox-inline"><input type="checkbox" name="access[]" value="1">Admin View</label>
-						<label class="checkbox-inline"><input type="checkbox" name="access[]" value="2">Admin Add</label>
-						<label class="checkbox-inline"><input type="checkbox" name="access[]" value="3">Admin Edit</label>
-						<label class="checkbox-inline"><input type="checkbox" name="access[]" value="4">Admin Revoke</label>
-						<label class="checkbox-inline"><input type="checkbox" name="access[]" value="5">Admin Delete</label>
+  						<?php
+  							foreach ($accesses as $value) {
+  								echo '<div>';
+  								echo '<input type="checkbox" name="access[]" value="' .$value['id'] .'">';
+  								echo ' <strong style="text-transform: uppercase">' .$value['name'] .'</strong>: &nbsp; ' .$value['description'];
+  								echo '</div>';
+  							}
+  						?>
+  					</div>
+
+  					<div class="clearfix"></div>
+  					<div class="bs-callout bs-callout-info">
+  						<h4>Note</h4>
+  						A password will be automatically generated for this admin and would be sent to the
+  						email id. All other information like API key (if admin has access) and access would also be 
+  						sent along with the mail.
   					</div>
   					
   					<button type="submit" class="btn btn-default" value="Submit" id="btn">Add</button>
 				</form>					
 			</div>
 			<div class="col-md-4 pull-right">
-				<p class="text-justify">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac libero eros. Proin aliquet lacinia lorem accumsan vehicula. Suspendisse potenti. Sed laoreet ullamcorper tortor eu faucibus. Aenean eu mi laoreet, porttitor neque et, placerat dui. Donec sit amet maximus nisl. Quisque vulputate augue ac lorem lacinia vestibulum. Proin erat nibh, mollis ac turpis quis, sollicitudin feugiat ligula. Aliquam eu turpis metus. In est purus, scelerisque sit amet vestibulum quis, aliquam ac eros.
-
-					Donec et urna eget massa rhoncus pharetra. Maecenas id dapibus mi, a scelerisque magna. Phasellus aliquet auctor nulla sed dapibus. Praesent sed nibh in dolor consectetur eleifend. Ut finibus purus eu purus sodales tempor. Suspendisse id fringilla enim. Vestibulum sit amet nunc sit amet arcu vestibulum interdum non eu elit. Praesent varius felis eu eleifend commodo.
-
-					Nunc dolor ex, elementum eget tincidunt sit amet, porta ac justo. Donec et purus at augue tristique pellentesque ut sed mi. Sed et erat vitae odio ultrices gravida et eget leo. Maecenas ante elit, dictum ut fermentum posuere, semper et risus. Etiam viverra maximus tortor, sollicitudin consectetur elit eleifend in. Ut nec augue lobortis, facilisis tellus et, dictum eros. Mauris pretium libero ac diam placerat, posuere varius lacus gravida.
-				</p>	
+				
 			</div>
 		</div>
 		
