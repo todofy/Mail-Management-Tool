@@ -2,8 +2,7 @@
  * Js file to serve major codes, to be included everywhere
  */
 
-var AJAX = function(url, category, data, successCallback, failureCallback) {
-	this.url = url;
+var AJAX = function(category, data, successCallback, failureCallback) {
 	this.data = data;
 	this.category = category;
 	this.successCallback = successCallback;
@@ -14,7 +13,7 @@ var AJAX = function(url, category, data, successCallback, failureCallback) {
 
 AJAX.prototype.trigger = function() {
 	var XHR = new XMLHttpRequest();
-	XHR.open('POST', this.url);
+	XHR.open('POST', '../ajaxserver/');
 	XHR.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 
 	var _this = this;
