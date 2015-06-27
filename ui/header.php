@@ -34,4 +34,4 @@ if (!isset($_CODE_HEADER_)) {
 </header>
 <!-- TODO: do something such that these scripts are always included at the bottom -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="../js/header.js"></script>
+<script src="js/header.js"></script>

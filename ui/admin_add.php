@@ -18,6 +18,7 @@ if (!isset($_ADMIN_ADD_)) {
 
 	<!-- Latest compiled JavaScript -->
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 </head>
 
 <body>
@@ -32,21 +33,21 @@ if (!isset($_ADMIN_ADD_)) {
 		<div class="row">
 			<div class="col-md-7">
 				<h3>Add an admin</h3>
-				<form role="form" enctype="application/json" action="test.json" method="post">
+				<form role="form" id="add" type="post">
   					<div class="form-group">
     					<label for="email">Email address:</label>
     					<input type="email" class="form-control" name="email">
   					</div>
   					<label class="control-label">Access rights:</label>
   					<div class="form-group">
-  						<label class="checkbox-inline"><input type="checkbox" name="access" value="1">Admin View</label>
-						<label class="checkbox-inline"><input type="checkbox" name="access" value="2">Admin Add</label>
-						<label class="checkbox-inline"><input type="checkbox" name="access" value="3">Admin Edit</label>
-						<label class="checkbox-inline"><input type="checkbox" name="access" value="4">Admin Revoke</label>
-						<label class="checkbox-inline"><input type="checkbox" name="access" value="5">Admin Delete</label>
+  						<label class="checkbox-inline"><input type="checkbox" name="access[]" value="1">Admin View</label>
+						<label class="checkbox-inline"><input type="checkbox" name="access[]" value="2">Admin Add</label>
+						<label class="checkbox-inline"><input type="checkbox" name="access[]" value="3">Admin Edit</label>
+						<label class="checkbox-inline"><input type="checkbox" name="access[]" value="4">Admin Revoke</label>
+						<label class="checkbox-inline"><input type="checkbox" name="access[]" value="5">Admin Delete</label>
   					</div>
   					
-  					<button type="submit" class="btn btn-default" value="Create">Add</button>
+  					<button type="submit" class="btn btn-default" value="Submit" id="btn">Add</button>
 				</form>					
 			</div>
 			<div class="col-md-4 pull-right">
@@ -63,4 +64,39 @@ if (!isset($_ADMIN_ADD_)) {
 	</div>
 
 </body>
+<script type="text/javascript">
+  	$(document).ready(function() {
+  		$("#btn").click(function(e){
+	 		var jsonData = {};
+	 		var formData = $("#add").serializeArray();
+  			//console.log(formData);
+   
+   			$.each(formData, function() {
+        		if (jsonData[this.name]) {
+           			if (!jsonData[this.name].push) {
+               			jsonData[this.name] = [jsonData[this.name]];
+           			}
+           			jsonData[this.name].push(this.value || '');
+       			} else {
+           			jsonData[this.name] = this.value || '';
+       			}
+	    	});
+   			console.log(jsonData);
+			$.ajax(
+			{
+				url : "ajaxserver.php",
+				type: "POST",
+				data : jsonData,
+				contentType: application/Json,
+				success:function(data, textStatus, jqXHR) 
+				{
+					alert("done");
+				}
+			});
+	 
+    		e.preventDefault();	
+		});
+	});
+
+</script>
 </html>
