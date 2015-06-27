@@ -24,7 +24,8 @@ function sanitize($arr) {
 $output = array(
 	'error' => false,
 	'message' => '',
-	'logout' => false
+	'logout' => false,
+	'data' => null
 	);
 
 
