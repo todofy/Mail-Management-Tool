@@ -29,24 +29,23 @@ USE `mmt`;
 --
 
 CREATE TABLE IF NOT EXISTS `acl` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `name` varchar(15) NOT NULL,
   `description` text NOT NULL,
-  `link` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `display_name` varchar(30) NOT NULL,
+  `link` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `acl`
 --
 
-INSERT INTO `acl` (`id`, `name`, `description`, `link`) VALUES
-(1, 'Admin View', 'View all admins', 'admin_view.php'),
-(2, 'Admin Add', 'Add an admin', 'admin_add.php'),
-(3, 'Admin Edit', 'Edit an admin', 'admin_edit.php'),
-(4, 'Admin Revoke', 'Invalidate secret key for admin', 'admin_revoke.php'),
-(5, 'Admin Delete', 'Delete an admin', 'admin_delete.php');
+INSERT INTO `acl` (`id`, `name`, `description`, `display_name`, `link`) VALUES
+(1, 'admin_view', 'View all admins', 'View Admins', 'admin_view.php'),
+(2, 'admin_add', 'Add an admin', 'Add an Admin', 'admin_add.php'),
+(3, 'admin_edit', 'Edit an admin', '', ''),
+(4, 'admin_revoke', 'Invalidate secret key for admin', '', ''),
+(5, 'admin_delete', 'Delete an admin', '', '');
 
 -- --------------------------------------------------------
 
