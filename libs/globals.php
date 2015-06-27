@@ -15,6 +15,7 @@ if (!isset($_DEF_GLOBALS_)) {
 	$_DEF_GLOBALS_ = true;
 
 	define('__TIME_STARTED', time());
+	date_default_timezone_set('UTC');
 	
 	// --- GENERAL DEFINATIONS ----
 	define('SALT_CSRF_TOKEN', md5('shiro'));
