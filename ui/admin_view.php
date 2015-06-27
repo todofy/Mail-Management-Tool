@@ -53,13 +53,13 @@ if (!isset($_ADMIN_VIEW_)) {
 							echo '<td>' .date("D, d M 20y", $value['last_login']) .'</td>';
 							echo '<td>';
 							if (isset($newuser->access[EDIT_ADMIN])) {
-								echo '<a class="btn btn-primary" href="#" role="button">edit</a> ';
+								echo '<a class="btn btn-primary" href="admin_edit.php" role="button">Edit</a> ';
 							}
 							if (isset($newuser->access[REVOKE_ADMIN])) {
-								echo '<a class="btn btn-warning" href="#" role="button">revoke key</a> ';
+								echo '<a class="btn btn-warning" href="#" role="button">Revoke key</a> ';
 							}
 							if (isset($newuser->access[DELETE_ADMIN])) {
-								echo '<a class="btn btn-danger" href="#" role="button">delete</a> ';
+								echo '<a class="btn btn-danger" href="#" role="button">Delete</a> ';
 							}
 							echo '</td>';
 							echo '</tr>';

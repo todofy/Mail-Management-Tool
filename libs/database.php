@@ -117,7 +117,7 @@ if (!isset($_DEF_DATABASE_)) {
 	            }
 	        }
 
-            $statement->execute();
+            $statement-> execute();
 
 	        $type = substr (trim(strtoupper ($query)), 0, 3);  //get the first three letters of the query
 	        //If the query is of insert type

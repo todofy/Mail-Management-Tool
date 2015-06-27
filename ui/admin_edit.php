@@ -1,6 +1,6 @@
 <?php
-if (!isset($_ADMIN_ADD_)) {
-    throw new Exception("Code file not included for admin_add.php!");
+if (!isset($_ADMIN_EDIT_)) {
+    throw new Exception("Code file not included for admin_edit.php!");
 }
 ?>
 
@@ -33,15 +33,17 @@ if (!isset($_ADMIN_ADD_)) {
 		<div class="row">
 			<ol class="breadcrumb">
 			    <li><a href="./dashboard.php">Home</a></li>
-			    <li class="active">Add Admin</li>
+			    <li><a href="./admin_view.php">View Admins</a></li>
+			    <li class="active">Edit Admin</li>
 			</ol>
 			<div class="col-md-7">
-				<h3>Add an admin</h3>
+				<h3>Edit an admin</h3>
 				<form role="form" id="add" type="post">
-  					<div class="form-group">
+					<div class="form-group">
     					<label for="email"><h4>Email address:</h4></label>
-    					<input type="email" class="form-control" name="email" placeholder="someone@dmain.com" style="width: 50%; min-width: 200px">
-  					</div>
+    					<input type="email" class="form-control" name="email"style="width: 50%; min-width: 200px" value="someone@example.com" disabled>
+    					<!-- TODO: Populate this input with the current user's email id  -->
+  					</div>				
   					<h4 class="control-label">Access rights:</h4>
   					<div class="form-group">
   						<?php
@@ -55,14 +57,8 @@ if (!isset($_ADMIN_ADD_)) {
   					</div>
 
   					<div class="clearfix"></div>
-  					<div class="bs-callout bs-callout-info">
-  						<h4>Note</h4>
-  						A password will be automatically generated for this admin and would be sent to the
-  						email id. All other information like API key (if admin has access) and access would also be 
-  						sent along with the mail.
-  					</div>
   					
-  					<button type="submit" class="btn btn-default" value="Submit" id="btn">Add</button>
+  					<button type="submit" class="btn btn-default" value="Submit" id="btn">Edit</button>
 				</form>					
 			</div>
 			<div class="col-md-4 pull-right">
