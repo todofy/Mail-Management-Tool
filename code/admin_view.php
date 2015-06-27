@@ -8,12 +8,11 @@
 	$id = session::getUserID();
 	$newuser = new user($id);
 
-	if (!isset($newuser->access[ADD_ADMIN])) {
+	if (!isset($newuser->access[VIEW_ADMIN])) {
 		redirect_to("_404.php");
 	}
 
-	// Get all possible accesses
-	$accesses = database::SQL("SELECT `id`, `name`, `description` FROM `acl`");
+	$admins = database::SQL("SELECT `id`, `email`, `last_login` FROM `admin`");
 
-	$_ADMIN_ADD_ = true;
+	$_ADMIN_VIEW_ = true;
 ?>

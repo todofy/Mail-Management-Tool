@@ -37,7 +37,10 @@ if (!isset($_DEF_USER_)) {
 				INNER JOIN `acl` ON `acl`.`id` = `admin_access`.`access_id`
 				WHERE admin_id = ?;", array('s', $user_id));
 			foreach ($q as $value) {
-				$this->access[] = $value;
+				$this->access[$value['name']] = array(
+						'link' => $value['link'],
+						'display_name' => $value['display_name']
+					);
 			}
 		}
 
