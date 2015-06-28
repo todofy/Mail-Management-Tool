@@ -33,7 +33,7 @@ if (!isset($_ADMIN_VIEW_)) {
 		<div class="row">
 			<ol class="breadcrumb">
 			    <li><a href="./dashboard.php">Home</a></li>
-			    <li class="active">View Admin</li>
+			    <li class="active">View Admins</li>
 			</ol>
 			<div class="col-md-12">
 				<h3>List of all admins</h3>
@@ -53,13 +53,13 @@ if (!isset($_ADMIN_VIEW_)) {
 							echo '<td>' .date("D, d M 20y", $value['last_login']) .'</td>';
 							echo '<td>';
 							if (isset($newuser->access[EDIT_ADMIN])) {
-								echo '<a class="btn btn-primary" href="admin_edit.php" role="button">Edit</a> ';
+								echo '<a class="btn btn-primary" href="admin_edit.php" role="button" id='.$value['id'].'>Edit</a> ';
 							}
 							if (isset($newuser->access[REVOKE_ADMIN])) {
-								echo '<a class="btn btn-warning" href="#" role="button">Revoke key</a> ';
+								echo '<a class="btn btn-warning" href="#" role="button" id='.$value['id'].'>Revoke key</a> ';
 							}
 							if (isset($newuser->access[DELETE_ADMIN])) {
-								echo '<a class="btn btn-danger" href="#" role="button">Delete</a> ';
+								echo '<a class="btn btn-danger" href="#" role="button" id='.$value['id'].'>Delete</a> ';
 							}
 							echo '</td>';
 							echo '</tr>';
@@ -75,4 +75,5 @@ if (!isset($_ADMIN_VIEW_)) {
 	</div>
 
 </body>
+<script src="js/admin_view.js"></script>
 </html>

@@ -1,7 +1,7 @@
 $(document).ready(function() {
   	$("#btn").click(function(e){
 	 		  var jsonData = {};
-	 		  var formData = $("#add").serializeArray();
+	 		  var formData = $("#edit").serializeArray();
   			//console.log(formData);
    
    			$.each(formData, function() {
@@ -15,7 +15,7 @@ $(document).ready(function() {
        			}
 	    	});
    			console.log(jsonData);
-		    $request = new AJAX ('add_admin', jsonData, function(d){alert('Success.')}, function(d){alert('Failure.')});
+		    $request = new AJAX ('edit_admin', jsonData, function(d){alert('Success.')}, function(d){alert('Failure.')});
         e.preventDefault();	
 		});
 });

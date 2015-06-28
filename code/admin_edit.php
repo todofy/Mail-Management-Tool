@@ -15,5 +15,7 @@
 	// Get all possible accesses
 	$accesses = database::SQL("SELECT `id`, `name`, `description` FROM `acl`");
 
+	//Get email id for the id posted to this page
+    
 	$_ADMIN_EDIT_ = true;
 ?>

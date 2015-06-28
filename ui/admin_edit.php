@@ -38,10 +38,10 @@ if (!isset($_ADMIN_EDIT_)) {
 			</ol>
 			<div class="col-md-7">
 				<h3>Edit an admin</h3>
-				<form role="form" id="add" type="post">
+				<form role="form" id="edit" type="post">
 					<div class="form-group">
     					<label for="email"><h4>Email address:</h4></label>
-    					<input type="email" class="form-control" name="email"style="width: 50%; min-width: 200px" value="someone@example.com" disabled>
+    					<input type="email" class="form-control" name="email"style="width: 50%; min-width: 200px" value="someone@example.com">
     					<!-- TODO: Populate this input with the current user's email id  -->
   					</div>				
   					<h4 class="control-label">Access rights:</h4>
@@ -69,38 +69,6 @@ if (!isset($_ADMIN_EDIT_)) {
 	</div>
 
 </body>
-<script type="text/javascript">
-  	$(document).ready(function() {
-  		$("#btn").click(function(e){
-	 		var jsonData = {};
-	 		var formData = $("#add").serializeArray();
-  			//console.log(formData);
-   
-   			$.each(formData, function() {
-        		if (jsonData[this.name]) {
-           			if (!jsonData[this.name].push) {
-               			jsonData[this.name] = [jsonData[this.name]];
-           			}
-           			jsonData[this.name].push(this.value || '');
-       			} else {
-           			jsonData[this.name] = this.value || '';
-       			}
-	    	});
-   			console.log(jsonData);
-			$.ajax(
-			{
-				url : "ajaxserver.php",
-				type: "POST",
-				data : jsonData,
-				success:function(data, textStatus, jqXHR) 
-				{
-					alert("Done. Open console for object.");
-				}
-			});
-	 
-    		e.preventDefault();	
-		});
-	});
-
-</script>
+<script src="js/main.js"></script>
+<script src="js/admin_edit.js"></script>
 </html>
