@@ -56,10 +56,10 @@ if (!isset($_ADMIN_VIEW_)) {
 								echo '<a class="btn btn-primary" href="admin_edit.php" role="button" id='.$value['id'].'>Edit</a> ';
 							}
 							if (isset($newuser->access[REVOKE_ADMIN])) {
-								echo '<a class="btn btn-warning" href="#" role="button" id='.$value['id'].'>Revoke key</a> ';
+								echo '<a class="btn btn-warning" href="#" role="button" data-toggle="modal" data-target="#revoke" id='.$value['id'].'>Revoke key</a> ';
 							}
 							if (isset($newuser->access[DELETE_ADMIN])) {
-								echo '<a class="btn btn-danger" href="#" role="button" id='.$value['id'].'>Delete</a> ';
+								echo '<a class="btn btn-danger" href="#" role="button" data-toggle="modal" data-target="#delete" id='.$value['id'].'>Delete</a> ';
 							}
 							echo '</td>';
 							echo '</tr>';
@@ -71,9 +71,37 @@ if (!isset($_ADMIN_VIEW_)) {
 				
 			</div>
 		</div>
-		
+		<div id="revoke" class="modal fade" role="dialog" style="z-index: 15000; margin-top:100px;">
+  			<div class="modal-dialog">
+    			<div class="modal-content">
+    				<div class="modal-header">
+        				<h4 class="modal-title">Revoke Secret Key</h4>
+      				</div>
+      				<div class="modal-body">
+        				<p>Are you sure you want to revoke the secret key for this admin?</p>
+        				<br>
+        				<button type="button" class="btn btn-warning" data-dismiss="modal">Revoke key</button>
+        				<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+        			</div>
+    			</div>
+  			</div>
+		</div>
+		<div id="delete" class="modal fade" role="dialog" style="z-index: 15000; margin-top:100px;">
+  			<div class="modal-dialog">
+    			<div class="modal-content">
+    				<div class="modal-header">
+        				<h4 class="modal-title">Delete Admin</h4>
+      				</div>
+      				<div class="modal-body">
+        				<p>Are you sure you want to delete this admin?</p>
+        				<br>
+        				<button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+        				<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+        			</div>
+    			</div>
+  			</div>
+		</div>		
 	</div>
-
-</body>
 <script src="js/admin_view.js"></script>
+</body>
 </html>

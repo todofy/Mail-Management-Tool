@@ -53,6 +53,7 @@ if (!isset($_ADMIN_ADD_)) {
   							}
   						?>
   					</div>
+  					<button type="submit" class="btn btn-primary" value="Submit" id="btn">Add</button>
 
   					<div class="clearfix"></div>
   					<div class="bs-callout bs-callout-info">
@@ -62,7 +63,6 @@ if (!isset($_ADMIN_ADD_)) {
   						sent along with the mail.
   					</div>
   					
-  					<button type="submit" class="btn btn-default" value="Submit" id="btn">Add</button>
 				</form>					
 			</div>
 			<div class="col-md-4 pull-right">

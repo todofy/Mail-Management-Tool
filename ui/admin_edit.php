@@ -58,7 +58,7 @@ if (!isset($_ADMIN_EDIT_)) {
 
   					<div class="clearfix"></div>
   					
-  					<button type="submit" class="btn btn-default" value="Submit" id="btn">Edit</button>
+  					<button type="submit" class="btn btn-primary" value="Submit" id="btn">Edit</button>
 				</form>					
 			</div>
 			<div class="col-md-4 pull-right">
