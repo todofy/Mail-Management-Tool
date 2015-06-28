@@ -8,19 +8,21 @@ session_start();
 $SECURE = true;
 
 // all the sdk includes
-include __DIR__ .'/libs/session.php';
-include __DIR__ .'/libs/database.php';
-include __DIR__ .'/libs/user.php';
+include __DIR__ .'/../libs/session.php';
+include __DIR__ .'/../libs/database.php';
+include __DIR__ .'/../libs/user.php';
 
 // Function to recursively sanitize a data var
-function sanitize($arr) {
+/*function sanitize($arr) {
 	if (is_array($arr)) {
 		foreach ($arr as $key => $value) {
 			$arr[$key] = sanitize($value);
 		}
-	} else return mysql_real_escape_string($arr);
+	} else
+		//causing error here: earlier used deprecated mysql_escape_string and now also an error 
+		return database::con->real_escape_string($arr);
 }
-
+*/
 $output = array(
 	'error' => false,
 	'message' => '',
@@ -86,10 +88,10 @@ foreach ($access_needed[$category] as $value) {
 }
 
 database::Start();
-$data = sanitize($data);
+//$data = sanitize($data);
 
 // perform rest of action in this page
-include __DIR__ .'/' . $category .'.php';
+include __DIR__ .'/' .$category .'.php';
 
 echo json_encode($output);
 exit;
