@@ -13,7 +13,7 @@ var AJAX = function(category, data, successCallback, failureCallback) {
 
 AJAX.prototype.trigger = function() {
 	var XHR = new XMLHttpRequest();
-	XHR.open('POST', '../ajaxserver/');
+	XHR.open('POST', 'ajaxserver/');
 	XHR.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 
 	var _this = this;
@@ -34,7 +34,7 @@ AJAX.prototype.trigger = function() {
 			}
 		} else if (this.readyState == 4) {
 			// TODO connect this to a notification later
-			alert('Unable to connect to internet');
+			alert("unable to connect to the internet");
 		}
 	}
 
