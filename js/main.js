@@ -13,14 +13,14 @@ var AJAX = function(category, data, successCallback, failureCallback) {
 
 AJAX.prototype.trigger = function() {
 	var XHR = new XMLHttpRequest();
-	XHR.open('POST', 'ajaxserver/', true);
-	XHR.setRequestHeader("Content-type","application/json; charset=UTF-8");
+	XHR.open('POST', 'ajaxserver/');
+	XHR.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 
 	var _this = this;
 	XHR.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			try {
-				var obj = JSON.parse(this.responseText);
+				var obj = JSON.parse(this.response);
 				if (obj.error) {
 					alert(obj.message);
 					if (typeof _this.failureCallback  == 'function') _this.failureCallback(obj);
@@ -34,7 +34,7 @@ AJAX.prototype.trigger = function() {
 			}
 		} else if (this.readyState == 4) {
 			// TODO connect this to a notification later
-			alert('Unable to connect to internet');
+			alert("unable to connect to the internet");
 		}
 	}
 

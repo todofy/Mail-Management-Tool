@@ -3,6 +3,7 @@ $(document).ready(function() {
 	 		  var jsonData = {};
 	 		  var formData = $("#add").serializeArray();
   			//console.log(formData);
+   
    			$.each(formData, function() {
         		if (jsonData[this.name]) {
            			if (!jsonData[this.name].push) {
@@ -13,11 +14,9 @@ $(document).ready(function() {
            			jsonData[this.name] = this.value || '';
        			}
 	    	});
-   			//console.log(jsonData);
-        var data = JSON.stringify(jsonData);
-        console.log(data);
-		    var request = new AJAX ('add_admin', data , function(d){alert('Success.')}, function(d){alert('Failed.')});
-	      console.log(request);
+   			console.log(jsonData);
+		    $request = new AJAX ('add_admin', jsonData, function(d){alert('done.')}, function(d){alert('not done.')});
+	        //alert($request);
         e.preventDefault();	
 		});
 });
