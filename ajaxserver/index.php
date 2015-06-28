@@ -94,4 +94,5 @@ include __DIR__ .'/' .$category .'.php';
 echo json_encode($output);
 exit;
 
+?>
 

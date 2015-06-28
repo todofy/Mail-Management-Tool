@@ -73,38 +73,6 @@ if (!isset($_ADMIN_ADD_)) {
 	</div>
 
 </body>
-<script type="text/javascript">
-  	$(document).ready(function() {
-  		$("#btn").click(function(e){
-	 		var jsonData = {};
-	 		var formData = $("#add").serializeArray();
-  			//console.log(formData);
-   
-   			$.each(formData, function() {
-        		if (jsonData[this.name]) {
-           			if (!jsonData[this.name].push) {
-               			jsonData[this.name] = [jsonData[this.name]];
-           			}
-           			jsonData[this.name].push(this.value || '');
-       			} else {
-           			jsonData[this.name] = this.value || '';
-       			}
-	    	});
-   			console.log(jsonData);
-			$.ajax(
-			{
-				url : "ajaxserver.php",
-				type: "POST",
-				data : jsonData,
-				success:function(data, textStatus, jqXHR) 
-				{
-					alert("Done. Open console for object.");
-				}
-			});
-	 
-    		e.preventDefault();	
-		});
-	});
-
-</script>
+<script src="js/main.js"></script>
+<script src="js/admin_add.js"></script>
 </html>
