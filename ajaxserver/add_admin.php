@@ -1,6 +1,7 @@
 <?php
 	$email = $data['email'];
     $access = $data['access'];
+    
 	//check if email id already in use or not
 	$result = database::SQL("SELECT id FROM admin WHERE email = ? LIMIT 1", array('s', $email));
 

@@ -13,8 +13,8 @@ var AJAX = function(category, data, successCallback, failureCallback) {
 
 AJAX.prototype.trigger = function() {
 	var XHR = new XMLHttpRequest();
-	XHR.open('POST', 'ajaxserver/');
-	XHR.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	XHR.open('POST', 'ajaxserver/', true);
+	XHR.setRequestHeader("Content-Type: application/json; charset=UTF-8");
 
 	var _this = this;
 	XHR.onreadystatechange = function() {
@@ -39,5 +39,5 @@ AJAX.prototype.trigger = function() {
 	}
 
 
-	XHR.send('data=' +JSON.stringify({category: this.category, data: this.data}));
+	XHR.send('data=' +	JSON.stringify({category: this.category, data: this.data}));
 };

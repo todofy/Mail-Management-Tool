@@ -23,7 +23,7 @@ if (!isset($_CODE_DASHBOARD_)) {
 	<div id="content-wrapper">
 		<div class="row">
 			<ol class="breadcrumb">
-			    <li class="active">Dashboard</li>
+			    <li class="active">Home</li>
 			</ol>
 			<div class="col-md-6">
 				<p class="text-justify">

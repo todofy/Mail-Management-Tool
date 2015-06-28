@@ -89,7 +89,7 @@ database::Start();
 $data = sanitize($data);
 
 // perform rest of action in this page
-include __DIR__ .'/' .$category .'.php';
+include __DIR__ .'/' . $category .'.php';
 
 echo json_encode($output);
 exit;
