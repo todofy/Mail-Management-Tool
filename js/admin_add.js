@@ -15,7 +15,7 @@ $(document).ready(function() {
        			}
 	    	});
    			console.log(jsonData);
-		    $request = new AJAX ('add_admin', jsonData, function(d){alert('Success.')}, function(d){alert('Failure.')});
+		    request = new AJAX ('add_admin', jsonData, function(d){alert('Success.')}, function(d){alert('Failure.')});
         e.preventDefault();	
 		});
 });

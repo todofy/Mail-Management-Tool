@@ -15,7 +15,7 @@
 	//Get the email of the user to be edited
 	$id= $_GET['id'];
 	$result = database::SQL("SELECT `email` from `admin` where `id` = ? LIMIT 1",array('i',$id));
-	if(empty(($result)))
+	if(empty($result))
 	{
 		redirect_to("_404.php");
 	}
