@@ -12,7 +12,7 @@
 		redirect_to("_404.php");
 	}
 
-	$admins = database::SQL("SELECT `id`, `email`, `last_login` FROM `admin`");
+	$admins = database::SQL("SELECT `id`, `email`, `last_login` FROM `admin` WHERE id!=?",array('s',$id));
 
 	$_ADMIN_VIEW_ = true;
 ?>
