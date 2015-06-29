@@ -16,8 +16,12 @@ $(document).ready(function() {
              			jsonData[this.name] = this.value || '';
          			}
   	    	});
-     			console.log(jsonData);
-  		    request = new AJAX ('add_admin', jsonData, function(d){alert('Success.')}, function(d){alert('Failure.')});
+     			//console.log(jsonData);
+  		    request = new AJAX ('add_admin', jsonData, function(d){
+              successAlert('Admin added successfully.');
+              }, function(d){
+              errorAlert('Unable to add admin.');
+              });
           e.preventDefault();	
         }
         else

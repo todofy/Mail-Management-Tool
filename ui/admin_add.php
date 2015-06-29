@@ -19,6 +19,7 @@ if (!isset($_ADMIN_ADD_)) {
 	<!-- Latest compiled JavaScript -->
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/jAlert-v3.css" />
 </head>
 
 <body>
@@ -71,8 +72,9 @@ if (!isset($_ADMIN_ADD_)) {
 		</div>
 		
 	</div>
-
-</body>
+<script src="js/jAlert-v3.js"></script>
+<script src="js/jAlert-functions.js"></script>
 <script src="js/main.js"></script>
 <script src="js/admin_add.js"></script>
+</body>
 </html>
