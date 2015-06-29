@@ -41,3 +41,26 @@ AJAX.prototype.trigger = function() {
 
 	XHR.send('data=' +JSON.stringify({category: this.category, data: this.data}));
 };
+
+//function to validate the form
+function validate_form()
+{
+	var email= $('#email').val();
+	var pattern  = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+	if (email == '') {
+            alert('Please enter a email address');
+        }
+    else if(!pattern.test(email))
+    {
+    	alert('Please enter a valid email adddress');
+    }
+    else if($('input[type=checkbox]:checked').length == 0)
+    {
+    	alert('select atleast one of the accessess');
+    }
+    else
+    {
+    	return true;
+    }
+    return false;
+}
