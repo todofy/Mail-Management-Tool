@@ -57,6 +57,9 @@ if (!isset($_DEF_SESSION_)) {
 		public static function Set($user_id) {
 			$_SESSION['user_id'] = $user_id;
 			$_SESSION['HTTP_USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
+			//get the login time
+			$t = time();
+			$result = database::SQL("UPDATE admin set last_login = ? where id = ? LIMIT 1",array('ii',$t,$user_id));
 		}
 
 		public static function getUserID() {
