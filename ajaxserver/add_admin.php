@@ -13,10 +13,17 @@
 	{
 		//insert the new entry into the database
 		$result = database::SQL("INSERT into admin(email) values (?) ", array('s', $email));
-
 		//get the id for the new user
 		$result = database::SQL("SELECT id from admin where email = ? LIMIT 1",array('s',$email));
 		$id = $result[0]['id'];
+
+		if ($id == null) {
+			// The user was not inserted
+			$output['error'] = true;
+		    $output['message'] = 'Unable to add an admin! Database Error!';
+		    goto finish;
+		}
+
 		//insert the access rights for the user in database
 		if(!empty($access) && is_array($access))
 	    foreach ($access as $value){
@@ -29,6 +36,9 @@
 	    $output['error']=false;
 	    $output['message']='Successfully added';
 	}
+
+
+	finish:
 	
 
 ?>
