@@ -60,6 +60,15 @@ if (!isset($data['category']) || !isset($data['data'])) {
 $category = $data['category'];
 $data = $data['data'];
 
+if($category = "change_pw"){
+	$admin_id = session::getUserID();
+	database::Start();
+	include __DIR__ .'/change_pw.php';
+	echo json_encode($output);
+	exit;
+}
+
+
 // List of all access needed to perform action belonging to a category
 $access_needed = array(
 	'add_admin' => array(ADD_ADMIN),

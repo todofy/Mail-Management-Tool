@@ -622,8 +622,8 @@
 			'backgroundColor': 'black', //white, black
 			'size': false, //false = css default, xsm, sm, md, lg, xlg, full, { height: 200, width: 200 }
 			'replaceOtherAlerts': false, //if there's already an open jAlert, remove it first
-			'closeOnClick': true, //close the alert when you click anywhere
-			'closeOnEsc': true, //close the alert when you click the escape key
+			'closeOnClick': false, //close the alert when you click anywhere
+			'closeOnEsc': false, //close the alert when you click the escape key
 			'closeBtn': true, //adds a button to the top right of the alert that allows you to close it
 			'closeBtnAlt': false, //alternative close button
 			'btns': false, //adds buttons to the popup at the bottom. Pass an object for a single button, or an object of objects for many
