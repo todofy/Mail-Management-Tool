@@ -8,9 +8,6 @@ $sessObj = new session();
 	$id = session::getUserID();
 	$newuser = new user($id);
 
-	if (!isset($newuser->access[VIEW_ADMIN])) {
-		redirect_to("_404.php");
-	}
 	
 $_CODE_PROFILE = true;  
 

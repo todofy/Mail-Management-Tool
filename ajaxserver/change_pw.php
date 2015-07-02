@@ -11,7 +11,7 @@
 	else
 	{
 		//insert the new password in database
-		$result = database::SQL("UPDATE admin SET password=? WHERE id = ?",array('ii',$new_pw,$admin_id));
+		$result = database::SQL("UPDATE admin SET password=? WHERE id = ?",array('si',$new_pw,$admin_id));
 	    $output['error']=false;
 	    $output['message']='Password changed';
 	}

@@ -60,7 +60,7 @@ if (!isset($data['category']) || !isset($data['data'])) {
 $category = $data['category'];
 $data = $data['data'];
 
-if($category = "change_pw"){
+if($category == "change_pw"){
 	$admin_id = session::getUserID();
 	database::Start();
 	include __DIR__ .'/change_pw.php';
