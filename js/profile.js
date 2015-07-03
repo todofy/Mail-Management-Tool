@@ -1,7 +1,7 @@
 $(document).ready(function() {
   	$("#btn").click(function(e){
-        //if(validate_form())
-        //{
+        if(validate_form_pw())
+        {
   	 		  var jsonData = {};
   	 		  var formData = $("#change_pw").serializeArray();
     			//console.log(formData);
@@ -23,10 +23,10 @@ $(document).ready(function() {
               errorAlert('Unable to change password.');
               });
           e.preventDefault();	
-        //}
-        //else
-        //{
-        //  return false;
-        //}
+        }
+        else
+        {
+          return false;
+        }
 		});
 });

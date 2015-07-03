@@ -19,6 +19,10 @@ $(document).ready(function() {
      			//console.log(jsonData);
   		    request = new AJAX ('add_admin', jsonData, function(d){
               successAlert('Admin added successfully.');
+              $(".closejAlert.ja_close").click(function(e){
+                  window.location="admin_view.php";
+                  e.preventDefault();
+                });
               }, function(d){
               errorAlert('Unable to add admin.');
               });
