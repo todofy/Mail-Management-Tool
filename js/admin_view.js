@@ -1,38 +1,35 @@
 $(document).ready(function() {
-  	$(".btn.btn-danger").click(function(e){
+
+    $(".button-delete").on('click', function(e) {
+        //get id of button clicked
+        var id = $(this).attr('id');
+        var _this = $(this);
+        request = new AJAX ('delete_admin', 
+            {admin_id : id},
+            function(d) {
+                successAlert('Admin deleted successfully');
+                _this.parent('td').parent('tr').remove();
+            }, function(d){
+                errorAlert('Unable to delete admin.');
+            });
+        e.preventDefault();
+    });
+
+
+  	$(".button-revoke").on('click', function(e){
 	    //get id of button clicked
-        var id = this.id;
+        var id = $(this).attr('id');
+
         //console.log(id);
-        $("#delete_admin").click(function(e){
-        	request = new AJAX ('delete_admin', {admin_id : id} , function(d){
-        		successAlert('Admin deleted.');
-        		$(".closejAlert.ja_close").click(function(e){
-        			window.location="admin_view.php";
-        			e.preventDefault();
-        		});
-        	}, function(d){
-        		errorAlert('Unable to delete admin.');
-        	});
-        	e.preventDefault();	
-        });
-        e.preventDefault();	
-		});
-  	$(".btn.btn-warning").click(function(e){
-	    //get id of button clicked
-        var id = this.id;
-        //console.log(id);
-        $("#revoke_admin").click(function(e){
-        	request = new AJAX ('revoke_admin', {admin_id : id} , function(d){
-        		successAlert('Secret key of admin revoked.');
-        		$(".closejAlert.ja_close").click(function(e){
-        			window.location="admin_view.php";
-        			e.preventDefault();
-        		});
-        	}, function(d){
-        		errorAlert('Unable to revoke secret key.');
-        	});
-        	e.preventDefault();	
-        });
-        e.preventDefault();	
-		});
+    	request = new AJAX ('revoke_admin', {admin_id : id} , function(d){
+    		successAlert('Admin API Key revoked');
+    		$(".closejAlert.ja_close").click(function(e){
+    			window.location="admin_view.php";
+    			e.preventDefault();
+    		});
+    	}, function(d){
+    		errorAlert('Unable to revoke secret key.');
+    	});	
+	});
+
 });

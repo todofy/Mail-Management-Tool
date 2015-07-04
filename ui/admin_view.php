@@ -54,13 +54,13 @@ if (!isset($_ADMIN_VIEW_)) {
 							echo '<td>';
 							if (isset($newuser->access[EDIT_ADMIN])) {
 								$add = "admin_edit.php?id=".$value['id'];
-								echo '<a class="btn btn-primary" href='.$add.' role="button" id='.$value['id'].'>Edit</a> ';
+								echo '<a class="btn btn-primary button-edit" href='.$add.' role="button" id='.$value['id'].'>Edit</a> ';
 							}
 							if (isset($newuser->access[REVOKE_ADMIN])) {
-								echo '<a class="btn btn-warning" href="#" role="button" data-toggle="modal" data-target="#revoke" id='.$value['id'].'>Revoke key</a> ';
+								echo '<a class="btn btn-warning button-revoke" href="javascript: void(0)" role="button" data-toggle="modal" data-target="#revoke" id='.$value['id'].'>Revoke key</a> ';
 							}
 							if (isset($newuser->access[DELETE_ADMIN])) {
-								echo '<a class="btn btn-danger" href="#" role="button" data-toggle="modal" data-target="#delete" id='.$value['id'].'>Delete</a> ';
+								echo '<a class="btn btn-danger button-delete" href="javascript: void(0)" role="button" data-toggle="modal" data-target="#delete" id='.$value['id'].'>Delete</a> ';
 							}
 							echo '</td>';
 							echo '</tr>';
