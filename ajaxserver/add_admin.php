@@ -41,8 +41,6 @@
 
 	    // TODO - send a mail to new admin along with details and password.
 
-	    //create and send the password
-
 	    //set the output array
 	    $output['error'] = false;
 	    $output['message'] = 'Successfully added! A Mail has been sent to ' .$email .' with account details';
