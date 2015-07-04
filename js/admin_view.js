@@ -22,13 +22,9 @@ $(document).ready(function() {
 
         //console.log(id);
     	request = new AJAX ('revoke_admin', {admin_id : id} , function(d){
-    		successAlert('Admin API Key revoked');
-    		$(".closejAlert.ja_close").click(function(e){
-    			window.location="admin_view.php";
-    			e.preventDefault();
-    		});
+    		successAlert('Admin API Key revoked! New API Secret key is ' +d.data +'<br>A mail has been sent to admin with new API key!');
     	}, function(d){
-    		errorAlert('Unable to revoke secret key.');
+    		errorAlert('Unable to revoke Secret API key for this admin!');
     	});	
 	});
 

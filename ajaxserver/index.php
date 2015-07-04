@@ -11,6 +11,7 @@ $SECURE = true;
 include __DIR__ .'/../libs/session.php';
 include __DIR__ .'/../libs/database.php';
 include __DIR__ .'/../libs/user.php';
+include __DIR__ .'/../libs/logging.php';
 include __DIR__ .'/../libs/login.php';
 
 // Function to recursively sanitize a data var

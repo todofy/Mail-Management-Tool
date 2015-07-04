@@ -19,6 +19,8 @@
 			classes = ['animated'], //array of classes that get joined together with a space between on the jalert div
 			backgroundClasses = []; //array of classes that get joined together with a space between on the jalert background div
 
+		styles.push('word-wrap: break-word;');
+
 	    /* Block Multiple Instances by running jAlert for each one */
 	    if (alert.length > 1){
 	        alert.each(function() { 
