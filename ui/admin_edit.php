@@ -50,7 +50,17 @@ if (!isset($_ADMIN_EDIT_)) {
   						<?php
   							foreach ($accesses as $value) {
   								echo '<div>';
-  								echo '<input type="checkbox" name="access[]" value="' .$value['id'] .'">';
+  								$bHasAccess = false;
+  								foreach ($accessForThisAsmin as  $a) {
+  									if ($value['id'] == $a['access_id']) {
+  										$bHasAccess = true;
+  										break;
+  									}
+  								}
+
+  								echo '<input type="checkbox" name="access[]" value="' .$value['id'] .'" ';
+  								if ($bHasAccess) echo ' checked="true" ';
+  								echo '>';
   								echo ' <strong style="text-transform: uppercase">' .$value['name'] .'</strong>: &nbsp; ' .$value['description'];
   								echo '</div>';
   							}
