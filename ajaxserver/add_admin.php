@@ -11,8 +11,17 @@
 	}
 	else
 	{
+		// Generate an API Key for the admin
+		$secret = login::getHash(64);
+
+		// Generate a random password for the new admin
+		$password = login::getHash(8);
+		$password_hash = login::hashPassword($password);
+
 		//insert the new entry into the database
-		$result = database::SQL("INSERT into admin(email) values (?) ", array('s', $email));
+		$result = database::SQL("INSERT INTO `admin`(`email`, `secret`, `password`) values (?, ?, ?) ", 
+			array('sss', $email, $secret, $password_hash));
+
 		//get the id for the new user
 		$result = database::SQL("SELECT id from admin where email = ? LIMIT 1",array('s',$email));
 		$id = $result[0]['id'];
@@ -30,11 +39,13 @@
 	    	$result = database::SQL("INSERT into admin_access values (?,?)",array('is',$id,$value));
 	    }
 
+	    // TODO - send a mail to new admin along with details and password.
+
 	    //create and send the password
 
 	    //set the output array
-	    $output['error']=false;
-	    $output['message']='Successfully added';
+	    $output['error'] = false;
+	    $output['message'] = 'Successfully added! A Mail has been sent to ' .$email .' with account details';
 	}
 
 

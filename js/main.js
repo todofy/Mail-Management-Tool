@@ -22,7 +22,6 @@ AJAX.prototype.trigger = function() {
 			try {
 				var obj = JSON.parse(this.response);
 				if (obj.error) {
-					alert(obj.message);
 					if (typeof _this.failureCallback  == 'function') _this.failureCallback(obj);
 				} else {
 					if (typeof _this.successCallback  == 'function') _this.successCallback(obj);

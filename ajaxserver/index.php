@@ -11,6 +11,7 @@ $SECURE = true;
 include __DIR__ .'/../libs/session.php';
 include __DIR__ .'/../libs/database.php';
 include __DIR__ .'/../libs/user.php';
+include __DIR__ .'/../libs/login.php';
 
 // Function to recursively sanitize a data var
 /*function sanitize($arr) {
@@ -23,6 +24,7 @@ include __DIR__ .'/../libs/user.php';
 		return database::con->real_escape_string($arr);
 }
 */
+
 $output = array(
 	'error' => false,
 	'message' => '',
