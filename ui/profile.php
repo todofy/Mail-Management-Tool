@@ -14,11 +14,10 @@ if (!isset($_CODE_PROFILE)) {
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
 	<!-- jQuery library -->
-	<script src="./js/jquery1.7.2.min.js"></script>
+	<script src="./js/jquery-2.0.0.min.js"></script>
 
 	<!-- Latest compiled JavaScript -->
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<link rel="stylesheet" href="css/jAlert-v3.css" />
 </head>
 
