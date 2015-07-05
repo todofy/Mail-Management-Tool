@@ -16,11 +16,12 @@
 
 		// Generate a random password for the new admin
 		$password = login::getHash(8);
-		$password_hash = login::hashPassword($password);
+		$salt = login::getHash(6);
+		$password_hash = login::hashPassword($salt,$password);
 
 		//insert the new entry into the database
-		$result = database::SQL("INSERT INTO `admin`(`email`, `secret`, `password`) values (?, ?, ?) ", 
-			array('sss', $email, $secret, $password_hash));
+		$result = database::SQL("INSERT INTO `admin`(`email`, `secret`, `password`,`salt`) values (?, ?, ?, ?) ", 
+			array('ssss', $email, $secret, $password_hash, $salt));
 
 		//get the id for the new user
 		$result = database::SQL("SELECT id from admin where email = ? LIMIT 1",array('s',$email));
@@ -40,6 +41,11 @@
 	    }
 
 	    // TODO - send a mail to new admin along with details and password.
+	    //$to = $email;
+		//$subject = "Welcome to Todofy";
+		//$message = "Your password is ". $password ." and your API key is ". $secret .". Don't reveal these to anyone.";
+		//$from = "Todofy Team";
+		//mail($to,$subject,$message);
 
 	    //set the output array
 	    $output['error'] = false;

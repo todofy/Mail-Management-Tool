@@ -18,9 +18,13 @@ $(document).ready(function() {
   	    	});
      			//console.log(jsonData);
   		    request = new AJAX ('edit_admin', jsonData, function(d){
-              successAlert('Admin edited successfully.');
+              successAlert(d.message);
+              $(".closejAlert.ja_close").click(function(e){
+                window.location="admin_view.php";
+                e.preventDefault();
+              });
               }, function(d){
-              errorAlert('Unable to edit admin.');
+              errorAlert(d.message);
               });
           e.preventDefault();	
         }

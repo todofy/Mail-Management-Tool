@@ -5,13 +5,13 @@ $(document).ready(function() {
         //console.log(id);
         $("#delete_admin").click(function(e){
         	request = new AJAX ('delete_admin', {admin_id : id} , function(d){
-        		successAlert('Admin deleted.');
+        		successAlert(d.message);
         		$(".closejAlert.ja_close").click(function(e){
         			window.location="admin_view.php";
         			e.preventDefault();
         		});
         	}, function(d){
-        		errorAlert('Unable to delete admin.');
+        		errorAlert(d.message);
         	});
         	e.preventDefault();	
         });
@@ -23,13 +23,13 @@ $(document).ready(function() {
         //console.log(id);
         $("#revoke_admin").click(function(e){
         	request = new AJAX ('revoke_admin', {admin_id : id} , function(d){
-        		successAlert('Secret key of admin revoked.');
+        		successAlert(d.message);
         		$(".closejAlert.ja_close").click(function(e){
         			window.location="admin_view.php";
         			e.preventDefault();
         		});
         	}, function(d){
-        		errorAlert('Unable to revoke secret key.');
+        		errorAlert(d.message);
         	});
         	e.preventDefault();	
         });
