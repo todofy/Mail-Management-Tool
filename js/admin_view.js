@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
     $(".button-delete").on('click', function(e) {
+    	if (!prompt("Are you sure you want to delete this Admin?")) return;
         //get id of button clicked
         var id = $(this).attr('id');
         var _this = $(this);
@@ -16,8 +17,9 @@ $(document).ready(function() {
     });
 
 
-  	$(".button-revoke").on('click', function(e){
-	    //get id of button clicked
+  $(".button-revoke").on('click', function(e){
+  	if (!prompt("Are you sure you want to revoke key for this Admin?")) return;
+	//get id of button clicked
         var id = $(this).attr('id');
 
         //console.log(id);
