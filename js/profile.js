@@ -16,11 +16,15 @@ $(document).ready(function() {
              			jsonData[this.name] = this.value || '';
          			}
   	    	});
-     			console.log(jsonData);
+     			//console.log(jsonData);
   		    request = new AJAX ('change_pw', jsonData, function(d){
-              successAlert('Password changed.');
+              successAlert(d.message);
+              $(".closejAlert.ja_close").click(function(e){
+                  window.location="admin_view.php";
+                  e.preventDefault();
+                });
               }, function(d){
-              errorAlert('Unable to change password.');
+              errorAlert(d.message);
               });
           e.preventDefault();	
         }

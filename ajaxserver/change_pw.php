@@ -1,7 +1,10 @@
 <?php
-	//$id = session::getUserID();
-	$current_pw = md5(SALT .($data['current_pw']));
-	$new_pw = md5(SALT .($data['new_pw']));
+	//get salt stored for the admin
+	$result = database::SQL("SELECT salt FROM admin WHERE id = ? LIMIT 1",array('s', $admin_id));
+	$salt = $result[0]['salt'];
+	//set current password and new password accordingly
+	$current_pw = md5(($salt) . ($data['current_pw']));
+	$new_pw = md5(($salt) . ($data['new_pw']));
 	$result = database::SQL("SELECT password FROM admin WHERE id = ? LIMIT 1", array('i', $admin_id));
 	//check if password entered and password in database match or not
 	if($current_pw != $result[0]['password']){

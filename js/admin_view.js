@@ -27,5 +27,4 @@ $(document).ready(function() {
     		errorAlert('Unable to revoke Secret API key for this admin!');
     	});	
 	});
-
 });
