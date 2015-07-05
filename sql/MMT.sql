@@ -52,19 +52,16 @@ INSERT INTO `acl` (`id`, `name`, `description`, `display_name`, `link`) VALUES
 --
 -- Table structure for table `admin`
 --
-
 CREATE TABLE IF NOT EXISTS `admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(100) NOT NULL,
   `secret` varchar(64) NOT NULL,
   `password` varchar(32) NOT NULL,
-  `last_login` int(11) NOT NULL,
-  `cookie` varchar(32) NOT NULL,
-  `salt` varchar(16) NOT NULL,
-  `temp` varchar(32) NOT NULL,
+  `last_login` int(11) NOT NULL DEFAULT '-1',
+  `cookie` varchar(32) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
