@@ -33,7 +33,7 @@ AJAX.prototype.trigger = function() {
 			}
 		} else if (this.readyState == 4) {
 			// TODO connect this to a notification later
-			alert("unable to connect to the internet");
+			alert("Unable to connect to the internet");
 		}
 	}
 
@@ -55,7 +55,7 @@ function validate_form()
     }
     else if($('input[type=checkbox]:checked').length == 0)
     {
-    	alert('select atleast one of the accessess');
+    	alert('Select atleast one of the accessess');
     }
     else
     {

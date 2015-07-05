@@ -35,9 +35,13 @@
 		}
 
 		//insert the access rights for the user in database
-		if(!empty($access) && is_array($access))
-	    foreach ($access as $value){
-	    	$result = database::SQL("INSERT into admin_access values (?,?)",array('is',$id,$value));
+		if(!empty($access)){
+			if(is_array($access)){
+	    		foreach ($access as $value){
+	    			$result = database::SQL("INSERT into admin_access values (?,?)",array('is',$id,$value));
+	    		}
+	    	} else
+	    	$result = database::SQL("INSERT into admin_access values (?,?)",array('is',$id,$access));
 	    }
 
 	    // TODO - send a mail to new admin along with details and password.
