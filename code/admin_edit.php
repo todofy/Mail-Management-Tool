@@ -19,7 +19,7 @@
 	if(empty($result)) redirect_to("_404.php");
 	else $email = $result[0]['email'];
 
-	$accessForThisAsmin = database::SQL("SELECT `access_id` FROM `admin_access` WHERE `admin_id` = ?", array('i', $id));
+	$accessForThisAdmin = database::SQL("SELECT `access_id` FROM `admin_access` WHERE `admin_id` = ?", array('i', $id));
 
 	// Get all possible accesses
 	$accesses = database::SQL("SELECT `id`, `name`, `description` FROM `acl`");

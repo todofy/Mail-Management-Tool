@@ -71,6 +71,14 @@ if($category == "change_pw"){
 	exit;
 }
 
+if($category == "delete_account"){
+	$admin_id = session::getUserID();
+	database::Start();
+	include __DIR__ .'/delete_account.php';
+	echo json_encode($output);
+	exit;
+}
+
 
 // List of all access needed to perform action belonging to a category
 $access_needed = array(

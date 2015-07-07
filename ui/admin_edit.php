@@ -50,7 +50,7 @@ if (!isset($_ADMIN_EDIT_)) {
   							foreach ($accesses as $value) {
   								echo '<div>';
   								$bHasAccess = false;
-  								foreach ($accessForThisAsmin as  $a) {
+  								foreach ($accessForThisAdmin as  $a) {
   									if ($value['id'] == $a['access_id']) {
   										$bHasAccess = true;
   										break;
