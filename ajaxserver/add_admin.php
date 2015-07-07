@@ -12,7 +12,7 @@
 	else
 	{
 		// Generate an API Key for the admin
-		$secret = login::getHash(64);
+		$secret = login::getHash(32);
 
 		// Generate a random password for the new admin
 		$password = login::getHash(8);

@@ -9,7 +9,7 @@
 		logging::log('AJAXSERVER, revoke_admin.php, api called with incorrect admin id', LOG_ERROR);
 	}
 	else{
-		$new_secret = login::getHash(64);
+		$new_secret = login::getHash(32);
 		//set secret key of admin to null
 		$result = database::SQL("UPDATE admin SET secret = ? WHERE id=?",array('si', $new_secret, $id));
 		$output['error'] = false;
