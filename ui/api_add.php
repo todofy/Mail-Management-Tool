@@ -48,6 +48,11 @@ if (!isset($_API_ADD)) {
   					<label class="control-label"><h4>Select Template</h4></label>
   					<select class="form-control" style="width:auto; display:inline-block; margin-left: 10px;">
     					<option>Templates</option>
+    					<?php
+    						foreach ($templates as $value) {
+    							echo '<option>'.$value['name'].'</option>';
+    						}
+    					?>
   					</select>
   					<a href="template_add.php" type="button" class="btn btn-link">Create a new Template</a>
 				</div>

@@ -36,28 +36,39 @@ if (!isset($_CODE_PROFILE)) {
 			    <li class="active">Profile</li>
 			</ol>
 			<div class="col-md-7">
-				<h3>Change password</h3>
-				<form role="form" id="change_pw" type="post">
-  					<div class="form-group">
-    					<label for="current"><h4>Current password:</h4></label>
-    					<input type="password" class="form-control" id="current_pw" name="current_pw" style="width: 50%; min-width: 200px">
-    				<div class="form-group">
-    					<label for="new"><h4>New password:</h4></label>
-    					<input type="password" class="form-control" id="new_pw" name="new_pw" style="width: 50%; min-width: 200px">
-  					</div>
-  					<div class="form-group">
-    					<label for="confirm"><h4>Confirm password:</h4></label>
-    					<input type="password" class="form-control" id="confirm_pw" name="confirm_pw" style="width: 50%; min-width: 200px">
-  					</div>
-  					</div>
-  					<button type="submit" class="btn btn-primary" value="Submit" id="btn">Done</button>  					
-				</form>					
+			    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#change-password">Change Password</a>
+			    <div id="change-password" class="modal fade" role="dialog" style="z-index: 15000; margin-top:100px;">
+  					<div class="modal-dialog">
+    					<div class="modal-content">
+    						<div class="modal-header">
+        						<h3>Change password</h3>
+      						</div>
+      						<div class="modal-body">
+        						<form role="form" id="change_pw" type="post">
+  									<div class="form-group">
+    									<label for="current"><h4>Current password:</h4></label>
+    									<input type="password" class="form-control" id="current_pw" name="current_pw" style="width: 50%; min-width: 200px">
+    								<div class="form-group">
+	    								<label for="new"><h4>New password:</h4></label>
+    									<input type="password" class="form-control" id="new_pw" name="new_pw" style="width: 50%; min-width: 200px">
+  									</div>
+  									<div class="form-group">
+    									<label for="confirm"><h4>Confirm password:</h4></label>
+    									<input type="password" class="form-control" id="confirm_pw" name="confirm_pw" style="width: 50%; min-width: 200px">
+  									</div>
+  									<button type="submit" class="btn btn-primary" value="Submit" id="btn">Done</button>
+  									<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+  								</form>
+  							</div> 					
+        				</div>
+    				</div>
+  				</div>
 			</div>
+				
 			<div class="col-md-4 pull-right">
 				
 			</div>
-		</div>
-		
+		</div>	
 	</div>
 <script src="js/jAlert-v3.js"></script>
 <script src="js/jAlert-functions.js"></script>

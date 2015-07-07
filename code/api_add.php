@@ -8,6 +8,8 @@
 	$id = session::getUserID();
 	$newuser = new user($id);
 
+	$templates = database::SQL("SELECT `name` FROM ``");
+
 	$_API_ADD = true;
 
 ?>

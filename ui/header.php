@@ -22,7 +22,7 @@ if (!isset($_CODE_HEADER_)) {
 
 
 		<div class="header-user-menu">
-			<span class="glyphicon glyphicon-user"></span>
+			<span class="glyphicon glyphicon-cog"></span>
 			<ul>
 				<li><a href="profile.php">Profile</a></li>
 				<li><a href="logout.php">Logout</a></li>
