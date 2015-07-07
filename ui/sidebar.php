@@ -24,7 +24,17 @@ if (!isset($_CODE_SIDEBAR_)) {
                     if ($row['link'] == '') continue;
                     echo"<li><a href=\"{$row['link']}\">{$row['display_name']}<span class='sub_icon glyphicon glyphicon-edit'></span></a></li>";
                 } 
-            ?>   
+            ?>
+            <li>
+                <a href="template.php" style="font-size:15px;">
+                   Template<span class="sub_icon glyphicon glyphicon-pencil"></span>
+                </a>
+            </li> 
+            <li>
+                <a href="api.php" style="font-size:15px;">
+                   API<span class="sub_icon glyphicon glyphicon-file"></span>
+                </a>
+            </li>  
       </ul>
   </div>     
 </div>
