@@ -25,7 +25,7 @@ if (!isset($_TEMPLATE_ADD)) {
     	theme: "modern",
     	plugins: [
         	"advlist autolink lists link image charmap print preview hr anchor pagebreak",
-        	"searchreplace wordcount visualblocks visualchars code fullscreen",
+        	"searchreplace wordcount visualblocks visualchars code",
         	"insertdatetime media nonbreaking save table contextmenu directionality",
         	"emoticons template paste textcolor colorpicker textpattern imagetools"
     	],
@@ -56,21 +56,21 @@ if (!isset($_TEMPLATE_ADD)) {
 			    <li><a href="template.php">Template</a></li>
 			    <li class="active">Add</li>
 			</ol>
-		</div>
-		<div class="row">
-			<h3>Create Template</h3>
-			<form role="form" id="create-template">
-				<div class="form-group">
-    				<label for="template-name"><h4>Template Name</h4></label>
-    				<input type="text" class="form-control" id="template-name" name="template-name" style="width: 40%; min-width: 200px">
-  				</div>
-  			    <div class="form-group">
-  			    	<h4 class="form-control-static">Template</h4>
-  					<textarea id="template-text" name="template-text" value="">Design your template here</textarea>
-  				</div>
-  				<button type="submit" class="btn btn-success" value="Submit" id="create">Create</button>
-				<a href="api_add.php" class="btn btn-link">Or create API</a>
-			</form>
+			<div class="col-md-12">
+				<h3>Create Template</h3>
+				<form role="form" id="create-template">
+					<div class="form-group">
+	    				<label for="template-name"><h4>Template Name</h4></label>
+	    				<input type="text" class="form-control" id="template-name" name="template-name" style="width: 40%; min-width: 200px">
+	  				</div>
+	  			    <div class="form-group">
+	  			    	<h4 class="form-control-static">Template</h4>
+	  					<textarea id="template-text" name="template-text" value="">Design your template here</textarea>
+	  				</div>
+	  				<button type="submit" class="btn btn-success" value="Submit" id="create">Create</button>
+					<a href="api_add.php" class="btn btn-link">Or create API</a>
+				</form>
+			</div>
 		</div>
 	</div>
 <script src="js/jAlert-v3.js"></script>

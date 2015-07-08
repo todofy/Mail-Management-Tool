@@ -43,10 +43,18 @@ if (!isset($_CODE_PROFILE)) {
 				<a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#change-password"><span class="glyphicon glyphicon-pencil" style="margin-right:5px;"></span>Change Password</a>
 				<br>
 				<h4>Access rights:</h4>
-				<ul>
+				<ul style="list-style: none; padding-left:10px;">
 				<?php
-					foreach ($adminAccess as $value) {
-						echo '<li style="text-transform: uppercase;">'. $value['name'] .'</li>';
+					foreach ($accesses as $value1) {
+						$flag = 0;
+						foreach($adminAccess as $value2){
+							if($value1 == $value2){
+								echo '<li style="text-transform: uppercase;"><span class="glyphicon glyphicon-check" style="margin-right:5px;"></span>'. $value1['name'] .'</li>';
+								$flag = 1;
+							}
+						}
+						if($flag == 0)
+							echo '<li style="text-transform: uppercase;"><span class="glyphicon glyphicon-unchecked" style="margin-right:5px;"></span>'. $value1['name'] .'</li>';
 					}
 				?>
 				</ul>
@@ -84,7 +92,7 @@ if (!isset($_CODE_PROFILE)) {
     								<input type="password" class="form-control" id="confirm_pw" name="confirm_pw" placeholder="Confirm new password">
     							</div>
   							</div>
-  							<button type="submit" class="btn btn-primary" value="Submit" id="btn">Done</button>
+  							<button type="submit" class="btn btn-primary" value="Submit" data-dismiss="modal" id="btn">Done</button>
   							<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
  						</form>
   					</div> 					
@@ -105,7 +113,7 @@ if (!isset($_CODE_PROFILE)) {
     						</div>
  						</form>
  						<br>
- 						<button type="submit" class="btn btn-warning delete-account" value="Submit">Confirm</button>
+ 						<button type="submit" class="btn btn-danger delete-account" data-dismiss="modal" value="Submit">Confirm</button>
   						<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
   					</div> 					
         		</div>

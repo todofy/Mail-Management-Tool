@@ -44,6 +44,51 @@ if (!isset($_CODE_API)) {
 				<a href="api_add.php" type="button" class="btn btn-success pull-right">Add</a>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<table class="table">
+					<tr>
+						<th>#ID</th>
+						<th>Code</th>
+						<th>Name</th>
+						<th>Template #ID</th>
+						<th>Create On</th>
+						<th>Actions</th>
+					</tr>
+					<?php
+						foreach ($apis as $value) {
+							echo '<tr>';
+							echo '<td>' .$value['id'] .'</td>';
+							echo '<td>' .$value['code'] .'</td>';
+							echo '<td>' .$value['name'] .'</td>';
+							echo '<td>' .$value['template_id'] .'</td>';
+							echo '<td>' .date("D, d M 20y", $value['created_on']) .'</td>';
+							echo '<td>';
+								$edit = "api_edit.php?id=".$value['id'];
+								echo '<a class="btn btn-primary button-edit" href='.$edit.' role="button" id='.$value['id'].'>Edit</a> ';
+								echo '<a class="btn btn-danger button-delete" href="#" role="button" data-toggle="modal" data-target="#delete" id='.$value['id'].'>Delete</a> ';
+							echo '</td>';
+							echo '</tr>';
+						}
+					?>
+				</table>
+			</div>
+		</div>
+		<div id="delete" class="modal fade" role="dialog" style="z-index: 15000; margin-top:100px;">
+  			<div class="modal-dialog">
+    			<div class="modal-content">
+    				<div class="modal-header">
+        				<h4 class="modal-title">Delete API</h4>
+      				</div>
+      				<div class="modal-body">
+        				<p>Are you sure you want to delete this API?</p>
+        				<br>
+        				<button type="button" class="btn btn-danger button-delete-confirm" data-dismiss="modal">Delete</button>
+        				<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+        			</div>
+    			</div>
+  			</div>
+		</div>
 	</div>
 <script src="js/jAlert-v3.js"></script>
 <script src="js/jAlert-functions.js"></script>

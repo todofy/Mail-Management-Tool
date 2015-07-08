@@ -45,30 +45,32 @@ if (!isset($_CODE_TEMPLATE)) {
 			</div>
 		</div>
 		<div class="row">
-			<table class="table">
-				<tr>
-					<th>#ID</th>
-					<th>Name</th>
-					<th>Created On</th>
-					<th>Last Updated</th>
-					<th>Actions</th>
-				</tr>
-				<?php
-					foreach ($templates as $value) {
-						echo '<tr>';
-						echo '<td>' .$value['id'] .'</td>';
-						echo '<td>' .$value['name'] .'</td>';
-						echo '<td>' .date("D, d M 20y", $value['created_on']) .'</td>';
-						echo '<td>' .date("D, d M 20y", $value['last_updated']) .'</td>';
-						echo '<td>';
-							$edit = "template_edit.php?id=".$value['id'];
-							echo '<a class="btn btn-primary button-edit" href='.$edit.' role="button" id='.$value['id'].'>Edit</a> ';
-							echo '<a class="btn btn-danger button-delete" href="#" role="button" data-toggle="modal" data-target="#delete" id='.$value['id'].'>Delete</a> ';
-						echo '</td>';
-						echo '</tr>';
-					}
-				?>
-			</table>
+			<div class="col-md-12">
+				<table class="table">
+					<tr>
+						<th>#ID</th>
+						<th>Name</th>
+						<th>Created On</th>
+						<th>Last Updated</th>
+						<th>Actions</th>
+					</tr>
+					<?php
+						foreach ($templates as $value) {
+							echo '<tr>';
+							echo '<td>' .$value['id'] .'</td>';
+							echo '<td>' .$value['name'] .'</td>';
+							echo '<td>' .date("D, d M 20y", $value['created_on']) .'</td>';
+							echo '<td>' .date("D, d M 20y", $value['last_updated']) .'</td>';
+							echo '<td>';
+								$edit = "template_edit.php?id=".$value['id'];
+								echo '<a class="btn btn-primary button-edit" href='.$edit.' role="button" id='.$value['id'].'>Edit</a> ';
+								echo '<a class="btn btn-danger button-delete" href="#" role="button" data-toggle="modal" data-target="#delete" id='.$value['id'].'>Delete</a> ';
+							echo '</td>';
+							echo '</tr>';
+						}
+					?>
+				</table>
+			</div>
 		</div>
 		<div id="delete" class="modal fade" role="dialog" style="z-index: 15000; margin-top:100px;">
   			<div class="modal-dialog">

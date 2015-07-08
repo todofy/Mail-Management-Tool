@@ -88,6 +88,13 @@ $template_operations = array(
 	'delete_template' => array('delete_template')
 	);
 
+//List of all operations regarding APIs
+$api_operations = array(
+	'add_api' => array('add_api'),
+	'edit_api' => array('edit_api'),
+	'delete_api' => array('delete_api')
+	);
+
 // List of all access needed to perform action belonging to a category
 $access_needed = array(
 	'add_admin' => array(ADD_ADMIN),
@@ -96,7 +103,7 @@ $access_needed = array(
 	'revoke_admin' => array(REVOKE_ADMIN)
 	);
 
-if (!isset($access_needed[$category]) && !isset($template_operations[$category])) {
+if (!isset($access_needed[$category]) && !isset($template_operations[$category]) && !isset($api_operations[$category])) {
 	$output['error'] = true;
 	$output['message'] = 'Invalid category sent in request';
 	echo json_encode($output);

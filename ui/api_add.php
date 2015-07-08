@@ -38,29 +38,32 @@ if (!isset($_API_ADD)) {
 			</ol>
 		</div>
 		<div class="row">
-			<h3>Create API</h3>
-			<form role="form" type="post" id="create-template">
-				<div class="form-group">
-    				<label for="template-name"><h4>API Name</h4></label>
-    				<input type="text" class="form-control" id="template-name" name="template-name" style="width: 40%; min-width: 200px">
-  				</div>
-  				<div class="form-group">
-  					<label class="control-label"><h4>Select Template</h4></label>
-  					<select class="form-control" style="width:auto; display:inline-block; margin-left: 10px;">
-    					<option>Templates</option>
-    					<?php
-    						foreach ($templates as $value) {
-    							echo '<option>'.$value['name'].'</option>';
-    						}
-    					?>
-  					</select>
-  					<a href="template_add.php" type="button" class="btn btn-link">Create a new Template</a>
-				</div>
-			</form>
-  			<button type="submit" class="btn btn-success" value="Submit" id="btn">Save</button>
+			<div class="col-md-12">
+				<h3>Create API</h3>
+				<form role="form" type="post" id="create-api">
+					<div class="form-group">
+	    				<label for="template-name"><h4>API Name</h4></label>
+	    				<input type="text" class="form-control" id="api-name" name="api-name" style="width: 40%; min-width: 200px">
+	  				</div>
+	  				<div class="form-group">
+	  					<label class="control-label"><h4>Select Template</h4></label>
+	  					<select class="form-control" name="template" style="width:auto; display:inline-block; margin-left: 10px;">
+	    					<?php
+	    						foreach ($templates as $value) {
+	    							echo '<option>'.$value['name'].'</option>';
+	    						}
+	    					?>
+	  					</select>
+	  					<a href="template_add.php" type="button" class="btn btn-link">Create a new Template</a>
+					</div>
+				</form>
+	  			<button type="submit" class="btn btn-success" value="Submit" id="save">Save</button>
+	  		</div>
 		</div>
 	</div>
 <script src="js/jAlert-v3.js"></script>
 <script src="js/jAlert-functions.js"></script>
+<script src="js/main.js"></script>
+<script src="js/api_add.js"></script>
 </body>
 </html>

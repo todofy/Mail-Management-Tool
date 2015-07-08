@@ -15,6 +15,8 @@ $sessObj = new session();
 	$adminAccess = database::SQL("SELECT `name` FROM `admin_access`	INNER JOIN `acl` ON `acl`.`id` = `admin_access`.`access_id`
 				   WHERE admin_id = ?", array('i', $id));
 
+	$accesses = database::SQL("SELECT `name` FROM `acl`");
+
 	$_CODE_PROFILE = true;  
 
 ?>
