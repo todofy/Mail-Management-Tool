@@ -38,11 +38,11 @@ $(document).ready(function() {
 
 function check_template()
 {
-  var temp_text = $('#template-text').val();
+  var temp_text = tinyMCE.activeEditor.getContent();
   var name  = $('#template-name').val();
-  if(temp_text=='')
+  if($.trim(temp_text)=='')
   {
-    alert('template text empty');
+    alert('No design made');
   }
   else if($.trim(name)=='')
   {

@@ -52,7 +52,7 @@ if (!isset($_TEMPLATE_EDIT_)) {
 	<div id="content-wrapper">
 		<div class="row">
 			<ol class="breadcrumb">
-			    <li><a href="dashboard.php">Home</a></li>
+			    <li><a href="./dashboard.php">Home</a></li>
 			    <li><a href="template.php">Template</a></li>
 			    <li class="active">Edit</li>
 			</ol>
@@ -65,7 +65,7 @@ if (!isset($_TEMPLATE_EDIT_)) {
 	  				</div>
 					<div class="form-group">
 	    				<label for="template-name"><h4>Template Name</h4></label>
-	    				<input type="text" class="form-control" id="template-name" name="template-name" value=<?php echo $template_name ?> style="width: 40%; min-width: 200px">
+	    				<input type="text" class="form-control" id="template-name" name="template-name" value='<?php echo $template_name ?>' style="width: 40%; min-width: 200px">
 	  				</div>
 	  			    <div class="form-group">
 	  			    	<h4 class="form-control-static">Template</h4>
