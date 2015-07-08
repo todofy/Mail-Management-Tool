@@ -4,17 +4,19 @@
 	$template_text = $data['template-text'];
 
 	//check if template name already in use or not
-	$result = database::SQL("SELECT `id` from `template` where `name` = ? LIMIT 1",array('i',$template_name));
+	$result = database::SQL("SELECT `id` from `template` where `name` = ? LIMIT 1",array('s',$template_name));
 	if(!empty($result)){
 		$output['error'] = true;
 		$output['message'] = 'Template name already in use!';
 	}
 	else{
 		//insert the new template in the database
-		$result = database::SQL("INSERT INTO `template`(`name`,`template`) VALUES(?,?)",array('ii',$template_name,$template_text));
+		//get the time
+		$t = time();
+		$result = database::SQL("INSERT INTO `template`(`name`,`template` , `created_on` , `last_updated`) VALUES(?,?,?,?)",array('ssii',$template_name,$template_text,$t,$t));
 
 		//check if template is successfully inserted or not
-		$result = database::SQL("SELECT `id` from `template` where `name` = ? LIMIT 1",array('i',$template_name));
+		$result = database::SQL("SELECT `id` from `template` where `name` = ? LIMIT 1",array('s',$template_name));
 		$id = $result[0]['id'];
 		if($id == null){
 			$output['error'] = true;
