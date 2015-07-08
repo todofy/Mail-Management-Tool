@@ -68,7 +68,7 @@ if (!isset($_TEMPLATE_ADD)) {
   			    	<h4 class="form-control-static">Template</h4>
   					<textarea id="template-text" name="template-text" value="">Design your template here</textarea>
   				</div>
-  				<button type="submit" class="btn btn-primary" value="Submit" id="create">Create</button>
+  				<button type="submit" class="btn btn-success" value="Submit" id="create">Create</button>
 				<a href="api_add.php" class="btn btn-link">Or create API</a>
 			</form>
 		</div>

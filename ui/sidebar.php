@@ -19,12 +19,6 @@ if (!isset($_CODE_SIDEBAR_)) {
                    Dashboard<span class="sub_icon glyphicon glyphicon-home"></span>
                 </a>
             </li>
-            <?php 
-                foreach ($newuser->access as $row) {
-                    if ($row['link'] == '') continue;
-                    echo"<li><a href=\"{$row['link']}\">{$row['display_name']}<span class='sub_icon glyphicon glyphicon-user'></span></a></li>";
-                } 
-            ?>
             <li>
                 <a href="template.php" style="font-size:15px;">
                    Template<span class="sub_icon glyphicon glyphicon-pencil"></span>
@@ -34,7 +28,13 @@ if (!isset($_CODE_SIDEBAR_)) {
                 <a href="api.php" style="font-size:15px;">
                    API<span class="sub_icon glyphicon glyphicon-file"></span>
                 </a>
-            </li>  
+            </li> 
+            <?php 
+                foreach ($newuser->access as $row) {
+                    if ($row['link'] == '') continue;
+                    echo"<li><a href=\"{$row['link']}\">{$row['display_name']}<span class='sub_icon glyphicon glyphicon-user'></span></a></li>";
+                } 
+            ?> 
       </ul>
   </div>     
 </div>

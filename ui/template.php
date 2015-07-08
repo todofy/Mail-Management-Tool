@@ -41,11 +41,39 @@ if (!isset($_CODE_TEMPLATE)) {
 		    	<h3>View Templates</h3>
 		    </div>
 		    <div class="col-md-3">
-				<a href="template_add.php" type="button" class="btn btn-primary pull-right">Add</a>
+				<a href="template_add.php" type="button" class="btn btn-success pull-right">Add</a>
 			</div>
+		</div>
+		<div class="row">
+			<table class="table">
+				<tr>
+					<th>#ID</th>
+					<th>Name</th>
+					<th>Created On</th>
+					<th>Last Updated</th>
+					<th>Actions</th>
+				</tr>
+				<?php
+					foreach ($templates as $value) {
+						echo '<tr>';
+						echo '<td>' .$value['id'] .'</td>';
+						echo '<td>' .$value['name'] .'</td>';
+						echo '<td>' .date("D, d M 20y", $value['created_on']) .'</td>';
+						echo '<td>' .date("D, d M 20y", $value['last_updated']) .'</td>';
+						echo '<td>';
+							$edit = "template_edit.php?id=".$value['id'];
+							echo '<a class="btn btn-primary button-edit" href='.$edit.' role="button" id='.$value['id'].'>Edit</a> ';
+							$delete = "template_delete.php?id=".$value['id'];
+							echo '<a class="btn btn-danger button-edit" href='.$delete.' role="button" id='.$value['id'].'>Delete</a> ';
+						echo '</td>';
+						echo '</tr>';
+					}
+				?>
+			</table>
 		</div>
 	</div>
 <script src="js/jAlert-v3.js"></script>
 <script src="js/jAlert-functions.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

@@ -57,7 +57,7 @@ if (!isset($_API_ADD)) {
   					<a href="template_add.php" type="button" class="btn btn-link">Create a new Template</a>
 				</div>
 			</form>
-  			<button type="submit" class="btn btn-primary" value="Submit" id="btn">Save</button>
+  			<button type="submit" class="btn btn-success" value="Submit" id="btn">Save</button>
 		</div>
 	</div>
 <script src="js/jAlert-v3.js"></script>

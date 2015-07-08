@@ -35,9 +35,20 @@ if (!isset($_ADMIN_VIEW_)) {
 			    <li><a href="./dashboard.php">Home</a></li>
 			    <li class="active">View Admins</li>
 			</ol>
+			<div class="row">
+		    	<div class="col-md-9">
+		    		<h3>List of all Admins</h3>
+		    	</div>
+		    	<div class="col-md-3">
+		    	<?php
+		    		if (isset($newuser->access[ADD_ADMIN])){
+						echo '<a href="admin_add.php" type="button" class="btn btn-success pull-right">Add</a>';
+					}
+				?>
+				</div>
+			</div>
+			<div class="clearfix"></div>
 			<div class="col-md-12">
-				<h3>List of all admins</h3>
-				<div class="clearfix"></div>
 				<table class="table">
 					<tr>
 						<th>#ID</th>
@@ -67,9 +78,6 @@ if (!isset($_ADMIN_VIEW_)) {
 						}
 					?>
 				</table>					
-			</div>
-			<div class="col-md-4 pull-right">
-				
 			</div>
 		</div>
 		<div id="revoke" class="modal fade" role="dialog" style="z-index: 15000; margin-top:100px;">

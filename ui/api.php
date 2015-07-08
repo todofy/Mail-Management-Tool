@@ -41,7 +41,7 @@ if (!isset($_CODE_API)) {
 		    	<h3>View APIs</h3>
 		    </div>
 		    <div class="col-md-3">
-				<a href="api_add.php" type="button" class="btn btn-primary pull-right">Add</a>
+				<a href="api_add.php" type="button" class="btn btn-success pull-right">Add</a>
 			</div>
 		</div>
 	</div>

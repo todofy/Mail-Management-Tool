@@ -53,7 +53,7 @@ if (!isset($_ADMIN_ADD_)) {
   							}
   						?>
   					</div>
-  					<button type="submit" class="btn btn-primary" value="Submit" id="btn">Add</button>
+  					<button type="submit" class="btn btn-success" value="Submit" id="btn">Add</button>
 
   					<div class="clearfix"></div>
   					<div class="bs-callout bs-callout-info">
