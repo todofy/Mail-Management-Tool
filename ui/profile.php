@@ -32,7 +32,7 @@ if (!isset($_CODE_PROFILE_)) {
 	<div id="content-wrapper">
 		<div class="row">
 			<ol class="breadcrumb">
-			    <li><a href="./dashboard.php">Home</a></li>
+			    <li><a href="dashboard.php">Home</a></li>
 			    <li class="active">Profile</li>
 			</ol>
 			<div class="col-md-7">

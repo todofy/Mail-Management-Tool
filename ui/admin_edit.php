@@ -32,7 +32,7 @@ if (!isset($_ADMIN_EDIT_)) {
 	<div id="content-wrapper">
 		<div class="row">
 			<ol class="breadcrumb">
-			    <li><a href="./dashboard.php">Home</a></li>
+			    <li><a href="dashboard.php">Home</a></li>
 			    <li><a href="./admin_view.php">View Admins</a></li>
 			    <li class="active">Edit Admin</li>
 			</ol>

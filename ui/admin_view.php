@@ -32,7 +32,7 @@ if (!isset($_ADMIN_VIEW_)) {
 	<div id="content-wrapper">
 		<div class="row">
 			<ol class="breadcrumb">
-			    <li><a href="./dashboard.php">Home</a></li>
+			    <li><a href="dashboard.php">Home</a></li>
 			    <li class="active">View Admins</li>
 			</ol>
 			<div class="row">
@@ -61,7 +61,10 @@ if (!isset($_ADMIN_VIEW_)) {
 							echo '<tr>';
 							echo '<td>' .$value['id'] .'</td>';
 							echo '<td>' .$value['email'] .'</td>';
-							echo '<td>' .date("D, d M 20y", $value['last_login']) .'</td>';
+							if($value['last_login'] != null)
+								echo '<td>' .date("D, d M 20y", $value['last_login']) .'</td>';
+							else
+								echo '<td> -NA- </td>';
 							echo '<td>';
 							if (isset($newuser->access[EDIT_ADMIN]) && $value['id']!=$id) {
 								$add = "admin_edit.php?id=".$value['id'];

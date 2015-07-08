@@ -32,7 +32,7 @@ if (!isset($_CODE_TEMPLATE_)) {
 	<div id="content-wrapper">
 		<div class="row">
 			<ol class="breadcrumb">
-			    <li><a href="./dashboard.php">Home</a></li>
+			    <li><a href="dashboard.php">Home</a></li>
 			    <li class="active">Template</li>
 			</ol>
 		</div>

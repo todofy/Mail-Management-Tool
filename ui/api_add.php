@@ -32,8 +32,8 @@ if (!isset($_API_ADD_)) {
 	<div id="content-wrapper">
 		<div class="row">
 			<ol class="breadcrumb">
-			    <li><a href="./dashboard.php">Home</a></li>
-			    <li><a href="template.php">API</a></li>
+			    <li><a href="dashboard.php">Home</a></li>
+			    <li><a href="api.php">API</a></li>
 			    <li class="active">Add</li>
 			</ol>
 		</div>

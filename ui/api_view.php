@@ -32,7 +32,7 @@ if (!isset($_API_VIEW_)) {
 	<div id="content-wrapper">
 		<div class="row">
 			<ol class="breadcrumb">
-			    <li><a href="./dashboard.php">Home</a></li>
+			    <li><a href="dashboard.php">Home</a></li>
 			    <li><a href="api.php">API</a></li>
 			    <li class="active">View</li>
 			</ol>

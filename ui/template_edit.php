@@ -52,7 +52,7 @@ if (!isset($_TEMPLATE_EDIT_)) {
 	<div id="content-wrapper">
 		<div class="row">
 			<ol class="breadcrumb">
-			    <li><a href="./dashboard.php">Home</a></li>
+			    <li><a href="dashboard.php">Home</a></li>
 			    <li><a href="template.php">Template</a></li>
 			    <li class="active">Edit</li>
 			</ol>
