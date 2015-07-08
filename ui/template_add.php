@@ -59,21 +59,23 @@ if (!isset($_TEMPLATE_ADD)) {
 		</div>
 		<div class="row">
 			<h3>Create Template</h3>
-			<form role="form" type="post" id="create-template">
+			<form role="form" id="create-template">
 				<div class="form-group">
     				<label for="template-name"><h4>Template Name</h4></label>
     				<input type="text" class="form-control" id="template-name" name="template-name" style="width: 40%; min-width: 200px">
   				</div>
   			    <div class="form-group">
   			    	<h4 class="form-control-static">Template</h4>
-  					<textarea></textarea>
+  					<textarea id="template-text" name="template-text" value="">Design your template here</textarea>
   				</div>
-  				<button type="submit" class="btn btn-primary" value="Submit" id="btn">Create</button>
-				<a href="api_add.php" class="btn btn-link">Or create API</button>
+  				<button type="submit" class="btn btn-primary" value="Submit" id="create">Create</button>
+				<a href="api_add.php" class="btn btn-link">Or create API</a>
 			</form>
 		</div>
 	</div>
 <script src="js/jAlert-v3.js"></script>
 <script src="js/jAlert-functions.js"></script>
+<script src="js/main.js"></script>
+<script src="js/template_add.js"></script>
 </body>
 </html>
