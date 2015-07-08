@@ -63,6 +63,7 @@ if (!isset($data['category']) || !isset($data['data'])) {
 $category = $data['category'];
 $data = $data['data'];
 
+//change password call
 if($category == "change_pw"){
 	$admin_id = session::getUserID();
 	database::Start();
@@ -71,6 +72,7 @@ if($category == "change_pw"){
 	exit;
 }
 
+//delete account call
 if($category == "delete_account"){
 	$admin_id = session::getUserID();
 	database::Start();
@@ -79,6 +81,12 @@ if($category == "delete_account"){
 	exit;
 }
 
+//List of all operations regarding templates
+$template_operations = array(
+	'add_template' => array('add_template'),
+	'edit_template' => array('edit_template'),
+	'delete_template' => array('delete_template')
+	);
 
 // List of all access needed to perform action belonging to a category
 $access_needed = array(
@@ -88,22 +96,24 @@ $access_needed = array(
 	'revoke_admin' => array(REVOKE_ADMIN)
 	);
 
-if (!isset($access_needed[$category])) {
+if (!isset($access_needed[$category]) && !isset($template_operations[$category])) {
 	$output['error'] = true;
 	$output['message'] = 'Invalid category sent in request';
 	echo json_encode($output);
 	exit;
 }
 
-$admin_id = session::getUserID();
-$newuser = new user($admin_id);
+if (isset($access_needed[$category])){
+	$admin_id = session::getUserID();
+	$newuser = new user($admin_id);
 
-foreach ($access_needed[$category] as $value) {
-	if (!isset($newuser->access[$value])) {
-		$output['error'] = true;
-		$output['message'] = 'You do not have access to perform this action!';
-		echo json_encode($output);
-		exit;
+	foreach ($access_needed[$category] as $value) {
+		if (!isset($newuser->access[$value])) {
+			$output['error'] = true;
+			$output['message'] = 'You do not have access to perform this action!';
+			echo json_encode($output);
+			exit;
+		}
 	}
 }
 

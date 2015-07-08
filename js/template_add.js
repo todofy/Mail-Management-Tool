@@ -1,10 +1,9 @@
 $(document).ready(function() {
   	$("#create").click(function(e){
   	 		  var jsonData = {};
+          //get html content from editor
           var text = tinyMCE.activeEditor.getContent();
-          console.log(text);
           $("#template-text").val(text);
-          console.log($("#template-text").val());
   	 		  var formData = $("#create-template").serializeArray();
      
      			$.each(formData, function() {
@@ -17,7 +16,16 @@ $(document).ready(function() {
              			jsonData[this.name] = this.value || '';
          			}
   	    	});
-     			console.log(jsonData); 
+     			console.log(jsonData);
+          request = new AJAX ('add_template', jsonData, function(d){
+              successAlert(d.message);
+              $(".closejAlert.ja_close").click(function(e){
+                  window.location="template.php";
+                  e.preventDefault();
+                });
+              }, function(d){
+              errorAlert(d.message);
+              }); 
           e.preventDefault(); 		    
   	  });
 });
