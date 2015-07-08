@@ -8,6 +8,6 @@
 	$id = session::getUserID();
 	$newuser = new user($id);
 
-	$_TEMPLATE_ADD = true;
+	$_TEMPLATE_ADD_ = true;
 
 ?>

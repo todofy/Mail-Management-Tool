@@ -1,5 +1,5 @@
 <?php
-if (!isset($_CODE_TEMPLATE)) {
+if (!isset($_CODE_TEMPLATE_)) {
     throw new Exception("Code file not included for template.php!");
 }
 ?>
@@ -38,7 +38,7 @@ if (!isset($_CODE_TEMPLATE)) {
 		</div>
 		<div class="row">
 		    <div class="col-md-9">
-		    	<h3>View Templates</h3>
+		    	<h3>List of all Templates</h3>
 		    </div>
 		    <div class="col-md-3">
 				<a href="template_add.php" type="button" class="btn btn-success pull-right">Add</a>

@@ -1,5 +1,5 @@
 <?php
-if (!isset($_CODE_PROFILE)) {
+if (!isset($_CODE_PROFILE_)) {
     throw new Exception("Code file not included for profile.php!");
 }
 ?>

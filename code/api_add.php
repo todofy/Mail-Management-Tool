@@ -10,6 +10,6 @@
 
 	$templates = database::SQL("SELECT `name` FROM `template`");
 
-	$_API_ADD = true;
+	$_API_ADD_ = true;
 
 ?>

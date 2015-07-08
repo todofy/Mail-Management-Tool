@@ -8,10 +8,6 @@
 	$id = session::getUserID();
 	$newuser = new user($id);
 
-	if (!isset($newuser->access[EDIT_ADMIN])) {
-		redirect_to("_404.php");
-	}
-
 	//Get the id of the template to be edited
 	$id = $_GET['id'];
 	$result = database::SQL("SELECT `name`,`template` from `template` where `id` = ? LIMIT 1", array('i', $id));
@@ -22,5 +18,5 @@
 		$template_text = $result[0]['template'];
 	}
     
-	$_TEMPLATE_EDIT = true;
+	$_TEMPLATE_EDIT_ = true;
 ?>

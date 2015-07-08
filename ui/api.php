@@ -1,5 +1,5 @@
 <?php
-if (!isset($_CODE_API)) {
+if (!isset($_CODE_API_)) {
     throw new Exception("Code file not included for api.php!");
 }
 ?>
@@ -38,7 +38,7 @@ if (!isset($_CODE_API)) {
 		</div>
 		<div class="row">
 		    <div class="col-md-9">
-		    	<h3>View APIs</h3>
+		    	<h3>List of all APIs</h3>
 		    </div>
 		    <div class="col-md-3">
 				<a href="api_add.php" type="button" class="btn btn-success pull-right">Add</a>
@@ -50,9 +50,7 @@ if (!isset($_CODE_API)) {
 					<tr>
 						<th>#ID</th>
 						<th>Code</th>
-						<th>Name</th>
-						<th>Template #ID</th>
-						<th>Create On</th>
+						<th>Created On</th>
 						<th>Actions</th>
 					</tr>
 					<?php
@@ -60,10 +58,10 @@ if (!isset($_CODE_API)) {
 							echo '<tr>';
 							echo '<td>' .$value['id'] .'</td>';
 							echo '<td>' .$value['code'] .'</td>';
-							echo '<td>' .$value['name'] .'</td>';
-							echo '<td>' .$value['template_id'] .'</td>';
 							echo '<td>' .date("D, d M 20y", $value['created_on']) .'</td>';
 							echo '<td>';
+								$view = "api_view.php?id=".$value['id'];
+								echo '<a class="btn btn-warning button-view" href='.$view.' role="button" id='.$value['id'].'>View</a> ';
 								$edit = "api_edit.php?id=".$value['id'];
 								echo '<a class="btn btn-primary button-edit" href='.$edit.' role="button" id='.$value['id'].'>Edit</a> ';
 								echo '<a class="btn btn-danger button-delete" href="#" role="button" data-toggle="modal" data-target="#delete" id='.$value['id'].'>Delete</a> ';

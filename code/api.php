@@ -10,6 +10,6 @@
 
 	$apis = database::SQL("SELECT `id`, `code`, `name`, `template_id`, `created_on` FROM `api`");
 
-	$_CODE_API = true;
+	$_CODE_API_ = true;
 
 ?>

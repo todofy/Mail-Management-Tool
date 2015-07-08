@@ -17,6 +17,6 @@ $sessObj = new session();
 
 	$accesses = database::SQL("SELECT `name` FROM `acl`");
 
-	$_CODE_PROFILE = true;  
+	$_CODE_PROFILE_ = true;  
 
 ?>

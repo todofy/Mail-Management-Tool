@@ -1,5 +1,5 @@
 <?php
-if (!isset($_API_ADD)) {
+if (!isset($_API_ADD_)) {
     throw new Exception("Code file not included for api_add.php!");
 }
 ?>

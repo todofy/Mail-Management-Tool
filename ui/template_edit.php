@@ -1,5 +1,5 @@
 <?php
-if (!isset($_TEMPLATE_EDIT)) {
+if (!isset($_TEMPLATE_EDIT_)) {
     throw new Exception("Code file not included for template_edit.php!");
 }
 ?>
