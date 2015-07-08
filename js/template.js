@@ -3,7 +3,7 @@ $(document).ready(function() {
     	//get id of button clicked
         var id = $(this).attr('id');
         var _this = $(this);
-        $(".button-delete-confirm").on('click',function(){
+        $(".button-delete-confirm").on('click',function(e){
             request = new AJAX ('delete_template', 
                 {template_id : id},
                 function(d) {
@@ -12,6 +12,7 @@ $(document).ready(function() {
                 }, function(d){
                     errorAlert(d.message);
                 });
+            e.preventDefault();
         });
         e.preventDefault();
     });

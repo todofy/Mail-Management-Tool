@@ -1,10 +1,10 @@
 $(document).ready(function() {
-  	$("#create").click(function(e){
+  	$("#save").click(function(e){
   	 		  var jsonData = {};
           //get html content from editor
           var text = tinyMCE.activeEditor.getContent();
           $("#template-text").val(text);
-  	 		  var formData = $("#create-template").serializeArray();
+  	 		  var formData = $("#edit-template").serializeArray();
      
      			$.each(formData, function() {
           		if (jsonData[this.name]) {
@@ -17,7 +17,7 @@ $(document).ready(function() {
          			}
   	    	});
      			//console.log(jsonData);
-          request = new AJAX ('add_template', jsonData, function(d){
+          request = new AJAX ('edit_template', jsonData, function(d){
               successAlert(d.message);
               $(".closejAlert.ja_close").click(function(e){
                   window.location="template.php";

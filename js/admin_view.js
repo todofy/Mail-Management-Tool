@@ -4,7 +4,7 @@ $(document).ready(function() {
     	//get id of button clicked
         var id = $(this).attr('id');
         var _this = $(this);
-        $(".button-delete-confirm").on('click',function(){
+        $(".button-delete-confirm").on('click',function(e){
             request = new AJAX ('delete_admin', 
                 {admin_id : id},
                 function(d) {
@@ -13,6 +13,7 @@ $(document).ready(function() {
                 }, function(d){
                     errorAlert('Unable to delete admin.');
                 });
+            e.preventDefault();
         });
         e.preventDefault();
     });
