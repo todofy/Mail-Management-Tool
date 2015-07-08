@@ -63,17 +63,32 @@ if (!isset($_CODE_TEMPLATE)) {
 						echo '<td>';
 							$edit = "template_edit.php?id=".$value['id'];
 							echo '<a class="btn btn-primary button-edit" href='.$edit.' role="button" id='.$value['id'].'>Edit</a> ';
-							$delete = "template_delete.php?id=".$value['id'];
-							echo '<a class="btn btn-danger button-edit" href='.$delete.' role="button" id='.$value['id'].'>Delete</a> ';
+							echo '<a class="btn btn-danger button-delete" href="#" role="button" data-toggle="modal" data-target="#delete" id='.$value['id'].'>Delete</a> ';
 						echo '</td>';
 						echo '</tr>';
 					}
 				?>
 			</table>
 		</div>
+		<div id="delete" class="modal fade" role="dialog" style="z-index: 15000; margin-top:100px;">
+  			<div class="modal-dialog">
+    			<div class="modal-content">
+    				<div class="modal-header">
+        				<h4 class="modal-title">Delete Template</h4>
+      				</div>
+      				<div class="modal-body">
+        				<p>Are you sure you want to delete this template?</p>
+        				<br>
+        				<button type="button" class="btn btn-danger button-delete-confirm" data-dismiss="modal">Delete</button>
+        				<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+        			</div>
+    			</div>
+  			</div>
+		</div>
 	</div>
 <script src="js/jAlert-v3.js"></script>
 <script src="js/jAlert-functions.js"></script>
 <script src="js/main.js"></script>
+<script src="js/template.js"></script>
 </body>
 </html>
