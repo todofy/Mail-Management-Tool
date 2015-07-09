@@ -5,7 +5,8 @@ $(document).ready(function() {
         request = new AJAX ('view_template', 
             {template_id : id},
             function(d) {
-                alert(d.message);
+                $("#template-preview").html(d.data);
+                //alert(d.message);
             }, function(d){
                 alert(d.message);
         });

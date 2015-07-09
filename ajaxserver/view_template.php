@@ -15,4 +15,5 @@
 		//return template text
 		$output['message'] = "Preview loaded.";
 		$output['data'] = $template_text;
+	}
 ?>
