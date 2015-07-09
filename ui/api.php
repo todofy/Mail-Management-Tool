@@ -61,7 +61,7 @@ if (!isset($_CODE_API_)) {
 							echo '<td>' .date("D, d M 20y", $value['created_on']) .'</td>';
 							echo '<td>';
 								$view = "api_view.php?id=".$value['id'];
-								echo '<a class="btn btn-warning button-view" href='.$view.' role="button" id='.$value['id'].'>View</a> ';
+								echo '<a class="btn btn-info button-view" href='.$view.' role="button" id='.$value['id'].'>View</a> ';
 								$edit = "api_edit.php?id=".$value['id'];
 								echo '<a class="btn btn-primary button-edit" href='.$edit.' role="button" id='.$value['id'].'>Edit</a> ';
 								echo '<a class="btn btn-danger button-delete" href="#" role="button" data-toggle="modal" data-target="#delete" id='.$value['id'].'>Delete</a> ';

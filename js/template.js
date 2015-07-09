@@ -1,4 +1,16 @@
 $(document).ready(function() {
+    $(".button-view").on('click', function(e) {
+        //get id of button clicked
+        var id = $(this).attr('id');
+        request = new AJAX ('view_template', 
+            {template_id : id},
+            function(d) {
+                alert(d.message);
+            }, function(d){
+                alert(d.message);
+        });
+        e.preventDefault();
+    });
     $(".button-delete").on('click', function(e) {
     	//get id of button clicked
         var id = $(this).attr('id');

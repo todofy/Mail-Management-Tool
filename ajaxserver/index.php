@@ -83,6 +83,7 @@ if($category == "delete_account"){
 
 //List of all operations regarding templates
 $template_operations = array(
+	'view_template' => array('view_template'),
 	'add_template' => array('add_template'),
 	'edit_template' => array('edit_template'),
 	'delete_template' => array('delete_template')

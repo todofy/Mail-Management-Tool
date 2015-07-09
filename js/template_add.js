@@ -42,11 +42,11 @@ function check_template()
   var name  = $('#template-name').val();
   if($.trim(temp_text)=='')
   {
-    alert('No design made');
+    alert('No design made.');
   }
   else if($.trim(name)=='')
   {
-    alert('provide a template name');
+    alert('Provide a template name.');
   }
   else
   {

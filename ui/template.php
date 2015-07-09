@@ -62,6 +62,7 @@ if (!isset($_CODE_TEMPLATE_)) {
 							echo '<td>' .date("D, d M 20y", $value['created_on']) .'</td>';
 							echo '<td>' .date("D, d M 20y", $value['last_updated']) .'</td>';
 							echo '<td>';
+								echo '<a class="btn btn-info button-view" href="#" role="button" data-toggle="modal" data-target="#preview" id='.$value['id'].'>View</a> ';
 								$edit = "template_edit.php?id=".$value['id'];
 								echo '<a class="btn btn-primary button-edit" href='.$edit.' role="button" id='.$value['id'].'>Edit</a> ';
 								echo '<a class="btn btn-danger button-delete" href="#" role="button" data-toggle="modal" data-target="#delete" id='.$value['id'].'>Delete</a> ';
@@ -71,6 +72,18 @@ if (!isset($_CODE_TEMPLATE_)) {
 					?>
 				</table>
 			</div>
+		</div>
+		<div id="preview" class="modal fade" role="dialog" style="z-index: 15000; margin-top:100px;">
+  			<div class="modal-dialog">
+    			<div class="modal-content">
+    				<div class="modal-header">
+        				<h4 class="modal-title">Preview Template</h4>
+      				</div>
+      				<div class="modal-body" id="template-preview">
+        				<button type="button" class="btn btn-link" data-dismiss="modal">Back</button>
+        			</div>
+    			</div>
+  			</div>
 		</div>
 		<div id="delete" class="modal fade" role="dialog" style="z-index: 15000; margin-top:100px;">
   			<div class="modal-dialog">
