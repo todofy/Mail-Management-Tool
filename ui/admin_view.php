@@ -51,10 +51,17 @@ if (!isset($_ADMIN_VIEW_)) {
 			<div class="col-md-12">
 				<table class="table">
 					<tr>
+<<<<<<< HEAD
 						<th class="col-md-1">#ID</th>
 						<th class="col-md-5">Email</th>
 						<th class="col-md-3">Last Login</th>
 						<th class="col-md-3">Actions</th>
+=======
+						<th>#ID</th>
+						<th>Email</th>
+						<th>Last Login</th>
+						<th>Actions</th>
+>>>>>>> origin/master
 					</tr>
 					<?php
 						foreach ($admins as $value) {
