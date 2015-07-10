@@ -22,9 +22,9 @@ if (!isset($_CODE_HEADER_)) {
 
 
 		<div class="header-user-menu">
-			<span class="glyphicon glyphicon-user"></span>
+			<span class="glyphicon glyphicon-cog"></span>
 			<ul>
-				<li><a href="#">Profile</a></li>
+				<li><a href="profile.php">Profile</a></li>
 				<li><a href="logout.php">Logout</a></li>
 			</ul>
 		</div>
@@ -33,5 +33,4 @@ if (!isset($_CODE_HEADER_)) {
 
 </header>
 <!-- TODO: do something such that these scripts are always included at the bottom -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="../js/header.js"></script>
+<script src="js/header.js"></script>

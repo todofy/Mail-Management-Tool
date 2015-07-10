@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 21, 2015 at 06:47 AM
+-- Generation Time: Jul 08, 2015 at 02:12 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -29,24 +29,23 @@ USE `mmt`;
 --
 
 CREATE TABLE IF NOT EXISTS `acl` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `name` varchar(15) NOT NULL,
   `description` text NOT NULL,
-  `link` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `display_name` varchar(30) NOT NULL,
+  `link` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `acl`
 --
 
-INSERT INTO `acl` (`id`, `name`, `description`, `link`) VALUES
-(1, 'Admin View', 'View all admins', 'admin_view.php'),
-(2, 'Admin Add', 'Add an admin', 'admin_add.php'),
-(3, 'Admin Edit', 'Edit an admin', 'admin_edit.php'),
-(4, 'Admin Revoke', 'Invalidate secret key for admin', 'admin_revoke.php'),
-(5, 'Admin Delete', 'Delete an admin', 'admin_delete.php');
+INSERT INTO `acl` (`id`, `name`, `description`, `display_name`, `link`) VALUES
+(1, 'admin_view', 'View all admins', 'View Admins', 'admin_view.php'),
+(2, 'admin_add', 'Add an admin', 'Add an Admin', 'admin_add.php'),
+(3, 'admin_edit', 'Edit an admin', '', ''),
+(4, 'admin_revoke', 'Invalidate secret key for admin', '', ''),
+(5, 'admin_delete', 'Delete an admin', '', '');
 
 -- --------------------------------------------------------
 
@@ -57,22 +56,21 @@ INSERT INTO `acl` (`id`, `name`, `description`, `link`) VALUES
 CREATE TABLE IF NOT EXISTS `admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(100) NOT NULL,
-  `secret` varchar(64) NOT NULL,
+  `secret` varchar(32) NOT NULL,
   `password` varchar(32) NOT NULL,
-  `last_login` int(11) NOT NULL,
-  `cookie` varchar(32) NOT NULL,
   `salt` varchar(16) NOT NULL,
-  `temp` varchar(32) NOT NULL,
+  `cookie` varchar(32) NOT NULL DEFAULT '',
+  `last_login` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `email`, `secret`, `password`, `last_login`, `cookie`, `salt`, `temp`) VALUES
-(1, 'anshumanpattanayak@gmail.com', '', 'e5b725fd14b675a4085766f70883ba68', 0, 'fd8a6a8d10e14b286f68180f4c32f0a9', '', 'e5b725fd14b675a4085766f70883ba68');
+INSERT INTO `admin` (`id`, `email`, `secret`, `password`, `salt`, `cookie`, `last_login`) VALUES
+(8, 'anshumanpattanayak@gmail.com', '7be1f7a994a0cb2d9921a19fef9c52ae', 'e5b725fd14b675a4085766f70883ba68', 'namak', '', 1436358408);
 
 -- --------------------------------------------------------
 
@@ -90,11 +88,11 @@ CREATE TABLE IF NOT EXISTS `admin_access` (
 --
 
 INSERT INTO `admin_access` (`admin_id`, `access_id`) VALUES
-(1, 1),
-(1, 2),
-(1, 3),
-(1, 4),
-(1, 5);
+(8, 1),
+(8, 2),
+(8, 3),
+(8, 4),
+(8, 5);
 
 -- --------------------------------------------------------
 
@@ -105,11 +103,20 @@ INSERT INTO `admin_access` (`admin_id`, `access_id`) VALUES
 CREATE TABLE IF NOT EXISTS `api` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(5) NOT NULL,
+  `name` varchar(30) NOT NULL,
   `template_id` int(11) NOT NULL,
   `created_on` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `template_id` (`template_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `api`
+--
+
+INSERT INTO `api` (`id`, `code`, `name`, `template_id`, `created_on`) VALUES
+(1, '5dcf0', 'API101', 19, 1436360877),
+(2, 'bf7be', 'API102', 19, 1436361029);
 
 -- --------------------------------------------------------
 
@@ -195,11 +202,19 @@ CREATE TABLE IF NOT EXISTS `mail` (
 
 CREATE TABLE IF NOT EXISTS `template` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
   `template` text NOT NULL,
   `created_on` int(11) NOT NULL,
   `last_updated` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+
+--
+-- Dumping data for table `template`
+--
+
+INSERT INTO `template` (`id`, `name`, `template`, `created_on`, `last_updated`) VALUES
+(19, 'Demo', '<h2><span style="text-decoration: underline;"><span style="color: #003366;"><strong>Demo Template</strong></span></span></h2>\r\n<blockquote>\r\n<h4><em><span style="color: #993300;">This is something awesome!!</span></em></h4>\r\n</blockquote>', 1436359502, 1436364455);
 
 -- --------------------------------------------------------
 

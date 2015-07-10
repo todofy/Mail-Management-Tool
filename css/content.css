@@ -1,5 +1,5 @@
 #content-wrapper{
-	background-color: #AAAAAB;
+	background-color: white ;
 	position: relative;
 	margin-top: 65px;
 	float: right;
@@ -21,4 +21,17 @@
 
 .text-justify{
 	text-align: justify;
+}
+
+.bs-callout {
+	padding: 20px;
+	margin: 20px 0;
+	border: 1px solid #eee;
+	border-left-width: 5px;
+	border-radius: 3px;
+	background-color: rgba(34, 34, 34, 0.13);
+}
+
+.bs-callout-info {
+    border-left-color: #1b809e;
 }

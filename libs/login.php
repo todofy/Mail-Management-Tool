@@ -24,7 +24,9 @@ if (!isset($_DEF_LOGIN_)) {
         public static function login_user($email, $password, $rememberMe = false) {
             if (!self::verifyEmail($email)) return false;
 
-            $hashedPw = self::hashPassword($password);
+            $result = database::SQL("SELECT salt FROM admin WHERE email = ? LIMIT 1", array('s',$email));
+            $salt = $result[0]['salt'];
+            $hashedPw = self::hashPassword($salt,$password);
             //$result = database::SQL("UPDATE admin set temp = ?  WHERE email = ? ",array('ss',$hashedPw,$email));
             $result = database::SQL("SELECT id FROM admin WHERE email = ? AND password= ? LIMIT 1", array('ss', $email, $hashedPw));
             if(!empty($result)) {
@@ -37,8 +39,8 @@ if (!isset($_DEF_LOGIN_)) {
             return false;
         }
 
-        public static function hashPassword($password) {
-            return md5(SALT .($password));
+        public static function hashPassword($salt,$password) {
+            return md5(($salt).($password));
         }
 
         public static function setCookieToRemember() {

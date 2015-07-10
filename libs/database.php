@@ -99,7 +99,7 @@ if (!isset($_DEF_DATABASE_)) {
 		 * int, rowcount in case of update and delete
 		 * array, data in case of select statment
 		 */
-		public static function SQL ($query, $args) {
+		public static function SQL ($query, $args = array()) {
 	        //If the database isn't connected, connet to it
 	        if (self::$con == NULL) self::Start();
 
@@ -117,7 +117,7 @@ if (!isset($_DEF_DATABASE_)) {
 	            }
 	        }
 
-            $statement->execute();
+            $statement-> execute();
 
 	        $type = substr (trim(strtoupper ($query)), 0, 3);  //get the first three letters of the query
 	        //If the query is of insert type

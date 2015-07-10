@@ -15,6 +15,7 @@ if (!isset($_DEF_GLOBALS_)) {
 	$_DEF_GLOBALS_ = true;
 
 	define('__TIME_STARTED', time());
+	date_default_timezone_set('UTC');
 	
 	// --- GENERAL DEFINATIONS ----
 	define('SALT_CSRF_TOKEN', md5('shiro'));
@@ -42,6 +43,12 @@ if (!isset($_DEF_GLOBALS_)) {
 	define('DATABASE', 'mmt');
 	define('MYSQL_QUERY_FAILED', 0);
 	define('MYSQL_QUERY_SUCCESS', 1);
+
+	define('ADD_ADMIN', 'admin_add');
+	define('VIEW_ADMIN', 'admin_view');
+	define('DELETE_ADMIN', 'admin_delete');
+	define('EDIT_ADMIN', 'admin_edit');
+	define('REVOKE_ADMIN', 'admin_revoke');
 	
 	define('SALT', 'namak');
 	define('REMEMBER_ME_COOKIE', 'remember');
