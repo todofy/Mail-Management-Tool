@@ -48,19 +48,11 @@ if (!isset($_CODE_TEMPLATE_)) {
 			<div class="col-md-12">
 				<table class="table">
 					<tr>
-<<<<<<< HEAD
 						<th class="col-md-1">#ID</th>
 						<th class="col-md-4">Name</th>
 						<th class="col-md-2">Created On</th>
 						<th class="col-md-2">Last Updated</th>
 						<th class="col-md-3">Actions</th>
-=======
-						<th>#ID</th>
-						<th>Name</th>
-						<th>Created On</th>
-						<th>Last Updated</th>
-						<th>Actions</th>
->>>>>>> origin/master
 					</tr>
 					<?php
 						foreach ($templates as $value) {
@@ -87,12 +79,8 @@ if (!isset($_CODE_TEMPLATE_)) {
     				<div class="modal-header">
         				<h4 class="modal-title">Preview Template</h4>
       				</div>
-<<<<<<< HEAD
       				<div class="modal-body">
       					<div  id="template-preview"></div>
-=======
-      				<div class="modal-body" id="template-preview">
->>>>>>> origin/master
         				<button type="button" class="btn btn-link" data-dismiss="modal">Back</button>
         			</div>
     			</div>

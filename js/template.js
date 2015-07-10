@@ -6,14 +6,8 @@ $(document).ready(function() {
             {template_id : id},
             function(d) {
                 $("#template-preview").html(d.data);
-<<<<<<< HEAD
             }, function(d){
                 $("#template-preview").html(d.data);
-=======
-                //alert(d.message);
-            }, function(d){
-                alert(d.message);
->>>>>>> origin/master
         });
         e.preventDefault();
     });

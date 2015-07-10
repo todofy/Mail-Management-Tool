@@ -48,17 +48,10 @@ if (!isset($_CODE_API_)) {
 			<div class="col-md-12">
 				<table class="table">
 					<tr>
-<<<<<<< HEAD
 						<th class="col-md-2">#ID</th>
 						<th class="col-md-3">Code</th>
 						<th class="col-md-4">Created On</th>
 						<th class="col-md-3">Actions</th>
-=======
-						<th>#ID</th>
-						<th>Code</th>
-						<th>Created On</th>
-						<th>Actions</th>
->>>>>>> origin/master
 					</tr>
 					<?php
 						foreach ($apis as $value) {
