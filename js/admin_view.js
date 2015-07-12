@@ -13,6 +13,8 @@ $(document).ready(function() {
                 }, function(d){
                     errorAlert('Unable to delete admin.');
                 });
+
+            $(this).unbind("click");
             e.preventDefault();
         });
         e.preventDefault();
@@ -29,6 +31,7 @@ $(document).ready(function() {
                 }, function(d){
                     errorAlert('Unable to revoke Secret API key for this admin!');
             });
+            $(this).unbind("click");
         });
         e.preventDefault();	
 	});
