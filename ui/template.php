@@ -79,8 +79,8 @@ if (!isset($_CODE_TEMPLATE_)) {
     				<div class="modal-header">
         				<h4 class="modal-title">Preview Template</h4>
       				</div>
-      				<div class="modal-body">
-      					<div  id="template-preview"></div>
+      				<div class="modal-body" id="template-preview"></div>
+  					<div class="modal-footer">
       					<a class="btn btn-primary button-edit-secondary" href='#' role="button">Edit</a>
         				<button type="button" class="btn btn-link" data-dismiss="modal">Back</button>
         			</div>
