@@ -4,7 +4,7 @@
 	$template_text = $data['template-text'];
 	preg_match_all('/{{(.*?)}}/', $template_text, $params);	
 
-	if(empty($params)){
+	if(empty($params[1])){
 		$output['error'] = true;
 		$output['message'] = 'Empty parameter list!';
 	}

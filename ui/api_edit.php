@@ -1,5 +1,5 @@
 <?php
-if (!isset($_API_ADD_)) {
+if (!isset($_API_EDIT_)) {
     throw new Exception("Code file not included for api_add.php!");
 }
 ?>
@@ -34,23 +34,29 @@ if (!isset($_API_ADD_)) {
 			<ol class="breadcrumb">
 			    <li><a href="dashboard.php">Home</a></li>
 			    <li><a href="api.php">API</a></li>
-			    <li class="active">Add</li>
+			    <li class="active">Edit</li>
 			</ol>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<h3>Create API</h3>
-				<form role="form" type="post" id="create-api">
+				<h3>Edit API</h3>
+				<form role="form" type="post" id="edit-api">
+					<div class="form-group" style="display: none;">
+	    				<input type="text" class="form-control" id="template-id" name="api-id" value=<?php echo $id ?> style="width: 40%; min-width: 200px">
+	  				</div>
 					<div class="form-group">
 	    				<label for="template-name"><h4>API Name</h4></label>
-	    				<input type="text" class="form-control" id="api-name" name="api-name" style="width: 40%; min-width: 200px">
+	    				<input type="text" class="form-control" id="api-name" name="api-name" style="width: 40%; min-width: 200px" value=<?php echo $api_name ?>>
 	  				</div>
 	  				<div class="form-group">
 	  					<label class="control-label"><h4>Select Template</h4></label>
 	  					<select class="form-control" name="template" style="width:auto; display:inline-block; margin-left: 10px;">
 	    					<?php
 	    						foreach ($templates as $value) {
-	    							echo '<option>'.$value['name'].'</option>';
+	    							if($value['id'] == $template_id)
+	    								echo '<option selected = "selected">'.$value['name'].'</option>';
+	    							else
+	    								echo '<option>'.$value['name'].'</option>';
 	    						}
 	    					?>
 	  					</select>
@@ -65,6 +71,6 @@ if (!isset($_API_ADD_)) {
 <script src="js/jAlert-v3.js"></script>
 <script src="js/jAlert-functions.js"></script>
 <script src="js/main.js"></script>
-<script src="js/api_add.js"></script>
+<script src="js/api_edit.js"></script>
 </body>
 </html>
