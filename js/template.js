@@ -6,6 +6,7 @@ $(document).ready(function() {
             {template_id : id},
             function(d) {
                 $("#template-preview").html(d.data);
+                $(".button-edit-secondary").attr("href", "template_edit.php?id="+id);
             }, function(d){
                 $("#template-preview").html(d.data);
         });

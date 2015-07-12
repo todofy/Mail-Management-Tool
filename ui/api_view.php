@@ -38,8 +38,14 @@ if (!isset($_API_VIEW_)) {
 			</ol>
 		</div>
 		<div class="row">
+			<div class="row">
+				<div class="col-md-9">
+					<h3>View API</h3>
+				</div>
+				<div class="col-md-3">
+					<?php echo '<a href="api_edit.php?id='.$id.'" type="button" class="btn btn-primary pull-right">Edit</a>';?>
+				</div>
 			<div class="col-md-12">
-				<h3>View API</h3>
 				<div class="clearfix"></div>
 				<?php
 				    echo '<h4>API Name :&nbsp&nbsp '.$api_name.'</h4>';

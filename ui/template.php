@@ -81,6 +81,7 @@ if (!isset($_CODE_TEMPLATE_)) {
       				</div>
       				<div class="modal-body">
       					<div  id="template-preview"></div>
+      					<a class="btn btn-primary button-edit-secondary" href='#' role="button">Edit</a>
         				<button type="button" class="btn btn-link" data-dismiss="modal">Back</button>
         			</div>
     			</div>
