@@ -25,8 +25,11 @@ if (!isset($_DEF_LOGIN_)) {
             if (!self::verifyEmail($email)) return false;
 
             $result = database::SQL("SELECT salt FROM admin WHERE email = ? LIMIT 1", array('s',$email));
-            $salt = $result[0]['salt'];
-            $hashedPw = self::hashPassword($salt,$password);
+            if(empty($result)) return false;
+            else{
+                $salt = $result[0]['salt'];
+                $hashedPw = self::hashPassword($salt,$password);
+            }
             //$result = database::SQL("UPDATE admin set temp = ?  WHERE email = ? ",array('ss',$hashedPw,$email));
             $result = database::SQL("SELECT id FROM admin WHERE email = ? AND password= ? LIMIT 1", array('ss', $email, $hashedPw));
             if(!empty($result)) {
