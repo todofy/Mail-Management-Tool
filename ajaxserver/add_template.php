@@ -1,30 +1,42 @@
 <?php
-	//get template name and template text
+	//get template name, template text and parameters
 	$template_name = $data['template-name'];
 	$template_text = $data['template-text'];
+	preg_match_all('/{{(.*?)}}/', $template_text, $params);	
 
-	//check if template name already in use or not
-	$result = database::SQL("SELECT `id` from `template` where `name` = ? LIMIT 1",array('s',$template_name));
-	if(!empty($result)){
+	if(empty($params)){
 		$output['error'] = true;
-		$output['message'] = 'Template name already in use!';
+		$output['message'] = 'Empty parameter list!';
 	}
 	else{
-		//insert the new template in the database
-		//get the time
-		$t = time();
-		$result = database::SQL("INSERT INTO `template`(`name`,`template` , `created_on` , `last_updated`) VALUES(?,?,?,?)",array('ssii',$template_name,$template_text,$t,$t));
-
-		//check if template is successfully inserted or not
+		//check if template name already in use or not
 		$result = database::SQL("SELECT `id` from `template` where `name` = ? LIMIT 1",array('s',$template_name));
-		$id = $result[0]['id'];
-		if($id == null){
+		if(!empty($result)){
 			$output['error'] = true;
-			$output['message'] = 'Database error! Unable to add template.';
+			$output['message'] = 'Template name already in use!';
 		}
 		else{
-			$output['error'] = false;
-			$output['message'] = 'Template added.';
+			//insert the new template in the database
+			//get the time
+			$t = time();
+			$result = database::SQL("INSERT INTO `template`(`name`,`template` , `created_on` , `last_updated`) VALUES(?,?,?,?)",array('ssii',$template_name,$template_text,$t,$t));
+
+			//check if template is successfully inserted or not
+			$result = database::SQL("SELECT `id` from `template` where `name` = ? LIMIT 1",array('s',$template_name));
+			$template_id = $result[0]['id'];
+			if($template_id == null){
+				$output['error'] = true;
+				$output['message'] = 'Database error! Unable to add template.';
+			}
+			else{
+				//insert parameters in database
+				$arrlength = count($params);
+				for($x=0; $x<=$arrlength; $x++) {
+					$result = database::SQL("INSERT INTO `api_params`(`template_id`,`name`) VALUES(?,?)",array('is',$template_id,$params[1][$x]));
+				}
+				$output['error'] = false;
+				$output['message'] = 'Template added.';
+			}
 		}
 	}
 ?>
