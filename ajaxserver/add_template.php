@@ -30,8 +30,8 @@
 			}
 			else{
 				//insert parameters in database
-				$arrlength = count($params);
-				for($x=0; $x<=$arrlength; $x++) {
+				$arrlength = count($params[1]);
+				for($x=0; $x<$arrlength; $x++) {
 					$result = database::SQL("INSERT INTO `api_params`(`template_id`,`name`) VALUES(?,?)",array('is',$template_id,$params[1][$x]));
 				}
 				$output['error'] = false;

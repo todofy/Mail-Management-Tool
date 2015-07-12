@@ -18,8 +18,8 @@
 			$result = database::SQL("UPDATE `template` SET `template`=?,`last_updated`=? WHERE `id`=?",array('sii',$template_text,$t,$template_id));
 			//update parameter list
 			$result = database::SQL("DELETE FROM `api_params` WHERE `template_id` = ?",array('i',$template_id));
-			$arrlength = count($params);
-			for($x=0; $x<=$arrlength; $x++) {
+			$arrlength = count($params[1]);
+			for($x=0; $x<$arrlength; $x++) {
 				$result = database::SQL("INSERT INTO `api_params`(`template_id`,`name`) VALUES(?,?)",array('is',$template_id,$params[1][$x]));
 			}
 			$output['error'] = false;
@@ -31,6 +31,12 @@
 			if(empty($result)){
 				//template name not in use
 				$result = database::SQL("UPDATE `template` SET `name`=?,`template`=?,`last_updated`=? WHERE `id`=?",array('ssii',$template_name,$template_text,$t,$template_id));
+				//update parameter list
+				$result = database::SQL("DELETE FROM `api_params` WHERE `template_id` = ?",array('i',$template_id));
+				$arrlength = count($params[1]);
+				for($x=0; $x<$arrlength; $x++) {
+					$result = database::SQL("INSERT INTO `api_params`(`template_id`,`name`) VALUES(?,?)",array('is',$template_id,$params[1][$x]));
+				}
 				$output['error'] = false;
 				$output['message'] = 'Template updated.';
 			}
