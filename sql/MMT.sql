@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 08, 2015 at 02:12 PM
+-- Generation Time: Jul 12, 2015 at 12:02 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -63,14 +63,15 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `last_login` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `email`, `secret`, `password`, `salt`, `cookie`, `last_login`) VALUES
-(8, 'anshumanpattanayak@gmail.com', '7be1f7a994a0cb2d9921a19fef9c52ae', 'e5b725fd14b675a4085766f70883ba68', 'namak', '', 1436358408);
+(8, 'anshumanpattanayak@gmail.com', '7be1f7a994a0cb2d9921a19fef9c52ae', 'e5b725fd14b675a4085766f70883ba68', 'namak', '', 1436696778),
+(9, 'zsonix27@gmail.com', '89f481aaaf704bf9adfe7297ad96a6c3', '890be5d2ea164f60c04aaf59803ca020', '8b0c5b', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -92,7 +93,12 @@ INSERT INTO `admin_access` (`admin_id`, `access_id`) VALUES
 (8, 2),
 (8, 3),
 (8, 4),
-(8, 5);
+(8, 5),
+(9, 1),
+(9, 2),
+(9, 3),
+(9, 4),
+(9, 5);
 
 -- --------------------------------------------------------
 
@@ -108,15 +114,14 @@ CREATE TABLE IF NOT EXISTS `api` (
   `created_on` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `template_id` (`template_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `api`
 --
 
 INSERT INTO `api` (`id`, `code`, `name`, `template_id`, `created_on`) VALUES
-(1, '5dcf0', 'API101', 19, 1436360877),
-(2, 'bf7be', 'API102', 19, 1436361029);
+(3, 'e0ff6', 'API101', 20, 1436447723);
 
 -- --------------------------------------------------------
 
@@ -126,10 +131,10 @@ INSERT INTO `api` (`id`, `code`, `name`, `template_id`, `created_on`) VALUES
 
 CREATE TABLE IF NOT EXISTS `api_params` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `template_id` int(11) NOT NULL,
   `name` varchar(20) NOT NULL,
-  `api_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `api_id` (`api_id`)
+  KEY `api_id` (`template_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -207,14 +212,15 @@ CREATE TABLE IF NOT EXISTS `template` (
   `created_on` int(11) NOT NULL,
   `last_updated` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `template`
 --
 
 INSERT INTO `template` (`id`, `name`, `template`, `created_on`, `last_updated`) VALUES
-(19, 'Demo', '<h2><span style="text-decoration: underline;"><span style="color: #003366;"><strong>Demo Template</strong></span></span></h2>\r\n<blockquote>\r\n<h4><em><span style="color: #993300;">This is something awesome!!</span></em></h4>\r\n</blockquote>', 1436359502, 1436364455);
+(20, 'Demo', '<h2><span style="color: #993300;">Demo Template for API</span></h2>\r\n<blockquote>\r\n<h4><span style="color: #333300;">Something here...</span></h4>\r\n</blockquote>', 1436447668, 1436447668),
+(22, 'Registration', '<h2><span style="color: #993300;"><strong>Welcome to TODOFY</strong></span></h2>\r\n<hr />\r\n<p>Hi,</p>\r\n<p>We are really happy to notify that you have been registered to Todofy with email id : {{email_id}}.</p>\r\n<p>Your randomly generated password is : {{password}}.</p>\r\n<p><em><span style="color: #ff0000;">(You can change your password by going into ''Profile'' after logging in)</span></em></p>\r\n<p>Your secret key for using APIs is : {{secret}}.</p>\r\n<hr />\r\n<p style="text-align: right;">-Todofy Team</p>', 1436699982, 1436701398);
 
 -- --------------------------------------------------------
 
@@ -242,7 +248,7 @@ ALTER TABLE `api`
 -- Constraints for table `api_params`
 --
 ALTER TABLE `api_params`
-  ADD CONSTRAINT `api_params_ibfk_1` FOREIGN KEY (`api_id`) REFERENCES `api` (`id`);
+  ADD CONSTRAINT `api_params_ibfk_1` FOREIGN KEY (`template_id`) REFERENCES `api` (`id`);
 
 --
 -- Constraints for table `campaign`

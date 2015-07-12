@@ -11,6 +11,7 @@ $(document).ready(function() {
                 $("#template-preview").html(d.data);
         });
         e.preventDefault();
+
     });
     $(".button-delete").on('click', function(e) {
     	//get id of button clicked
@@ -25,6 +26,7 @@ $(document).ready(function() {
                 }, function(d){
                     errorAlert(d.message);
                 });
+            $(this).unbind("click");
             e.preventDefault();
         });
         e.preventDefault();
