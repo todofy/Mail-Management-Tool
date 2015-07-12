@@ -48,9 +48,10 @@ if (!isset($_CODE_API_)) {
 			<div class="col-md-12">
 				<table class="table">
 					<tr>
-						<th class="col-md-2">#ID</th>
-						<th class="col-md-3">Code</th>
-						<th class="col-md-4">Created On</th>
+						<th class="col-md-1">#ID</th>
+						<th class="col-md-2">Code</th>
+						<th class="col-md-3">Name</th>
+						<th class="col-md-3">Created On</th>
 						<th class="col-md-3">Actions</th>
 					</tr>
 					<?php
@@ -58,6 +59,7 @@ if (!isset($_CODE_API_)) {
 							echo '<tr>';
 							echo '<td>' .$value['id'] .'</td>';
 							echo '<td>' .$value['code'] .'</td>';
+							echo '<td>' .$value['name'] .'</td>';
 							echo '<td>' .date("D, d M 20y", $value['created_on']) .'</td>';
 							echo '<td>';
 								$view = "api_view.php?id=".$value['id'];

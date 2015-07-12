@@ -49,7 +49,8 @@ if (!isset($_API_VIEW_)) {
 				<div class="clearfix"></div>
 				<?php
 				    echo '<h4>API Name :&nbsp&nbsp '.$api_name.'</h4>';
-				    echo '<br>';
+				    echo '<h4>API Code :&nbsp&nbsp '.$api_code.'</h4>';
+				    echo '<hr>';
 				    echo '<h4>Template : </h4>';
 				    echo $template_text;
 				?>

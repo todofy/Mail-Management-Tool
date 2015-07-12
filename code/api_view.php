@@ -10,11 +10,12 @@
 
 	//Get the id of the api to be displayed
 	$id = $_GET['id'];
-	$result = database::SQL("SELECT `name`,`template_id` from `api` where `id` = ? LIMIT 1", array('i', $id));
+	$result = database::SQL("SELECT `code`,`name`,`template_id` from `api` where `id` = ? LIMIT 1", array('i', $id));
 
 	if(empty($result)) redirect_to("_404.php");
 	else{
 		$api_name = $result[0]['name'];
+		$api_code = $result[0]['code'];
 		$template_id = $result[0]['template_id'];
 		//get template for the api
 		$result = database::SQL("SELECT `template` from `template` where id = ? LIMIT 1", array('i',$template_id));
