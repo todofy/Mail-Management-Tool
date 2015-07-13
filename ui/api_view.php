@@ -50,9 +50,12 @@ if (!isset($_API_VIEW_)) {
 				<?php
 				    echo '<h4>API Name :&nbsp&nbsp '.$api_name.'</h4>';
 				    echo '<h4>API Code :&nbsp&nbsp '.$api_code.'</h4>';
+				    echo '<h4>API Call :&nbsp&nbsp '.$api_call.'</h4>';
 				    echo '<hr>';
-				    echo '<h4>Template : </h4>';
+				    echo '<h4>API Response : </h4>';
+				    echo '<div class="well">';
 				    echo $template_text;
+				    echo '</div>';
 				?>
 			</div>
 		</div>

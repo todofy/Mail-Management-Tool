@@ -20,6 +20,14 @@
 		//get template for the api
 		$result = database::SQL("SELECT `template` from `template` where id = ? LIMIT 1", array('i',$template_id));
 		$template_text = $result[0]['template'];
+		//get all parameters for api
+	    $result = database::SQL("SELECT `name` FROM `api_params` WHERE `template_id`=?",array('i',$template_id));
+	    //get url
+		$api_call = 'localhost/Mail-Management-Tool/'.$api_name.'?';
+		foreach ($result as $value) {
+			$api_call = $api_call.$value['name'].'="value"&';
+		}
+		$api_call = rtrim($api_call,"&");
 	}
     
 	$_API_VIEW_ = true;
