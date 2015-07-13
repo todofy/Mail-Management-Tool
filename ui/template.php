@@ -73,7 +73,7 @@ if (!isset($_CODE_TEMPLATE_)) {
 				</table>
 			</div>
 		</div>
-		<div id="preview" class="modal fade" role="dialog" style="z-index: 15000; margin-top:100px;">
+		<div id="preview" class="modal fade" role="dialog" style="z-index: 15000; margin-top:40px;">
   			<div class="modal-dialog">
     			<div class="modal-content">
     				<div class="modal-header">

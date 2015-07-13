@@ -92,5 +92,7 @@ if (!isset($_CODE_API_)) {
 	</div>
 <script src="js/jAlert-v3.js"></script>
 <script src="js/jAlert-functions.js"></script>
+<script src="js/main.js"></script>
+<script src="js/api.js"></script>
 </body>
 </html>

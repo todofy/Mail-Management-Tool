@@ -1,6 +1,6 @@
 <?php
 if (!isset($_API_EDIT_)) {
-    throw new Exception("Code file not included for api_add.php!");
+    throw new Exception("Code file not included for api_edit.php!");
 }
 ?>
 
