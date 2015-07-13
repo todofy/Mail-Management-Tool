@@ -4,7 +4,7 @@
 	$template_text = $data['template-text'];
 	preg_match_all('/{{(.*?)}}/', $template_text, $params);	
 
-	if(empty($params[1])){
+	if(empty($params)){
 		$output['error'] = true;
 		$output['message'] = 'Empty parameter list!';
 	}
@@ -30,9 +30,9 @@
 			}
 			else{
 				//insert parameters in database
-				$arrlength = count($params[1]);
+				$arrlength = count($params[0]);
 				for($x=0; $x<$arrlength; $x++) {
-					$result = database::SQL("INSERT INTO `api_params`(`template_id`,`name`) VALUES(?,?)",array('is',$template_id,$params[1][$x]));
+					$result = database::SQL("INSERT INTO `api_params`(`template_id`,`name`) VALUES(?,?)",array('is',$template_id,$params[0][$x]));
 				}
 				$output['error'] = false;
 				$output['message'] = 'Template added.';

@@ -3,9 +3,10 @@
 	$api_name = $data['api-name'];
 	$template_name = $data['template'];
 
-	//get id of template
-	$result = database::SQL("SELECT `id` FROM `template` WHERE `name` = ? LIMIT 1",array('s',$template_name));
+	//get id,template_text of template
+	$result = database::SQL("SELECT `id`,`template` FROM `template` WHERE `name` = ? LIMIT 1",array('s',$template_name));
 	$template_id = $result[0]['id'];
+	$template_text = $result[0]['template'];
 
 	//check if api name already in use or not
 	$result = database::SQL("SELECT `id` from `api` where `name` = ? LIMIT 1",array('s',$api_name));
@@ -27,8 +28,17 @@
 			$output['message'] = 'Database error! Unable to add API.';
 		}
 		else{
+			//get all api parameters
+			$result = database::SQL("SELECT `name` FROM `api_params` WHERE `template_id`=?",array('i',$template_id));
+			//get url
+			$api_call = 'localhost/Mail-Management-Tool/'.$api_name.'?';
+			foreach ($result as $value) {
+				$api_call = $api_call.$value['name'].'="value"&';
+			}
+			$api_call = rtrim($api_call,"&");
+			//set output
 			$output['error'] = false;
-			$output['message'] = 'API added.';
+			$output['data'] = array($api_call, $template_text);
 		}
 	}
 ?>

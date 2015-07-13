@@ -16,11 +16,9 @@ $(document).ready(function() {
      			//console.log(jsonData);
           request = new AJAX ('add_api', jsonData, function(d){
               $("#api-details").modal('show');
+              $("#api-call").html(d.data[0]);
+              $("#api-response").html(d.data[1]);
               //successAlert(d.message);
-              $(".closejAlert.ja_close").click(function(e){
-                  window.location="api.php";
-                  e.preventDefault();
-                });
               }, function(d){
               errorAlert(d.message);
               }); 
