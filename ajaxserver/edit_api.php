@@ -4,9 +4,10 @@
 	$api_name = $data['api-name'];
 	$template_name = $data['template'];
 
-	//get id of template
-	$result = database::SQL("SELECT `id` FROM `template` WHERE `name` = ? LIMIT 1",array('s',$template_name));
+	//get id and template_text of template
+	$result = database::SQL("SELECT `id`,`template` FROM `template` WHERE `name` = ? LIMIT 1",array('s',$template_name));
 	$template_id = $result[0]['id'];
+	$template_text = $result[0]['template'];
 
 	$result = database::SQL("SELECT `name` FROM `api` WHERE `id`=? LIMIT 1",array('i',$api_id));
 	$name = $result[0]['name'];

@@ -5,6 +5,7 @@ $(document).ready(function() {
               var jsonData = {};
             //get html content from editor
             var text = tinyMCE.activeEditor.getContent();
+            text = text.replace(/&nbsp;/g,"");
             $("#template-text").val(text);
             var formData = $("#create-template").serializeArray();
        
