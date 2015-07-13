@@ -15,6 +15,7 @@ $(document).ready(function() {
   	    	});
      			//console.log(jsonData);
           request = new AJAX ('add_api', jsonData, function(d){
+              //$("api-details").modal(show);
               successAlert(d.message);
               $(".closejAlert.ja_close").click(function(e){
                   window.location="api.php";

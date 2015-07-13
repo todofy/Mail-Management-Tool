@@ -61,6 +61,28 @@ if (!isset($_API_ADD_)) {
 	  			<a href="api.php" class="btn btn-link" id="cancel">Cancel</a>
 	  		</div>
 		</div>
+		<div id="api-details" class="modal fade" role="dialog" style="z-index: 15000; margin-top:40px;">
+  			<div class="modal-dialog" style="width: 950px; min-width:800px; margin-left: 260px;">
+    			<div class="modal-content">
+    				<div class="modal-header">
+        				<center><h4 class="modal-title">API has been created successfully</h4></center>
+      				</div>
+      				<div class="modal-body">
+      					<div class="row">
+      						<div class="col-md-6">
+      							<h5>Here's how you'd call the API</h5>
+      						</div>
+      						<div class="col-md-6">
+      							<h5>Response to API call</h5>
+      						</div>
+      					</div>
+      				</div>
+  					<div class="modal-footer">
+        				<button type="button" class="btn btn-link" data-dismiss="modal">Back</button>
+        			</div>
+    			</div>
+  			</div>
+		</div>
 	</div>
 <script src="js/jAlert-v3.js"></script>
 <script src="js/jAlert-functions.js"></script>
