@@ -2,7 +2,7 @@ $(document).ready(function() {
   	$("#save").click(function(e){
   	 		  var jsonData = {};
   	 		  var formData = $("#create-api").serializeArray();
-     
+          
      			$.each(formData, function() {
           		if (jsonData[this.name]) {
              			if (!jsonData[this.name].push) {
@@ -15,8 +15,8 @@ $(document).ready(function() {
   	    	});
      			//console.log(jsonData);
           request = new AJAX ('add_api', jsonData, function(d){
-              //$("api-details").modal(show);
-              successAlert(d.message);
+              $("#api-details").modal('show');
+              //successAlert(d.message);
               $(".closejAlert.ja_close").click(function(e){
                   window.location="api.php";
                   e.preventDefault();

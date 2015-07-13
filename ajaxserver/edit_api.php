@@ -12,7 +12,7 @@
 	$name = $result[0]['name'];
 	if($name == $api_name){
 		//name is same as previous name
-		$result = database::SQL("UPDATE `api` SET `template_id`=? WHERE `id`=?",array('ii',$template_id,$id));
+		$result = database::SQL("UPDATE `api` SET `template_id`=? WHERE `id`=?",array('ii',$template_id,$api_id));
 		$output['error'] = false;
 		$output['message'] = 'API updated.';
 	}
