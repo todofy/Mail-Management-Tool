@@ -10,15 +10,6 @@ if (!isset($_CODE_TEMPLATE_)) {
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
-	<!-- jQuery library -->
-	<script src="./js/jquery-2.0.0.min.js"></script>
-
-	<!-- Latest compiled JavaScript -->
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="css/jAlert-v3.css" />
 </head>
 
 <body>
@@ -74,13 +65,15 @@ if (!isset($_CODE_TEMPLATE_)) {
 			</div>
 		</div>
 		<div id="preview" class="modal fade" role="dialog" style="z-index: 15000; margin-top:40px;">
-  			<div class="modal-dialog" style="width: 950px; min-width:800px; margin-left: 260px;">
+  			<div class="modal-dialog" style="width: 950px; min-width:800px; margin-left: 260px; overflow-y: initial;">
     			<div class="modal-content">
     				<div class="modal-header">
         				<h4 class="modal-title">Preview Template</h4>
       				</div>
-      				<div class="modal-body" id="template-preview"></div>
-  					<div class="modal-footer">
+      				<div class="modal-body"style="overflow-y: auto;">
+      					<div class="well" id="template-preview" ></div>
+      				</div>
+  					<div class="modal-footer" style="margin-top: -20px;">
       					<a class="btn btn-primary button-edit-secondary" href='#' role="button">Edit</a>
         				<button type="button" class="btn btn-link" data-dismiss="modal">Back</button>
         			</div>

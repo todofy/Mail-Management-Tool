@@ -35,3 +35,7 @@
 .bs-callout-info {
     border-left-color: #1b809e;
 }
+
+body::-webkit-scrollbar{
+	display: none;
+}

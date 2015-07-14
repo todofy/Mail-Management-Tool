@@ -10,14 +10,6 @@ if (!isset($_TEMPLATE_ADD_)) {
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
-	<!-- jQuery library -->
-	<script src="./js/jquery-2.0.0.min.js"></script>
-
-	<!-- Latest compiled JavaScript -->
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
 	<script type="text/javascript">
 		tinymce.init({
@@ -38,7 +30,6 @@ if (!isset($_TEMPLATE_ADD_)) {
     		]
 		});
 	</script>
-	<link rel="stylesheet" href="css/jAlert-v3.css" />
 </head>
 
 <body>
