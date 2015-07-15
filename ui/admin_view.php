@@ -61,12 +61,15 @@ if (!isset($_ADMIN_VIEW_)) {
 								$add = "admin_edit.php?id=".$value['id'];
 								echo '<a class="btn btn-primary button-edit" href='.$add.' role="button" id='.$value['id'].'>Edit</a> ';
 							}
+							else echo '<a class="btn btn-primary disabled button-edit" href="javascript:void(0)" role="button">Edit</a> ';
 							if (isset($newuser->access[REVOKE_ADMIN]) && $value['id']!=$id) {
 								echo '<a class="btn btn-warning button-revoke" href="#" role="button" data-toggle="modal" data-target="#revoke" id='.$value['id'].'>Revoke key</a> ';
 							}
+							else echo '<a class="btn btn-warning disabled button-edit" href="javascript:void(0)" role="button">Revoke key</a> ';
 							if (isset($newuser->access[DELETE_ADMIN]) && $value['id']!=$id) {
 								echo '<a class="btn btn-danger button-delete" href="#" role="button" data-toggle="modal" data-target="#delete" id='.$value['id'].'>Delete</a> ';
 							}
+							else echo '<a class="btn btn-danger disabled button-edit" href="javascript:void(0)" role="button">Delete</a> ';
 							echo '</td>';
 							echo '</tr>';
 						}

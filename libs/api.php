@@ -47,7 +47,7 @@ class api
 	}
 
 	//function to check if secret key sent is correct
-	private function validate_call()
+	/*private function validate_call()
 	{
 		$admin_id = session::getUserID();
 		$result = database::SQL("SELECT `secret` FROM `admin` WHERE `id`=? LIMIT 1",array('i',$admin_id));
@@ -56,7 +56,7 @@ class api
 			if($result[0]['secret'] == $this->secret_key)  return true;
 			else return false;
 		}
-	}
+	}*/
 
 	//function to generate url for api call //There is some error in here...use $this
 	/*public function getURL()
@@ -97,7 +97,16 @@ class api
 	public function name(){
 		return $this->api_name;
 	}
+
 	//function to execute the api
+	public function execute(){
+		if(!$this->state())	return 'Check parameters passed again.';
+		//elseif(!$this->validate_call())	return 'Invalid value or number of parameters used.';
+		else{
+			$mail = $this->replace_params();
+			return $mail;
+		}
+	}
 };
 
 

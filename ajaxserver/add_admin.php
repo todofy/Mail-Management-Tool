@@ -49,7 +49,7 @@
 	   	if ($api->state) {
 	   		$output['error'] = false;
 	    	$output['message'] = 'Successfully added! A Mail has been sent to ' .$email .' with account details';
-	    	$output['data'] = $api->replace_params();
+	    	$output['data'] = $api->execute();
 	   	}
 	   	else
 	   	{
