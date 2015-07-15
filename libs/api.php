@@ -53,7 +53,7 @@ class api
 		$result = database::SQL("SELECT `secret` FROM `admin` WHERE `id`=? LIMIT 1",array('i',$admin_id));
 		if(empty($result))	return false;
 		else{
-			if($result['secret'] == $this->secret_key)  return true;
+			if($result[0]['secret'] == $this->secret_key)  return true;
 			else return false;
 		}
 	}
@@ -87,9 +87,8 @@ class api
 		$this->response = $result[0]['template'];
 		//replace parameters with values
 		preg_match_all('/{{(.*?)}}/', $this->response, $temp);
-		$count = count($temp[1]);
-		for ($i=0; $i < $count ; $i++) { 
-			str_replace($temp[0][$i], $this->api_params[$i], $this->$response);
+		for ($i=0; $i < count($temp[0]) ; $i++) { 
+			$this->response =  str_replace($temp[0][$i], $this->api_params[$i],$this->response);
 		}
 		return $this->response;
 	}
