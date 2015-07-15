@@ -23,8 +23,9 @@
 		//get all parameters for api
 	    $result = database::SQL("SELECT `name` FROM `api_params` WHERE `template_id`=?",array('i',$template_id));
 	    //get url
-		$api_call = 'localhost/Mail-Management-Tool/'.$api_name.'?';
+		$api_call = 'localhost/Mail-Management-Tool/api/index.php?secret_key="value"&api_name='.$api_name.'&';
 		foreach ($result as $value) {
+			$value['name'] = trim($value['name'],"{}");
 			$api_call = $api_call.$value['name'].'="value"&';
 		}
 		$api_call = rtrim($api_call,"&");
@@ -40,8 +41,8 @@
 			$value['name'] = trim($value['name'],"{}");
 			$php_example = $php_example.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"'.$value['name'].'",<br>';
 		}
-		$php_example = rtrim($php_example,",");
-		$php_example = $php_example.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;));';
+		$php_example = rtrim($php_example,",<br>");
+		$php_example = $php_example.'));';
 		$php_example = $php_example.'<br>';
 		$php_example = $php_example.'...*code*...';
 	}

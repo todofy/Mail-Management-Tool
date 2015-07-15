@@ -47,11 +47,7 @@ class api
 	}
 
 	//function to check if secret key sent is correct
-<<<<<<< HEAD
-	/*private function validate_call()
-=======
 	public function validate_call()
->>>>>>> origin/master
 	{
 		if($this->state == true)
 		{
@@ -81,14 +77,14 @@ class api
 				}
 			}
 		}
-	}*/
+	}
 
 	//function to generate url for api call //There is some error in here...use $this
 	public function getURL()
 	{
 		if($this->state == false)
 			return NULL;
-		$Url = 'localhost/Mail-Management-Tool/api/api.php?name=' ;
+		$Url = 'localhost/Mail-Management-Tool/api/index.php?secret_key='.urlencode($this->secret_key).'&api_name=' ;
 		$Url.= urlencode($this->api_name).'&';
 		//use the keys obtained in validate_function
         $count = count($this->api_params);
@@ -120,14 +116,12 @@ class api
 		return $this->response;
 	}
 
-<<<<<<< HEAD
+
 	//function to return api name
 	public function name(){
 		return $this->api_name;
 	}
 
-=======
->>>>>>> origin/master
 	//function to execute the api
 	public function execute(){
 		if(!$this->state())	return 'Check parameters passed again.';

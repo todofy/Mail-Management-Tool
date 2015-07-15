@@ -75,7 +75,7 @@ if (!isset($_API_EDIT_)) {
       						</div>
       						<div class="col-md-8">
       							<h5>Response to API call</h5>
-      							<div class="well" id="api-response"></div>
+      							<div class="well" id="api-response" style="word-wrap: break-word;"></div>
       						</div>
       					</div>
       					<a href="api.php" class="btn btn-success">Done</a>
