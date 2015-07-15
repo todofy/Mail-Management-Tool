@@ -45,7 +45,8 @@
 	    }
 
 	    // TODO - send a mail to new admin along with details and password.
-	   	$api = new api("7be1f7a994a0cb2d9921a19fef9c52ae","API_Registration",array($email,$password,$secret));
+	   	$api = new api("7be1f7a994a0cb2d9921a19fef9c52ae","ATRES",array($email,$password,$secret));
+	   	$api->validate_call();
 	   	if ($api->state) {
 	   		$output['error'] = false;
 	    	$output['message'] = 'Successfully added! A Mail has been sent to ' .$email .' with account details';
@@ -58,6 +59,9 @@
 	   	}
 	    
 	}
+
+
 	finish:
 	
+
 ?>
