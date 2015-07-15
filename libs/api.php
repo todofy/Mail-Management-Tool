@@ -88,9 +88,8 @@ class api
 	{
 		if($this->state == false)
 			return NULL;
-		$Url = 'localhost/Mail-Management-Tool/api/' ;
-		$Url.= urlencode($this->api_name);
-		$Url.= '.php?';
+		$Url = 'localhost/Mail-Management-Tool/api/api.php?name=' ;
+		$Url.= urlencode($this->api_name).'&';
 		//use the keys obtained in validate_function
         $count = count($this->api_params);
         for($i = 0; $i < $count; $i++)
