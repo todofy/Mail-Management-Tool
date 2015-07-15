@@ -47,41 +47,65 @@ class api
 	}
 
 	//function to check if secret key sent is correct
-	private function validate_call()
+	public function validate_call()
 	{
-		$admin_id = session::getUserID();
-		$result = database::SQL("SELECT `secret` FROM `admin` WHERE `id`=? LIMIT 1",array('i',$admin_id));
-		if(empty($result))	return false;
-		else{
-			if($result[0]['secret'] == $this->secret_key)  return true;
-			else return false;
+		if($this->state == true)
+		{
+			$this->state = false;
+			$admin_id = session::getUserID();
+			$result = database::SQL("SELECT `secret` FROM `admin` WHERE `id`=? LIMIT 1",array('i',$admin_id));
+			if($result[0]['secret'] == $this->secret_key)
+			{
+				//validate the api name
+				$result = database::SQL("SELECT `template_id` from `api` where `name` = ?",array('s',$this->api_name));
+				if(!empty($result))
+				{
+					$this->template_id = $result[0]['template_id'];
+					//now get the keys
+					$result = database::SQL("SELECT `name` from `api_params` where `template_id` = ?",array('i',$this->template_id));
+					if(!empty($result))
+					{
+						foreach ($result as $value) {
+							$this->keys[] = trim($value['name'],"{}");
+							# code...
+						}
+						if(count($this->keys) == count($this->api_params))
+						{
+							$this->state = true;
+						}
+					}
+				}
+			}
 		}
 	}
 
 	//function to generate url for api call //There is some error in here...use $this
-	/*public function getURL()
+	public function getURL()
 	{
+		if($this->state == false)
+			return NULL;
 		$Url = 'localhost/Mail-Management-Tool/api/' ;
-		$Url. = $api_name.'.php?';
+		$Url.= urlencode($this->api_name);
+		$Url.= '.php?';
 		//use the keys obtained in validate_function
-        $count = count($params);
+        $count = count($this->api_params);
         for($i = 0; $i < $count; $i++)
         {
-            $Url .= $keys[$i];
-            $Url . = '='.$params[$i];
+            $Url.= urlencode($this->keys[$i]);
+            $Url.= '=';
+            $Url.= urldecode($this->api_params[$i]);
             if($i<$count-1)
-            $Url .= '&';
+            $Url.= '&';
         }
         return $Url;
 
-	}*/
+	}
 
 	//function to replace parameters in template with their values
 	public function replace_params()
 	{
-		//get the template id
-		$result = database::SQL("SELECT `template_id` FROM `api` WHERE `name` = ? LIMIT 1",array('s',$this->api_name));
-		$this->template_id = $result[0]['template_id'];
+		if($this->state == false)
+			return NULL;
 		//get template text
 		$result = database::SQL("SELECT `template` FROM `template` WHERE `id` = ? LIMIT 1",array('i',$this->template_id));
 		$this->response = $result[0]['template'];
@@ -93,10 +117,6 @@ class api
 		return $this->response;
 	}
 
-	//function to return api name
-	public function name(){
-		return $this->api_name;
-	}
 	//function to execute the api
 };
 
