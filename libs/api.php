@@ -1,7 +1,7 @@
 <?php
 /**
  * @library - apicall
- * @dependencies - database
+ * @dependencies - database, session
  */
 
 if(!isset($SECURE)) {
@@ -9,12 +9,13 @@ if(!isset($SECURE)) {
   exit;
 }
 include __DIR__ ."database.php";
+include __DIR__ ."session.php";
 
-class apicall
-{
+class api
+{	
+	private $secret_key;
 	private $api_name;
-	private $api_secret;
-	private $params;
+	private $api_params;
 	private $template_id;
 	private $keys;
 	public $state = false;
@@ -22,14 +23,14 @@ class apicall
 	{
 		if(isset($parameters[0]))
 		{
-			$api_name = $parameters[0];
+			$secret_key = $parameters[0];
 			if(isset($parameters[1]))
 			{
-				$api_secret = $parameters[1];
+				$api_name = $parameters[1];
 				if(!empty($parameters[2]))
 				{
 					foreach ($parameters[2] as $value) {
-						$params[] = $value;
+						$api_params[] = $value;
 					}
 					$state = true;
 				}
@@ -45,13 +46,19 @@ class apicall
 
 	private function validate_call()
 	{
-		//define this
-		//if verified get the template id and the param keys
+		$admin_id = session::getUserID();
+		$result = database::SQL("SELECT `secret` FROM `admin` WHERE `id`=? LIMIT 1",array('i',$admin_id));
+		if(empty($result))	return false;
+		else{
+			if($result['secret'] == $secret_key)  return true;
+			else return false;
+		}
 	}
-	public function callapi()
+
+	public function getURL()
 	{
 		//generate the url for the api call
-		$Url = 'localhost/api/' ;
+		$Url = 'localhost/Mail-Management-Tool/api/' ;
 		$Url. = $api_name.'.php?';
 		//use the keys obtained in validate_function
         $count = count($params);
