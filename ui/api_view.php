@@ -43,6 +43,11 @@ if (!isset($_API_VIEW_)) {
 				    echo '<h4>API Code :&nbsp&nbsp '.$api_code.'</h4>';
 				    echo '<h4>API Call :&nbsp&nbsp '.$api_call.'</h4>';
 				    echo '<hr>';
+				    echo '<h4>PHP Example : </h4>';
+				    echo '<div class="well">';
+				    echo $php_example;
+				    echo '</div>';
+				    echo '<hr>';
 				    echo '<h4>API Response : </h4>';
 				    echo '<div class="well">';
 				    echo $template_text;

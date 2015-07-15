@@ -36,9 +36,26 @@
 				$api_call = $api_call.$value['name'].'="value"&';
 			}
 			$api_call = rtrim($api_call,"&");
+
+			//generate php example
+			$php_example ='...*code*...';
+			$php_example = $php_example.'<br>';
+			$php_example = $php_example.'$api = new api("secret_key","'.$api_name.'",';
+			$php_example = $php_example.'<br>';
+			$php_example = $php_example.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+			$php_example = $php_example.'array(<br>';
+			foreach ($result as $value) {
+				$value['name'] = trim($value['name'],"{}");
+				$php_example = $php_example.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"'.$value['name'].'",<br>';
+			}
+			$php_example = rtrim($php_example,",");
+			$php_example = $php_example.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;));';
+			$php_example = $php_example.'<br>';
+			$php_example = $php_example.'...*code*...';
+
 			//set output
 			$output['error'] = false;
-			$output['data'] = array($api_call, $template_text);
+			$output['data'] = array($api_call, $template_text, $php_example);
 		}
 	}
 ?>

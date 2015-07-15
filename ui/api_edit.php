@@ -70,6 +70,8 @@ if (!isset($_API_EDIT_)) {
       						<div class="col-md-4">
       							<h5>Here's how you'd call the API</h5>
       							<div class="well" id="api-call" style="word-wrap: break-word;"></div>
+      							<h5>PHP Example:</h5>
+      							<div class="well" id="php-example"></div>
       						</div>
       						<div class="col-md-8">
       							<h5>Response to API call</h5>

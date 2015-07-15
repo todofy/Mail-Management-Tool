@@ -18,6 +18,7 @@ $(document).ready(function() {
               $("#api-details").modal('show');
               $("#api-call").html(d.data[0]);
               $("#api-response").html(d.data[1]);
+              $("#php-example").html(d.data[2]);
               }, function(d){
               errorAlert(d.message);
               }); 
