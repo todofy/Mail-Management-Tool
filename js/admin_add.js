@@ -18,11 +18,13 @@ $(document).ready(function() {
   	    	});
      			//console.log(jsonData);
   		    request = new AJAX ('add_admin', jsonData, function(d){
-              successAlert(d.message);
+              $("#api-details").modal('show');
+              $("#api-response").html(d.data);
+              /*successAlert(d.message);
               $(".closejAlert.ja_close").click(function(e){
                   window.location="admin_view.php";
                   e.preventDefault();
-                });
+                });*/
               }, function(d){
               errorAlert(d.message);
               });

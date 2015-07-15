@@ -8,8 +8,9 @@ if(!isset($SECURE)) {
   echo 'We do not show contents to hackers! Try a different way naive!';
   exit;
 }
-include __DIR__ ."database.php";
-include __DIR__ ."session.php";
+
+include __DIR__ .'/database.php';
+include __DIR__ .'/session.php';
 
 class api
 {	
@@ -17,47 +18,49 @@ class api
 	private $api_name;
 	private $api_params;
 	private $template_id;
+	private $response;
 	private $keys;
 	public $state = false;
-	public function __construct($parameters)
+	public function __construct($secret_key, $api_name, $parameters)
 	{
-		if(isset($parameters[0]))
+		if(isset($secret_key))
 		{
-			$secret_key = $parameters[0];
-			if(isset($parameters[1]))
+			$this->secret_key = $secret_key;
+			if(isset($api_name))
 			{
-				$api_name = $parameters[1];
-				if(!empty($parameters[2]))
+				$this->api_name = $api_name;
+				if(!empty($parameters))
 				{
-					foreach ($parameters[2] as $value) {
-						$api_params[] = $value;
+					foreach ($parameters as $value) {
+						$this->api_params[] = $value;
 					}
-					$state = true;
+					$this->state = true;
 				}
 				else
-					$state = false;
+					$this->state = false;
 			}
 			else
-				$state = false;
+				$this->state = false;
 		}
 		else
-			$state = false;
+			$this->state = false;
 	}
 
+	//function to check if secret key sent is correct
 	private function validate_call()
 	{
 		$admin_id = session::getUserID();
 		$result = database::SQL("SELECT `secret` FROM `admin` WHERE `id`=? LIMIT 1",array('i',$admin_id));
 		if(empty($result))	return false;
 		else{
-			if($result['secret'] == $secret_key)  return true;
+			if($result['secret'] == $this->secret_key)  return true;
 			else return false;
 		}
 	}
 
-	public function getURL()
+	//function to generate url for api call //There is some error in here...use $this
+	/*public function getURL()
 	{
-		//generate the url for the api call
 		$Url = 'localhost/Mail-Management-Tool/api/' ;
 		$Url. = $api_name.'.php?';
 		//use the keys obtained in validate_function
@@ -71,7 +74,32 @@ class api
         }
         return $Url;
 
+	}*/
+
+	//function to replace parameters in template with their values
+	public function replace_params()
+	{
+		//get the template id
+		$result = database::SQL("SELECT `template_id` FROM `api` WHERE `name` = ? LIMIT 1",array('s',$this->api_name));
+		$this->template_id = $result[0]['template_id'];
+		//get template text
+		$result = database::SQL("SELECT `template` FROM `template` WHERE `id` = ? LIMIT 1",array('i',$this->template_id));
+		$this->response = $result[0]['template'];
+		//replace parameters with values
+		preg_match_all('/{{(.*?)}}/', $this->response, $temp);
+		$count = count($temp[1]);
+		for ($i=0; $i < $count ; $i++) { 
+			str_replace($temp[0][$i], $this->api_params[$i], $this->$response);
+		}
+		return $this->response;
 	}
-}
+
+	//function to return api name
+	public function name(){
+		return $this->api_name;
+	}
+	//function to execute the api
+};
+
 
 ?>

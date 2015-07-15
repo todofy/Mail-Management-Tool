@@ -60,7 +60,25 @@ if (!isset($_ADMIN_ADD_)) {
 				
 			</div>
 		</div>
-		
+		<div id="api-details" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="z-index: 15000; margin-top:40px;">
+  			<div class="modal-dialog" style="width: 1100px; min-width:800px; margin-left: 140px;">
+    			<div class="modal-content">
+    				<div class="modal-header">
+    					<a href="#" class="close" data-dismiss="modal">&times;</a>
+        				<center><h4 class="modal-title">Admin added successfully</h4></center>
+      				</div>
+      				<div class="modal-body">
+      					<div class="row">
+      						<div class="col-md-12">
+      							<h5>Response to API call</h5>
+      							<div class="well" id="api-response"></div>
+      						</div>
+      					</div>
+      					<a href="#" data-dismiss="modal" class="btn btn-success">Done</a>
+      				</div>
+    			</div>
+  			</div>
+		</div>
 	</div>
 <script src="js/jAlert-v3.js"></script>
 <script src="js/jAlert-functions.js"></script>

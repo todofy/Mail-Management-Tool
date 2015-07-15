@@ -13,6 +13,7 @@ include __DIR__ .'/../libs/database.php';
 include __DIR__ .'/../libs/user.php';
 include __DIR__ .'/../libs/logging.php';
 include __DIR__ .'/../libs/login.php';
+include __DIR__ .'/../libs/api.php';
 
 // Function to recursively sanitize a data var
 /*function sanitize($arr) {

@@ -45,15 +45,18 @@
 	    }
 
 	    // TODO - send a mail to new admin along with details and password.
-	    //$to = $email;
-		//$subject = "Welcome to Todofy";
-		//$message = "Your password is ". $password ." and your API key is ". $secret .". Don't reveal these to anyone.";
-		//$from = "Todofy Team";
-		//mail($to,$subject,$message);
-
-	    //set the output array
-	    $output['error'] = false;
-	    $output['message'] = 'Successfully added! A Mail has been sent to ' .$email .' with account details';
+	   	$api = new api("7be1f7a994a0cb2d9921a19fef9c52ae","API_Registration",array($email,$password,$secret));
+	   	if ($api->state) {
+	   		$output['error'] = false;
+	    	$output['message'] = 'Successfully added! A Mail has been sent to ' .$email .' with account details';
+	    	$output['data'] = $api->name();
+	   	}
+	   	else
+	   	{
+	   		$output['error'] = true;
+	    	$output['message'] = 'Failed';
+	   	}
+	    
 	}
 
 
