@@ -20,6 +20,7 @@ class api
 	private $template_id;
 	private $response;
 	private $keys;
+	public $err;
 	public $state = false;
 	public function __construct($secret_key, $api_name, $parameters)
 	{
@@ -67,16 +68,20 @@ class api
 					{
 						foreach ($result as $value) {
 							$this->keys[] = trim($value['name'],"{}");
-							# code...
 						}
 						if(count($this->keys) == count($this->api_params))
 						{
 							$this->state = true;
 						}
+						else $this->err = "Check value of parameters.";
 					}
+					else $this->err = "Parameters not found.";
 				}
+				else $this->err = "API name wrong.";
 			}
+			else $this->err = "Secret key wrong.";
 		}
+		else $this->err = "Check parameters.";
 	}
 
 	//function to generate url for api call //There is some error in here...use $this
