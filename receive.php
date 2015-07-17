@@ -1,29 +1,22 @@
 <?php
 
-require_once __DIR__ . '/JSON/vendor/autoload.php';
+require_once '/JSON/vendor/autoload.php';
 use PhpAmqpLib\Connection\AMQPConnection;
 
 $connection = new AMQPConnection('localhost', 5672, 'guest', 'guest');
 $channel = $connection->channel();
 
-$channel->exchange_declare('direct_logs', 'direct', false, false, false);
+$channel->exchange_declare('mail', 'direct', false, false, false);
 
 list($queue_name, ,) = $channel->queue_declare("", false, false, true, false);
 
-$severities = array_slice($argv, 1);
-if(empty($severities )) {
-    file_put_contents('php://stderr', "Usage: $argv[0] [info] [warning] [error]\n");
-    exit(1);
-}
+$channel->queue_bind($queue_name, 'mail', 'dummy');
 
-foreach($severities as $severity) {
-    $channel->queue_bind($queue_name, 'direct_logs', $severity);
-}
 
-echo ' [*] Waiting for logs. To exit press CTRL+C', "\n";
+echo ' [*] Waiting for mails. To exit press CTRL+C', "\n";
 
-$callback = function($msg){
-  echo ' [x] ',$msg->delivery_info['routing_key'], ':', $msg->body, "\n";
+$callback = function($message){
+  echo ' [x] ',$message->delivery_info['routing_key'], ':', $message->body, "\n";
 };
 
 $channel->basic_consume($queue_name, '', false, true, false, false, $callback);

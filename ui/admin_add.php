@@ -56,9 +56,6 @@ if (!isset($_ADMIN_ADD_)) {
   					
 				</form>					
 			</div>
-			<div class="col-md-4 pull-right">
-				
-			</div>
 		</div>
 	</div>
 <script src="js/jAlert-v3.js"></script>

@@ -114,8 +114,8 @@ class api
 		$result = database::SQL("SELECT `template` FROM `template` WHERE `id` = ? LIMIT 1",array('i',$this->template_id));
 		$this->response = $result[0]['template'];
 		//replace parameters with values
-		for ($i=0; $i < count($temp[0]) ; $i++) { 
-			$this->response =  str_replace($this->keys[$i], $this->api_params[$i],$this->response);
+		for ($i=0; $i < count($this->keys) ; $i++) { 
+			$this->response =  str_replace("{{".$this->keys[$i]."}}", $this->api_params[$i],$this->response);
 		}
 		return $this->response;
 	}
