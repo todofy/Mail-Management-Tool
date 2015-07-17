@@ -50,7 +50,7 @@
 	   	if ($api->state) {
 	   		$output['error'] = false;
 	    	$output['message'] = 'Successfully added! A Mail has been sent to ' .$email .' with account details';
-	    	$output['data'] = $api->getURL();
+	    	$output['data'] = $api->replace_params();
 	   	}
 	   	else
 	   	{

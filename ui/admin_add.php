@@ -31,7 +31,7 @@ if (!isset($_ADMIN_ADD_)) {
 				<form role="form" id="add" type="post">
   					<div class="form-group">
     					<label for="email"><h4>Email address:</h4></label>
-    					<input type="email" class="form-control" id="email" name="email" placeholder="someone@dmain.com" style="width: 50%; min-width: 200px">
+    					<input type="email" class="form-control" id="email" name="email" placeholder="someone@domain.com" style="width: 50%; min-width: 200px">
   					</div>
   					<h4 class="control-label">Access rights:</h4>
   					<div class="form-group">

@@ -1,8 +1,7 @@
+<?php
 /**
  * API handler
  */
-
-<?php
 
 session_start();
 $SECURE = true;
@@ -11,15 +10,22 @@ $SECURE = true;
 include __DIR__ .'/../libs/login.php';
 include __DIR__ .'/../libs/api.php';
 
-$secret_key = $_GET['secret_key'];
-$api_name = $_GET['api_name'];
-for ($i=2; $i < count($_GET); $i++) { 
-	//store all parameters in $params array
+foreach ($_GET as $key => $value){
+	$query[] = $value;
 }
+
+$secret_key = $query[0];
+$api_name = $query[1];
+for ($i=2; $i < count($query); $i++) { 
+	$params[] = $query[$i];
+}
+
 
 $api = new api($secret_key,$api_name,$params);
 $unique_id = login::getHash(8);
-echo $api->response;
 
-//send the object response to queue
+if($api->validate_call()){
+	echo $api->replace_params;
+}
+
 ?>
