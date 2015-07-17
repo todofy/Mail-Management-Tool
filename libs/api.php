@@ -32,8 +32,8 @@ class api
 				$this->api_name = $api_name;
 				if(!empty($parameters))
 				{
-					foreach ($parameters as $value) {
-						$this->api_params[] = $value;
+					foreach ($parameters as $key => $value) {
+						$this->api_params[$key] = $value;
 					}
 					$this->state = true;
 				}
@@ -55,7 +55,7 @@ class api
 			$this->state = false;
 			$admin_id = session::getUserID();
 			$result = database::SQL("SELECT `secret` FROM `admin` WHERE `id`=? LIMIT 1",array('i',$admin_id));
-			if($result[0]['secret'] == $this->secret_key)
+			if($result[0]['secret'] == $this->secret_key && !empty($result))
 			{
 				//validate the api name
 				$result = database::SQL("SELECT `template_id` from `api` where `name` = ?",array('s',$this->api_name));
@@ -67,13 +67,31 @@ class api
 					if(!empty($result))
 					{
 						foreach ($result as $value) {
-							$this->keys[] = trim($value['name'],"{}");
+							$temp = trim($value['name'],"{}");
+							$this->keys[] = $temp;
+							//to check whether the keys specified are correct
+							if(!isset($this->api_params[$temp]))
+							{
+								$this->state = true;
+								break;
+							}
 						}
-						if(count($this->keys) == count($this->api_params))
+						if($this->state == false)
 						{
-							$this->state = true;
+							if(count($this->keys) == count($this->api_params))
+							{
+								$this->state = true;
+							}
+							else {
+								$this->err = "Check value of parameters.";
+							}
 						}
-						else $this->err = "Check value of parameters.";
+						else
+						{
+							$this->state = false;
+							$this->err = "wrong keys passed";
+						}
+							
 					}
 					else $this->err = "Parameters not found.";
 				}
@@ -92,15 +110,15 @@ class api
 		$Url = 'localhost/Mail-Management-Tool/api/index.php?secret_key='.urlencode($this->secret_key).'&api_name=' ;
 		$Url.= urlencode($this->api_name).'&';
 		//use the keys obtained in validate_function
-        $count = count($this->api_params);
-        for($i = 0; $i < $count; $i++)
-        {
-            $Url.= urlencode($this->keys[$i]);
+		$count = count($this->api_params);
+		foreach ($this->api_params as $key => $value) {
+			$Url.= urlencode($key);
             $Url.= '=';
-            $Url.= urldecode($this->api_params[$i]);
+            $Url.= urldecode($value);
             if($i<$count-1)
             $Url.= '&';
-        }
+        	$i++;
+		}
         return $Url;
 
 	}
@@ -114,8 +132,8 @@ class api
 		$result = database::SQL("SELECT `template` FROM `template` WHERE `id` = ? LIMIT 1",array('i',$this->template_id));
 		$this->response = $result[0]['template'];
 		//replace parameters with values
-		for ($i=0; $i < count($this->keys) ; $i++) { 
-			$this->response =  str_replace("{{".$this->keys[$i]."}}", $this->api_params[$i],$this->response);
+		foreach ($this->api_params as $key => $value) {
+			$this->response =  str_replace("{{".$key."}}", $value,$this->response);
 		}
 		return $this->response;
 	}

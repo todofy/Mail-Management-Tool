@@ -21,19 +21,49 @@ for ($i=2; $i < count($query); $i++) {
 }*/
 
 database::Start();
+//get the api name,the secret key and the parameters from the GET variable
+$error = false;
+if(isset($_GET['api_name']))
+{
+	$api_name = $_GET['api_name'];
+	if(isset($_GET['secret']))
+	{
+		$secret = $_GET['secret'];
+		$len = count($_GET);
+		$params = array();
+		$i=0;
+		foreach ($_GET as $key => $value) {
+			if($i>1)
+			$params[$key] = $value;
+			$i++;
+		}
+	}
+	else
+	{
+		//wrong key name specified or not given at all
+		$error = true;
+	}
+}
+else
+{
+	//wrong key specified or nothing is sent
+	$error = true;
+}
+//check if the error is true
+if($error == true)
+{
+	redirect_to("_404.php");
+}
 
-$api = new api("7be1f7a994a0cb2d9921a19fef9c52ae","API_Registration",array("zsonix27@gmail.com","paswrd","7be1f7a994a0cb2d9921a19fef9c52ae"));
+$api = new api($secret,$api_name,$params);
 $unique_id = login::getHash(8);
 
-if($api->state){
-	$api->validate_call();
-	if($api->state) {
-		$mail = $api->replace_params();
-	}
-	else echo $api->err;
+$api->validate_call();
+if($api->state) {
+	$mail = $api->replace_params();
 }
-else{
-	echo "Check parameters passed";
+else {
+	echo $api->err;
 }
 
 //push the mail into message queue
