@@ -10,7 +10,7 @@ $channel->exchange_declare('mail', 'direct', false, false, false);
 
 list($queue_name, ,) = $channel->queue_declare("", false, false, true, false);
 
-$channel->queue_bind($queue_name, 'mail', 'dummy');
+$channel->queue_bind($queue_name, 'mail', 'API');
 
 
 echo ' [*] Waiting for mails. To exit press CTRL+C', "\n";

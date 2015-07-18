@@ -10,15 +10,11 @@ $SECURE = true;
 include __DIR__ .'/../libs/login.php';
 include __DIR__ .'/../libs/api.php';
 
-/*foreach ($_GET as $key => $value){
-	$query[] = $value;
+//check if logged in or not
+$sessObj = new session();
+if (!$sessObj->state) {
+	redirect_to("../index.php");
 }
-
-$secret_key = $query[0];
-$api_name = $query[1];
-for ($i=2; $i < count($query); $i++) { 
-	$params[] = $query[$i];
-}*/
 
 database::Start();
 //get the api name,the secret key and the parameters from the GET variable
@@ -26,9 +22,9 @@ $error = false;
 if(isset($_GET['api_name']))
 {
 	$api_name = $_GET['api_name'];
-	if(isset($_GET['secret']))
+	if(isset($_GET['secret_key']))
 	{
-		$secret = $_GET['secret'];
+		$secret_key = $_GET['secret_key'];
 		$len = count($_GET);
 		$params = array();
 		$i=0;
@@ -42,32 +38,59 @@ if(isset($_GET['api_name']))
 	{
 		//wrong key name specified or not given at all
 		$error = true;
+		$err = 'Check query keys and try again';
 	}
 }
 else
 {
 	//wrong key specified or nothing is sent
 	$error = true;
+	$err = 'Check query keys and try again';
 }
 //check if the error is true
 if($error == true)
 {
-	redirect_to("_404.php");
+	redirect_to('../api_handler.php?err='.$err);
+	exit;
 }
 
-$api = new api($secret,$api_name,$params);
-$unique_id = login::getHash(8);
+$api = new api($secret_key,$api_name,$params);
+$unique_id = login::getHash(10);
+$mail = '';
 
 $api->validate_call();
 if($api->state) {
+	//generate mail
 	$mail = $api->replace_params();
+	$api_id = $api->id();
+	//create a campaign
+	$result = database::SQL("INSERT INTO `campaign`(`id`,`api_id`,`payload`) VALUES(?,?,?)",array('sis',$unique_id,$api_id,$mail));
+	$result = database::SQL("SELECT `id` FROM `campaign` WHERE `id`=? LIMIT 1",array('s',$unique_id));
+	if(!empty($result)){
+		$campaign_id = $result[0]['id'];
+		//insert the mail in database
+		$result = database::SQL("INSERT INTO `mail`(`campaign_id`) VALUES(?)",array('s',$campaign_id));
+		$result = database::SQL("SELECT `id` FROM `mail` WHERE `campaign_id`=? LIMIT 1",array('s',$campaign_id));
+		if(empty($result)){
+			$err = 'Database error! Try again.';
+			redirect_to('../api_handler.php?err='.$err);
+			exit;
+		}
+		else $mail_id = $result[0]['id'];
+	}
+	else{
+		$err = 'Database error! Try again.';
+		redirect_to('../api_handler.php?err='.$err);
+		exit;
+	}
 }
 else {
-	echo $api->err;
+	redirect_to('../api_handler.php?err='.$api->err);
+	exit;
 }
 
 //push the mail into message queue
-require_once '../JSON/vendor/autoload.php';
+require_once __DIR__ .'/../JSON/vendor/autoload.php';
 use PhpAmqpLib\Connection\AMQPConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
@@ -78,11 +101,12 @@ $channel->exchange_declare('mail', 'direct', false, false, false);
 
 $message = new AMQPMessage($mail);
 
-$channel->basic_publish($message, 'mail', 'dummy');
-
-echo "Mail pushed to exchange. \n";
+$channel->basic_publish($message, 'mail', 'API');
 
 $channel->close();
 $connection->close();
 
+redirect_to('../api_handler.php?mail_id='.$mail_id);
+
+exit;
 ?>

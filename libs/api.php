@@ -16,6 +16,7 @@ class api
 {	
 	private $secret_key;
 	private $api_name;
+	private $api_id;
 	private $api_params;
 	private $template_id;
 	private $response;
@@ -58,48 +59,43 @@ class api
 			if($result[0]['secret'] == $this->secret_key && !empty($result))
 			{
 				//validate the api name
-				$result = database::SQL("SELECT `template_id` from `api` where `name` = ?",array('s',$this->api_name));
+				$result = database::SQL("SELECT `id`,`template_id` from `api` where `name` = ?",array('s',$this->api_name));
 				if(!empty($result))
 				{
+					$this->api_id = $result[0]['id'];
 					$this->template_id = $result[0]['template_id'];
 					//now get the keys
 					$result = database::SQL("SELECT `name` from `api_params` where `template_id` = ?",array('i',$this->template_id));
 					if(!empty($result))
 					{
 						foreach ($result as $value) {
+							$success = true;
 							$temp = trim($value['name'],"{}");
 							$this->keys[] = $temp;
 							//to check whether the keys specified are correct
 							if(!isset($this->api_params[$temp]))
 							{
-								$this->state = true;
+								$success = false;
 								break;
 							}
 						}
-						if($this->state == false)
+						if($success)
 						{
 							if(count($this->keys) == count($this->api_params))
 							{
 								$this->state = true;
 							}
-							else {
-								$this->err = "Check value of parameters.";
-							}
+							else $this->err = "Check the value or/and number of parameters.";
 						}
-						else
-						{
-							$this->state = false;
-							$this->err = "wrong keys passed";
-						}
-							
+						else $this->err = "Wrong keys passed.";							
 					}
 					else $this->err = "Parameters not found.";
 				}
-				else $this->err = "API name wrong.";
+				else $this->err = "API doesn't exist in database.";
 			}
-			else $this->err = "Secret key wrong.";
+			else $this->err = "Secret key provided is wrong.";
 		}
-		else $this->err = "Check parameters.";
+		else $this->err = "Check query parameters and try again.";
 	}
 
 	//function to generate url for api call //There is some error in here...use $this
@@ -144,16 +140,10 @@ class api
 		return $this->api_name;
 	}
 
-	//function to execute the api
-	public function execute(){
-		if(!$this->state())	return 'Check parameters passed again.';
-		//elseif(!$this->validate_call())	return 'Invalid value or number of parameters used.';
-		else{
-			$mail = $this->replace_params();
-			return $mail;
-		}
+	//function to return api id
+	public function id(){
+		return $this->api_id;
 	}
+
 };
-
-
 ?>
