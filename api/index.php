@@ -17,6 +17,15 @@ if (!$sessObj->state) {
 }
 
 database::Start();
+
+//check if it is possible to push to the queue
+$result = database::SQL("SELECT `id` FROM `queue`");
+if(empty($result)){
+	$err = 'Cannot send mail right now. Please try again later.';
+	redirect_to('../api_handler.php?err='.$err);
+	exit;
+}
+
 //get the api name,the secret key and the parameters from the GET variable
 $error = false;
 if(isset($_GET['api_name']))
