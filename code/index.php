@@ -7,6 +7,8 @@ if ($sessObj->state) {
     redirect_to("dashboard.php");
 }
 
+if(isset($_GET['err'])) $err = $_GET['err'];
+
 if(isset($_POST['commit'])) {
     $email = $_POST['login'];
     $password = $_POST['password'];

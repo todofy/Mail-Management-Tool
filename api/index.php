@@ -13,7 +13,8 @@ include __DIR__ .'/../libs/api.php';
 //check if logged in or not
 $sessObj = new session();
 if (!$sessObj->state) {
-	redirect_to("../index.php");
+	$err = 'Login before trying to call API.';
+	redirect_to('../index.php?err='.$err);
 }
 
 database::Start();
