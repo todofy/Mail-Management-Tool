@@ -5,10 +5,9 @@ if (!isset($_CODE_HEADER_)) {
 ?>
 
 	<link rel="stylesheet" href="css/header.css" type="text/css">
-	<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/content.css" type="text/css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	<script src="./js/jquery-2.0.0.min.js"></script>
+	<script src="js/jquery-2.0.0.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="css/jAlert-v3.css" />
 

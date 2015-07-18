@@ -58,13 +58,17 @@ $api = new api($secret_key,$api_name,$params);
 $unique_id = login::getHash(10);
 $mail = '';
 
+//validate API call
 $api->validate_call();
+
+//Execute according to API state
 if($api->state) {
 	//generate mail
 	$mail = $api->replace_params();
 	$api_id = $api->id();
 	//create a campaign
-	$result = database::SQL("INSERT INTO `campaign`(`id`,`api_id`,`payload`) VALUES(?,?,?)",array('sis',$unique_id,$api_id,$mail));
+	$time = time();
+	$result = database::SQL("INSERT INTO `campaign`(`id`,`api_id`,`payload`,`called_on`) VALUES(?,?,?,?)",array('sisi',$unique_id,$api_id,$mail,$time));
 	$result = database::SQL("SELECT `id` FROM `campaign` WHERE `id`=? LIMIT 1",array('s',$unique_id));
 	if(!empty($result)){
 		$campaign_id = $result[0]['id'];

@@ -21,10 +21,22 @@
 		$error = true;
 	}
 	else{
-		$result = database::SQL("SELECT `id` FROM `mail` WHERE `id` = ? LIMIT 1",array('s',$_GET['mail_id']));
+		$result = database::SQL("SELECT `sent`,`campaign_id` FROM `mail` WHERE `id` = ? LIMIT 1",array('i',$_GET['mail_id']));
 		if(!empty($result)){
-			$res = 'Mail pushed to queue.';
-			$error = false;
+			$sent = $result[0]['sent'];
+			if(!empty($result[0]['campaign_id']) && $sent==0){
+				$result = database::SQL("UPDATE `mail` SET `sent`=1 WHERE `id`=?",array('i',$_GET['mail_id']));
+				$res = 'Mail pushed to queue.';
+				$error = false;
+			}
+			elseif($sent == 1){
+				$res = 'Mail already sent.';
+				$error = true;
+			}
+			else{
+				$res = 'Non existent entry in database.';
+				$error = true;
+			}
 		}
 		else{
 			$res = 'Non existent entry in database.';
