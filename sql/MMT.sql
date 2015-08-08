@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 18, 2015 at 12:21 PM
+-- Generation Time: Aug 08, 2015 at 01:00 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -45,6 +45,11 @@ INSERT INTO `acl` (`id`, `name`, `description`, `display_name`, `link`) VALUES
 (2, 'admin_add', 'Add an admin', 'Add an Admin', 'admin_add.php'),
 (3, 'admin_edit', 'Edit an admin', '', ''),
 (4, 'admin_revoke', 'Invalidate secret key for admin', '', ''),
+(5, 'admin_delete', 'Delete an admin', '', ''),
+(1, 'admin_view', 'View all admins', 'View Admins', 'admin_view.php'),
+(2, 'admin_add', 'Add an admin', 'Add an Admin', 'admin_add.php'),
+(3, 'admin_edit', 'Edit an admin', '', ''),
+(4, 'admin_revoke', 'Invalidate secret key for admin', '', ''),
 (5, 'admin_delete', 'Delete an admin', '', '');
 
 -- --------------------------------------------------------
@@ -70,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`id`, `email`, `secret`, `password`, `salt`, `cookie`, `last_login`) VALUES
-(8, 'anshumanpattanayak@gmail.com', '7be1f7a994a0cb2d9921a19fef9c52ae', 'e5b725fd14b675a4085766f70883ba68', 'namak', '', 1437191489),
+(8, 'anshumanpattanayak@gmail.com', '7be1f7a994a0cb2d9921a19fef9c52ae', 'e5b725fd14b675a4085766f70883ba68', 'namak', '', 1439027536),
 (10, 'zsonix27@gmail.com', '182153e6d75f87ee45aa07434200f69c', 'e5b725fd14b675a4085766f70883ba68', 'namak', '', 1436965833);
 
 -- --------------------------------------------------------
@@ -134,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `api_params` (
   `name` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `api_id` (`template_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=100 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=102 ;
 
 --
 -- Dumping data for table `api_params`
@@ -199,13 +204,13 @@ CREATE TABLE IF NOT EXISTS `email` (
 
 CREATE TABLE IF NOT EXISTS `links` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `mail_id` int(11) NOT NULL,
-  `hash` varchar(32) NOT NULL,
   `url` text NOT NULL,
-  `status` int(1) NOT NULL DEFAULT '0',
+  `hash` varchar(16) NOT NULL,
+  `template_id` int(11) NOT NULL,
+  `clicks` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `mail_id` (`mail_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  KEY `template_id` (`template_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -215,24 +220,16 @@ CREATE TABLE IF NOT EXISTS `links` (
 
 CREATE TABLE IF NOT EXISTS `mail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `campaign_id` varchar(11) NOT NULL,
-  `sent` int(1) NOT NULL DEFAULT '0',
-  `seen` int(1) NOT NULL DEFAULT '0',
+  `campaign_id` int(11) NOT NULL,
+  `link_id` int(11) NOT NULL,
+  `hash` varchar(16) NOT NULL,
+  `clicks` int(11) NOT NULL DEFAULT '0',
+  `sent` int(11) NOT NULL DEFAULT '0',
+  `seen` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `campaign_id` (`campaign_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
-
---
--- Dumping data for table `mail`
---
-
-INSERT INTO `mail` (`id`, `campaign_id`, `sent`, `seen`) VALUES
-(1, '4bc23415ce', 0, 0),
-(2, 'af2db5ed06', 0, 0),
-(3, '184f218198', 0, 0),
-(4, '37c0e1067e', 0, 0),
-(5, '040d9b48eb', 1, 0),
-(6, '558ec4b033', 1, 0);
+  KEY `campaign_id` (`campaign_id`),
+  KEY `link_id` (`link_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -244,7 +241,7 @@ CREATE TABLE IF NOT EXISTS `queue` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -259,7 +256,7 @@ CREATE TABLE IF NOT EXISTS `template` (
   `created_on` int(11) NOT NULL,
   `last_updated` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
 
 --
 -- Dumping data for table `template`
@@ -267,7 +264,8 @@ CREATE TABLE IF NOT EXISTS `template` (
 
 INSERT INTO `template` (`id`, `name`, `template`, `created_on`, `last_updated`) VALUES
 (22, 'Registration', '<h2><span style="color: #993300;"><strong>Welcome to TODOFY</strong></span></h2>\r\n<hr />\r\n<p>Hi,</p>\r\n<p>We are really happy to notify that you have been registered to Todofy with email id : <strong>{{email_id}}</strong>.</p>\r\n<p>Your randomly generated password is : <strong>{{password}}</strong>.</p>\r\n<p><em><span style="color: #ff0000;">(You can change your password by going into ''Profile'' after logging in. Also, you can check your access rights in your profile.)</span></em></p>\r\n<p>Your secret key for using APIs is : <strong>{{secret}}</strong>.</p>\r\n<hr />\r\n<p style="text-align: right;">-Todofy Team</p>', 1436699982, 1436971824),
-(23, 'Dummy Template', '<p>{{toy1}}{{toy2}}{{toy3}}</p>', 1436951651, 1437148787);
+(23, 'Dummy Template', '<p>{{toy1}}{{toy2}}{{toy3}}</p>', 1436951651, 1437148787),
+(29, 'lt2', '<p><a href="http://google.co.in">Google</a></p>', 1439036268, 1439036268);
 
 -- --------------------------------------------------------
 
@@ -307,13 +305,13 @@ ALTER TABLE `campaign`
 -- Constraints for table `links`
 --
 ALTER TABLE `links`
-  ADD CONSTRAINT `links_ibfk_1` FOREIGN KEY (`mail_id`) REFERENCES `mail` (`id`);
+  ADD CONSTRAINT `links_ibfk_1` FOREIGN KEY (`template_id`) REFERENCES `template` (`id`);
 
 --
 -- Constraints for table `mail`
 --
 ALTER TABLE `mail`
-  ADD CONSTRAINT `mail_ibfk_1` FOREIGN KEY (`campaign_id`) REFERENCES `campaign` (`id`);
+  ADD CONSTRAINT `mail_ibfk_1` FOREIGN KEY (`link_id`) REFERENCES `links` (`id`);
 
 --
 -- Constraints for table `unsubscribed`
