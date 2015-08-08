@@ -17,6 +17,8 @@
 		else{
 			//delete the parameters from database
 			$result = database::SQL("DELETE FROM api_params WHERE template_id=?",array('i',$id));
+			//delete the links from database
+			$result = database::SQL("DELETE FROM links WHERE template_id=?",array('i',$id));
 			//delete the template from database
 			$result = database::SQL("DELETE FROM template WHERE id=?",array('i',$id));
 			$output['error'] = false;

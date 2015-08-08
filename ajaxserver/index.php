@@ -82,6 +82,14 @@ if($category == "delete_account"){
 	exit;
 }
 
+//delete queue call
+if($category == "delete_queue"){
+	database::Start();
+	include __DIR__ .'/delete_queue.php';
+	echo json_encode($output);
+	exit;
+}
+
 //List of all operations regarding templates
 $template_operations = array(
 	'view_template' => array('view_template'),

@@ -40,9 +40,6 @@ while(count($channel->callbacks)) {
     $channel->wait();
 }
 
-//Remove queue from database
-$result = database::SQL("DELETE FROM `queue` WHERE `id`=?",array('i',$queue_id));
-
 $channel->close();
 $connection->close();
 

@@ -12,6 +12,7 @@
 
 #content-wrapper.push{
   width: 95%;
+  min-width: 1080px;
   float: right;
 }
 

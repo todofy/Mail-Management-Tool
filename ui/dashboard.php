@@ -53,6 +53,7 @@ if (!isset($_CODE_DASHBOARD_)) {
 		</div>
 		
 	</div>
+</script>
 
 </body>
 </html>

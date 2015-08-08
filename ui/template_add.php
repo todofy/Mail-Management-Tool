@@ -49,6 +49,7 @@ if (!isset($_TEMPLATE_ADD_)) {
 			</ol>
 			<div class="col-md-12">
 				<h3>Create Template</h3>
+				<a class="btn btn-warning button-delete pull-right" href="#" role="button" data-toggle="modal" data-target="#instructions">How to add links</a>
 				<form role="form" id="create-template">
 					<div class="form-group">
 	    				<label for="template-name"><h4>Template Name</h4></label>
@@ -56,12 +57,30 @@ if (!isset($_TEMPLATE_ADD_)) {
 	  				</div>
 	  			    <div class="form-group">
 	  			    	<h4 class="form-control-static">Template</h4>
-	  					<textarea id="template-text" name="template-text" value="">Design your template here</textarea>
+	  					<textarea id="template-text" name="template-text" value="">Design your template here.</textarea>
 	  				</div>
 	  				<button type="submit" class="btn btn-success" value="Submit" id="create">Create</button>
 					<a href="api_add.php" class="btn btn-link">Or create API</a>
 				</form>
 			</div>
+		</div>
+	</div>
+	<div id="instructions" class="modal fade" role="dialog" style="z-index: 15000; margin-top:70px;">
+		<div class="modal-dialog" style="width: 950px; min-width:800px; margin-left: 260px; overflow-y: initial;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">How to add links</h4>
+				</div>
+				<div class="modal-body"style="overflow-y: auto;">
+					<ul>
+						<li>Select "Insert/edit link" from toolbar or press Ctrl+K.</li>
+						<li><strong>DON'T copy-paste url links directly in the editor.</strong>&nbsp;They won't be hyperlinked.</li>
+					</ul>
+				</div>
+				<div class="modal-footer" style="margin-top: -20px;">
+				<button type="button" class="btn btn-link" data-dismiss="modal">Back</button>
+			</div>
+		</div>
 		</div>
 	</div>
 <script src="js/jAlert-v3.js"></script>
