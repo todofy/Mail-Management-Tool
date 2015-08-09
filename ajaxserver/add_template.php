@@ -5,18 +5,27 @@
 	preg_match_all('/{{(.*?)}}/', $template_text, $params);
 	preg_match_all('/href="(.*?)"/', $template_text, $links);	
 
-	$err = false;
+	$err1 = false;
+	$err2 = false;
 	foreach ($params[1] as $value) {
 		if($value== "")
 		{
-			$err = true;
+			$err1 = true;
+			break;
+		}
+		if($value=="to"){
+			$err2 = true;
 			break;
 		}
 	}
-	if($err)
+	if($err1)
 	{
 		$output['error'] = true;
 		$output['message'] = 'Blank Parameters!';
+	}
+	elseif ($err2) {
+		$output['error'] = true;
+		$output['message'] = '\'to\' parameter is reserved.';
 	}
 	else
 	{

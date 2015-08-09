@@ -98,26 +98,6 @@ class api
 		else $this->err = "Check query parameters and try again.";
 	}
 
-	//function to generate url for api call //There is some error in here...use $this
-	public function getURL()
-	{
-		if($this->state == false)
-			return NULL;
-		$Url = 'localhost/Mail-Management-Tool/api/index.php?secret_key='.urlencode($this->secret_key).'&api_name=' ;
-		$Url.= urlencode($this->api_name).'&';
-		//use the keys obtained in validate_function
-		$count = count($this->api_params);
-		foreach ($this->api_params as $key => $value) {
-			$Url.= urlencode($key);
-            $Url.= '=';
-            $Url.= urldecode($value);
-            if($i<$count-1)
-            $Url.= '&';
-        	$i++;
-		}
-        return $Url;
-
-	}
 
 	//function to replace parameters in template with their values
 	public function replace_params()
@@ -144,6 +124,8 @@ class api
 	public function id(){
 		return $this->api_id;
 	}
+
+	//function to return the 'to' parameter
 
 };
 ?>
