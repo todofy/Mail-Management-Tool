@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 09, 2015 at 10:09 AM
+-- Generation Time: Aug 10, 2015 at 10:44 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`id`, `email`, `secret`, `password`, `salt`, `cookie`, `last_login`) VALUES
-(8, 'anshumanpattanayak@gmail.com', '7be1f7a994a0cb2d9921a19fef9c52ae', 'e5b725fd14b675a4085766f70883ba68', 'namak', '', 1439089715),
+(8, 'anshumanpattanayak@gmail.com', '7be1f7a994a0cb2d9921a19fef9c52ae', 'e5b725fd14b675a4085766f70883ba68', 'namak', '86a3b9ed22fd6e24436f02c5a62cd541', 1439124051),
 (10, 'zsonix27@gmail.com', '182153e6d75f87ee45aa07434200f69c', 'e5b725fd14b675a4085766f70883ba68', 'namak', '', 1436965833);
 
 -- --------------------------------------------------------
@@ -119,7 +119,6 @@ CREATE TABLE IF NOT EXISTS `api` (
 
 INSERT INTO `api` (`id`, `code`, `name`, `template_id`, `created_on`) VALUES
 (4, '47a7b', 'API_Registration', 22, 1436715969),
-(19, '1d3e2', 'Dummy', 23, 1436951666),
 (20, '01e9d', 'Demo', 22, 1436972332);
 
 -- --------------------------------------------------------
@@ -134,20 +133,16 @@ CREATE TABLE IF NOT EXISTS `api_params` (
   `name` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `api_id` (`template_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=103 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=106 ;
 
 --
 -- Dumping data for table `api_params`
 --
 
 INSERT INTO `api_params` (`id`, `template_id`, `name`) VALUES
-(90, 22, '{{email_id}}'),
-(91, 22, '{{password}}'),
-(92, 22, '{{secret}}'),
-(97, 23, '{{toy1}}'),
-(98, 23, '{{toy2}}'),
-(99, 23, '{{toy3}}'),
-(102, 30, '{{to1}}');
+(103, 22, '{{email_id}}'),
+(104, 22, '{{password}}'),
+(105, 22, '{{secret}}');
 
 -- --------------------------------------------------------
 
@@ -240,17 +235,14 @@ CREATE TABLE IF NOT EXISTS `template` (
   `created_on` int(11) NOT NULL,
   `last_updated` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `template`
 --
 
 INSERT INTO `template` (`id`, `name`, `template`, `created_on`, `last_updated`) VALUES
-(22, 'Registration', '<h2><span style="color: #993300;"><strong>Welcome to TODOFY</strong></span></h2>\r\n<hr />\r\n<p>Hi,</p>\r\n<p>We are really happy to notify that you have been registered to Todofy with email id : <strong>{{email_id}}</strong>.</p>\r\n<p>Your randomly generated password is : <strong>{{password}}</strong>.</p>\r\n<p><em><span style="color: #ff0000;">(You can change your password by going into ''Profile'' after logging in. Also, you can check your access rights in your profile.)</span></em></p>\r\n<p>Your secret key for using APIs is : <strong>{{secret}}</strong>.</p>\r\n<hr />\r\n<p style="text-align: right;">-Todofy Team</p>', 1436699982, 1436971824),
-(23, 'Dummy Template', '<p>{{toy1}}{{toy2}}{{toy3}}</p>', 1436951651, 1437148787),
-(29, 'lt2', '<p><a href="http://google.co.in">Google</a></p>', 1439036268, 1439036268),
-(30, 'wewetrey', '<p>{{to1}}</p>', 1439043627, 1439043627);
+(22, 'Registration', '<h2><span style="color: #993300;"><strong>Welcome to TODOFY</strong></span></h2>\r\n<hr />\r\n<p>Hi,</p>\r\n<p>We are really happy to notify that you have been registered to Todofy with email id : <strong>{{email_id}}</strong>.</p>\r\n<p>Your randomly generated password is : <strong>{{password}}</strong>.</p>\r\n<p><em><span style="color: #ff0000;">(You can change your password by going into ''Profile'' after logging in. Also, you can check your access rights in your profile.)</span></em></p>\r\n<p>Your secret key for using APIs is : <strong>{{secret}}</strong>.</p>\r\n<hr />\r\n<p style="text-align: right;">-Todofy Team</p>', 1436699982, 1439124491);
 
 -- --------------------------------------------------------
 
