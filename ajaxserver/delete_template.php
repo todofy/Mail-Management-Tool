@@ -9,10 +9,16 @@
 	}
 	else{		
 		//check if template is used by any api or not
-		$result = database::SQL("SELECT id FROM api WHERE template_id = ? LIMIT 1",array('i',$id));
+		$result = database::SQL("SELECT id,name,code FROM api WHERE template_id = ?",array('i',$id));
 		if(!empty($result)){
+			$output_string = '';
+			for ($i=0; $i < count($result); $i++) {
+				$api_name = $result[$i]['name'];
+				$api_code = $result[$i]['code'];
+				$output_string .= "<li>".$api_name." (".$api_code.")</li>";			
+			}
 			$output['error'] = true;
-			$output['message'] = 'Template is in use by some API(s).';
+			$output['message'] = "Template is in use by API(s):".$output_string;
 		}
 		else{
 			//delete the parameters from database

@@ -62,8 +62,6 @@ $channel->exchange_declare('mail', 'direct', false, false, false);
 
 //generate new mail ids for each entry in payload
 foreach ($payload as $value) {
-	//convert each entry in payload to JSON
-	$payload_json = json_encode($value);
 	//insert into database each mail
 	$result = database::SQL("INSERT INTO `mail`(`campaign_id`,`payload`) VALUES(?,?)",array('ss',$campaign_id,$payload_json));
 }

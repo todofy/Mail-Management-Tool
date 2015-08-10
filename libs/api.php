@@ -14,32 +14,26 @@ include __DIR__ .'/session.php';
 
 class api
 {	
-	private $secret_key;
-	private $api_name;
+	private $api_code;
 	private $api_id;
 	private $api_params;
 	private $template_id;
+	private $to;
 	private $response;
 	private $keys;
 	public $err;
 	public $state = false;
-	public function __construct($secret_key, $api_name, $parameters)
+	public function __construct($api_code, $parameters)
 	{
-		if(isset($secret_key))
+		if(isset($api_code))
 		{
-			$this->secret_key = $secret_key;
-			if(isset($api_name))
+			$this->api_code = $api_code;
+			if(!empty($parameters))
 			{
-				$this->api_name = $api_name;
-				if(!empty($parameters))
-				{
-					foreach ($parameters as $key => $value) {
-						$this->api_params[$key] = $value;
-					}
-					$this->state = true;
+				foreach ($parameters as $key => $value) {
+					$this->api_params[$key] = $value;
 				}
-				else
-					$this->state = false;
+				$this->state = true;
 			}
 			else
 				$this->state = false;
@@ -48,54 +42,47 @@ class api
 			$this->state = false;
 	}
 
-	//function to check if secret key sent is correct
+	//function to check if api call is correct
 	public function validate_call()
 	{
 		if($this->state == true)
 		{
 			$this->state = false;
-			$admin_id = session::getUserID();
-			$result = database::SQL("SELECT `secret` FROM `admin` WHERE `id`=? LIMIT 1",array('i',$admin_id));
-			if($result[0]['secret'] == $this->secret_key && !empty($result))
+			//validate the api code
+			$result = database::SQL("SELECT `id`,`template_id` from `api` where `code` = ?",array('s',$this->api_code));
+			if(!empty($result))
 			{
-				//validate the api name
-				$result = database::SQL("SELECT `id`,`template_id` from `api` where `name` = ?",array('s',$this->api_name));
+				$this->api_id = $result[0]['id'];
+				$this->template_id = $result[0]['template_id'];
+				//now get the keys
+				$result = database::SQL("SELECT `name` from `api_params` where `template_id` = ?",array('i',$this->template_id));
 				if(!empty($result))
 				{
-					$this->api_id = $result[0]['id'];
-					$this->template_id = $result[0]['template_id'];
-					//now get the keys
-					$result = database::SQL("SELECT `name` from `api_params` where `template_id` = ?",array('i',$this->template_id));
-					if(!empty($result))
-					{
-						foreach ($result as $value) {
-							$success = true;
-							$temp = trim($value['name'],"{}");
-							$this->keys[] = $temp;
-							//to check whether the keys specified are correct
-							if(!isset($this->api_params[$temp]))
-							{
-								$success = false;
-								break;
-							}
-						}
-						if($success)
+					foreach ($result as $value) {
+						$success = true;
+						$temp = trim($value['name'],"{}");
+						$this->keys[] = $temp;
+						//to check whether the keys specified are correct
+						if(!isset($this->api_params[$temp]))
 						{
-							if(count($this->keys) == count($this->api_params))
-							{
-								$this->state = true;
-							}
-							else $this->err = "Check the value or/and number of parameters.";
+							$success = false;
+							break;
 						}
-						else $this->err = "Wrong keys passed.";							
 					}
-					else $this->err = "Parameters not found.";
+					if($success)
+					{
+						if(count($this->keys) == count($this->api_params))
+						{
+							$this->state = true;
+						}
+						else $this->err = "Check the value or/and number of parameters.";
+					}
+					else $this->err = "Wrong keys passed.";							
 				}
-				else $this->err = "API doesn't exist in database.";
+				else $this->err = "Parameters not found.";
 			}
-			else $this->err = "Secret key provided is wrong.";
+			else $this->err = "API doesn't exist in database.";
 		}
-		else $this->err = "Check query parameters and try again.";
 	}
 
 
@@ -116,8 +103,8 @@ class api
 
 
 	//function to return api name
-	public function name(){
-		return $this->api_name;
+	public function code(){
+		return $this->api_code;
 	}
 
 	//function to return api id
@@ -126,6 +113,9 @@ class api
 	}
 
 	//function to return the 'to' parameter
+	public function send_to(){
+		return $this->to;
+	}
 
 };
 ?>

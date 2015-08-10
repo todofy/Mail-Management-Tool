@@ -60,7 +60,7 @@ $callback = function($message){
 
 	//update database
 	$time_finished = time();
-	$result = database::SQL("UPDATE `mail` SET `time_finished`=? WHERE `id`=?",array('ii',$time_finished,$mail_id));
+	$result = database::SQL("UPDATE `mail` SET `time_finished`=?,`sent`=1 WHERE `id`=?",array('ii',$time_finished,$mail_id));
 	$result = database::SQL("UPDATE `campaign` SET `payload_sent`=`payload_sent`+1 WHERE `id`=?",array('s',$campaign_id));
 	//check if all entries in payload processed or not
 	$result = database::SQL("SELECT `payload_length`,`payload_sent` FROM `campaign` WHERE `id`=? LIMIT 1",array('s',$campaign_id));
