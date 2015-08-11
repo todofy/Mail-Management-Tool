@@ -30,7 +30,7 @@ if (!isset($_CODE_SIDEBAR_)) {
             <?php 
                 foreach ($newuser->access as $row) {
                     if ($row['link'] == '') continue;
-                    echo"<li><a href=\"{$row['link']}\">{$row['display_name']}<span class='sub_icon glyphicon glyphicon-user'></span></a></li>";
+                    echo "<li><a href=\"{$row['link']}\">{$row['display_name']}<span class='sub_icon glyphicon glyphicon-user'></span></a></li>";
                 } 
             ?> 
       </ul>
