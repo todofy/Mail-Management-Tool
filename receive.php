@@ -66,7 +66,8 @@ $callback = function($message){
 	/*
 	//send mail
 	mail($to,$subject,$mail,$from);
-
+	*/
+	sleep(2);
 	//update database
 	$time_finished = time();
 	$result = database::SQL("UPDATE `mail` SET `time_finished`=?,`sent`=1 WHERE `id`=?",array('ii',$time_finished,$mail_id));
@@ -79,7 +80,7 @@ $callback = function($message){
 		//update the time_finished for the campaign
 		$time_finished = time();
 		$result = database::SQL("UPDATE `campaign` SET `time_finished`=? WHERE `id`=?",array('is',$time_finished,$campaign_id));
-	}*/
+	}
 };
 
 $channel->basic_consume($queue_name, '', false, true, false, false, $callback);
