@@ -8,29 +8,19 @@
 	$id = session::getUserID();
 	$newuser = new user($id);
 
-	if(!isset($_GET['campaign_id']) && !isset($_GET['err'])){
+	if(!isset($_GET['err']) || !isset($_GET['msg'])){
 		$res = 'Call to API not found.';
 		$error = true;
 	}
-	elseif (!isset($_GET['campaign_id']) && isset($_GET['err'])) {
-		$res = $_GET['err'];
-		$error = true;
-	}
-	elseif (isset($_GET['campaign_id']) && isset($_GET['err'])) {
-		$res = 'Try calling an API first.';
-		$error = true;
-	}
 	else{
-		$result = database::SQL("SELECT `id` FROM `campaign` WHERE `id` = ? LIMIT 1",array('i',$_GET['campaign_id']));
-		if(!empty($result)){
-			$campaign_id = $result[0]['id'];
-			$res = 'Campaign started with id='.$campaign_id;
-			$error = false;			
-		}
-		else{
-			$res = 'Non existent entry in database.';
+		if($_GET['err'] == 'true'){
+			$res = $_GET['msg'];
 			$error = true;
 		}
+		else{
+			$res = $_GET['msg'];
+			$error = false;	
+		}	
 	}
 		
 

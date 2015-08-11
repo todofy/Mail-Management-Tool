@@ -15,6 +15,7 @@ include __DIR__ .'/session.php';
 class api
 {	
 	private $api_code;
+	private $mail_id;
 	private $api_id;
 	private $api_params;
 	private $template_id;
@@ -23,23 +24,25 @@ class api
 	private $keys;
 	public $err;
 	public $state = false;
-	public function __construct($api_code, $parameters)
+	public function __construct($api_code, $parameters,$mail_id)
 	{
-		if(isset($api_code))
-		{
-			$this->api_code = $api_code;
-			if(!empty($parameters))
-			{
-				foreach ($parameters as $key => $value) {
+		$this->api_code = $api_code;
+		$this->mail_id = $mail_id;
+		if(isset($parameters['to']))
+		{	
+			$this->to = $parameters['to'];
+			foreach ($parameters as $key => $value) {
+				if($key!='to')
 					$this->api_params[$key] = $value;
-				}
-				$this->state = true;
 			}
-			else
-				$this->state = false;
+			$this->state = true;
 		}
 		else
+		{
+			$this->err = "'to' parameter not defined.";
 			$this->state = false;
+		}
+				
 	}
 
 	//function to check if api call is correct
@@ -48,7 +51,7 @@ class api
 		if($this->state == true)
 		{
 			$this->state = false;
-			//validate the api code
+			//get the template for this api
 			$result = database::SQL("SELECT `id`,`template_id` from `api` where `code` = ?",array('s',$this->api_code));
 			if(!empty($result))
 			{
@@ -75,19 +78,19 @@ class api
 						{
 							$this->state = true;
 						}
-						else $this->err = "Check the value or/and number of parameters.";
+						else $this->err = "Check the number of parameters.";
 					}
 					else $this->err = "Wrong keys passed.";							
 				}
 				else $this->err = "Parameters not found.";
 			}
-			else $this->err = "API doesn't exist in database.";
+			else $this->err = "Template for api does not exist.";
 		}
 	}
 
 
 	//function to replace parameters in template with their values
-	public function replace_params()
+	public function replace_params_links()
 	{
 		if($this->state == false)
 			return NULL;
@@ -98,6 +101,26 @@ class api
 		foreach ($this->api_params as $key => $value) {
 			$this->response =  str_replace("{{".$key."}}", $value,$this->response);
 		}
+		//replace the links
+		$baseURL = "localhost/Mail-Management-Tool/links/index.php";
+		$result = database::SQL("SELECT `id` , `url` ,`hash` FROM `links` WHERE `template_id` = ? LIMIT 1" , array('i' , $this->template_id));
+		if(!empty($result))
+		{
+			foreach ($result as $value) {
+				//hash for the particular link
+				$hash1 = $value['hash'];
+				$link_id = $value['id'];
+				//generate link_suffix for this link - >(mail id)
+				$hash2 = login::getHash(16);
+				//store the hash
+				$result = database::SQL("INSERT INTO `link_suffix` (`mail_id` , `link_id` , `hash`) VALUES (? , ? , ? )" , array('iis' , $this->mail_id , $link_id , $hash2));
+				//concatenate the hash
+				$url =  $baseURL.'?url='.$hash1 . $hash2;
+				//replace this url
+				$this->response =  str_replace($value['url'], $url,$this->response);
+			
+			}
+		}	
 		return $this->response;
 	}
 
@@ -105,11 +128,6 @@ class api
 	//function to return api name
 	public function code(){
 		return $this->api_code;
-	}
-
-	//function to return api id
-	public function id(){
-		return $this->api_id;
 	}
 
 	//function to return the 'to' parameter

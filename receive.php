@@ -1,5 +1,4 @@
 <?php
-
 $SECURE = true;
 
 include __DIR__ .'/libs/database.php';
@@ -23,7 +22,9 @@ echo ' [*] Waiting for mail ids. To exit press CTRL+C', "\n";
 
 //function to generate actual mail and send
 $callback = function($message){
-	$mail_id = $message;
+	$mail_id = $message->body;
+	echo "\n";
+	echo $mail_id.' received.';
 	//update the time_started for this mail
 	$time_started = time();
 	$result = database::SQL("UPDATE `mail` SET `time_started`=? WHERE `id`=?",array('ii',$time_started,$mail_id));
@@ -39,22 +40,30 @@ $callback = function($message){
 	//get the values of api parameters
 	$result = database::SQL("SELECT `payload` FROM `mail` WHERE `id`=? LIMIT 1",array('i',$mail_id));
 	$payload = $result[0]['payload'];
-	$parameters = json_decode($payload);
+	$parameters = json_decode($payload,true);
 
 	//get the sender and subject from database
 	$result = database::SQL("SELECT `sender`,`subject` FROM `campaign` WHERE `id`=? LIMIT 1",array('s',$campaign_id));
 	$from = $result[0]['sender'];
 	$subject = $result[0]['subject'];
 
-	$api = new api($api_code,$parameters);
 
-	if($api->err){
+
+	$api = new api($api_code,$parameters,$mail_id);
+	$api->validate_call();
+	if($api->state == false){
+		echo $api->err;
 		//report wrong api_code and discard
 	}
-
-	$mail = $api->replace_params();
-	$to = $api->send_to();
-
+	else
+	{
+		$mail = $api->replace_params_links();
+		$to = $api->send_to();
+		echo "\n";
+		echo $mail;
+	}
+	
+	/*
 	//send mail
 	mail($to,$subject,$mail,$from);
 
@@ -70,7 +79,7 @@ $callback = function($message){
 		//update the time_finished for the campaign
 		$time_finished = time();
 		$result = database::SQL("UPDATE `campaign` SET `time_finished`=? WHERE `id`=?",array('is',$time_finished,$campaign_id));
-	}
+	}*/
 };
 
 $channel->basic_consume($queue_name, '', false, true, false, false, $callback);
@@ -83,5 +92,4 @@ $channel->close();
 $connection->close();
 
 exit;
-
 ?>
