@@ -65,24 +65,6 @@ if (!isset($_TEMPLATE_ADD_)) {
 			</div>
 		</div>
 	</div>
-	<div id="instructions" class="modal fade" role="dialog" style="z-index: 15000; margin-top:70px;">
-		<div class="modal-dialog" style="width: 950px; min-width:800px; margin-left: 260px; overflow-y: initial;">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">How to add links</h4>
-				</div>
-				<div class="modal-body"style="overflow-y: auto;">
-					<ul>
-						<li>Select "Insert/edit link" from toolbar or press Ctrl+K.</li>
-						<li><strong>DON'T copy-paste url links directly in the editor.</strong>&nbsp;They won't be hyperlinked.</li>
-					</ul>
-				</div>
-				<div class="modal-footer" style="margin-top: -20px;">
-				<button type="button" class="btn btn-link" data-dismiss="modal">Back</button>
-			</div>
-		</div>
-		</div>
-	</div>
 <script src="js/jAlert-v3.js"></script>
 <script src="js/jAlert-functions.js"></script>
 <script src="js/main.js"></script>
