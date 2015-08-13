@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 11, 2015 at 01:51 PM
+-- Generation Time: Aug 13, 2015 at 04:20 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -63,15 +63,16 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `last_login` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `email`, `secret`, `password`, `salt`, `cookie`, `last_login`) VALUES
-(8, 'anshumanpattanayak@gmail.com', '7be1f7a994a0cb2d9921a19fef9c52ae', 'e5b725fd14b675a4085766f70883ba68', 'namak', '86a3b9ed22fd6e24436f02c5a62cd541', 1439269569),
-(10, 'zsonix27@gmail.com', '182153e6d75f87ee45aa07434200f69c', 'e5b725fd14b675a4085766f70883ba68', 'namak', '', 1436965833);
+(8, 'anshumanpattanayak@gmail.com', '7be1f7a994a0cb2d9921a19fef9c52ae', 'e5b725fd14b675a4085766f70883ba68', 'namak', '86a3b9ed22fd6e24436f02c5a62cd541', 1439481681),
+(10, 'zsonix27@gmail.com', '182153e6d75f87ee45aa07434200f69c', 'e5b725fd14b675a4085766f70883ba68', 'namak', '', 1436965833),
+(11, 'safsa@sdfds.cdfo', '516ab040424996df7378ab11d365681d', '6d8a256625c64ecd6f4b9b73403588e5', '07f82b', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -95,7 +96,9 @@ INSERT INTO `admin_access` (`admin_id`, `access_id`) VALUES
 (8, 4),
 (8, 5),
 (10, 1),
-(10, 4);
+(10, 4),
+(11, 1),
+(11, 2);
 
 -- --------------------------------------------------------
 
@@ -111,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `api` (
   `created_on` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `template_id` (`template_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `api`
@@ -120,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `api` (
 INSERT INTO `api` (`id`, `code`, `name`, `template_id`, `created_on`) VALUES
 (4, '47a7b', 'API_Registration', 22, 1436715969),
 (20, '01e9d', 'Demo', 22, 1436972332),
-(24, '6b4b1', 'API_Test', 33, 1439253619);
+(26, '12aed', 'New API', 36, 1439482185);
 
 -- --------------------------------------------------------
 
@@ -134,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `api_params` (
   `name` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `api_id` (`template_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=108 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=110 ;
 
 --
 -- Dumping data for table `api_params`
@@ -144,7 +147,7 @@ INSERT INTO `api_params` (`id`, `template_id`, `name`) VALUES
 (103, 22, '{{email_id}}'),
 (104, 22, '{{password}}'),
 (105, 22, '{{secret}}'),
-(107, 33, '{{param1}}');
+(109, 36, '{{param1}}');
 
 -- --------------------------------------------------------
 
@@ -164,6 +167,13 @@ CREATE TABLE IF NOT EXISTS `campaign` (
   `time_finished` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `campaign`
+--
+
+INSERT INTO `campaign` (`id`, `secret_key`, `api_code`, `sender`, `subject`, `payload_length`, `payload_sent`, `time_started`, `time_finished`) VALUES
+('db8bbcffdb', '7be1f7a994a0cb2d9921a19fef9c52ae', '12aed', 'abc@gmail.com', 'Test mail', 2, 2, 1439482259, 1439482263);
 
 -- --------------------------------------------------------
 
@@ -187,33 +197,38 @@ CREATE TABLE IF NOT EXISTS `email` (
 CREATE TABLE IF NOT EXISTS `links` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` text NOT NULL,
-  `hash` varchar(16) NOT NULL,
   `template_id` int(11) NOT NULL,
-  `clicks` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `template_id` (`template_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `links`
 --
 
-INSERT INTO `links` (`id`, `url`, `hash`, `template_id`, `clicks`) VALUES
-(1, 'http://www.google.com', 'a3a5759c5b56cf8c', 34, 0),
-(2, 'https://www.facebook.com/?_rdr', '13da41a6acaea643', 34, 0),
-(3, 'http://www.google.com', '97921e70d1dafde4', 33, 0);
+INSERT INTO `links` (`id`, `url`, `template_id`) VALUES
+(4, 'http://www.google.co.in', 36);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `link_suffix`
+-- Table structure for table `link_hash`
 --
 
-CREATE TABLE IF NOT EXISTS `link_suffix` (
+CREATE TABLE IF NOT EXISTS `link_hash` (
   `mail_id` int(11) NOT NULL,
   `link_id` int(11) NOT NULL,
-  `hash` varchar(16) NOT NULL
+  `hash` varchar(16) NOT NULL,
+  `clicks` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `link_hash`
+--
+
+INSERT INTO `link_hash` (`mail_id`, `link_id`, `hash`, `clicks`) VALUES
+(101, 4, '79fa22727fd2a3f6', 1),
+(102, 4, '1195995d2abfe114', 0);
 
 -- --------------------------------------------------------
 
@@ -226,12 +241,20 @@ CREATE TABLE IF NOT EXISTS `mail` (
   `campaign_id` varchar(11) NOT NULL,
   `payload` text NOT NULL,
   `sent` int(11) NOT NULL DEFAULT '0',
-  `seen` int(11) NOT NULL DEFAULT '0',
   `time_started` int(11) NOT NULL,
   `time_finished` int(11) NOT NULL,
+  `error` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `campaign_id` (`campaign_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=93 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=103 ;
+
+--
+-- Dumping data for table `mail`
+--
+
+INSERT INTO `mail` (`id`, `campaign_id`, `payload`, `sent`, `time_started`, `time_finished`, `error`) VALUES
+(101, 'db8bbcffdb', '{"to":"someone@example.com","param1":"dummy1"}', 1, 1439482259, 1439482261, 0),
+(102, 'db8bbcffdb', '{"to":"mno@gmail.com","param1":"dummy2"}', 1, 1439482261, 1439482263, 0);
 
 -- --------------------------------------------------------
 
@@ -246,7 +269,7 @@ CREATE TABLE IF NOT EXISTS `template` (
   `created_on` int(11) NOT NULL,
   `last_updated` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
 
 --
 -- Dumping data for table `template`
@@ -255,8 +278,7 @@ CREATE TABLE IF NOT EXISTS `template` (
 INSERT INTO `template` (`id`, `name`, `template`, `created_on`, `last_updated`) VALUES
 (22, 'Registration', '<h2><span style="color: #993300;"><strong>Welcome to TODOFY</strong></span></h2>\r\n<hr />\r\n<p>Hi,</p>\r\n<p>We are really happy to notify that you have been registered to Todofy with email id : <strong>{{email_id}}</strong>.</p>\r\n<p>Your randomly generated password is : <strong>{{password}}</strong>.</p>\r\n<p><em><span style="color: #ff0000;">(You can change your password by going into ''Profile'' after logging in. Also, you can check your access rights in your profile.)</span></em></p>\r\n<p>Your secret key for using APIs is : <strong>{{secret}}</strong>.</p>\r\n<hr />\r\n<p style="text-align: right;">-Todofy Team</p>', 1436699982, 1439124491),
 (32, 'Dummy', '<p>Design your template here.</p>', 1439204304, 1439204304),
-(33, 'Test mail', '<p>{{param1}}</p>\r\n<p><a href="http://www.google.com">www.google.com</a></p>\r\n<p></p>', 1439253596, 1439282005),
-(34, 'asdf', '<p>Design your template here.</p>\r\n<p><a href="http://www.google.com">www.google.com</a></p>\r\n<p><a href="https://www.facebook.com/?_rdr">https://www.facebook.com/?_rdr</a></p>\r\n<p></p>\r\n<p></p>', 1439277595, 1439277595);
+(36, 'RTY', '<p>{{param1}}</p>\r\n<p><a href="http://www.google.co.in">www.google.co.in</a></p>\r\n<p></p>', 1439482154, 1439482154);
 
 -- --------------------------------------------------------
 

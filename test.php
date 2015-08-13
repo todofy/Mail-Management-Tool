@@ -5,9 +5,9 @@ include __DIR__ .'/libs/globals.php';
 include __DIR__ .'/libs/session.php';
 include __DIR__ .'/libs/user.php';
 
-$data = array('secret_key' => '7be1f7a994a0cb2d9921a19fef9c52ae', 'api_code' => '6b4b1', 'subject' => 'Test mail','from' => 'abc@gmail.com',
+$data = array('secret_key' => '7be1f7a994a0cb2d9921a19fef9c52ae', 'api_code' => '12aed', 'subject' => 'Test mail','from' => 'abc@gmail.com',
 				'payload' => array(
-					array('param1' => 'dummy1'),
+					array('to' => 'someone@example.com','param1' => 'dummy1'),
 					array('to' => 'mno@gmail.com', 'param1' => 'dummy2')
 					));
 

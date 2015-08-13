@@ -50,7 +50,6 @@ if (!isset($_TEMPLATE_EDIT_)) {
 		</div>
 			<div class="col-md-12">
 				<h3>Edit Template</h3>
-				<a class="btn btn-warning button-delete pull-right" href="#" role="button" data-toggle="modal" data-target="#instructions">How to add links</a>
 				<form role="form" id="edit-template">
 					<div class="form-group" style="display: none;">
 	    				<input type="text" class="form-control" id="template-id" name="template-id" value=<?php echo $id ?> style="width: 40%; min-width: 200px">

@@ -16,7 +16,6 @@ class api
 {	
 	private $api_code;
 	private $mail_id;
-	private $api_id;
 	private $api_params;
 	private $template_id;
 	private $to;
@@ -24,18 +23,21 @@ class api
 	private $keys;
 	public $err;
 	public $state = false;
-
-	public function __construct($api_code, $parameters, $mail_id) {
+	public function __construct($api_code, $parameters,$mail_id)
+	{
 		$this->api_code = $api_code;
 		$this->mail_id = $mail_id;
-		if(isset($parameters['to'])) {	
+		if(isset($parameters['to']))
+		{	
 			$this->to = $parameters['to'];
 			foreach ($parameters as $key => $value) {
 				if($key!='to')
 					$this->api_params[$key] = $value;
 			}
 			$this->state = true;
-		} else {
+		}
+		else
+		{
 			$this->err = "'to' parameter not defined.";
 			$this->state = false;
 		}
@@ -43,17 +45,21 @@ class api
 	}
 
 	//function to check if api call is correct
-	public function validate_call() {
-		if($this->state == true) {
+	public function validate_call()
+	{
+		if($this->state == true)
+		{
 			$this->state = false;
 			//get the template for this api
 			$result = database::SQL("SELECT `id`,`template_id` from `api` where `code` = ?",array('s',$this->api_code));
-			if(!empty($result)) {
+			if(!empty($result))
+			{
 				$this->api_id = $result[0]['id'];
 				$this->template_id = $result[0]['template_id'];
 				//now get the keys
 				$result = database::SQL("SELECT `name` from `api_params` where `template_id` = ?",array('i',$this->template_id));
-				if(!empty($result)) {
+				if(!empty($result))
+				{
 					foreach ($result as $value) {
 						$success = true;
 						$temp = trim($value['name'],"{}");
@@ -83,7 +89,8 @@ class api
 
 
 	//function to replace parameters in template with their values
-	public function replace_params_links() {
+	public function replace_params_links()
+	{
 		if($this->state == false)
 			return NULL;
 		//get template text
@@ -94,20 +101,18 @@ class api
 			$this->response =  str_replace("{{".$key."}}", $value,$this->response);
 		}
 		//replace the links
-		$baseURL = API_BASE_URL;
-		$result = database::SQL("SELECT `id` , `url` ,`hash` FROM `links` WHERE `template_id` = ? LIMIT 1" , array('i' , $this->template_id));
+		$baseURL = "localhost/Mail-Management-Tool/links/index.php";
+		$result = database::SQL("SELECT `id` , `url` FROM `links` WHERE `template_id` = ? LIMIT 1" , array('i' , $this->template_id));
 		if(!empty($result))
 		{
 			foreach ($result as $value) {
-				//hash for the particular link
-				$hash1 = $value['hash'];
 				$link_id = $value['id'];
-				//generate link_suffix for this link - >(mail id)
-				$hash2 = login::getHash(16);
+				//generate link_hash for this link
+				$hash = login::getHash(16);
 				//store the hash
-				$result = database::SQL("INSERT INTO `link_suffix` (`mail_id` , `link_id` , `hash`) VALUES (? , ? , ? )" , array('iis' , $this->mail_id , $link_id , $hash2));
-				//concatenate the hash
-				$url =  $baseURL.'?url='.$hash1 . $hash2;
+				$result = database::SQL("INSERT INTO `link_hash` (`mail_id` , `link_id` , `hash`) VALUES (? , ? , ? )" , array('iis' , $this->mail_id , $link_id , $hash));
+				//generate url with hash
+				$url =  $baseURL.'?url='.$hash;
 				//replace this url
 				$this->response =  str_replace($value['url'], $url,$this->response);
 			

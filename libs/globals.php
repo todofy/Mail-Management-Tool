@@ -53,8 +53,6 @@ if (!isset($_DEF_GLOBALS_)) {
 	define('SALT', 'namak');
 	define('REMEMBER_ME_COOKIE', 'remember');
 
-	define('API_BASE_URL', 'localhost/Mail-Management-Tool/links/index.php');
-
 	// --- global function from now
 	function redirect_to( $location = NULL ) {
 		if ($location != NULL) {

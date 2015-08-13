@@ -15,7 +15,7 @@ use PhpAmqpLib\Message\AMQPMessage;
 database::Start();
 
 $output = array(
-	'error' => 'false',
+	'error' => false,
 	'message'=>''
 	);
 
@@ -43,7 +43,7 @@ $payload = $data['payload'];
 $result = database::SQL("SELECT `id` FROM `admin` WHERE `secret` = ? LIMIT 1",array('s',$secret_key));
 if(empty($result)){
 	//report error and revert back or exit
-	$output['error'] = 'true';
+	$output['error'] = true;
 	$output['message'] = 'Non existent secret key.';
 	echo json_encode($output);
 	exit;
@@ -51,7 +51,7 @@ if(empty($result)){
 $result = database::SQL("SELECT `id` FROM `api` WHERE `code` = ? LIMIT 1",array('s',$api_code));
 if(empty($result)){
 	//report error and revert back or exit
-	$output['error'] = 'true';
+	$output['error'] = true;
 	$output['message'] = 'Non existent API.';
 	echo json_encode($output);
 	exit;
@@ -86,7 +86,7 @@ for ($i=0; $i < count($result); $i++) {
 $channel->close();
 $connection->close();
 
-$output['error'] = 'false';
+$output['error'] = false;
 $output['message'] = 'Campaign started with campaign_id: '.$campaign_id;
 echo json_encode($output);
 

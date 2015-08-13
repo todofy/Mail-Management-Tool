@@ -49,7 +49,6 @@ if (!isset($_TEMPLATE_ADD_)) {
 			</ol>
 			<div class="col-md-12">
 				<h3>Create Template</h3>
-				<a class="btn btn-warning button-delete pull-right" href="#" role="button" data-toggle="modal" data-target="#instructions">How to add links</a>
 				<form role="form" id="create-template">
 					<div class="form-group">
 	    				<label for="template-name"><h4>Template Name</h4></label>

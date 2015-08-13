@@ -28,7 +28,7 @@
             <p style="color:red">
               <?php
               if(isset($err))
-                echo $err; 
+              echo $err; 
               ?>
             </p>
           </label>

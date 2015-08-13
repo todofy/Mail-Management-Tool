@@ -31,7 +31,7 @@
 		$api_call = rtrim($api_call,"&");
 
 		//generate php example
-		$php_example = '...*code*...';
+		$php_example ='...*code*...';
 		$php_example = $php_example.'<br>';
 		$php_example = $php_example.'$api = new api("secret_key","'.$api_name.'",';
 		$php_example = $php_example.'<br>';

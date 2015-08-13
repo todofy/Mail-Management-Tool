@@ -9,26 +9,24 @@ include __DIR__ .'/../libs/database.php';
 
 //get the hashed url
 $hashed_url = $_GET['url'];
-$hash1 = substr($hashed_url , 0 , 16);
-$hash2 = substr($hashed_url , 17 , 16);
 
-//verify the hashes
-$result = database::SQL("SELECT `id` , `url` , `template_id` FROM `links` WHERE `hash` = ? LIMIT 1" , array('s' , $hash1));
+//verify the hash
+$result = database::SQL("SELECT `link_id` , `mail_id` FROM `link_hash` WHERE `hash` = ? LIMIT 1" , array('s' , $hashed_url));
 if(empty($result))
 {
 	//this link does not exist in the template
 	//do something
+	redirect_to('http://localhost/Mail-Management-Tool/_404.php');
 }
 else
 {
-	$id = $result[0]['id'];
-	$url = $result[0]['url'];
-	$template_id = $result[0]['template_id'];
-	//increment its counter as a link 
-	$result = database::SQL("UPDATE `links` set clicks = clicks+1 WHERE `id` = ?" , array('i' , $id)); 
-	//increment the counter for the particular mail
-	//do something
+	$link_id = $result[0]['link_id'];
+	$mail_id = $result[0]['mail_id'];
+	//increment its click counter
+	$result = database::SQL("UPDATE `link_hash` SET `clicks` = `clicks`+1 WHERE `link_id` = ? AND `mail_id` = ?" , array('ii' , $link_id, $mail_id)); 
 
 	//now redirect to the original link
+	$result = database::SQL("SELECT `url` FROM `links` WHERE `id`=? LIMIT 1",array('i',$link_id));
+	$url = $result[0]['url'];
 	redirect_to($url);
 }

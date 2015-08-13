@@ -13,7 +13,7 @@
 		$error = true;
 	}
 	else{
-		if($_GET['err'] == 'true'){
+		if($_GET['err']){
 			$res = $_GET['msg'];
 			$error = true;
 		}
