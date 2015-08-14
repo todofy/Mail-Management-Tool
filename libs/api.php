@@ -38,7 +38,7 @@ class api
 		}
 		else
 		{
-			$this->err = "'to' parameter not defined.";
+			$this->err = 2;
 			$this->state = false;
 		}
 				
@@ -77,13 +77,13 @@ class api
 						{
 							$this->state = true;
 						}
-						else $this->err = "Check the number of parameters.";
+						else $this->err = 3;
 					}
-					else $this->err = "Wrong keys passed.";							
+					else $this->err = 3;							
 				}
-				else $this->err = "Parameters not found.";
+				else $this->err = 4;
 			}
-			else $this->err = "Template for api does not exist.";
+			else $this->err = 4;
 		}
 	}
 
