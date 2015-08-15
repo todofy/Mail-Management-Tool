@@ -12,11 +12,7 @@ use PhpAmqpLib\Connection\AMQPConnection;
 $connection = new AMQPConnection('localhost', 5672, 'guest', 'guest');
 $channel = $connection->channel();
 
-$channel->exchange_declare('mail', 'direct', false, false, false);
-
-list($queue_name, ,) = $channel->queue_declare("", false, false, true, false);
-
-$channel->queue_bind($queue_name, 'mail', 'API');
+$channel->queue_declare('mail', false, true, false, false);
 
 echo ' [*] Waiting for mail ids. To exit press CTRL+C', "\n";
 
@@ -79,7 +75,7 @@ $callback = function($message){
 };
 
 $channel->basic_qos(null, 1, null);
-$channel->basic_consume($queue_name, '', false, true, false, false, $callback);
+$channel->basic_consume('mail', '', false, false, false, false, $callback);
 
 while(count($channel->callbacks)) {
     $channel->wait();
