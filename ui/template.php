@@ -45,7 +45,7 @@ if (!isset($_CODE_TEMPLATE_)) {
 						<th class="col-md-1"><center>Links</center></th>
 						<th class="col-md-2"><center>Created On</center></th>
 						<th class="col-md-2"><center>Last Updated</center></th>
-						<th class="col-md-3">Actions</th>
+						<th class="col-md-3 pull-right">Actions</th>
 					</tr>
 					<?php
 						foreach ($templates as $value) {
@@ -58,7 +58,7 @@ if (!isset($_CODE_TEMPLATE_)) {
 							echo '<td><center>'.$result[0]['links'].'</center></td>';
 							echo '<td><center>' .date("D, d M 20y", $value['created_on']).'<br>'.date("h:i:s A", $value['created_on']).'</center></td>';
 							echo '<td><center>' .date("D, d M 20y", $value['last_updated']).'<br>'.date("h:i:s A", $value['last_updated']).'</center></td>';
-							echo '<td>';
+							echo '<td class="pull-right">';
 								echo '<a class="btn btn-info button-view" href="#" role="button" data-toggle="modal" data-target="#preview" id='.$value['id'].'>View</a> ';
 								$edit = "template_edit.php?id=".$value['id'];
 								echo '<a class="btn btn-primary button-edit" href='.$edit.' role="button" id='.$value['id'].'>Edit</a> ';

@@ -44,7 +44,7 @@ if (!isset($_CODE_API_)) {
 						<th class="col-md-3">Name</th>
 						<th class="col-md-2">Template Used</th>
 						<th class="col-md-2"><center>Created On</center></th>
-						<th class="col-md-3">Actions</th>
+						<th class="col-md-3 pull-right">Actions</th>
 					</tr>
 					<?php
 						foreach ($apis as $value) {
@@ -54,7 +54,7 @@ if (!isset($_CODE_API_)) {
 							echo '<td>' .$value['name'] .'</td>';
 							echo '<td>' .$value['template_name'] .'</td>';
 							echo '<td><center>' .date("D, d M 20y", $value['created_on']).'<br>'.date("h:i:s A", $value['created_on']).'</center></td>';
-							echo '<td>';
+							echo '<td class="pull-right">';
 								$view = "api_view.php?id=".$value['id'];
 								echo '<a class="btn btn-info button-view" href='.$view.' role="button" id='.$value['id'].'>View</a> ';
 								$edit = "api_edit.php?id=".$value['id'];

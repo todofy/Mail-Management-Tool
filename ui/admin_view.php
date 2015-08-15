@@ -46,7 +46,7 @@ if (!isset($_ADMIN_VIEW_)) {
 						<th class="col-md-4">Email</th>
 						<th class="col-md-2"><center>Campaigns Started</center></th>
 						<th class="col-md-2"><center>Last Login</center></th>
-						<th class="col-md-3">Actions</th>
+						<th class="col-md-3 pull-right">Actions</th>
 					</tr>
 					<?php
 						foreach ($admins as $value) {
@@ -59,7 +59,7 @@ if (!isset($_ADMIN_VIEW_)) {
 								echo '<td><center>' .date("D, d M 20y", $value['last_login']).'<br>'.date("h:i:s A", $value['last_login']).'</center></td>';
 							else
 								echo '<td><center> --- <center></td>';
-							echo '<td>';
+							echo '<td class="pull-right">';
 							if (isset($newuser->access[EDIT_ADMIN]) && $value['id']!=$id) {
 								$add = "admin_edit.php?id=".$value['id'];
 								echo '<a class="btn btn-primary button-edit" href='.$add.' role="button" id='.$value['id'].'>Edit</a> ';
