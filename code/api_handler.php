@@ -18,7 +18,8 @@
 			$error = true;
 		}
 		else{
-			$res = $_GET['msg'];
+			$campaign_id = $_GET['msg'];
+			$res = 'Campaign started with campaign_id: <a href="campaign_view.php?id='.$campaign_id.'">'.$campaign_id.'</a>';
 			$error = false;	
 		}	
 	}

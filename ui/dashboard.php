@@ -35,9 +35,10 @@ if (!isset($_CODE_DASHBOARD_)) {
 				<table class="table">
 					<tr>
 						<th class="col-md-1">#ID</th>
-						<th class="col-md-4">Related Admin</th>
+						<th class="col-md-3">Related Admin</th>
 						<th class="col-md-1"><center>API Code</center></th>
 						<th class="col-md-1"><center>Total mails</center></th>
+						<th class="col-md-1"><center>Mails processed</center></th>
 						<th class="col-md-1"><center>Link clicks</center></th>
 						<th class="col-md-2"><center>Started On</center></th>
 						<th class="col-md-2"><center>Finished On</center></th>
@@ -49,6 +50,7 @@ if (!isset($_CODE_DASHBOARD_)) {
 							echo '<td>' .$value['email'] .'</td>';
 							echo '<td><center>' .$value['api_code'] .'</center></td>';
 							echo '<td><center>' .$value['payload_length'] .'</center></td>';
+							echo '<td><center>' .$value['mails_processed'] .'</center></td>';
 							echo '<td><center>' .$value['clicks'] .'</center></td>';
 							echo '<td><center>' .date("D, d M 20y", $value['time_started']) .'</center></td>';
 							if($value['time_finished'] != null)

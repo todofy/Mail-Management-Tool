@@ -23,6 +23,17 @@ if (!isset($_CODE_HEADER_)) {
 			<a href="#">Warnings<span class="header-new-feature">2</span></a>
 		</nav>
 
+		<form class="navbar-form" role="search" id="search">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search..." size="50">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+        </form>
+
 
 		<div class="header-user-menu">
 			<span class="glyphicon glyphicon-cog"></span>

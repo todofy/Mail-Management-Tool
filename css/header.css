@@ -91,8 +91,9 @@ header.push{
 /* The user menu */
 
 .header-user-dropdown .header-limiter .header-user-menu{
-	position: relative;
-	float:right;
+	position: absolute;
+	right: 20px;
+	margin-top: -3px;
 	background-color:#0D0D0D;
 	width:75px;
 	height:40px;
@@ -155,7 +156,13 @@ header.push{
 	right:10px;
 }
 
-
+#search{
+	float: right;
+	margin-right: 100px;
+	margin-top: 0px;
+	padding: 0;
+	width: 30%;
+}
 
 @media all and (max-width: 800px) {
 

@@ -79,15 +79,16 @@ for($i=0; $i<$payload_length; $i++) {
 $result = database::SQL("SELECT `id` FROM `mail` WHERE `campaign_id`=?",array('s',$campaign_id));
 for ($i=0; $i < count($result); $i++) { 
 	$mail_id = $result[$i]['id'];
-	$message = new AMQPMessage($mail_id);
+	$message = new AMQPMessage($mail_id,array('delivery_mode' => 2));
 	$channel->basic_publish($message, 'mail', 'API');
+	$result = database::SQL("UPDATE `campaign` SET `payload_sent`=`payload_sent`+1 WHERE `id`=?",array('s',$campaign_id));
 }
 
 $channel->close();
 $connection->close();
 
 $output['error'] = false;
-$output['message'] = 'Campaign started with campaign_id: '.$campaign_id;
+$output['message'] = $campaign_id;
 echo json_encode($output);
 
 exit;
