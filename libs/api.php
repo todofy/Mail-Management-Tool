@@ -30,15 +30,22 @@ class api
 		if(isset($parameters['to']))
 		{	
 			$this->to = $parameters['to'];
-			foreach ($parameters as $key => $value) {
-				if($key!='to')
-					$this->api_params[$key] = $value;
+			$result = database::SQL("SELECT `user_id` FROM `unsubscribed` WHERE `email`=? LIMIT 1",array('s',$this->to));
+			if(!empty($result)){
+				$this->err = 4;
+				$this->state = false;
 			}
-			$this->state = true;
+			else{
+				foreach ($parameters as $key => $value) {
+					if($key!='to')
+						$this->api_params[$key] = $value;
+				}
+				$this->state = true;
+			}
 		}
 		else
 		{
-			$this->err = 2;
+			$this->err = 3;
 			$this->state = false;
 		}
 				
@@ -77,13 +84,13 @@ class api
 						{
 							$this->state = true;
 						}
-						else $this->err = 3;
+						else $this->err = 2;
 					}
-					else $this->err = 3;							
+					else $this->err = 2;							
 				}
-				else $this->err = 4;
+				else $this->err = 5;
 			}
-			else $this->err = 4;
+			else $this->err = 5;
 		}
 	}
 
@@ -117,7 +124,10 @@ class api
 				$this->response =  str_replace($value['url'], $url,$this->response);
 			
 			}
-		}	
+		}
+		$unsub_URL = "localhost/Mail-Management-Too/unsubscription.php";
+		$this->response .= "\n";
+		$this->response .= '<a href="'.$unsub_URL.'?id='.$this->mail_id.'">Unsubscribe from further mails.</a>';	
 		return $this->response;
 	}
 

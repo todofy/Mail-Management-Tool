@@ -23,6 +23,7 @@ if (!isset($_API_HANDLER_)) {
 	<div id="content-wrapper">
 		<div class="row">
 				<ol class="breadcrumb">
+				<li><a href="dashboard.php">Home</a></li>
 				    <li class="active">API Handler</li>
 				</ol>
 			<div class="col-md-12">
