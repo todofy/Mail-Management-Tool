@@ -14,7 +14,7 @@ $channel = $connection->channel();
 
 $channel->queue_declare('mailing_queue', false, true, false, false);
 
-echo ' [*] Waiting for mail ids. To exit press CTRL+C', "\n";
+echo ' [*] Waiting for mail ids. To exit press CTRL+C';
 
 //function to generate actual mail and send
 $callback = function($message){

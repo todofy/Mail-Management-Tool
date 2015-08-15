@@ -63,7 +63,7 @@ $time_started = time();
 $campaign_id = login::getHash(10);
 $result = database::SQL("INSERT INTO `campaign`(`id`,`secret_key`,`api_code`,`sender`,`subject`,`payload_length`,`time_started`) VALUES(?,?,?,?,?,?,?)",array('sssssii',$campaign_id,$secret_key,$api_code,$from,$subject,$payload_length,$time_started));
 
-//declare exchange
+//declare queue
 $connection = new AMQPConnection('localhost', 5672, 'guest', 'guest');
 $channel = $connection->channel();
 $channel->queue_declare('mailing_queue', false, true, false, false);
