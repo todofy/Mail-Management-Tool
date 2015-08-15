@@ -7,9 +7,10 @@ include __DIR__ .'/libs/user.php';
 
 $data = array('secret_key' => '7be1f7a994a0cb2d9921a19fef9c52ae', 'api_code' => '12aed', 'subject' => 'Test mail','from' => 'abc@gmail.com',
 				'payload' => array(
+					array('to' => 'sertywwe@example.com','param1' => 'dummy0'),
 					array('to' => 'someone@example.com','param1' => 'dummy1'),
 					array('param1' => 'dummy2'),
-					array('to' => 'mert@gmail.com', 'param2' => 'dummy3')
+					array('to' => 'merty@gmail.com', 'param2' => 'dummy3')
 					));
 
 $jsonData = json_encode($data);
