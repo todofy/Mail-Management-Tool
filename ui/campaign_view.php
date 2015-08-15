@@ -61,6 +61,15 @@ if (!isset($_CAMPAIGN_VIEW_)) {
 										echo '<td style="color:green;">' .$value['description'] .'</td>';
 									else
 										echo '<td style="color:red;">' .$value['description'] .'</td>';
+									$result = database::SQL("SELECT SUM(`clicks`) AS `clicks` FROM `link_hash` WHERE `mail_id` = ? " , array('i' , $value['id']));
+									if(!isset($result[0]['clicks']))
+									{
+										$value['clicks'] = '-';
+									}
+									else
+									{
+										$value['clicks'] = $result[0]['clicks'];
+									}
 									echo '<td><center>' .$value['clicks'] .'</center></td>';
 									echo '<td><center>' .date("D, d M 20y", $value['time_started']) .'</center></td>';
 									if($value['time_finished'] != null)
