@@ -77,8 +77,8 @@ for($i=0; $i<$payload_length; $i++) {
 
 //push the mail ids into message queue according to current campaign id
 $result = database::SQL("SELECT `id` FROM `mail` WHERE `campaign_id`=?",array('s',$campaign_id));
-for ($i=0; $i < count($result); $i++) { 
-	$mail_id = $result[$i]['id'];
+foreach($result as $value) { 
+	$mail_id = $value['id'];
 	$message = new AMQPMessage($mail_id,array('delivery_mode' => 2));
 	$channel->basic_publish($message, 'mail', 'API');
 	$result = database::SQL("UPDATE `campaign` SET `payload_sent`=`payload_sent`+1 WHERE `id`=?",array('s',$campaign_id));
