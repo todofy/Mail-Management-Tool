@@ -52,10 +52,8 @@ if (!isset($_CODE_TEMPLATE_)) {
 							echo '<tr>';
 							echo '<td>' .$value['id'] .'</td>';
 							echo '<td>' .$value['name'] .'</td>';
-							$result = database::SQL("SELECT COUNT(`name`) AS `parameters` FROM `api_params` WHERE `template_id`=?",array('i',$value['id']));
-							echo '<td><center>'.$result[0]['parameters'].'</center></td>';
-							$result = database::SQL("SELECT COUNT(`url`) AS `links` FROM `links` WHERE `template_id`=?",array('i',$value['id']));
-							echo '<td><center>'.$result[0]['links'].'</center></td>';
+							echo '<td><center>'.$value['parameters'].'</center></td>';
+							echo '<td><center>'.$value['links'].'</center></td>';
 							echo '<td><center>' .date("D, d M 20y", $value['created_on']).'<br>'.date("h:i:s A", $value['created_on']).'</center></td>';
 							echo '<td><center>' .date("D, d M 20y", $value['last_updated']).'<br>'.date("h:i:s A", $value['last_updated']).'</center></td>';
 							echo '<td class="pull-right">';

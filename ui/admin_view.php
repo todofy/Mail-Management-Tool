@@ -53,8 +53,7 @@ if (!isset($_ADMIN_VIEW_)) {
 							echo '<tr>';
 							echo '<td>' .$value['id'] .'</td>';
 							echo '<td>' .$value['email'] .'</td>';
-							$result = database::SQL("SELECT COUNT(`campaign`.`id`) AS `campaigns` FROM `campaign`,`admin` WHERE `campaign`.`secret_key`=`admin`.`secret` AND `admin`.`id`=?",array('i',$value['id']));
-							echo '<td><center>'.$result[0]['campaigns'].'</center></td>';
+							echo '<td><center>'.$value['campaigns'].'</center></td>';
 							if($value['last_login'] != null)
 								echo '<td><center>' .date("D, d M 20y", $value['last_login']).'<br>'.date("h:i:s A", $value['last_login']).'</center></td>';
 							else
