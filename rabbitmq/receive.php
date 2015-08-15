@@ -12,7 +12,7 @@ use PhpAmqpLib\Connection\AMQPConnection;
 $connection = new AMQPConnection('localhost', 5672, 'guest', 'guest');
 $channel = $connection->channel();
 
-$channel->queue_declare('mail', false, true, false, false);
+$channel->queue_declare('mailing_queue', false, true, false, false);
 
 echo ' [*] Waiting for mail ids. To exit press CTRL+C', "\n";
 
@@ -55,7 +55,6 @@ $callback = function($message){
 			echo $api->err;
 			$result = database::SQL("UPDATE `mail` SET `status`=? WHERE `id`=?",array('ii',$api->err,$mail_id));
 			$result = database::SQL("UPDATE `campaign` SET `mails_processed`=`mails_processed`+1 WHERE `id`=?",array('s',$campaign_id));
-			exit;
 		}
 		else
 		{
@@ -71,11 +70,12 @@ $callback = function($message){
 			$result = database::SQL("UPDATE `mail` SET `time_finished`=?,`status`=1 WHERE `id`=?",array('ii',$time_finished,$mail_id));
 			$result = database::SQL("UPDATE `campaign` SET `mails_processed`=`mails_processed`+1 WHERE `id`=?",array('s',$campaign_id));
 		}
-	}	
+	}
+	$message->delivery_info['channel']->basic_ack($message->delivery_info['delivery_tag']);	
 };
 
 $channel->basic_qos(null, 1, null);
-$channel->basic_consume('mail', '', false, false, false, false, $callback);
+$channel->basic_consume('mailing_queue', '', false, false, false, false, $callback);
 
 while(count($channel->callbacks)) {
     $channel->wait();

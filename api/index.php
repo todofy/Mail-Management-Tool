@@ -66,7 +66,7 @@ $result = database::SQL("INSERT INTO `campaign`(`id`,`secret_key`,`api_code`,`se
 //declare exchange
 $connection = new AMQPConnection('localhost', 5672, 'guest', 'guest');
 $channel = $connection->channel();
-$channel->queue_declare('mail', false, true, false, false);
+$channel->queue_declare('mailing_queue', false, true, false, false);
 
 //generate new mail ids for each entry in payload
 for($i=0; $i<$payload_length; $i++) {
@@ -79,8 +79,8 @@ for($i=0; $i<$payload_length; $i++) {
 $result = database::SQL("SELECT `id` FROM `mail` WHERE `campaign_id`=?",array('s',$campaign_id));
 foreach($result as $value) { 
 	$mail_id = $value['id'];
-	$message = new AMQPMessage($mail_id, array('delivery_mode' => 2));
-	$channel->basic_publish($message, '', 'mail');
+	$message = new AMQPMessage($mail_id);
+	$channel->basic_publish($message, '', 'mailing_queue');
 	$result = database::SQL("UPDATE `campaign` SET `payload_sent`=`payload_sent`+1 WHERE `id`=?",array('s',$campaign_id));
 }
 
