@@ -21,6 +21,8 @@ if (!isset($_DEF_GLOBALS_)) {
 	define('SALT_CSRF_TOKEN', md5('shiro'));
 	define('BASE_URL', '');
 	$BASE_URL = BASE_URL;
+	define('API_LINK_URL', 'localhost/Mail-Management-Tool/links/index.php');
+	define('UNSUBSCRIBE_URL', 'localhost/Mail-Management-Tool/unsubscription.php');
 
 	// -- define logging related logs
 	define('LOG_FILE_NORMAL', __DIR__ .'/../logs/log_normal.log');

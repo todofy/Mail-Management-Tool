@@ -22,11 +22,11 @@ echo ' [*] Tracker for unprocessed mail ids is on. To exit press CTRL+C';
 
 while(true){
 	$result = database::SQL("SELECT `id`,`payload_sent`,`mails_processed` FROM `campaign`");
-	for($i = 0; $i < count($result); $i++){
+	foreach($result as $value){
 		//check if all mails in the campaign are sent or not
-		$campaign_id = $result[$i]['id'];
-		$payload_sent = $result[$i]['payload_sent'];
-		$mails_processed = $result[$i]['mails_processed'];
+		$campaign_id = $value['id'];
+		$payload_sent = $value['payload_sent'];
+		$mails_processed = $value['mails_processed'];
 		if($mails_processed == $payload_sent){
 			//update the time_finished for the campaign
 			$time_finished = time();

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 15, 2015 at 07:22 AM
+-- Generation Time: Aug 15, 2015 at 09:46 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`id`, `email`, `secret`, `password`, `salt`, `cookie`, `last_login`) VALUES
-(8, 'anshumanpattanayak@gmail.com', '7be1f7a994a0cb2d9921a19fef9c52ae', 'e5b725fd14b675a4085766f70883ba68', 'namak', '86a3b9ed22fd6e24436f02c5a62cd541', 1439565191),
+(8, 'anshumanpattanayak@gmail.com', '7be1f7a994a0cb2d9921a19fef9c52ae', 'e5b725fd14b675a4085766f70883ba68', 'namak', '86a3b9ed22fd6e24436f02c5a62cd541', 1439628825),
 (10, 'zsonix27@gmail.com', '182153e6d75f87ee45aa07434200f69c', 'e5b725fd14b675a4085766f70883ba68', 'namak', '', 1436965833),
 (11, 'safsa@sdfds.cdfo', '516ab040424996df7378ab11d365681d', '6d8a256625c64ecd6f4b9b73403588e5', '07f82b', '', NULL);
 
@@ -174,7 +174,12 @@ CREATE TABLE IF NOT EXISTS `campaign` (
 --
 
 INSERT INTO `campaign` (`id`, `secret_key`, `api_code`, `sender`, `subject`, `payload_length`, `payload_sent`, `mails_processed`, `time_started`, `time_finished`) VALUES
-('adddd31423', '7be1f7a994a0cb2d9921a19fef9c52ae', '12aed', 'abc@gmail.com', 'Test mail', 3, 3, 3, 1439622944, 1439623342);
+('15668c0ca5', '7be1f7a994a0cb2d9921a19fef9c52ae', '12aed', 'abc@gmail.com', 'Test mail', 3, 3, 3, 1439628814, 1439632009),
+('402bc66229', '7be1f7a994a0cb2d9921a19fef9c52ae', '12aed', 'abc@gmail.com', 'Test mail', 3, 3, 3, 1439628845, 1439632009),
+('7bacf21788', '7be1f7a994a0cb2d9921a19fef9c52ae', '12aed', 'abc@gmail.com', 'Test mail', 4, 4, 4, 1439629879, 1439632009),
+('83e83c784e', '7be1f7a994a0cb2d9921a19fef9c52ae', '12aed', 'abc@gmail.com', 'Test mail', 3, 3, 3, 1439628888, 1439632009),
+('adddd31423', '7be1f7a994a0cb2d9921a19fef9c52ae', '12aed', 'abc@gmail.com', 'Test mail', 3, 3, 3, 1439622944, 1439632009),
+('b65c6ff481', '7be1f7a994a0cb2d9921a19fef9c52ae', '12aed', 'abc@gmail.com', 'Test mail', 3, 3, 3, 1439624172, 1439632009);
 
 -- --------------------------------------------------------
 
@@ -228,7 +233,12 @@ CREATE TABLE IF NOT EXISTS `link_hash` (
 --
 
 INSERT INTO `link_hash` (`mail_id`, `link_id`, `hash`, `clicks`) VALUES
-(183, 4, '1ba8c1d555a61d25', 0);
+(183, 4, '1ba8c1d555a61d25', 0),
+(186, 4, '9010924dff644fd6', 0),
+(189, 4, 'e13e495e7b74fa23', 0),
+(192, 4, 'b75333b6b520bbef', 0),
+(195, 4, '077c0194b6d233a4', 0),
+(198, 4, 'dab956188e951f08', 0);
 
 -- --------------------------------------------------------
 
@@ -245,7 +255,7 @@ CREATE TABLE IF NOT EXISTS `mail` (
   `status` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `campaign_id` (`campaign_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=186 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=202 ;
 
 --
 -- Dumping data for table `mail`
@@ -254,7 +264,23 @@ CREATE TABLE IF NOT EXISTS `mail` (
 INSERT INTO `mail` (`id`, `campaign_id`, `payload`, `time_started`, `time_finished`, `status`) VALUES
 (183, 'adddd31423', '{"to":"someone@example.com","param1":"dummy1"}', 1439623271, 1439623271, 1),
 (184, 'adddd31423', '{"param1":"dummy2"}', 1439623271, NULL, 3),
-(185, 'adddd31423', '{"to":"mert@gmail.com","param2":"dummy3"}', 1439623271, NULL, 2);
+(185, 'adddd31423', '{"to":"mert@gmail.com","param2":"dummy3"}', 1439623271, NULL, 2),
+(186, 'b65c6ff481', '{"to":"someone@example.com","param1":"dummy1"}', 1439628572, 1439628572, 1),
+(187, 'b65c6ff481', '{"param1":"dummy2"}', 1439628572, NULL, 3),
+(188, 'b65c6ff481', '{"to":"mert@gmail.com","param2":"dummy3"}', 1439628572, NULL, 2),
+(189, '15668c0ca5', '{"to":"someone@example.com","param1":"dummy1"}', 1439628814, 1439628814, 1),
+(190, '15668c0ca5', '{"param1":"dummy2"}', 1439628814, NULL, 3),
+(191, '15668c0ca5', '{"to":"mert@gmail.com","param2":"dummy3"}', 1439628814, NULL, 2),
+(192, '402bc66229', '{"to":"someone@example.com","param1":"dummy1"}', 1439628845, 1439628845, 1),
+(193, '402bc66229', '{"param1":"dummy2"}', 1439628845, NULL, 3),
+(194, '402bc66229', '{"to":"mert@gmail.com","param2":"dummy3"}', 1439628845, NULL, 2),
+(195, '83e83c784e', '{"to":"someone@example.com","param1":"dummy1"}', 1439628889, 1439628889, 1),
+(196, '83e83c784e', '{"param1":"dummy2"}', 1439628889, NULL, 3),
+(197, '83e83c784e', '{"to":"mert@gmail.com","param2":"dummy3"}', 1439628889, NULL, 2),
+(198, '7bacf21788', '{"to":"sertywwe@example.com","param1":"dummy0"}', 1439629879, 1439629879, 1),
+(199, '7bacf21788', '{"to":"someone@example.com","param1":"dummy1"}', 1439629879, NULL, 4),
+(200, '7bacf21788', '{"param1":"dummy2"}', 1439629879, NULL, 3),
+(201, '7bacf21788', '{"to":"mert@gmail.com","param2":"dummy3"}', 1439629879, NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -264,7 +290,8 @@ INSERT INTO `mail` (`id`, `campaign_id`, `payload`, `time_started`, `time_finish
 
 CREATE TABLE IF NOT EXISTS `mail_status` (
   `type` int(11) NOT NULL,
-  `description` text NOT NULL
+  `description` text NOT NULL,
+  PRIMARY KEY (`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -272,12 +299,12 @@ CREATE TABLE IF NOT EXISTS `mail_status` (
 --
 
 INSERT INTO `mail_status` (`type`, `description`) VALUES
+(0, 'Mail yet to be processed.'),
 (1, 'Mail successfully sent to mailing server.'),
 (2, 'Wrong number or/and value of parameters passed.'),
 (3, '''to'' parameter not defined.'),
-(4, 'This email id has unsubscribed.'),
-(5, 'API or template for it doesn''t exist in the database.'),
-(0, 'Mail yet to be processed.');
+(4, 'This email id has been unsubscribed.'),
+(5, 'API or template for it doesn''t exist in the database.');
 
 -- --------------------------------------------------------
 
@@ -310,11 +337,19 @@ INSERT INTO `template` (`id`, `name`, `template`, `created_on`, `last_updated`) 
 --
 
 CREATE TABLE IF NOT EXISTS `unsubscribed` (
-  `user_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(200) NOT NULL,
   UNIQUE KEY `user_id_2` (`user_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `unsubscribed`
+--
+
+INSERT INTO `unsubscribed` (`user_id`, `email`) VALUES
+(1, 'someone@example.com'),
+(2, 'mert@gmail.com');
 
 --
 -- Constraints for dumped tables
@@ -337,12 +372,6 @@ ALTER TABLE `api_params`
 --
 ALTER TABLE `links`
   ADD CONSTRAINT `links_ibfk_1` FOREIGN KEY (`template_id`) REFERENCES `template` (`id`);
-
---
--- Constraints for table `unsubscribed`
---
-ALTER TABLE `unsubscribed`
-  ADD CONSTRAINT `unsubscribed_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `email` (`user_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

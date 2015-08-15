@@ -108,7 +108,7 @@ class api
 			$this->response =  str_replace("{{".$key."}}", $value,$this->response);
 		}
 		//replace the links
-		$baseURL = "localhost/Mail-Management-Tool/links/index.php";
+		$baseURL = API_LINK_URL;
 		$result = database::SQL("SELECT `id` , `url` FROM `links` WHERE `template_id` = ? LIMIT 1" , array('i' , $this->template_id));
 		if(!empty($result))
 		{
@@ -125,7 +125,7 @@ class api
 			
 			}
 		}
-		$unsub_URL = "localhost/Mail-Management-Too/unsubscription.php";
+		$unsub_URL = UNSUBSCRIBE_URL;
 		$this->response .= "\n";
 		$this->response .= '<a href="'.$unsub_URL.'?id='.$this->mail_id.'">Unsubscribe from further mails.</a>';	
 		return $this->response;
