@@ -38,20 +38,22 @@ if (!isset($_CODE_API_)) {
 		<div class="row">
 			<div class="col-md-12">
 				<table class="table">
-					<tr>
-						<th class="col-md-1">#ID</th>
-						<th class="col-md-2">Code</th>
+					<tr style="background-color: #E0E0E0;">
+						<th class="col-md-1"><center>#ID</center></th>
+						<th class="col-md-1">Code</th>
 						<th class="col-md-3">Name</th>
-						<th class="col-md-3">Created On</th>
+						<th class="col-md-2">Template Used</th>
+						<th class="col-md-2"><center>Created On</center></th>
 						<th class="col-md-3">Actions</th>
 					</tr>
 					<?php
 						foreach ($apis as $value) {
 							echo '<tr>';
-							echo '<td>' .$value['id'] .'</td>';
+							echo '<td><center>' .$value['id'] .'</center></td>';
 							echo '<td>' .$value['code'] .'</td>';
 							echo '<td>' .$value['name'] .'</td>';
-							echo '<td>' .date("D, d M 20y", $value['created_on']) .'</td>';
+							echo '<td>' .$value['template_name'] .'</td>';
+							echo '<td><center>' .date("D, d M 20y", $value['created_on']).'<br>'.date("h:i:s A", $value['created_on']).'</center></td>';
 							echo '<td>';
 								$view = "api_view.php?id=".$value['id'];
 								echo '<a class="btn btn-info button-view" href='.$view.' role="button" id='.$value['id'].'>View</a> ';

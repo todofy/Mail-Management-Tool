@@ -41,10 +41,11 @@ if (!isset($_ADMIN_VIEW_)) {
 			<div class="clearfix"></div>
 			<div class="col-md-12">
 				<table class="table">
-					<tr>
+					<tr style="background-color: #E0E0E0;">
 						<th class="col-md-1">#ID</th>
-						<th class="col-md-5">Email</th>
-						<th class="col-md-3">Last Login</th>
+						<th class="col-md-4">Email</th>
+						<th class="col-md-2"><center>Campaigns Started</center></th>
+						<th class="col-md-2"><center>Last Login</center></th>
 						<th class="col-md-3">Actions</th>
 					</tr>
 					<?php
@@ -52,10 +53,12 @@ if (!isset($_ADMIN_VIEW_)) {
 							echo '<tr>';
 							echo '<td>' .$value['id'] .'</td>';
 							echo '<td>' .$value['email'] .'</td>';
+							$result = database::SQL("SELECT COUNT(`campaign`.`id`) AS `campaigns` FROM `campaign`,`admin` WHERE `campaign`.`secret_key`=`admin`.`secret` AND `admin`.`id`=?",array('i',$value['id']));
+							echo '<td><center>'.$result[0]['campaigns'].'</center></td>';
 							if($value['last_login'] != null)
-								echo '<td>' .date("D, d M 20y", $value['last_login']) .'</td>';
+								echo '<td><center>' .date("D, d M 20y", $value['last_login']).'<br>'.date("h:i:s A", $value['last_login']).'</center></td>';
 							else
-								echo '<td> -NA- </td>';
+								echo '<td><center> --- <center></td>';
 							echo '<td>';
 							if (isset($newuser->access[EDIT_ADMIN]) && $value['id']!=$id) {
 								$add = "admin_edit.php?id=".$value['id'];

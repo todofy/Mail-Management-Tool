@@ -33,7 +33,7 @@ if (!isset($_CODE_DASHBOARD_)) {
 		<div class="row">
 			<div class="col-md-12">
 				<table class="table">
-					<tr>
+					<tr style="background-color: #E0E0E0;">
 						<th class="col-md-1">#ID</th>
 						<th class="col-md-3">Related Admin</th>
 						<th class="col-md-1"><center>API Code</center></th>
@@ -52,9 +52,9 @@ if (!isset($_CODE_DASHBOARD_)) {
 							echo '<td><center>' .$value['payload_length'] .'</center></td>';
 							echo '<td><center>' .$value['mails_processed'] .'</center></td>';
 							echo '<td><center>' .$value['clicks'] .'</center></td>';
-							echo '<td><center>' .date("D, d M 20y", $value['time_started']) .'</center></td>';
+							echo '<td><center>' .date("D, d M 20y", $value['time_started']).'<br>'.date("h:i:s A", $value['time_started']).'</center></td>';
 							if($value['time_finished'] != null)
-								echo '<td><center>' .date("D, d M 20y", $value['time_finished']) .'</center></td>';
+								echo '<td><center>' .date("D, d M 20y", $value['time_finished']).'<br>'.date("h:i:s A", $value['time_started']).'</center></td>';
 							else
 								echo '<td><center>In process</center></td>';
 							echo '</tr>';

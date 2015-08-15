@@ -38,11 +38,13 @@ if (!isset($_CODE_TEMPLATE_)) {
 		<div class="row">
 			<div class="col-md-12">
 				<table class="table">
-					<tr>
+					<tr style="background-color: #E0E0E0;">
 						<th class="col-md-1">#ID</th>
-						<th class="col-md-4">Name</th>
-						<th class="col-md-2">Created On</th>
-						<th class="col-md-2">Last Updated</th>
+						<th class="col-md-2">Name</th>
+						<th class="col-md-1"><center>Parameters</center></th>
+						<th class="col-md-1"><center>Links</center></th>
+						<th class="col-md-2"><center>Created On</center></th>
+						<th class="col-md-2"><center>Last Updated</center></th>
 						<th class="col-md-3">Actions</th>
 					</tr>
 					<?php
@@ -50,8 +52,12 @@ if (!isset($_CODE_TEMPLATE_)) {
 							echo '<tr>';
 							echo '<td>' .$value['id'] .'</td>';
 							echo '<td>' .$value['name'] .'</td>';
-							echo '<td>' .date("D, d M 20y", $value['created_on']) .'</td>';
-							echo '<td>' .date("D, d M 20y", $value['last_updated']) .'</td>';
+							$result = database::SQL("SELECT COUNT(`name`) AS `parameters` FROM `api_params` WHERE `template_id`=?",array('i',$value['id']));
+							echo '<td><center>'.$result[0]['parameters'].'</center></td>';
+							$result = database::SQL("SELECT COUNT(`url`) AS `links` FROM `links` WHERE `template_id`=?",array('i',$value['id']));
+							echo '<td><center>'.$result[0]['links'].'</center></td>';
+							echo '<td><center>' .date("D, d M 20y", $value['created_on']).'<br>'.date("h:i:s A", $value['created_on']).'</center></td>';
+							echo '<td><center>' .date("D, d M 20y", $value['last_updated']).'<br>'.date("h:i:s A", $value['last_updated']).'</center></td>';
 							echo '<td>';
 								echo '<a class="btn btn-info button-view" href="#" role="button" data-toggle="modal" data-target="#preview" id='.$value['id'].'>View</a> ';
 								$edit = "template_edit.php?id=".$value['id'];
