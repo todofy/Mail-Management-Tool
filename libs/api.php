@@ -100,8 +100,8 @@ class api
 		$baseURL = API_LINK_URL;
 		$result = database::SQL("SELECT `id` , `url` FROM `links` WHERE `template_id` = ?" , array('i' , $this->template_id));
 		if(!empty($result)) {
-			for ($i= 0; $i < count($result); $i++) {
-				$link_id = $result[$i]['id'];
+			foreach ($result as $value) {
+				$link_id = $value['id'];
 				//generate link_hash for this link
 				$hash = login::getHash(16);
 				//store the hash
@@ -109,7 +109,7 @@ class api
 				//generate url with hash
 				$url =  $baseURL.'?url='.$hash;
 				//replace this url
-				$this->response =  str_replace($result[$i]['url'], $url,$this->response);
+				$this->response =  str_replace($value['url'], $url,$this->response);
 			
 			}
 		}
