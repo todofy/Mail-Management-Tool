@@ -59,7 +59,7 @@ if (!isset($_SEARCH_VIEW_)) {
 								echo '<td>' .$value['email'] .'</td>';
 								echo '<td><center>'.$value['campaigns'].'</center></td>';
 								if($value['last_login'] != null)
-									echo '<td><center>' .date("D, d M 20y", $value['last_login']).'<br>'.date("h:i:s A", $value['last_login']).'</center></td>';
+									echo '<td><center>' .date("D, d M 20y", $value['last_login']).'<br>'.date("h:i:s A (e)", $value['last_login']).'</center></td>';
 								else
 									echo '<td><center> --- <center></td>';
 								echo '<td class="pull-right">';
@@ -108,9 +108,9 @@ if (!isset($_SEARCH_VIEW_)) {
 								echo '<td><center>' .$value['payload_length'] .'</center></td>';
 								echo '<td><center>' .$value['mails_processed'] .'</center></td>';
 								echo '<td><center>' .$value['clicks'] .'</center></td>';
-								echo '<td><center>' .date("D, d M 20y", $value['time_started']).'<br>'.date("h:i:s A", $value['time_started']).'</center></td>';
+								echo '<td><center>' .date("D, d M 20y", $value['time_started']).'<br>'.date("h:i:s A (e)", $value['time_started']).'</center></td>';
 								if($value['time_finished'] != null)
-									echo '<td><center>' .date("D, d M 20y", $value['time_finished']).'<br>'.date("h:i:s A", $value['time_started']).'</center></td>';
+									echo '<td><center>' .date("D, d M 20y", $value['time_finished']).'<br>'.date("h:i:s A (e)", $value['time_started']).'</center></td>';
 								else
 									echo '<td><center>In process</center></td>';
 								echo '</tr>';
