@@ -23,12 +23,10 @@ class api
 	private $keys;
 	public $err;
 	public $state = false;
-	public function __construct($api_code, $parameters,$mail_id)
-	{
+	public function __construct($api_code, $parameters,$mail_id) {
 		$this->api_code = $api_code;
 		$this->mail_id = $mail_id;
-		if(isset($parameters['to']))
-		{	
+		if(isset($parameters['to'])) {	
 			$this->to = $parameters['to'];
 			$result = database::SQL("SELECT `user_id` FROM `unsubscribed` WHERE `email`=? LIMIT 1",array('s',$this->to));
 			if(!empty($result)){
@@ -43,8 +41,7 @@ class api
 				$this->state = true;
 			}
 		}
-		else
-		{
+		else {
 			$this->err = 3;
 			$this->state = false;
 		}
@@ -52,36 +49,29 @@ class api
 	}
 
 	//function to check if api call is correct
-	public function validate_call()
-	{
-		if($this->state == true)
-		{
+	public function validate_call() {
+		if($this->state == true) {
 			$this->state = false;
 			//get the template for this api
 			$result = database::SQL("SELECT `id`,`template_id` from `api` where `code` = ?",array('s',$this->api_code));
-			if(!empty($result))
-			{
+			if(!empty($result)) {
 				$this->api_id = $result[0]['id'];
 				$this->template_id = $result[0]['template_id'];
 				//now get the keys
 				$result = database::SQL("SELECT `name` from `api_params` where `template_id` = ?",array('i',$this->template_id));
-				if(!empty($result))
-				{
+				if(!empty($result)) {
 					foreach ($result as $value) {
 						$success = true;
 						$temp = trim($value['name'],"{}");
 						$this->keys[] = $temp;
 						//to check whether the keys specified are correct
-						if(!isset($this->api_params[$temp]))
-						{
+						if(!isset($this->api_params[$temp])) {
 							$success = false;
 							break;
 						}
 					}
-					if($success)
-					{
-						if(count($this->keys) == count($this->api_params))
-						{
+					if($success) {
+						if(count($this->keys) == count($this->api_params)) {
 							$this->state = true;
 						}
 						else $this->err = 2;
@@ -96,8 +86,7 @@ class api
 
 
 	//function to replace parameters in template with their values
-	public function replace_params_links()
-	{
+	public function replace_params_links() {
 		if($this->state == false)
 			return NULL;
 		//get template text
@@ -110,10 +99,8 @@ class api
 		//replace the links
 		$baseURL = API_LINK_URL;
 		$result = database::SQL("SELECT `id` , `url` FROM `links` WHERE `template_id` = ?" , array('i' , $this->template_id));
-		if(!empty($result))
-		{
-			for ($i= 0; $i < count($result); $i++)
-			{
+		if(!empty($result)) {
+			for ($i= 0; $i < count($result); $i++) {
 				$link_id = $result[$i]['id'];
 				//generate link_hash for this link
 				$hash = login::getHash(16);

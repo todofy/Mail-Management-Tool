@@ -51,7 +51,7 @@ if (!isset($_DEF_LOGGING_)) {
 			else file_put_contents($filename, $data, FILE_APPEND);
 
 			if ($mail) {
-				$subject = 'EMERGENCY LOG TODO-CI';
+				$subject = 'EMERGENCY LOG MMT';
 				$message = $data;
 				$headers = 'From: webmaster@todo-ci.org' . "\r\n" .
     			'Reply-To: webmaster@todo-ci.org' . "\r\n" .
