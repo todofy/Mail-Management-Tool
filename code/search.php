@@ -8,6 +8,10 @@ $id = session::getUserID();
 $newuser = new user($id);
 
 $getKey = $_POST['key'];
+if(trim($getKey)=="")
+{
+	redirect_to("dashboard.php");
+}
 $search_key = "%".$getKey."%";
 
 //check for Admins in the database
