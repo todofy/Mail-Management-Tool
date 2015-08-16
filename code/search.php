@@ -32,10 +32,11 @@ if(!empty($result)) {
 
 //check for APIs in the database
 $search_api = array();
-$result = database::SQL("SELECT `api`.`id` AS `id`, `code` , `api`.`name` AS `name`, `template`.`name` AS `template_name`, `api`.`created_on` AS `created_on` FROM `api`, `template` WHERE `api`.`template_id`=`template`.`id` AND `code` LIKE ? OR `api`.`name` LIKE ? GROUP BY `api`.`id`" , array('ss' , $search_key , $search_key) );
+$result = database::SQL("SELECT `id`, `code` , `name`, `created_on` FROM `api` WHERE `code` LIKE ? OR `name` LIKE ?" , array('ss' , $search_key , $search_key) );
 if(!empty($result)) {
 	foreach ($result as $key => $value) {
-		$search_api[] = array('id'=> $value['id'] , 'code'=> $value['code'] , 'name' =>$value['name'], 'created_on'=>$value['created_on'], 'template_name'=>$value['template_name']); 
+		$template = database::SQL("SELECT `template`.`name` AS `name` FROM `api`,`template` WHERE `code`=? AND `api`.`template_id`=`template`.`id`",array('s',$value['code']));
+		$search_api[] = array('id'=> $value['id'] , 'code'=> $value['code'] , 'name' =>$value['name'], 'created_on'=>$value['created_on'], 'template_name'=>$template[0]['name']); 
 	}	
 }
 
