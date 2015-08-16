@@ -42,7 +42,7 @@ if (!isset($_ADMIN_VIEW_)) {
 			<div class="col-md-12">
 				<table class="table">
 					<tr style="background-color: #E0E0E0;">
-						<th class="col-md-1">#ID</th>
+						<th class="col-md-1"><center>#ID</center></th>
 						<th class="col-md-4">Email</th>
 						<th class="col-md-2"><center>Campaigns Started</center></th>
 						<th class="col-md-2"><center>Last Login</center></th>
@@ -51,11 +51,11 @@ if (!isset($_ADMIN_VIEW_)) {
 					<?php
 						foreach ($admins as $value) {
 							echo '<tr>';
-							echo '<td>' .$value['id'] .'</td>';
+							echo '<td><center>' .$value['id'] .'</center></td>';
 							echo '<td>' .$value['email'] .'</td>';
 							echo '<td><center>'.$value['campaigns'].'</center></td>';
 							if($value['last_login'] != null)
-								echo '<td><center>' .date("D, d M 20y", $value['last_login']).'<br>'.date("h:i:s A", $value['last_login']).'</center></td>';
+								echo '<td><center>' .date("D, d M 20y", $value['last_login']).'<br>'.date("h:i:s A (e)", $value['last_login']).'</center></td>';
 							else
 								echo '<td><center> --- <center></td>';
 							echo '<td class="pull-right">';

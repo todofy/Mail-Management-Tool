@@ -9,47 +9,48 @@ $newuser = new user($id);
 
 $getKey = $_POST['key'];
 $search_key = "%".$getKey."%";
-//check if that id , admin email exists in the database
-$search_result = array();
-$result = database::SQL("SELECT `email` FROM `admin` WHERE `email` LIKE ? " , array('s' , $search_key) );
-if(!empty($result))
-{
-	$adminURL = 'admin_view.php';
+
+//check for Admins in the database
+$search_admin = array();
+$result = database::SQL("SELECT `id`, `email`, `last_login` FROM `admin` WHERE `email` LIKE ? " , array('s' , $search_key) );
+if(!empty($result)) {
 	foreach ($result as $key => $value) {
-		$search_result[] = array('type'=> 'Admin' , 'link'=> $adminURL , 'value' =>$value['email']); 
-	}
-	
+		$campaigns = database::SQL("SELECT COUNT(`campaign`.`id`) AS `campaigns` FROM `campaign`,`admin` WHERE `campaign`.`secret_key`=`admin`.`secret` AND `admin`.`id`=?",array('i',$value['id']));
+		$search_admin[] = array('id'=> $value['id'] , 'email' =>$value['email'], 'last_login'=>$value['last_login'], 'campaigns'=>$campaigns[0]['campaigns']); 
+	}	
 }
-//now check if such api exists
-$result = database::SQL("SELECT `code` , `name` FROM `api` WHERE `code` LIKE ? OR `name` LIKE ?" , array('ss' , $search_key , $search_key) );
-if(!empty($result))
-{
-	$apiURL = 'api.php';
+
+//check for Campaigns in the database
+$search_campaign = array();
+$result = database::SQL("SELECT `id`, `subject`, `api_code`, `payload_length`, `mails_processed`, `time_started`, `time_finished` FROM `campaign` WHERE `id` LIKE ? OR `subject` LIKE ?" , array('ss' , $search_key, $search_key) );
+if(!empty($result)) {
 	foreach ($result as $key => $value) {
-		$search_result[] = array('type'=> 'Api' , 'link'=> $apiURL , 'value' =>$value['name']); 
-	}
-	
+		$clicks = database::SQL("SELECT SUM(`clicks`) AS `clicks` FROM `mail`, `link_hash` WHERE `mail`.`id` = `link_hash`.`mail_id` AND `campaign_id`=? GROUP BY `campaign_id`",array('s',$value['id']));
+		$search_campaign[] = array('id'=> $value['id'] , 'subject'=> $value['subject'], 'api_code'=>$value['api_code'], 'payload_length'=>$value['payload_length'], 'mails_processed'=>$value['mails_processed'], 'time_started'=>$value['time_started'], 'time_finished'=>$value['time_finished'], 'clicks'=>$clicks[0]['clicks'] ); 
+	}	
 }
-//search for any such template names
-$result = database::SQL("SELECT `name` FROM `template` WHERE `name` LIKE ?" , array('s' , $search_key) );
-if(!empty($result))
-{
-	$templateURL = 'template.php';
+
+//check for APIs in the database
+$search_api = array();
+$result = database::SQL("SELECT `api`.`id` AS `id`, `code` , `api`.`name` AS `name`, `template`.`name` AS `template_name`, `api`.`created_on` AS `created_on` FROM `api`, `template` WHERE `api`.`template_id`=`template`.`id` AND `code` LIKE ? OR `api`.`name` LIKE ? GROUP BY `api`.`id`" , array('ss' , $search_key , $search_key) );
+if(!empty($result)) {
 	foreach ($result as $key => $value) {
-		$search_result[] = array('type'=> 'Template' , 'link'=> $templateURL , 'value' =>$value['name']); 
-	}
-	
+		$search_api[] = array('id'=> $value['id'] , 'code'=> $value['code'] , 'name' =>$value['name'], 'created_on'=>$value['created_on'], 'template_name'=>$value['template_name']); 
+	}	
 }
-//search for any such campaign id
-$result = database::SQL("SELECT `id` FROM `campaign` WHERE `id` LIKE ?" , array('s' , $search_key) );
-if(!empty($result))
-{
-	$campaignURL = 'campaign_view.php';
+
+//check for Templates in the database
+$search_template = array();
+$result = database::SQL("SELECT `id`, `name`, `created_on`, `last_updated` FROM `template` WHERE `name` LIKE ?" , array('s' , $search_key) );
+if(!empty($result)) {
 	foreach ($result as $key => $value) {
-		$search_result[] = array('type'=> 'campaign' , 'link'=> $campaignURL , 'value' =>$value['id']); 
-	}
-	
+		$parameters = database::SQL("SELECT COUNT(`name`) AS `parameters` FROM `api_params` WHERE `template_id`=?",array('i',$value['id']));
+		$links = database::SQL("SELECT COUNT(`url`) AS `links` FROM `links` WHERE `template_id`=?",array('i',$value['id']));
+		$search_template[] = array('id'=> $value['id'] , 'name'=> $value['name'] , 'created_on' =>$value['created_on'], 'last_updated'=>$value['last_updated'], 'parameters'=>$parameters[0]['parameters'], 'links'=>$links[0]['links']); 
+	}	
 }
+
+$total_results = count($search_admin) + count($search_campaign) + count($search_api) + count($search_template);
 
 $_SEARCH_VIEW_ = true;
 ?>
