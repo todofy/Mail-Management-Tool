@@ -10,6 +10,10 @@ $(document).ready(function() {
                 function(d) {
                     successAlert('Admin deleted successfully.');
                     _this.parent('td').parent('tr').remove();
+                    if($('#admin >tbody >tr').length == 1){
+                        $('#admin').remove();
+                        $('#admin-head').remove();
+                    }
                 }, function(d){
                     errorAlert('Unable to delete admin.');
                 });
@@ -46,6 +50,10 @@ $(document).ready(function() {
                 function(d) {
                     successAlert(d.message);
                     _this.parent('td').parent('tr').remove();
+                    if($('#api >tbody >tr').length == 1){
+                        $('#api').remove();
+                        $('#api-head').remove();
+                    }
                 }, function(d){
                     errorAlert(d.message);
                 });
@@ -79,6 +87,10 @@ $(document).ready(function() {
                 function(d) {
                     successAlert(d.message);
                     _this.parent('td').parent('tr').remove();
+                    if($('#template >tbody >tr').length == 1){
+                        $('#template').remove();
+                        $('#template-head').remove();
+                    }
                 }, function(d){
                     errorAlert(d.message);
                 });

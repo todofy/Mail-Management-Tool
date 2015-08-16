@@ -44,8 +44,8 @@ if (!isset($_SEARCH_VIEW_)) {
 				echo '
 					<div class="row">
 					<div class="col-md-12">
-						<h3>In Admins</h3>
-						<table class="table">
+						<h4 id="admin-head">In Admins</h4>
+						<table class="table" id="admin">
 							<tr style="background-color: #E0E0E0;">
 								<th class="col-md-1"><center>#ID</center></th>
 								<th class="col-md-4">Email</th>
@@ -88,7 +88,7 @@ if (!isset($_SEARCH_VIEW_)) {
 				echo '
 					<div class="row">
 					<div class="col-md-12">
-						<h3>In Campaigns</h3>
+						<h4>In Campaigns</h4>
 						<table class="table">
 							<tr style="background-color: #E0E0E0;">
 								<th class="col-md-1"><center>#ID</center></th>
@@ -123,8 +123,8 @@ if (!isset($_SEARCH_VIEW_)) {
 				echo '
 					<div class="row">
 					<div class="col-md-12">
-						<h3>In APIs</h3>
-						<table class="table">
+						<h4 id="api-head">In APIs</h4>
+						<table class="table" id="api">
 							<tr style="background-color: #E0E0E0;">
 								<th class="col-md-1"><center>#ID</center></th>
 								<th class="col-md-1">Code</th>
@@ -157,8 +157,8 @@ if (!isset($_SEARCH_VIEW_)) {
 				echo '
 					<div class="row">
 					<div class="col-md-12">
-						<h3>In Templates</h3>
-						<table class="table">
+						<h4 id="template-head">In Templates</h4>
+						<table class="table" id="template">
 							<tr style="background-color: #E0E0E0;">
 							<th class="col-md-1"><center>#ID</center></th>
 							<th class="col-md-2">Name</th>
