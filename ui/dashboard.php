@@ -35,7 +35,7 @@ if (!isset($_CODE_DASHBOARD_)) {
 				<table class="table">
 					<tr style="background-color: #E0E0E0;">
 						<th class="col-md-1">#ID</th>
-						<th class="col-md-3">Related Admin</th>
+						<th class="col-md-3">Subject</th>
 						<th class="col-md-1"><center>API Code</center></th>
 						<th class="col-md-1"><center>Total mails</center></th>
 						<th class="col-md-1"><center>Mails processed</center></th>
@@ -47,7 +47,7 @@ if (!isset($_CODE_DASHBOARD_)) {
 						foreach ($campaigns as $value) {
 							echo '<tr class="campaign-row" data-href="campaign_view.php?id='.$value['id'].'" style="cursor:pointer;">';
 							echo '<td>'.$value['id'].'</td>';
-							echo '<td>' .$value['email'] .'</td>';
+							echo '<td>' .$value['subject'] .'</td>';
 							echo '<td><center>' .$value['api_code'] .'</center></td>';
 							echo '<td><center>' .$value['payload_length'] .'</center></td>';
 							echo '<td><center>' .$value['mails_processed'] .'</center></td>';
