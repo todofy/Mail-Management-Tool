@@ -98,7 +98,7 @@ class api
 		}
 		//replace the links
 		$baseURL = API_LINK_URL;
-		$result = database::SQL("SELECT `id` , `url` FROM `links` WHERE `template_id` = ?" , array('i' , $this->template_id));
+		$result = database::SQL("SELECT `id` , `href` FROM `links` WHERE `template_id` = ?" , array('i' , $this->template_id));
 		if(!empty($result)) {
 			foreach ($result as $value) {
 				$link_id = $value['id'];
@@ -107,9 +107,9 @@ class api
 				//store the hash
 				$result = database::SQL("INSERT INTO `link_hash` (`mail_id` , `link_id` , `hash`) VALUES (? , ? , ? )" , array('iis' , $this->mail_id , $link_id , $hash));
 				//generate url with hash
-				$url =  $baseURL.'?url='.$hash;
+				$url =  'href="'.$baseURL.'?url='.$hash.'"';
 				//replace this url
-				$this->response =  str_replace($value['url'], $url,$this->response);
+				$this->response =  str_replace($value['href'], $url,$this->response);
 			
 			}
 		}
