@@ -26,12 +26,15 @@ while(true){
 	foreach ($result as $value) {
 		//get the base mail id for the campaign
 		$mail_ids = database::SQL("SELECT `id` FROM `mail` WHERE `campaign_id`=? LIMIT 1",array('s',$value['id']));
-		$first_mail_id = $result[0]['id'];
-		//send the mail ids that are remaining
-		for ($i = $value['payload_sent']; $i < $value['payload_length']; $i++) { 
-			$mail_id = $first_mail_id + $i;
-			$message = new AMQPMessage($mail_id);
-			$channel->basic_publish($message, '', 'mailing_queue');
+		$counter = 0;
+		foreach ($mail_ids as $MID) {
+			if($counter < $value['payload_sent'])
+				$counter++;
+			else{
+				$mail_id = $MID['id'];
+				$message = new AMQPMessage($mail_id);
+				$channel->basic_publish($message, '', 'mailing_queue');
+			}
 		}
 	}
 }
