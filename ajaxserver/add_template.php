@@ -57,7 +57,9 @@
 				//insert links in database
 				$arrlength = count($links[0]);
 				for($x=0; $x<$arrlength; $x++) {
-					$result = database::SQL("INSERT INTO `links`(`href`, `url`,`template_id`) VALUES(?,?,?)",array('ssi',$links[0][$x],$links[1][$x],$template_id));
+					$check_string = substr($links[1][$x], 7 , 7);
+					if($check_string != "mailto:")
+						$result = database::SQL("INSERT INTO `links`(`href`, `url`,`template_id`) VALUES(?,?,?)",array('ssi',$links[0][$x],$links[1][$x],$template_id));
 				}
 				$output['error'] = false;
 				$output['message'] = 'Template added.';

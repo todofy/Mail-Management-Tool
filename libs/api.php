@@ -78,7 +78,12 @@ class api
 					}
 					else $this->err = 2;							
 				}
-				else $this->err = 5;
+				else {
+					if(empty($this->api_params))
+						$this->state = true;
+					else
+					$this->err = 5;
+				}
 			}
 			else $this->err = 5;
 		}
