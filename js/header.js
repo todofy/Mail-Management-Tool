@@ -20,4 +20,13 @@
 
 		});
 
+		$("#search").submit(function( event ) {
+		    event.preventDefault();
+		    field = $('#search_key').val();
+		    if($.trim(field)=="")
+		    	return false;
+		    else return true;
+		});
+
+
 	});

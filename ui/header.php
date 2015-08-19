@@ -25,7 +25,7 @@ if (!isset($_CODE_HEADER_)) {
 
 		<form class="navbar-form" role="search" id="search" action = "search.php" method = "POST">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search..." size="50" name="key">
+                <input type="text" class="form-control" placeholder="Search..." size="50" name="key" id="search_key">
                 <span class="input-group-btn">
                     <button type="submit" class="btn btn-default">
                     <span class="glyphicon glyphicon-search"></span>
