@@ -1,4 +1,4 @@
-# mail-manager
+# mail-management-tool
 Server side Application for easily managing all mailing tasks of a web server. This tool will allow you to:
  - Create APIs that can be used to send mail.
  - Create / Edit templates for mails, using rich text editors.
