@@ -9,5 +9,5 @@ Server side Application for easily managing all mailing tasks of a web server. T
 
 ## How to use?
 1. Install this php applciation on your server.
-2. Create APIs
+2. Create APIs (Create Templates for APIs on the go)
 3. Call them
