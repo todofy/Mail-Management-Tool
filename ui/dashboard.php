@@ -25,25 +25,34 @@ if (!isset($_CODE_DASHBOARD_)) {
 			    <li class="active">Home</li>
 			</ol>
 		</div>
-		<div class="row">
-		    <div class="col-md-12">
-		    	<h3>Campaigns</h3>
-		    </div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<table class="table">
-					<tr style="background-color: #E0E0E0;">
-						<th class="col-md-1"><center>#ID</center></th>
-						<th class="col-md-3">Subject</th>
-						<th class="col-md-1"><center>API Code</center></th>
-						<th class="col-md-1"><center>Total mails</center></th>
-						<th class="col-md-1"><center>Mails processed</center></th>
-						<th class="col-md-1"><center>Link clicks</center></th>
-						<th class="col-md-2"><center>Started On</center></th>
-						<th class="col-md-2"><center>Finished On</center></th>
-					</tr>
-					<?php
+		<?php 
+		if(empty($campaigns))
+			echo '<div class="row">
+							<div class="col-md-6 col-md-offset-3">
+								<div class="alert alert-info" style="text-align: center;">No campaigns started yet.</div>
+							</div>
+						</div>';
+		else{
+		echo '
+			<div class="row">
+			    <div class="col-md-12">
+			    	<h3>Campaigns</h3>
+			    </div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table">
+						<tr style="background-color: #E0E0E0;">
+							<th class="col-md-1"><center>#ID</center></th>
+							<th class="col-md-3">Subject</th>
+							<th class="col-md-1"><center>API Code</center></th>
+							<th class="col-md-1"><center>Total mails</center></th>
+							<th class="col-md-1"><center>Mails processed</center></th>
+							<th class="col-md-1"><center>Link clicks</center></th>
+							<th class="col-md-2"><center>Started On</center></th>
+							<th class="col-md-2"><center>Finished On</center></th>
+						</tr>';
+
 						foreach ($campaigns as $value) {
 							echo '<tr class="campaign-row" data-href="campaign_view.php?id='.$value['id'].'" style="cursor:pointer;">';
 							echo '<td>'.$value['id'].'</td>';
@@ -59,10 +68,11 @@ if (!isset($_CODE_DASHBOARD_)) {
 								echo '<td><center>In process</center></td>';
 							echo '</tr>';
 						}
-					?>
-				</table>
-			</div>
-		</div>		
+					echo '</table>
+				</div>
+			</div>';
+		}
+		?>
 	</div>
 <script src="js/dashboard.js"></script>
 </body>

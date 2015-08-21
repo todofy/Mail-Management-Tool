@@ -35,19 +35,27 @@ if (!isset($_CODE_TEMPLATE_)) {
 				<a href="template_add.php" type="button" class="btn btn-success pull-right">Add</a>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<table class="table">
-					<tr style="background-color: #E0E0E0;">
-						<th class="col-md-1"><center>#ID</center></th>
-						<th class="col-md-2">Name</th>
-						<th class="col-md-1"><center>Parameters</center></th>
-						<th class="col-md-1"><center>Links</center></th>
-						<th class="col-md-2"><center>Created On</center></th>
-						<th class="col-md-2"><center>Last Updated</center></th>
-						<th class="col-md-3 pull-right">Actions</th>
-					</tr>
-					<?php
+		<?php
+		if(empty($templates))
+			echo '<div class="row">
+							<div class="col-md-6 col-md-offset-3">
+								<div class="alert alert-info" style="text-align: center;">No templates created yet.<a href="template_add.php"> Create a new template.</a></div>
+							</div>
+						</div>';
+		else{
+			echo '
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table">
+						<tr style="background-color: #E0E0E0;">
+							<th class="col-md-1"><center>#ID</center></th>
+							<th class="col-md-2">Name</th>
+							<th class="col-md-1"><center>Parameters</center></th>
+							<th class="col-md-1"><center>Links</center></th>
+							<th class="col-md-2"><center>Created On</center></th>
+							<th class="col-md-2"><center>Last Updated</center></th>
+							<th class="col-md-3 pull-right">Actions</th>
+						</tr>';
 						foreach ($templates as $value) {
 							echo '<tr>';
 							echo '<td><center>' .$value['id'] .'</center></td>';
@@ -64,9 +72,10 @@ if (!isset($_CODE_TEMPLATE_)) {
 							echo '</td>';
 							echo '</tr>';
 						}
-					?>
-				</table>
-			</div>
+					echo '</table>
+				</div>';
+			}
+			?>
 		</div>
 		<div id="preview" class="modal fade" role="dialog" style="z-index: 15000; margin-top:40px;">
   			<div class="modal-dialog" style="width: 950px; min-width:800px; margin-left: 260px; overflow-y: initial;">
