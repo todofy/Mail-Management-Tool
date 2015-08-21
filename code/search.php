@@ -7,6 +7,9 @@ if (!$sessObj->state) {
 $id = session::getUserID();
 $newuser = new user($id);
 
+$result = database::SQL("SELECT `secret` FROM `admin` WHERE `id`=? LIMIT 1",array('i',$id));
+$secret_key = $result[0]['secret'];
+
 if(count($_POST)!=0){
 
 	$getKey = $_POST['key'];
@@ -24,7 +27,7 @@ if(count($_POST)!=0){
 
 	//check for Campaigns in the database
 	$search_campaign = array();
-	$result = database::SQL("SELECT `campaign`.`id`, `subject`, `api_code`, `payload_length`, `mails_processed`, `time_started`, `time_finished` FROM `campaign`,`admin` WHERE `campaign`.`id` LIKE ? OR `subject` LIKE ? AND `campaign`.`secret_key`=`admin`.`secret` AND `admin`.`id`=? GROUP BY `campaign`.`id`" , array('ssi' , $search_key, $search_key, $id) );
+	$result = database::SQL("SELECT `campaign`.`id`, `subject`, `api_code`, `payload_length`, `mails_processed`, `time_started`, `time_finished` FROM `campaign`,`admin` WHERE `campaign`.`id` LIKE ? OR `subject` LIKE ? AND `campaign`.`secret_key`=`admin`.`secret` AND `admin`.`secret`=? GROUP BY `campaign`.`id`" , array('sss' , $search_key, $search_key, $secret_key) );
 	if(!empty($result)) {
 		foreach ($result as $key => $value) {
 			$clicks = database::SQL("SELECT SUM(`clicks`) AS `clicks` FROM `mail`, `link_hash` WHERE `mail`.`id` = `link_hash`.`mail_id` AND `campaign_id`=? GROUP BY `campaign_id`",array('s',$value['id']));
