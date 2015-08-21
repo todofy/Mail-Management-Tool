@@ -10,7 +10,7 @@ $newuser = new user($id);
 if(count($_POST)!=0){
 
 	$getKey = $_POST['key'];
-	$search_key = '%{$getKey}%';
+	$search_key = '%'.$getKey.'%';
 
 	//check for Admins in the database
 	$search_admin = array();
