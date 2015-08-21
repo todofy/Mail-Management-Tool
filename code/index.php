@@ -13,10 +13,10 @@ if(isset($_POST['commit'])) {
     $email = $_POST['login'];
     $password = $_POST['password'];
     echo "Now";
-    if (login::login_user($email, $password, isset($_POST['remember_me']))) {
+    //if (login::login_user($email, $password, isset($_POST['remember_me']))) {
     	echo "Here";
         redirect_to("dashboard.php");
-    }
+    //}
     echo "There";
     $err = "Incorrect Email or Password";
 }
