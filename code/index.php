@@ -14,9 +14,10 @@ if(isset($_POST['commit'])) {
     $password = $_POST['password'];
 
     if (login::login_user($email, $password, isset($_POST['remember_me']))) {
+    	echo "Here";
         redirect_to("dashboard.php");
     }
-
+    echo "There";
     $err = "Incorrect Email or Password";
 }
 
