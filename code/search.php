@@ -28,7 +28,12 @@ if(count($_POST)!=0){
 	if(!empty($result)) {
 		foreach ($result as $key => $value) {
 			$clicks = database::SQL("SELECT SUM(`clicks`) AS `clicks` FROM `mail`, `link_hash` WHERE `mail`.`id` = `link_hash`.`mail_id` AND `campaign_id`=? GROUP BY `campaign_id`",array('s',$value['id']));
-			$search_campaign[] = array('id'=> $value['id'] , 'subject'=> $value['subject'], 'api_code'=>$value['api_code'], 'payload_length'=>$value['payload_length'], 'mails_processed'=>$value['mails_processed'], 'time_started'=>$value['time_started'], 'time_finished'=>$value['time_finished'], 'clicks'=>$clicks[0]['clicks'] ); 
+			if (empty($clicks)) {
+				$total_clicks = 0;
+			}
+			else
+				$total_clicks = $clicks[0]['clicks'];
+			$search_campaign[] = array('id'=> $value['id'] , 'subject'=> $value['subject'], 'api_code'=>$value['api_code'], 'payload_length'=>$value['payload_length'], 'mails_processed'=>$value['mails_processed'], 'time_started'=>$value['time_started'], 'time_finished'=>$value['time_finished'], 'clicks'=>$total_clicks ); 
 		}	
 	}
 
