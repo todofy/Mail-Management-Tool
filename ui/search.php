@@ -39,7 +39,7 @@ if (!isset($_SEARCH_VIEW_)) {
 			else {
 				echo'
 					<div class="col-md-12">
-						<h3>Search results for echo "' . $getKey . '"</h3>
+						<h3>Search results for "' . $getKey . '"</h3>
 					</div>
 				</div>';
 				if($total_results == 0) {
