@@ -98,8 +98,10 @@ class api
 		$result = database::SQL("SELECT `template` FROM `template` WHERE `id` = ? LIMIT 1",array('i',$this->template_id));
 		$this->response = $result[0]['template'];
 		//replace parameters with values
-		foreach ($this->api_params as $key => $value) {
-			$this->response =  str_replace("{{".$key."}}", $value,$this->response);
+		if(!empty($this->api_params)) {
+			foreach ($this->api_params as $key => $value) {
+				$this->response =  str_replace("{{".$key."}}", $value,$this->response);
+			}
 		}
 		//replace the links
 		$baseURL = API_LINK_URL;
