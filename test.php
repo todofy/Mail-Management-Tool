@@ -5,12 +5,9 @@ include __DIR__ .'/libs/globals.php';
 include __DIR__ .'/libs/session.php';
 include __DIR__ .'/libs/user.php';
 
-$data = array('secret_key' => '7be1f7a994a0cb2d9921a19fef9c52ae', 'api_code' => 'a9f6d', 'subject' => 'Test mail','from' => 'abc@gmail.com',
+$data = array('secret_key' => '7be1f7a994a0cb2d9921a19fef9c52ae', 'api_code' => '8dd65', 'subject' => 'Test mail','from' => 'abc@gmail.com',
 				'payload' => array(
-					array('to' => 'sertywwe@example.com'),
-					array('to' => 'someone@example.com'),
-					array('to' => 'som123eone@example.com'),
-					array('to' => 'mer123ty@gmail.com')
+					array('to' => 'anshumanpattanayak@gmail.com', 'Demo'=>'Something', 'param2'=>'Else')
 					));
 
 $jsonData = json_encode($data);
