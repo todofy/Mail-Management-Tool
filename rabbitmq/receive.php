@@ -64,14 +64,23 @@ $callback = function($message){
 			echo $mail;
 
 			//send mail
-			$headers = "From: ".$from. "\r\n";
+			$headers = "From: " .$from. "\r\n";
 			$headers .= "MIME-Version: 1.0\r\n";
-			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";			
-			mail($to,$subject,$mail,$headers);
+			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+			$mail_success = mail($to,$subject,$mail,$headers);
+			
 			//update database
-			$time_finished = time();
-			$result = database::SQL("UPDATE `mail` SET `time_finished`=?,`status`=1 WHERE `id`=?",array('ii',$time_finished,$mail_id));
-			$result = database::SQL("UPDATE `campaign` SET `mails_processed`=`mails_processed`+1 WHERE `id`=?",array('s',$campaign_id));
+			if($mail_success){
+				$time_finished = time();
+				$result = database::SQL("UPDATE `mail` SET `time_finished`=?,`status`=1 WHERE `id`=?",array('ii',$time_finished,$mail_id));
+				$result = database::SQL("UPDATE `campaign` SET `mails_processed`=`mails_processed`+1 WHERE `id`=?",array('s',$campaign_id));
+			}
+			else{
+				$time_finished = time();
+				$result = database::SQL("UPDATE `mail` SET `time_finished`=?,`status`=6 WHERE `id`=?",array('ii',$time_finished,$mail_id));
+				$result = database::SQL("UPDATE `campaign` SET `mails_processed`=`mails_processed`+1 WHERE `id`=?",array('s',$campaign_id));
+			}
 		}
 	}
 	$message->delivery_info['channel']->basic_ack($message->delivery_info['delivery_tag']);	
