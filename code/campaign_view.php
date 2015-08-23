@@ -15,9 +15,15 @@
 		$error = true;
 	else{
 		//get all mails for specific campaign
-		$mails = database::SQL("SELECT `mail`.`id`, `description`, `status`, `time_started`, `time_finished` FROM `mail`,`mail_status` WHERE `campaign_id`=? AND `mail`.`status`=`mail_status`.`type`",array('s',$campaign_id));
+		$mails = database::SQL("SELECT `mail`.`id`, `description`, `payload`, `status`, `time_started`, `time_finished` FROM `mail`,`mail_status` WHERE `campaign_id`=? AND `mail`.`status`=`mail_status`.`type`",array('s',$campaign_id));
 		for($i=0 ; $i< count($mails) ; $i++)
 		{
+			$payload = json_decode($mails[$i]['payload'],true);
+			if(isset($payload['to']))
+				$mails[$i]['sent_to'] = $payload['to'];
+			else
+				$mails[$i]['sent_to'] = '---NA---';
+			
 			$result = database::SQL("SELECT SUM(`clicks`) AS `clicks` FROM `link_hash` WHERE `mail_id` = ? " , array('i' , $mails[$i]['id']));
 			if(!isset($result[0]['clicks']))
 			{

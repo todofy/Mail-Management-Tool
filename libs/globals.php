@@ -19,10 +19,10 @@ if (!isset($_DEF_GLOBALS_)) {
 	
 	// --- GENERAL DEFINATIONS ----
 	define('SALT_CSRF_TOKEN', md5('shiro'));
-	define('BASE_URL', '');
+	define('BASE_URL', 'http://test-mmt.cloudapp.net/Mail-Management-Tool/');
 	$BASE_URL = BASE_URL;
-	define('API_LINK_URL', 'localhost/Mail-Management-Tool/links/index.php');
-	define('UNSUBSCRIBE_URL', 'localhost/Mail-Management-Tool/unsubscription.php');
+	define('API_LINK_URL', $BASE_URL.'links/index.php');
+	define('UNSUBSCRIBE_URL', $BASE_URL.'unsubscription.php');
 
 	// -- define logging related logs
 	define('LOG_FILE_NORMAL', __DIR__ .'/../logs/log_normal.log');

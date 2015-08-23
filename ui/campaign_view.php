@@ -47,8 +47,9 @@ if (!isset($_CAMPAIGN_VIEW_)) {
 							<table class="table">
 								<tr style="background-color: #E0E0E0;">
 									<th class="col-md-1">Mail #ID</th>
-									<th class="col-md-5">Status</th>
-									<th class="col-md-2"><center>Link clicks</center></th>
+									<th class="col-md-3">Status</th>
+									<th class="col-md-3">Addressee</th>
+									<th class="col-md-1"><center>Link clicks</center></th>
 									<th class="col-md-2"><center>Started On</center></th>
 									<th class="col-md-2"><center>Finished On</center></th>
 								</tr>';
@@ -61,10 +62,11 @@ if (!isset($_CAMPAIGN_VIEW_)) {
 										echo '<td style="color:green;">' .$value['description'] .'</td>';
 									else
 										echo '<td style="color:red;">' .$value['description'] .'</td>';
+									echo '<td>'.$value['sent_to'].'</td>';
 									echo '<td><center>' .$value['clicks'] .'</center></td>';
-									echo '<td><center>' .date("D, d M 20y", $value['time_started']).'<br>'.date("h:i:s A", $value['time_started']).'</center></td>';
+									echo '<td><center>' .date("D, d M 20y", $value['time_started']).'<br>'.date("h:i:s A (e)", $value['time_started']).'</center></td>';
 									if($value['time_finished'] != null)
-										echo '<td><center>' .date("D, d M 20y", $value['time_finished']).'<br>'.date("h:i:s A", $value['time_started']).'</center></td>';
+										echo '<td><center>' .date("D, d M 20y", $value['time_finished']).'<br>'.date("h:i:s A (e)", $value['time_started']).'</center></td>';
 									else
 										echo '<td><center> -NA- </center></td>';
 									echo '</tr>';
