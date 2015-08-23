@@ -1,33 +1,20 @@
-header{
-  left: 230px;
-  width: 84%;
-  height: 65px;
-  vertical-align: center;
-  padding-top: 0px;
-  position: absolute;
-  transition: all 0.4s;
-  z-index: 10000;
-}
-
-header.push{
-  left: 0px;
-  width: 100%;
-}
-
 .header-user-dropdown {
+	height: 65px;
+  	vertical-align: center;
 	position: fixed;
+	right: 0px;
 	background-color:#000;
 	box-shadow:0 1px 1px #ccc;
 	padding: 20px 40px;
 	height: 65px;
 	color: #ffffff;
+	z-index: 5;
+	transition: all 0.4s;
 	box-sizing: border-box;
 }
 
 .header-user-dropdown .header-limiter {
-	max-width: 1200px;
 	text-align: center;
-	margin: 0 auto;
 }
 
 /* Logo */
@@ -161,29 +148,6 @@ header.push{
 	margin-right: 100px;
 	margin-top: 0px;
 	padding: 0;
-	width: 30%;
+	width: 25%;
 }
 
-@media all and (max-width: 800px) {
-
-	.header-user-dropdown .header-limiter h1 {
-		font-size: 24px;
-	}
-
-	.header-user-dropdown .header-limiter nav a {
-		padding: 0 5px;
-	}
-
-	.header-user-dropdown .header-limiter nav {
-		margin-left: 20px;
-	}
-
-}
-
-@media all and (max-width: 600px) {
-
-	.header-user-dropdown .header-limiter nav {
-		display: none;
-	}
-
-}

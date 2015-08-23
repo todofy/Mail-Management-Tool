@@ -1,46 +1,26 @@
- .row{
-    margin-left:0px;
-    margin-right:0px;
-}
-
 #wrapper {
-    padding-left: 70px;
     transition: all .4s ease 0s;
+    left: 0px;
     height: 100%;
+    z-index: 10;
 }
 
 #sidebar-wrapper {
-    margin-left: -250px;
     margin-top: 0px;
-    left: 70px;
+    padding-right: 0px;
     top: 0px;
-    width: 250px;
     background: #222;
     position: fixed;
     height: 100%;
-    z-index: 10000;
     transition: all .4s ease 0s;
 }
 
 .sidebar-nav {
+    width: 100%;
     display: block;
-    float: left;
-    width: 250px;
     list-style: none;
     margin: 0;
     padding: 0;
-}
-#page-content-wrapper {
-    padding-left: 0;
-    margin-left: 0;
-    width: 100%;
-    height: auto;
-}
-#wrapper.active {
-    padding-left: 250px;
-}
-#wrapper.active #sidebar-wrapper {
-    left: 250px;
 }
 
 #wrapper.declick{
@@ -51,17 +31,12 @@
   pointer-events:auto;
 }
 
-#page-content-wrapper {
-  width: 100%;
-}
-
 #sidebar_menu li a, .sidebar-nav li a {
     color: #999;
     display: block;
+    width: 100%;
     float: left;
     text-decoration: none;
-    width: 250px;
-    min-width: 250px;
     background: #252525;
     cursor: pointer;
     border-top: 1px solid #373737;
@@ -72,6 +47,8 @@
     -ms-transition: background .5s;
     transition: background .5s;
 }
+
+
 .sidebar_name {
     padding-top: 25px;
     color: #fff;
@@ -95,7 +72,6 @@
   text-decoration: none;
 }
 
-.sidebar-nav li a:active,
 .sidebar-nav li a:focus {
   text-decoration: none;
 }
@@ -136,44 +112,7 @@
 
 .sub_icon
 {
-    float:right;
-   padding-right: 30px;
-   padding-top: 13px;
-}
-
-
-.content-header {
-  height: 65px;
-  line-height: 65px;
-}
-
-.content-header h1 {
-  margin: 0;
-  margin-left: 20px;
-  line-height: 65px;
-  display: inline-block;
-}
-
-.fa{
-  padding-left: -20px;
-  margin-left: -20px;
-}
-
-
-@media (max-width:767px) {
-    #wrapper {
-    padding-left: 70px;
-    transition: all .4s ease 0s;
-}
-#sidebar-wrapper {
-    left: 70px;
-}
-#wrapper.active {
-    padding-left: 250px;
-}
-#wrapper.active #sidebar-wrapper {
-    left: 150px;
-    width: 150px;
-    transition: all .4s ease 0s;
-}
+  float:right;
+  padding-right: 30px;
+  padding-top: 13px;
 }
