@@ -12,7 +12,7 @@ if (!isset($_CODE_SIDEBAR_)) {
     <div class="row">
         <div id="sidebar-wrapper" class="col-md-2">
             <ul id="sidebar_menu" class="sidebar-nav">
-                <li class="sidebar-nav sidebar-brand"><a id="menu-toggle" href="javascript:void(0)" style="pointer-events:none;">Menu<span id="main_icon" class="sub_icon glyphicon glyphicon-chevron-left"></span></a></li>
+                <li class="sidebar-nav sidebar-brand"><a id="menu-toggle" href="javascript:void(0)" style="pointer-events:none;">Menu<span id="main_icon" class="sub_icon"></span></a></li>
             </ul>
             <ul class="sidebar-nav" id="sidebar">
                   <li>

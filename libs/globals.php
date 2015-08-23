@@ -23,6 +23,8 @@ if (!isset($_DEF_GLOBALS_)) {
 	$BASE_URL = BASE_URL;
 	define('API_LINK_URL', $BASE_URL.'links/index.php');
 	define('UNSUBSCRIBE_URL', $BASE_URL.'unsubscription.php');
+	define('DEFAULT_SENDER', 'noreply@todofy.org');
+	define('DEFAULT_SUBJECT', '');
 
 	// -- define logging related logs
 	define('LOG_FILE_NORMAL', __DIR__ .'/../logs/log_normal.log');

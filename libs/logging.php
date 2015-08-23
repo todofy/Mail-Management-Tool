@@ -53,8 +53,8 @@ if (!isset($_DEF_LOGGING_)) {
 			if ($mail) {
 				$subject = 'EMERGENCY LOG MMT';
 				$message = $data;
-				$headers = 'From: webmaster@mmt' . "\r\n" .
-    			'Reply-To: webmaster@mmt' . "\r\n" .
+				$headers = 'From: webmaster@todo-ci.org' . "\r\n" .
+    			'Reply-To: webmaster@todo-ci.org' . "\r\n" .
     			'X-Mailer: PHP/' . phpversion();
 				mail(LOG_EMAIL_ID, $subject, $message, $headers);
 			}

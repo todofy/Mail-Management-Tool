@@ -28,6 +28,7 @@ if($data['subject']){
 }
 else{
 	//get the default subject from the config file
+	$subject = DEFAULT_SUBJECT;
 }
 
 if($data['from']){
@@ -35,6 +36,7 @@ if($data['from']){
 }
 else{
 	//get the default sender address from the config file
+	$from = DEFAULT_SENDER;
 }
 
 $payload = $data['payload'];

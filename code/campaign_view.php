@@ -11,6 +11,8 @@
 	$campaign_id = $_GET['id'];
 	$error = false;
 	$result = database::SQL("SELECT `id` FROM `campaign` WHERE `id`=? LIMIT 1",array('s',$campaign_id));
+	$template = database::SQL("SELECT `template`.`id` AS `id` FROM `campaign`,`api`,`template` WHERE `campaign`.`id`=? AND `api_code`=`api`.`code` AND `template_id`=`template`.`id` GROUP BY `campaign`.`id` LIMIT 1",array('s',$campaign_id));
+	$template_id = $template[0]['id'];
 	if(empty($result))
 		$error = true;
 	else{

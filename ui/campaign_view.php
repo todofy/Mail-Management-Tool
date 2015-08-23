@@ -28,8 +28,11 @@ if (!isset($_CAMPAIGN_VIEW_)) {
 				</ol>
 			</div>
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-9">
 					<h3>Campaign #<?php echo $campaign_id?></h3>
+				</div>
+				<div class="col-md-3">
+					<?php echo '<a href="#" type="button" class="btn btn-info button-view" role="button" data-toggle="modal" data-target="#preview" style="float:right; margin-right: 10px;" id="'.$template_id.'">View sample mail</a>';?>
 				</div>
 			</div>
 			<?php
@@ -86,6 +89,23 @@ if (!isset($_CAMPAIGN_VIEW_)) {
 				}			
 			?>
 		</div>
+		<div id="preview" class="modal fade" role="dialog" style="z-index: 15000; margin-top:40px;">
+  			<div class="modal-dialog" style="width: 950px; min-width:800px; margin-left: 260px; overflow-y: initial;">
+    			<div class="modal-content">
+    				<div class="modal-header">
+        				<h4 class="modal-title">Sample Mail</h4>
+      				</div>
+      				<div class="modal-body"style="overflow-y: auto;">
+      					<div class="well" id="template-preview" ></div>
+      				</div>
+  					<div class="modal-footer" style="margin-top: -20px;">
+        				<button type="button" class="btn btn-link" data-dismiss="modal">Back</button>
+        			</div>
+    			</div>
+  			</div>
+		</div>
 	</div>
+<script src="js/main.js"></script>
+<script src="js/template.js"></script>
 </body>
 </html>
