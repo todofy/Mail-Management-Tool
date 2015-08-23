@@ -22,16 +22,9 @@
 		$template_text = $result[0]['template'];
 		//get all parameters for api
 	    $result = database::SQL("SELECT `name` FROM `api_params` WHERE `template_id`=?",array('i',$template_id));
-	    //get url
-		$api_call = 'localhost/Mail-Management-Tool/api/index.php?secret_key="value"&api_name='.$api_name.'&';
-		foreach ($result as $value) {
-			$value['name'] = trim($value['name'],"{}");
-			$api_call = $api_call.$value['name'].'="value"&';
-		}
-		$api_call = rtrim($api_call,"&");
 
 		//generate php example
-		$php_example ='...*code*...';
+		$php_example = '...*code*...';
 		$php_example = $php_example.'<br>';
 		$php_example = $php_example.'$api = new api("secret_key","'.$api_name.'",';
 		$php_example = $php_example.'<br>';

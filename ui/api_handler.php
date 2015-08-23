@@ -13,27 +13,28 @@ if (!isset($_API_HANDLER_)) {
 </head>
 
 <body>
+	<div class="row">
+		<?php
+		include __DIR__ .'/header.php';
+		include __DIR__ .'/sidebar.php';
+		?>
 
-	<?php
-	include __DIR__ .'/header.php';
-	include __DIR__ .'/sidebar.php';
-	?>
-
-	<!-- Main workspace starts from here -->
-	<div id="content-wrapper">
-		<div class="row">
-				<ol class="breadcrumb">
-				<li><a href="dashboard.php">Home</a></li>
-				    <li class="active">API Handler</li>
-				</ol>
-			<div class="col-md-12">
-				<div class="col-md-6 col-md-offset-3">
-					<?php
-						if($error) 
-							echo '<div class="alert alert-danger" style="text-align: center;">'.$res.'</div>';
-						else
-							echo '<div class="alert alert-success" style="text-align: center;">'.$res.'</div>';
-					?>
+		<!-- Main workspace starts from here -->
+		<div id="content-wrapper" class="col-md-10 col-md-offset-2">
+			<div class="row">
+					<ol class="breadcrumb">
+					<li><a href="dashboard.php">Home</a></li>
+					    <li class="active">API Handler</li>
+					</ol>
+				<div class="col-md-12">
+					<div class="col-md-6 col-md-offset-3">
+						<?php
+							if($error) 
+								echo '<div class="alert alert-danger" style="text-align: center;">'.$res.'</div>';
+							else
+								echo '<div class="alert alert-success" style="text-align: center;">'.$res.'</div>';
+						?>
+					</div>
 				</div>
 			</div>
 		</div>

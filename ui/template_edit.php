@@ -33,41 +33,44 @@ if (!isset($_TEMPLATE_EDIT_)) {
 </head>
 
 <body>
+	<div class="row">
+		<?php
+		include __DIR__ .'/header.php';
+		include __DIR__ .'/sidebar.php';
+		?>
 
-	<?php
-	include __DIR__ .'/header.php';
-	include __DIR__ .'/sidebar.php';
-	?>
-
-	<!-- Main workspace starts from here -->
-	<div id="content-wrapper">
-		<div class="row">
-			<ol class="breadcrumb">
-			    <li><a href="./dashboard.php">Home</a></li>
-			    <li><a href="template.php">Template</a></li>
-			    <li class="active">Edit</li>
-			</ol>
-		</div>
-			<div class="col-md-12">
-				<h3>Edit Template</h3>
-				<form role="form" id="edit-template">
-					<div class="form-group" style="display: none;">
-	    				<input type="text" class="form-control" id="template-id" name="template-id" value=<?php echo $id ?> style="width: 40%; min-width: 200px">
-	  				</div>
-					<div class="form-group">
-	    				<label for="template-name"><h4>Template Name</h4></label>
-	    				<input type="text" class="form-control" id="template-name" name="template-name" value='<?php echo $template_name ?>' style="width: 40%; min-width: 200px">
-	  				</div>
-	  			    <div class="form-group">
-	  			    	<h4 class="form-control-static">Template</h4>
-	  					<textarea id="template-text" name="template-text" value=""><?php echo $template_text ?></textarea>
-	  				</div>
-	  				<button type="submit" class="btn btn-success" value="Submit" id="save">Save</button>
-					<a href="template.php" class="btn btn-link">Cancel</a>
-				</form>
+		<!-- Main workspace starts from here -->
+		<div id="content-wrapper" class="col-md-10 col-md-offset-2">
+			<div class="row">
+				<ol class="breadcrumb">
+				    <li><a href="./dashboard.php">Home</a></li>
+				    <li><a href="template.php">Template</a></li>
+				    <li class="active">Edit</li>
+				</ol>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Edit Template</h3>
+					<form role="form" id="edit-template">
+						<div class="form-group" style="display: none;">
+		    				<input type="text" class="form-control" id="template-id" name="template-id" value=<?php echo $id ?> style="width: 40%; min-width: 200px">
+		  				</div>
+						<div class="form-group">
+		    				<label for="template-name"><h4>Template Name</h4></label>
+		    				<input type="text" class="form-control" id="template-name" name="template-name" value='<?php echo $template_name ?>' style="width: 40%; min-width: 200px">
+		  				</div>
+		  			    <div class="form-group">
+		  			    	<h4 class="form-control-static">Template</h4>
+		  					<textarea id="template-text" name="template-text" value=""><?php echo $template_text ?></textarea>
+		  				</div>
+		  				<button type="submit" class="btn btn-success" value="Submit" id="save">Save</button>
+						<a href="template.php" class="btn btn-link">Cancel</a>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
+
 <script src="js/jAlert-v3.js"></script>
 <script src="js/jAlert-functions.js"></script>
 <script src="js/main.js"></script>
