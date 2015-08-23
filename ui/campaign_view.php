@@ -66,7 +66,7 @@ if (!isset($_CAMPAIGN_VIEW_)) {
 									echo '<td><center>' .$value['clicks'] .'</center></td>';
 									echo '<td><center>' .date("D, d M 20y", $value['time_started']).'<br>'.date("h:i:s A (e)", $value['time_started']).'</center></td>';
 									if($value['time_finished'] != null)
-										echo '<td><center>' .date("D, d M 20y", $value['time_finished']).'<br>'.date("h:i:s A (e)", $value['time_started']).'</center></td>';
+										echo '<td><center>' .date("D, d M 20y", $value['time_finished']).'<br>'.date("h:i:s A (e)", $value['time_finished']).'</center></td>';
 									else
 										echo '<td><center> -NA- </center></td>';
 									echo '</tr>';
