@@ -5,19 +5,16 @@ include __DIR__ .'/libs/globals.php';
 include __DIR__ .'/libs/session.php';
 include __DIR__ .'/libs/user.php';
 
-$data = array('secret_key' => '7be1f7a994a0cb2d9921a19fef9c52ae', 'api_code' => 'a9f6d', 'subject' => 'Test mail','from' => 'abc@gmail.com',
+$data = array('secret_key' => '7be1f7a994a0cb2d9921a19fef9c52ae', 'api_code' => 'cc8ca', 'subject' => 'Test mail','from' => 'anshumanpattanayak@gmail.com',
 				'payload' => array(
-					array('to' => 'sertywwe@example.com'),
-					array('to' => 'someone@example.com'),
-					array('to' => 'som123eone@example.com'),
-					array('to' => 'mer123ty@gmail.com')
+					array('to' => 'anshumanpattanayak@gmail.com')
 					));
 
 $jsonData = json_encode($data);
 
 //echo $jsonData;
 
-$url = "http://localhost/Mail-Management-Tool/api/";
+$url = $BASE_URL."api/";
 
 $post = "data=".$jsonData;
 

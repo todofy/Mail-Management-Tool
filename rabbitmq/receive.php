@@ -64,7 +64,10 @@ $callback = function($message){
 			echo $mail;
 
 			//send mail
-			//mail($to,$subject,$mail,$from);
+			$headers = "From: ".$from. "\r\n";
+			$headers .= "MIME-Version: 1.0\r\n";
+			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";			
+			mail($to,$subject,$mail,$headers);
 			//update database
 			$time_finished = time();
 			$result = database::SQL("UPDATE `mail` SET `time_finished`=?,`status`=1 WHERE `id`=?",array('ii',$time_finished,$mail_id));
