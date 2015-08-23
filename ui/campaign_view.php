@@ -20,7 +20,7 @@ if (!isset($_CAMPAIGN_VIEW_)) {
 		?>
 
 		<!-- Main workspace starts from here -->
-		<div id="content-wrapper" class="col-md-10 col-md-offset-2">
+		<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
 			<div class="row">
 				<ol class="breadcrumb">
 				    <li><a href="dashboard.php">Home</a></li>
@@ -28,17 +28,17 @@ if (!isset($_CAMPAIGN_VIEW_)) {
 				</ol>
 			</div>
 			<div class="row">
-				<div class="col-md-9">
+				<div class="col-xs-9">
 					<h3>Campaign #<?php echo $campaign_id?></h3>
 				</div>
-				<div class="col-md-3">
+				<div class="col-xs-3">
 					<?php echo '<a href="#" type="button" class="btn btn-info button-view" role="button" data-toggle="modal" data-target="#preview" style="float:right; margin-right: 10px;" id="'.$template_id.'">View sample mail</a>';?>
 				</div>
 			</div>
 			<?php
 				if($error){
 					echo '<div class="row">
-							<div class="col-md-6 col-md-offset-3">
+							<div class="col-xs-6 col-xs-offset-3">
 								<div class="alert alert-danger" style="text-align: center;">Campaign doesn\'t exist in database</div>
 							</div>
 						</div>';
@@ -46,15 +46,15 @@ if (!isset($_CAMPAIGN_VIEW_)) {
 				else{
 					if(!empty($mails)){
 						echo '<div class="row">
-							<div class="col-md-12">
+							<div class="col-xs-12">
 								<table class="table">
 									<tr style="background-color: #E0E0E0;">
-										<th class="col-md-1"><center>Mail #ID</center></th>
-										<th class="col-md-3">Status</th>
-										<th class="col-md-3">Addressee</th>
-										<th class="col-md-1"><center>Link clicks</center></th>
-										<th class="col-md-2"><center>Started On</center></th>
-										<th class="col-md-2"><center>Finished On</center></th>
+										<th class="col-xs-1"><center>Mail #ID</center></th>
+										<th class="col-xs-3">Status</th>
+										<th class="col-xs-3">Addressee</th>
+										<th class="col-xs-1"><center>Link clicks</center></th>
+										<th class="col-xs-2"><center>Started On</center></th>
+										<th class="col-xs-2"><center>Finished On</center></th>
 									</tr>';
 									foreach ($mails as $value) {
 										echo '<tr>';
@@ -81,7 +81,7 @@ if (!isset($_CAMPAIGN_VIEW_)) {
 					}
 					else{
 						echo '<div class="row">
-								<div class="col-md-6 col-md-offset-3">
+								<div class="col-xs-6 col-xs-offset-3">
 									<div class="alert alert-info" style="text-align: center;">Mail ids are not retrieved yet.</div>
 								</div>
 							</div>';

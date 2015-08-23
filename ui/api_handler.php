@@ -20,14 +20,14 @@ if (!isset($_API_HANDLER_)) {
 		?>
 
 		<!-- Main workspace starts from here -->
-		<div id="content-wrapper" class="col-md-10 col-md-offset-2">
+		<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
 			<div class="row">
 					<ol class="breadcrumb">
 					<li><a href="dashboard.php">Home</a></li>
 					    <li class="active">API Handler</li>
 					</ol>
-				<div class="col-md-12">
-					<div class="col-md-6 col-md-offset-3">
+				<div class="col-xs-12">
+					<div class="col-xs-6 col-xs-offset-3">
 						<?php
 							if($error) 
 								echo '<div class="alert alert-danger" style="text-align: center;">'.$res.'</div>';

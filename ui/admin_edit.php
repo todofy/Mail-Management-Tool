@@ -20,14 +20,14 @@ if (!isset($_ADMIN_EDIT_)) {
   	?>
 
   	<!-- Main workspace starts from here -->
-  	<div id="content-wrapper" class="col-md-10 col-md-offset-2">
+  	<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
   		<div class="row">
   			<ol class="breadcrumb">
   			    <li><a href="dashboard.php">Home</a></li>
   			    <li><a href="./admin_view.php">View Admins</a></li>
   			    <li class="active">Edit Admin</li>
   			</ol>
-  			<div class="col-md-7">
+  			<div class="col-xs-7">
   				<h3>Edit an admin</h3>
   				<form role="form" id="edit" type="post">
   					<div class="form-group">
@@ -62,7 +62,7 @@ if (!isset($_ADMIN_EDIT_)) {
     					<button type="submit" class="btn btn-primary" value="Submit" id="btn">Edit</button>
   				</form>					
   			</div>
-  			<div class="col-md-4 pull-right">
+  			<div class="col-xs-4 pull-right">
   				
   			</div>
   		</div>		

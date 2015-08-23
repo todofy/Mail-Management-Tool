@@ -20,7 +20,7 @@ if (!isset($_SEARCH_VIEW_)) {
 		?>
 
 		<!-- Main workspace starts from here -->
-		<div id="content-wrapper" class="col-md-10 col-md-offset-2">
+		<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
 			<div class="row">
 				<ol class="breadcrumb">
 				    <li><a href="dashboard.php">Home</a></li>
@@ -31,20 +31,20 @@ if (!isset($_SEARCH_VIEW_)) {
 			<?php
 				if($error){
 					echo '<div class="row">
-								<div class="col-md-6 col-md-offset-3">
+								<div class="col-xs-6 col-xs-offset-3">
 									<div class="alert alert-danger" style="text-align: center;">No Search Key Specified</div>
 								</div>
 							</div>';
 				}
 				else {
 					echo'
-						<div class="col-md-12">
+						<div class="col-xs-12">
 							<h3>Search results for "' . $getKey . '"</h3>
 						</div>
 					</div>';
 					if($total_results == 0) {
 						echo '<div class="row">
-								<div class="col-md-6 col-md-offset-3">
+								<div class="col-xs-6 col-xs-offset-3">
 									<div class="alert alert-info" style="text-align: center;">No Search Results Found</div>
 								</div>
 							</div>';
@@ -52,15 +52,15 @@ if (!isset($_SEARCH_VIEW_)) {
 					if(!empty($search_admin)){
 						echo '
 							<div class="row">
-							<div class="col-md-12">
+							<div class="col-xs-12">
 								<h4 id="admin-head">In Admins</h4>
 								<table class="table" id="admin">
 									<tr style="background-color: #E0E0E0;">
-										<th class="col-md-1"><center>#ID</center></th>
-										<th class="col-md-4">Email</th>
-										<th class="col-md-2"><center>Campaigns Started</center></th>
-										<th class="col-md-2"><center>Last Login</center></th>
-										<th class="col-md-3 pull-right">Actions</th>
+										<th class="col-xs-1"><center>#ID</center></th>
+										<th class="col-xs-4">Email</th>
+										<th class="col-xs-2"><center>Campaigns Started</center></th>
+										<th class="col-xs-2"><center>Last Login</center></th>
+										<th class="col-xs-3" style="text-align:right;">Actions</th>
 									</tr>';
 									foreach ($search_admin as $value) {
 										echo '<tr>';
@@ -71,7 +71,7 @@ if (!isset($_SEARCH_VIEW_)) {
 											echo '<td><center>' .date("D, d M 20y", $value['last_login']).'<br>'.date("h:i:s A (e)", $value['last_login']).'</center></td>';
 										else
 											echo '<td><center> --- <center></td>';
-										echo '<td class="pull-right">';
+										echo '<td style="text-align:right;">';
 										if (isset($newuser->access[EDIT_ADMIN]) && $value['id']!=$id) {
 											$add = "admin_edit.php?id=".$value['id'];
 											echo '<a class="btn btn-primary button-edit" href='.$add.' role="button" id='.$value['id'].'>Edit</a> ';
@@ -96,18 +96,18 @@ if (!isset($_SEARCH_VIEW_)) {
 					if (!empty($search_campaign)) {
 						echo '
 							<div class="row">
-							<div class="col-md-12">
+							<div class="col-xs-12">
 								<h4>In Campaigns</h4>
 								<table class="table">
 									<tr style="background-color: #E0E0E0;">
-										<th class="col-md-1"><center>#ID</center></th>
-										<th class="col-md-3">Subject</th>
-										<th class="col-md-1"><center>API Code</center></th>
-										<th class="col-md-1"><center>Total mails</center></th>
-										<th class="col-md-1"><center>Mails processed</center></th>
-										<th class="col-md-1"><center>Link clicks</center></th>
-										<th class="col-md-2"><center>Started On</center></th>
-										<th class="col-md-2"><center>Finished On</center></th>
+										<th class="col-xs-1"><center>#ID</center></th>
+										<th class="col-xs-3">Subject</th>
+										<th class="col-xs-1"><center>API Code</center></th>
+										<th class="col-xs-1"><center>Total mails</center></th>
+										<th class="col-xs-1"><center>Mails processed</center></th>
+										<th class="col-xs-1"><center>Link clicks</center></th>
+										<th class="col-xs-2"><center>Started On</center></th>
+										<th class="col-xs-2"><center>Finished On</center></th>
 									</tr>';
 									foreach ($search_campaign as $value) {
 										echo '<tr class="campaign-row" data-href="campaign_view.php?id='.$value['id'].'" style="cursor:pointer;">';
@@ -131,16 +131,16 @@ if (!isset($_SEARCH_VIEW_)) {
 					if (!empty($search_api)) {
 						echo '
 							<div class="row">
-							<div class="col-md-12">
+							<div class="col-xs-12">
 								<h4 id="api-head">In APIs</h4>
 								<table class="table" id="api">
 									<tr style="background-color: #E0E0E0;">
-										<th class="col-md-1"><center>#ID</center></th>
-										<th class="col-md-1">Code</th>
-										<th class="col-md-3">Name</th>
-										<th class="col-md-2">Template Used</th>
-										<th class="col-md-2"><center>Created On</center></th>
-										<th class="col-md-3 pull-right">Actions</th>
+										<th class="col-xs-1"><center>#ID</center></th>
+										<th class="col-xs-1">Code</th>
+										<th class="col-xs-3">Name</th>
+										<th class="col-xs-2">Template Used</th>
+										<th class="col-xs-2"><center>Created On</center></th>
+										<th class="col-xs-3" style="text-align:right;">Actions</th>
 									</tr>';
 									foreach ($search_api as $value) {
 										echo '<tr>';
@@ -149,7 +149,7 @@ if (!isset($_SEARCH_VIEW_)) {
 										echo '<td>' .$value['name'] .'</td>';
 										echo '<td>' .$value['template_name'] .'</td>';
 										echo '<td><center>' .date("D, d M 20y", $value['created_on']).'<br>'.date("h:i:s A (e)", $value['created_on']).'</center></td>';
-										echo '<td class="pull-right">';
+										echo '<td style="text-align:right;">';
 											$view = "api_view.php?id=".$value['id'];
 											echo '<a class="btn btn-info button-view" href='.$view.' role="button" id='.$value['id'].'>View</a> ';
 											$edit = "api_edit.php?id=".$value['id'];
@@ -165,17 +165,17 @@ if (!isset($_SEARCH_VIEW_)) {
 					if (!empty($search_template)) {
 						echo '
 							<div class="row">
-							<div class="col-md-12">
+							<div class="col-xs-12">
 								<h4 id="template-head">In Templates</h4>
 								<table class="table" id="template">
 									<tr style="background-color: #E0E0E0;">
-									<th class="col-md-1"><center>#ID</center></th>
-									<th class="col-md-2">Name</th>
-									<th class="col-md-1"><center>Parameters</center></th>
-									<th class="col-md-1"><center>Links</center></th>
-									<th class="col-md-2"><center>Created On</center></th>
-									<th class="col-md-2"><center>Last Updated</center></th>
-									<th class="col-md-3 pull-right">Actions</th>
+									<th class="col-xs-1"><center>#ID</center></th>
+									<th class="col-xs-2">Name</th>
+									<th class="col-xs-1"><center>Parameters</center></th>
+									<th class="col-xs-1"><center>Links</center></th>
+									<th class="col-xs-2"><center>Created On</center></th>
+									<th class="col-xs-2"><center>Last Updated</center></th>
+									<th class="col-xs-3" style="text-align:right;">Actions</th>
 									</tr>';
 									foreach ($search_template as $value) {
 										echo '<tr>';
@@ -185,7 +185,7 @@ if (!isset($_SEARCH_VIEW_)) {
 										echo '<td><center>'.$value['links'].'</center></td>';
 										echo '<td><center>' .date("D, d M 20y", $value['created_on']).'<br>'.date("h:i:s A (e)", $value['created_on']).'</center></td>';
 										echo '<td><center>' .date("D, d M 20y", $value['last_updated']).'<br>'.date("h:i:s A (e)", $value['last_updated']).'</center></td>';
-										echo '<td class="pull-right">';
+										echo '<td style="text-align:right;">';
 											echo '<a class="btn btn-info button-view-template" href="#" role="button" data-toggle="modal" data-target="#preview" id='.$value['id'].'>View</a> ';
 											$edit = "template_edit.php?id=".$value['id'];
 											echo '<a class="btn btn-primary button-edit" href='.$edit.' role="button" id='.$value['id'].'>Edit</a> ';

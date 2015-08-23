@@ -20,17 +20,17 @@ if (!isset($_ADMIN_VIEW_)) {
 		?>
 
 		<!-- Main workspace starts from here -->
-		<div id="content-wrapper" class="col-md-10 col-md-offset-2">
+		<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
 			<div class="row">
 				<ol class="breadcrumb">
 				    <li><a href="dashboard.php">Home</a></li>
 				    <li class="active">View Admins</li>
 				</ol>
 				<div class="row">
-			    	<div class="col-md-9" style="left: 15px;">
+			    	<div class="col-xs-9" style="left: 15px;">
 			    		<h3>List of all Admins</h3>
 			    	</div>
-			    	<div class="col-md-3">
+			    	<div class="col-xs-3">
 			    	<?php
 			    		if (isset($newuser->access[ADD_ADMIN])){
 							echo '<a href="admin_add.php" type="button" class="btn btn-success" style="float:right; margin-right: 25px;">Add</a>';
@@ -39,14 +39,14 @@ if (!isset($_ADMIN_VIEW_)) {
 					</div>
 				</div>
 				<div class="clearfix"></div>
-				<div class="col-md-12">
+				<div class="col-xs-12">
 					<table class="table">
 						<tr style="background-color: #E0E0E0;">
-							<th class="col-md-1"><center>#ID</center></th>
-							<th class="col-md-4">Email</th>
-							<th class="col-md-2"><center>Campaigns Started</center></th>
-							<th class="col-md-2"><center>Last Login</center></th>
-							<th class="col-md-3" style="text-align:right;">Actions</th>
+							<th class="col-xs-1"><center>#ID</center></th>
+							<th class="col-xs-4">Email</th>
+							<th class="col-xs-2"><center>Campaigns Started</center></th>
+							<th class="col-xs-2"><center>Last Login</center></th>
+							<th class="col-xs-3" style="text-align:right;">Actions</th>
 						</tr>
 						<?php
 							foreach ($admins as $value) {

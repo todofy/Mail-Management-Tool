@@ -6,7 +6,7 @@
 $SECURE = true;
 
 include __DIR__ .'/../libs/session.php';
-include __DIR__ .'/../libs/api.php';
+include __DIR__ .'/../libs/globals.php';
 include __DIR__ .'/../libs/user.php';
 require_once __DIR__ .'/../rabbitmq/vendor/autoload.php';
 use PhpAmqpLib\Connection\AMQPConnection;

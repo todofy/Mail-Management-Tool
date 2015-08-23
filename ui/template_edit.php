@@ -40,7 +40,7 @@ if (!isset($_TEMPLATE_EDIT_)) {
 		?>
 
 		<!-- Main workspace starts from here -->
-		<div id="content-wrapper" class="col-md-10 col-md-offset-2">
+		<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
 			<div class="row">
 				<ol class="breadcrumb">
 				    <li><a href="./dashboard.php">Home</a></li>
@@ -49,7 +49,7 @@ if (!isset($_TEMPLATE_EDIT_)) {
 				</ol>
 			</div>
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-xs-12">
 					<h3>Edit Template</h3>
 					<form role="form" id="edit-template">
 						<div class="form-group" style="display: none;">

@@ -20,7 +20,7 @@ if (!isset($_API_VIEW_)) {
 		?>
 
 		<!-- Main workspace starts from here -->
-		<div id="content-wrapper" class="col-md-10 col-md-offset-2">
+		<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
 			<div class="row">
 				<ol class="breadcrumb">
 				    <li><a href="dashboard.php">Home</a></li>
@@ -30,13 +30,13 @@ if (!isset($_API_VIEW_)) {
 			</div>
 			<div class="row">
 				<div class="row">
-					<div class="col-md-9">
+					<div class="col-xs-9">
 						<h3>View API</h3>
 					</div>
-					<div class="col-md-3">
+					<div class="col-xs-3">
 						<a href="api_edit.php?id= <?php echo $id;?>" type="button" class="btn btn-primary" style="float:right; margin-right: 25px;">Edit</a>
 					</div>
-					<div class="col-md-12">
+					<div class="col-xs-12">
 						<div class="clearfix"></div>
 						<?php
 						    echo '<h4>API Name :&nbsp&nbsp '.$api_name.'</h4>';

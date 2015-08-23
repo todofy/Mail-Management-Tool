@@ -20,7 +20,7 @@ if (!isset($_API_ADD_)) {
 		?>
 
 		<!-- Main workspace starts from here -->
-		<div id="content-wrapper" class="col-md-10 col-md-offset-2">
+		<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
 			<div class="row">
 				<ol class="breadcrumb">
 				    <li><a href="dashboard.php">Home</a></li>
@@ -29,7 +29,7 @@ if (!isset($_API_ADD_)) {
 				</ol>
 			</div>
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-xs-12">
 					<h3>Create API</h3>
 					<form role="form" type="post" id="create-api">
 						<div class="form-group">
@@ -61,13 +61,13 @@ if (!isset($_API_ADD_)) {
 	      				</div>
 	      				<div class="modal-body">
 	      					<div class="row">
-	      						<div class="col-md-4">
+	      						<div class="col-xs-4">
 	      							<h5>Here's how you'd call the API</h5>
 	      							<div class="well" id="api-call" style="word-wrap: break-word;"></div>
 	      							<h5>PHP Example:</h5>
 	      							<div class="well" id="php-example" style="word-wrap: break-word;"></div>
 	      						</div>
-	      						<div class="col-md-8">
+	      						<div class="col-xs-8">
 	      							<h5>Response to API call</h5>
 	      							<div class="well" id="api-response"></div>
 	      						</div>

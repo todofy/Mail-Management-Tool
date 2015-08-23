@@ -12,15 +12,15 @@ if (!isset($_CODE_HEADER_)) {
 	<link rel="stylesheet" href="css/content.css" type="text/css">
 
 
-	<div id="header" class="col-md-12 header-user-dropdown">
+	<div id="header" class="col-xs-12 header-user-dropdown">
 		<div class="row header-limiter">
-			<div class="col-md-2"></div>
-			<img id="logo" src="assets/logo.png" class="col-md-3">
+			<div class="col-xs-2"></div>
+			<img id="logo" src="assets/logo.png" class="col-xs-3">
 
-			<nav class="col-md-3">
+			<nav class="col-xs-3">
 			</nav>
 
-			<form class="col-md-2 navbar-form" role="search" id="search" action = "search.php" method = "POST">
+			<form class="col-xs-2 navbar-form" role="search" id="search" action = "search.php" method = "POST">
 	            <div class="input-group">
 	                <input type="text" class="form-control" placeholder="Search..." size="50" name="key" id="search_key">
 	                <span class="input-group-btn">
@@ -32,9 +32,9 @@ if (!isset($_CODE_HEADER_)) {
 	        </form>
 
 
-			<div class="col-md-1 header-user-menu">
+			<div class="col-xs-1 header-user-menu">
 				<span class="glyphicon glyphicon-cog"></span>
-				<ul class="col-md-1">
+				<ul class="col-xs-1">
 					<li><a href="profile.php">Profile</a></li>
 					<li><a href="logout.php">Logout</a></li>
 				</ul>

@@ -20,13 +20,13 @@ if (!isset($_ADMIN_ADD_)) {
   	?>
 
   	<!-- Main workspace starts from here -->
-  	<div id="content-wrapper" class="col-md-10 col-md-offset-2">
+  	<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
   		<div class="row">
   			<ol class="breadcrumb">
   			    <li><a href="dashboard.php">Home</a></li>
   			    <li class="active">Add Admin</li>
   			</ol>
-  			<div class="col-md-7">
+  			<div class="col-xs-7">
   				<h3>Add an admin</h3>
   				<form role="form" id="add" type="post">
     					<div class="form-group">

@@ -20,13 +20,13 @@ if (!isset($_CODE_PROFILE_)) {
 		?>
 
 		<!-- Main workspace starts from here -->
-		<div id="content-wrapper" class="col-md-10 col-md-offset-2">
+		<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
 			<div class="row">
 				<ol class="breadcrumb">
 				    <li><a href="dashboard.php">Home</a></li>
 				    <li class="active">Profile</li>
 				</ol>
-				<div class="col-md-7">
+				<div class="col-xs-7">
 					<h3>Profile</h3>
 					<?php
 					    echo '<h4>Email : '.$email.'</h4>';
@@ -53,7 +53,7 @@ if (!isset($_CODE_PROFILE_)) {
 					<a class="btn btn-danger" href="#" role="button" data-toggle="modal" data-target="#confirm-delete"><span class="glyphicon glyphicon-ban-circle" style="margin-right:5px;"></span>Delete Account</a>
 				</div>
 					
-				<div class="col-md-4 pull-right">
+				<div class="col-xs-4 pull-right">
 					
 				</div>
 			</div>
@@ -66,20 +66,20 @@ if (!isset($_CODE_PROFILE_)) {
 	    				<div class="modal-body">
 	        				<form class="form-horizontal" role="form" id="change_pw" type="post">
 	  							<div class="form-group">
-	    							<label class="control-label col-md-4" for="current"><h4>Current password:</h4></label>
-	    							<div class="col-md-8">
+	    							<label class="control-label col-xs-4" for="current"><h4>Current password:</h4></label>
+	    							<div class="col-xs-8">
 	    								<input type="password" class="form-control" id="current_pw" name="current_pw" placeholder="Enter current password">
 	    							</div>
 	    						</div>
 	    						<div class="form-group">
-		    						<label class="control-label col-md-4" for="new"><h4>New password:</h4></label>
-		    						<div class="col-md-8">
+		    						<label class="control-label col-xs-4" for="new"><h4>New password:</h4></label>
+		    						<div class="col-xs-8">
 	    								<input type="password" class="form-control" id="new_pw" name="new_pw" placeholder="Enter new password">
 	    							</div>
 	  							</div>
 	  							<div class="form-group">
-	    							<label class="control-label col-md-4" for="confirm"><h4>Confirm password:</h4></label>
-	    							<div class="col-md-8">
+	    							<label class="control-label col-xs-4" for="confirm"><h4>Confirm password:</h4></label>
+	    							<div class="col-xs-8">
 	    								<input type="password" class="form-control" id="confirm_pw" name="confirm_pw" placeholder="Confirm new password">
 	    							</div>
 	  							</div>
