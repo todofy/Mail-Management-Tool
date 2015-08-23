@@ -100,7 +100,7 @@ class api
 		//replace parameters with values
 		if(!empty($this->api_params)) {
 			foreach ($this->api_params as $key => $value) {
-			$this->response =  str_replace("{{".$key."}}", $value,$this->response);
+				$this->response =  str_replace("{{".$key."}}", $value,$this->response);
 			}
 		}
 		//replace the links
@@ -121,7 +121,7 @@ class api
 			}
 		}
 		$unsub_URL = UNSUBSCRIBE_URL;
-		$this->response .= "\n";
+		$this->response .= "\n\n";
 		$this->response .= '<a href="'.$unsub_URL.'?id='.$this->mail_id.'">Unsubscribe from further mails.</a>';	
 		return $this->response;
 	}
