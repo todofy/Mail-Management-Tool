@@ -20,7 +20,7 @@ if (!isset($_CODE_DASHBOARD_)) {
 		?>
 
 		<!-- Main workspace starts from here -->
-		<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
+		<div id="content-wrapper" class="col-xs-10 col-xs-offset-2 col-md-10 col-md-offset-2">
 			<div class="row">
 				<ol class="breadcrumb">
 				    <li class="active">Home</li>

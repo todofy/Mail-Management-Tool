@@ -3,6 +3,7 @@
 	margin-top: 75px;
 	margin-left: 0px;
 	height: auto;
+	overflow-x: auto;
     transition: width 0.4s;
 }
 

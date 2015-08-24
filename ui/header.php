@@ -14,30 +14,37 @@ if (!isset($_CODE_HEADER_)) {
 
 	<div id="header" class="col-xs-12 header-user-dropdown">
 		<div class="row header-limiter">
-			<div class="col-xs-2"></div>
-			<img id="logo" src="assets/logo.png" class="col-xs-3">
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				<img id="logo" src="assets/logo.png">
+			</div>
 
-			<nav class="col-xs-3">
-			</nav>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+			</div>
 
-			<form class="col-xs-2 navbar-form" role="search" id="search" action = "search.php" method = "POST">
-	            <div class="input-group">
-	                <input type="text" class="form-control" placeholder="Search..." size="50" name="key" id="search_key">
-	                <span class="input-group-btn">
-	                    <button type="submit" class="btn btn-default">
-	                    <span class="glyphicon glyphicon-search"></span>
-	                    </button>
-	                </span>
-	            </div>
-	        </form>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				<form class="navbar-form" role="search" id="search" action = "search.php" method = "POST">
+		            <div class="input-group">
+		                <input type="text" class="form-control" placeholder="Search..." name="key" size="20" id="search_key">
+		                <span class="input-group-btn">
+		                    <button type="submit" class="btn btn-default">
+		                    <span class="glyphicon glyphicon-search"></span>
+		                    </button>
+		                </span>
+		            </div>
+		        </form>
+		    </div>
 
+		    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 
-			<div class="col-xs-1 header-user-menu">
-				<span class="glyphicon glyphicon-cog"></span>
-				<ul class="col-xs-1">
-					<li><a href="profile.php">Profile</a></li>
-					<li><a href="logout.php">Logout</a></li>
-				</ul>
+		    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+				<div class="header-user-menu">
+					<span class="glyphicon glyphicon-cog"></span>
+					<ul class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+						<li><a href="profile.php">Profile</a></li>
+						<li><a href="logout.php">Logout</a></li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>

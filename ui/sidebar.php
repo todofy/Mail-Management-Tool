@@ -8,9 +8,9 @@ if (!isset($_CODE_SIDEBAR_)) {
 <link href="css/sidebar.css" rel="stylesheet" type="text/css">
 
 
-<div id="wrapper" class="col-xs-2">
+<div id="wrapper" class="col-xs-2 col-md-2">
     <div class="row">
-        <div id="sidebar-wrapper" class="col-xs-2">
+        <div id="sidebar-wrapper" class="col-xs-2 col-md-2">
             <ul id="sidebar_menu" class="sidebar-nav sidebar-name">
                 <li class="sidebar-nav sidebar-brand"><a id="menu-toggle" href="javascript:void(0)" style="pointer-events:none;">Menu<span id="main_icon" class="sub_icon"></span></a></li>
             </ul>
