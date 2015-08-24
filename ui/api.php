@@ -37,10 +37,8 @@ if (!isset($_CODE_API_)) {
 			<?php
 			if(empty($apis))
 				echo '
-					<div class="col-xs-12">
-						<div class="col-xs-6 col-xs-offset-3">
-							<div class="alert alert-info" style="text-align: center;">No APIs created yet.<a href="api_add.php"> Create a new API.</a></div>
-						</div>
+					<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+						<div class="alert alert-info" style="text-align: center;">No APIs created yet.<a href="api_add.php"> Create a new API.</a></div>
 					</div>';
 			else{
 				echo '

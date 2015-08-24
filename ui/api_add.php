@@ -54,7 +54,7 @@ if (!isset($_API_ADD_)) {
 			</div>
 			<div class="col-xs-12">
 				<div id="api-details" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="z-index: 15000; margin-top:40px;">
-		  			<div class="modal-dialog" style="left: 5%; width: 90%;">
+		  			<div class="modal-dialog" style="left: 5%; width: 90%; overflow-y: initial;">
 		    			<div class="modal-content">
 		    				<div class="modal-header">
 		    					<a href="api.php" class="close">&times;</a>

@@ -21,37 +21,30 @@ if (!isset($_SEARCH_VIEW_)) {
 
 		<!-- Main workspace starts from here -->
 		<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
-			<div class="row">
+			<div class="col-xs-12">
 				<ol class="breadcrumb">
 				    <li><a href="dashboard.php">Home</a></li>
 				    <li class="active">Search</li>
 				</ol>
 			</div>
-			<div class="row">
 			<?php
 				if($error){
-					echo '<div class="row">
-								<div class="col-xs-6 col-xs-offset-3">
-									<div class="alert alert-danger" style="text-align: center;">No Search Key Specified</div>
-								</div>
-							</div>';
+					echo '<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+							<div class="alert alert-danger" style="text-align: center;">No Search Key Specified</div>
+						</div>';
 				}
 				else {
 					echo'
 						<div class="col-xs-12">
 							<h3>Search results for "' . $getKey . '"</h3>
-						</div>
-					</div>';
+						</div>';
 					if($total_results == 0) {
-						echo '<div class="row">
-								<div class="col-xs-6 col-xs-offset-3">
+						echo '<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 									<div class="alert alert-info" style="text-align: center;">No Search Results Found</div>
-								</div>
 							</div>';
 					}
 					if(!empty($search_admin)){
 						echo '
-							<div class="row">
 							<div class="col-xs-12">
 								<h4 id="admin-head">In Admins</h4>
 								<table class="table" id="admin">
@@ -90,12 +83,10 @@ if (!isset($_SEARCH_VIEW_)) {
 									}
 									
 								echo '</table>
-							</div>
-						</div>';
+							</div>';
 					}
 					if (!empty($search_campaign)) {
 						echo '
-							<div class="row">
 							<div class="col-xs-12">
 								<h4>In Campaigns</h4>
 								<table class="table">
@@ -125,12 +116,10 @@ if (!isset($_SEARCH_VIEW_)) {
 										echo '</tr>';
 									}							
 								echo '</table>
-							</div>
-						</div>';				
+							</div>';				
 					}	
 					if (!empty($search_api)) {
 						echo '
-							<div class="row">
 							<div class="col-xs-12">
 								<h4 id="api-head">In APIs</h4>
 								<table class="table" id="api">
@@ -159,12 +148,10 @@ if (!isset($_SEARCH_VIEW_)) {
 										echo '</tr>';
 									}							
 								echo '</table>
-							</div>
-						</div>';				
+							</div>';				
 					}
 					if (!empty($search_template)) {
 						echo '
-							<div class="row">
 							<div class="col-xs-12">
 								<h4 id="template-head">In Templates</h4>
 								<table class="table" id="template">
@@ -194,88 +181,96 @@ if (!isset($_SEARCH_VIEW_)) {
 										echo '</tr>';
 										}							
 								echo '</table>
-							</div>
-						</div>';				
+							</div>';				
 					}
 				}										
 			?>
 		</div>
-	</div>
-	<div id="revoke-admin" class="modal fade" role="dialog" style="z-index: 15000; margin-top:100px;">
-  			<div class="modal-dialog">
-    			<div class="modal-content">
-    				<div class="modal-header">
-        				<h4 class="modal-title">Revoke Secret Key</h4>
-      				</div>
-      				<div class="modal-body">
-        				<p>Are you sure you want to revoke the secret key for this admin?</p>
-        				<br>
-        				<button type="button" class="btn btn-warning button-revoke-confirm-admin" data-dismiss="modal">Revoke key</button>
-        				<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
-        			</div>
-    			</div>
-  			</div>
+		<div class="col-xs-12">
+			<div id="revoke-admin" class="modal fade" role="dialog" style="z-index: 15000; top:20%; left:10%;">
+	  			<div class="modal-dialog">
+	    			<div class="modal-content">
+	    				<div class="modal-header">
+	        				<h4 class="modal-title">Revoke Secret Key</h4>
+	      				</div>
+	      				<div class="modal-body">
+	        				<p>Are you sure you want to revoke the secret key for this admin?</p>
+	        				<br>
+	        				<button type="button" class="btn btn-warning button-revoke-confirm-admin" data-dismiss="modal">Revoke key</button>
+	        				<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+	        			</div>
+	    			</div>
+	  			</div>
+			</div>
 		</div>
-		<div id="delete-admin" class="modal fade" role="dialog" style="z-index: 15000; margin-top:100px;">
-  			<div class="modal-dialog">
-    			<div class="modal-content">
-    				<div class="modal-header">
-        				<h4 class="modal-title">Delete Admin</h4>
-      				</div>
-      				<div class="modal-body">
-        				<p>Are you sure you want to delete this admin?</p>
-        				<br>
-        				<button type="button" class="btn btn-danger button-delete-confirm-admin" data-dismiss="modal">Delete</button>
-        				<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
-        			</div>
-    			</div>
-  			</div>
+		<div class="col-xs-12">
+			<div id="delete-admin" class="modal fade" role="dialog" style="z-index: 15000; top:20%; left:10%;">
+	  			<div class="modal-dialog">
+	    			<div class="modal-content">
+	    				<div class="modal-header">
+	        				<h4 class="modal-title">Delete Admin</h4>
+	      				</div>
+	      				<div class="modal-body">
+	        				<p>Are you sure you want to delete this admin?</p>
+	        				<br>
+	        				<button type="button" class="btn btn-danger button-delete-confirm-admin" data-dismiss="modal">Delete</button>
+	        				<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+	        			</div>
+	    			</div>
+	  			</div>
+			</div>
 		</div>
-		<div id="delete-api" class="modal fade" role="dialog" style="z-index: 15000; margin-top:100px;">
-  			<div class="modal-dialog">
-    			<div class="modal-content">
-    				<div class="modal-header">
-        				<h4 class="modal-title">Delete API</h4>
-      				</div>
-      				<div class="modal-body">
-        				<p>Are you sure you want to delete this API?</p>
-        				<br>
-        				<button type="button" class="btn btn-danger button-delete-confirm-api" data-dismiss="modal">Delete</button>
-        				<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
-        			</div>
-    			</div>
-  			</div>
-		</div>	
-		<div id="preview" class="modal fade" role="dialog" style="z-index: 15000; margin-top:40px;">
-  			<div class="modal-dialog" style="width: 950px; min-width:800px; margin-left: 260px; overflow-y: initial;">
-    			<div class="modal-content">
-    				<div class="modal-header">
-        				<h4 class="modal-title">Preview Template</h4>
-      				</div>
-      				<div class="modal-body"style="overflow-y: auto;">
-      					<div class="well" id="template-preview" ></div>
-      				</div>
-  					<div class="modal-footer" style="margin-top: -20px;">
-      					<a class="btn btn-primary button-edit-secondary" href='#' role="button">Edit</a>
-        				<button type="button" class="btn btn-link" data-dismiss="modal">Back</button>
-        			</div>
-    			</div>
-  			</div>
+		<div class="col-xs-12">
+			<div id="delete-api" class="modal fade" role="dialog" style="z-index: 15000; top:20%; left:10%;">
+	  			<div class="modal-dialog">
+	    			<div class="modal-content">
+	    				<div class="modal-header">
+	        				<h4 class="modal-title">Delete API</h4>
+	      				</div>
+	      				<div class="modal-body">
+	        				<p>Are you sure you want to delete this API?</p>
+	        				<br>
+	        				<button type="button" class="btn btn-danger button-delete-confirm-api" data-dismiss="modal">Delete</button>
+	        				<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+	        			</div>
+	    			</div>
+	  			</div>
+			</div>
 		</div>
-		<div id="delete" class="modal fade" role="dialog" style="z-index: 15000; margin-top:100px;">
-  			<div class="modal-dialog">
-    			<div class="modal-content">
-    				<div class="modal-header">
-        				<h4 class="modal-title">Delete Template</h4>
-      				</div>
-      				<div class="modal-body">
-        				<p>Are you sure you want to delete this template?</p>
-        				<br>
-        				<button type="button" class="btn btn-danger button-delete-confirm-template" data-dismiss="modal">Delete</button>
-        				<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
-        			</div>
-    			</div>
-  			</div>
+		<div class="col-xs-12">	
+			<div id="preview" class="modal fade" role="dialog" style="z-index: 15000; margin-top:40px;">
+	  			<div class="modal-dialog" style="left: 5%; width: 90%; overflow-y: initial;">
+	    			<div class="modal-content">
+	    				<div class="modal-header">
+	        				<h4 class="modal-title">Preview Template</h4>
+	      				</div>
+	      				<div class="modal-body" style="overflow-y: auto;">
+	      					<div class="well" id="template-preview" ></div>
+	      				</div>
+	  					<div class="modal-footer" style="margin-top: -20px;">
+	      					<a class="btn btn-primary button-edit-secondary" href='#' role="button">Edit</a>
+	        				<button type="button" class="btn btn-link" data-dismiss="modal">Back</button>
+	        			</div>
+	    			</div>
+	  			</div>
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<div id="delete" class="modal fade" role="dialog" style="z-index: 15000; top:20%; left:10%;">
+	  			<div class="modal-dialog">
+	    			<div class="modal-content">
+	    				<div class="modal-header">
+	        				<h4 class="modal-title">Delete Template</h4>
+	      				</div>
+	      				<div class="modal-body">
+	        				<p>Are you sure you want to delete this template?</p>
+	        				<br>
+	        				<button type="button" class="btn btn-danger button-delete-confirm-template" data-dismiss="modal">Delete</button>
+	        				<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+	        			</div>
+	    			</div>
+	  			</div>
+			</div>
 		</div>
 	</div>
 	<div class="row"  id="warning-message">

@@ -30,10 +30,9 @@ if (!isset($_CAMPAIGN_VIEW_)) {
 				</div>
 				<?php
 				if($error){
-					echo '<div class="col-xs-12">
-							<div class="col-xs-6 col-xs-offset-3">
-								<div class="alert alert-danger" style="text-align: center;">Campaign doesn\'t exist in database</div>
-							</div>
+					echo '
+						<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+							<div class="alert alert-danger" style="text-align: center;">Campaign doesn\'t exist in database</div>
 						</div>';
 				}
 				else{
@@ -89,22 +88,25 @@ if (!isset($_CAMPAIGN_VIEW_)) {
 				}			
 			?>
 		</div>
-		<div id="preview" class="modal fade" role="dialog" style="z-index: 15000; margin-top:40px;">
-  			<div class="modal-dialog" style="width: 950px; min-width:800px; margin-left: 260px; overflow-y: initial;">
-    			<div class="modal-content">
-    				<div class="modal-header">
-        				<h4 class="modal-title">Sample Mail</h4>
-      				</div>
-      				<div class="modal-body"style="overflow-y: auto;">
-      					<div class="well" id="template-preview" ></div>
-      				</div>
-  					<div class="modal-footer" style="margin-top: -20px;">
-        				<button type="button" class="btn btn-link" data-dismiss="modal">Back</button>
-        			</div>
-    			</div>
-  			</div>
+		<div class="col-xs-12">
+			<div id="preview" class="modal fade" role="dialog" style="z-index: 15000; top:40px;">
+	  			<div class="modal-dialog" style="left: 5%; width: 90%; overflow-y: initial;">
+	    			<div class="modal-content">
+	    				<div class="modal-header">
+	        				<h4 class="modal-title">Sample Mail</h4>
+	      				</div>
+	      				<div class="modal-body"style="overflow-y: auto;">
+	      					<div class="well" id="template-preview" ></div>
+	      				</div>
+	  					<div class="modal-footer" style="margin-top: -20px;">
+	        				<button type="button" class="btn btn-link" data-dismiss="modal">Back</button>
+	        			</div>
+	    			</div>
+	  			</div>
+			</div>
 		</div>
 	</div>
+</div>
 	<div class="row"  id="warning-message">
 		<div class="col-xs-12">
 			<div class="well">

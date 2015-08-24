@@ -28,15 +28,13 @@ if (!isset($_API_HANDLER_)) {
 					    <li class="active">API Handler</li>
 					</ol>
 				</div>
-				<div class="col-xs-12">
-					<div class="col-xs-6 col-xs-offset-3">
-						<?php
-							if($error) 
-								echo '<div class="alert alert-danger" style="text-align: center;">'.$res.'</div>';
-							else
-								echo '<div class="alert alert-success" style="text-align: center;">'.$res.'</div>';
-						?>
-					</div>
+				<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+					<?php
+						if($error) 
+							echo '<div class="alert alert-danger" style="text-align: center;">'.$res.'</div>';
+						else
+							echo '<div class="alert alert-success" style="text-align: center;">'.$res.'</div>';
+					?>
 				</div>
 			</div>
 		</div>

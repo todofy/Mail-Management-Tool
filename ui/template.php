@@ -22,30 +22,26 @@ if (!isset($_CODE_TEMPLATE_)) {
 
 		<!-- Main workspace starts from here -->
 		<div id="content-wrapper"  class="col-xs-10 col-xs-offset-2">
-			<div class="row">
+			<div class="col-xs-12">
 				<ol class="breadcrumb">
 				    <li><a href="dashboard.php">Home</a></li>
 				    <li class="active">Template</li>
 				</ol>
 			</div>
-			<div class="row">
-			    <div class="col-xs-9">
-			    	<h3>List of all Templates</h3>
-			    </div>
-			    <div class="col-xs-3">
-					<a href="template_add.php" type="button" class="btn btn-success" style="float:right; margin-right: 10px;">Add</a>
-				</div>
+		    <div class="col-xs-9">
+		    	<h3>List of all Templates</h3>
+		    </div>
+		    <div class="col-xs-3">
+				<a href="template_add.php" type="button" class="btn btn-success" style="float:right; margin-right: 10px;">Add</a>
 			</div>
 			<?php
 			if(empty($templates))
-				echo '<div class="row">
-								<div class="col-xs-6 col-xs-offset-3">
-									<div class="alert alert-info" style="text-align: center;">No templates created yet.<a href="template_add.php"> Create a new template.</a></div>
-								</div>
-							</div>';
+				echo '
+					<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+						<div class="alert alert-info" style="text-align: center;">No templates created yet.<a href="template_add.php"> Create a new template.</a></div>
+					</div>';
 			else{
 				echo '
-				<div class="row">
 					<div class="col-xs-12">
 						<table class="table">
 							<tr style="background-color: #E0E0E0;">
@@ -76,39 +72,42 @@ if (!isset($_CODE_TEMPLATE_)) {
 						echo '</table>
 					</div>';
 				}
-				?>
+			?>
+		</div>
+		<div class="col-xs-12">
+			<div id="preview" class="modal fade" role="dialog" style="z-index: 15000; margin-top:40px;">
+	  			<div class="modal-dialog" style="left: 5%; width: 90%; overflow-y: initial;">
+	    			<div class="modal-content">
+	    				<div class="modal-header">
+	        				<h4 class="modal-title">Preview Template</h4>
+	      				</div>
+	      				<div class="modal-body" style="overflow-y: auto;">
+	      					<div class="well" id="template-preview" ></div>
+	      				</div>
+	  					<div class="modal-footer" style="margin-top: -20px;">
+	      					<a class="btn btn-primary button-edit-secondary" href='#' role="button">Edit</a>
+	        				<button type="button" class="btn btn-link" data-dismiss="modal">Back</button>
+	        			</div>
+	    			</div>
+	  			</div>
 			</div>
 		</div>
-		<div id="preview" class="modal fade" role="dialog" style="z-index: 15000; margin-top:40px;">
-  			<div class="modal-dialog" style="width: 950px; min-width:800px; margin-left: 260px; overflow-y: initial;">
-    			<div class="modal-content">
-    				<div class="modal-header">
-        				<h4 class="modal-title">Preview Template</h4>
-      				</div>
-      				<div class="modal-body"style="overflow-y: auto;">
-      					<div class="well" id="template-preview" ></div>
-      				</div>
-  					<div class="modal-footer" style="margin-top: -20px;">
-      					<a class="btn btn-primary button-edit-secondary" href='#' role="button">Edit</a>
-        				<button type="button" class="btn btn-link" data-dismiss="modal">Back</button>
-        			</div>
-    			</div>
-  			</div>
-		</div>
-		<div id="delete" class="modal fade" role="dialog" style="z-index: 15000; margin-top:100px;">
-  			<div class="modal-dialog">
-    			<div class="modal-content">
-    				<div class="modal-header">
-        				<h4 class="modal-title">Delete Template</h4>
-      				</div>
-      				<div class="modal-body">
-        				<p>Are you sure you want to delete this template?</p>
-        				<br>
-        				<button type="button" class="btn btn-danger button-delete-confirm" data-dismiss="modal">Delete</button>
-        				<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
-        			</div>
-    			</div>
-  			</div>
+		<div class="col-xs-12">
+			<div id="delete" class="modal fade" role="dialog" style="z-index: 15000; top:20%; left:10%;">
+	  			<div class="modal-dialog">
+	    			<div class="modal-content">
+	    				<div class="modal-header">
+	        				<h4 class="modal-title">Delete Template</h4>
+	      				</div>
+	      				<div class="modal-body">
+	        				<p>Are you sure you want to delete this template?</p>
+	        				<br>
+	        				<button type="button" class="btn btn-danger button-delete-confirm" data-dismiss="modal">Delete</button>
+	        				<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+	        			</div>
+	    			</div>
+	  			</div>
+			</div>
 		</div>
 	</div>
 	<div class="row"  id="warning-message">
