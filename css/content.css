@@ -46,7 +46,7 @@ body::-webkit-scrollbar{
 }
 
 #content-wrapper{
-	margin-left: -10px;
+	margin-left: 0px;
 }
 
 .btn{

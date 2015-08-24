@@ -9,7 +9,6 @@ if (!isset($_CODE_SIDEBAR_)) {
 
 
 <div id="wrapper" class="col-xs-2 col-md-2">
-    <div class="row">
         <div id="sidebar-wrapper" class="col-xs-2 col-md-2">
             <ul id="sidebar_menu" class="sidebar-nav sidebar-name">
                 <li class="sidebar-nav sidebar-brand"><a id="menu-toggle" href="javascript:void(0)" style="pointer-events:none;">Menu<span id="main_icon" class="sub_icon"></span></a></li>
@@ -18,6 +17,11 @@ if (!isset($_CODE_SIDEBAR_)) {
                   <li>
                       <a href="dashboard.php" style="font-size:15px;">
                          Dashboard<span class="sub_icon glyphicon glyphicon-home"></span>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#" style="font-size:15px;">
+                         Send Mail<span class="sub_icon glyphicon glyphicon-envelope"></span>
                       </a>
                   </li>
                   <li>
@@ -38,7 +42,7 @@ if (!isset($_CODE_SIDEBAR_)) {
                   ?> 
             </ul>
         </div> 
-    </div>    
+   
 </div>
 
 

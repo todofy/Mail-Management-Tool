@@ -1,12 +1,15 @@
 #wrapper {
     transition: all .4s ease 0s;
     left: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
     height: 100%;
     z-index: 10;
 }
 
 #sidebar-wrapper {
     margin-top: 0px;
+    padding-left: 0px;
     padding-right: 0px;
     top: 0px;
     background: #222;
