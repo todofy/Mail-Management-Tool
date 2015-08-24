@@ -33,7 +33,7 @@ if (!isset($_TEMPLATE_EDIT_)) {
 </head>
 
 <body>
-	<div class="row">
+	<div class="row" id="container">
 		<?php
 		include __DIR__ .'/header.php';
 		include __DIR__ .'/sidebar.php';

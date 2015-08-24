@@ -56,3 +56,10 @@ body::-webkit-scrollbar{
 #search-btn{
 	margin: 0px;
 }
+
+table{
+	table-layout: fixed;
+}
+.table th,td{
+	word-wrap: break-word;
+}

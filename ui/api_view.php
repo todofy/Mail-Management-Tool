@@ -13,7 +13,7 @@ if (!isset($_API_VIEW_)) {
 </head>
 
 <body>
-	<div class="row">
+	<div class="row" id="container">
 		<?php
 		include __DIR__ .'/header.php';
 		include __DIR__ .'/sidebar.php';
