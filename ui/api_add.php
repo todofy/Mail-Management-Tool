@@ -22,35 +22,35 @@ if (!isset($_API_ADD_)) {
 		<!-- Main workspace starts from here -->
 		<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
 			<div class="row">
-				<ol class="breadcrumb">
-				    <li><a href="dashboard.php">Home</a></li>
-				    <li><a href="api.php">API</a></li>
-				    <li class="active">Add</li>
-				</ol>
-			</div>
-			<div class="row">
 				<div class="col-xs-12">
-					<h3>Create API</h3>
-					<form role="form" type="post" id="create-api">
-						<div class="form-group">
-		    				<label for="template-name"><h4>API Name</h4></label>
-		    				<input type="text" class="form-control" id="api-name" name="api-name" style="width: 40%; min-width: 200px">
-		  				</div>
-		  				<div class="form-group">
-		  					<label class="control-label"><h4>Select Template</h4></label>
-		  					<select class="form-control" name="template" style="width:auto; display:inline-block; margin-left: 10px;">
-		    					<?php
-		    						foreach ($templates as $value) {
-		    							echo '<option>'.$value['name'].'</option>';
-		    						}
-		    					?>
-		  					</select>
-		  					<a href="template_add.php" type="button" class="btn btn-link">Create a new Template</a>
-						</div>
-					</form>
-		  			<button type="submit" class="btn btn-success" value="Submit" id="save">Save</button>
-		  			<a href="api.php" class="btn btn-link" id="cancel">Cancel</a>
-		  		</div>
+					<ol class="breadcrumb">
+					    <li><a href="dashboard.php">Home</a></li>
+					    <li><a href="api.php">API</a></li>
+					    <li class="active">Add</li>
+					</ol>
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<h3>Create API</h3>
+				<form role="form" type="post" id="create-api">
+					<div class="form-group">
+	    				<label for="template-name"><h4>API Name</h4></label>
+	    				<input type="text" class="form-control" id="api-name" name="api-name" style="width: 40%; min-width: 200px">
+	  				</div>
+	  				<div class="form-group">
+	  					<label class="control-label"><h4>Select Template</h4></label>
+	  					<select class="form-control" name="template" style="width:auto; display:inline-block; margin-left: 10px;">
+	    					<?php
+	    						foreach ($templates as $value) {
+	    							echo '<option>'.$value['name'].'</option>';
+	    						}
+	    					?>
+	  					</select>
+	  					<a href="template_add.php" type="button" class="btn btn-link">Create a new Template</a>
+					</div>
+				</form>
+	  			<button type="submit" class="btn btn-success" value="Submit" id="save">Save</button>
+	  			<a href="api.php" class="btn btn-link" id="cancel">Cancel</a>
 			</div>
 			<div id="api-details" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="z-index: 15000; margin-top:40px;">
 	  			<div class="modal-dialog" style="width: 1100px; min-width:800px; margin-left: 140px;">

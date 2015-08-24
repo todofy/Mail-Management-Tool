@@ -20,6 +20,8 @@
 	text-align: justify;
 }
 
+
+
 .bs-callout {
 	padding: 20px;
 	margin: 20px 0;
@@ -43,4 +45,16 @@ body::-webkit-scrollbar{
 
 .campaign-row:hover{
 	background-color: #BBBBBB;
+}
+
+#content-wrapper{
+	margin-left: -10px;
+}
+
+.btn{
+	margin: 1px;
+}
+
+#search-btn{
+	margin: 0px;
 }

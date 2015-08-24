@@ -22,17 +22,19 @@ if (!isset($_ADMIN_EDIT_)) {
   	<!-- Main workspace starts from here -->
   	<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
   		<div class="row">
-  			<ol class="breadcrumb">
-  			    <li><a href="dashboard.php">Home</a></li>
-  			    <li><a href="./admin_view.php">View Admins</a></li>
-  			    <li class="active">Edit Admin</li>
-  			</ol>
-  			<div class="col-xs-7">
+        <div class="col-xs-12">
+    			<ol class="breadcrumb">
+    			    <li><a href="dashboard.php">Home</a></li>
+    			    <li><a href="./admin_view.php">View Admins</a></li>
+    			    <li class="active">Edit Admin</li>
+    			</ol>
+        </div>
+  			<div class="col-xs-12">
   				<h3>Edit an admin</h3>
   				<form role="form" id="edit" type="post">
   					<div class="form-group">
       					<label for="email"><h4>Email address:</h4></label>
-      					<input type="email" class="form-control" name="email" id="email" style="width: 50%; min-width: 200px" value=<?php echo $email ?> >
+      					<input type="email" class="form-control" name="email" id="email" style="width: 35%; min-width: 200px" value=<?php echo $email ?> >
       					<!-- TODO: Populate this input with the current user's email id  -->
     					</div>				
     					<h4 class="control-label">Access rights:</h4>

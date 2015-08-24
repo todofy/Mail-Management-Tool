@@ -22,23 +22,22 @@ if (!isset($_ADMIN_VIEW_)) {
 		<!-- Main workspace starts from here -->
 		<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
 			<div class="row">
-				<ol class="breadcrumb">
-				    <li><a href="dashboard.php">Home</a></li>
-				    <li class="active">View Admins</li>
-				</ol>
-				<div class="row">
-			    	<div class="col-xs-9" style="left: 15px;">
-			    		<h3>List of all Admins</h3>
-			    	</div>
-			    	<div class="col-xs-3">
-			    	<?php
-			    		if (isset($newuser->access[ADD_ADMIN])){
-							echo '<a href="admin_add.php" type="button" class="btn btn-success" style="float:right; margin-right: 25px;">Add</a>';
-						}
-					?>
-					</div>
+				<div class="col-xs-12">
+					<ol class="breadcrumb">
+					    <li><a href="dashboard.php">Home</a></li>
+					    <li class="active">View Admins</li>
+					</ol>
 				</div>
-				<div class="clearfix"></div>
+		    	<div class="col-xs-9">
+		    		<h3>List of all Admins</h3>
+		    	</div>
+		    	<div class="col-xs-3">
+		    	<?php
+		    		if (isset($newuser->access[ADD_ADMIN])){
+						echo '<a href="admin_add.php" type="button" class="btn btn-success" style="float:right; margin-right: 5px;">Add</a>';
+					}
+				?>
+				</div>
 				<div class="col-xs-12">
 					<table class="table">
 						<tr style="background-color: #E0E0E0;">
@@ -79,35 +78,39 @@ if (!isset($_ADMIN_VIEW_)) {
 					</table>					
 				</div>
 			</div>
-			<div id="revoke" class="modal fade" role="dialog" style="z-index: 15000; margin-top:100px;">
-	  			<div class="modal-dialog">
-	    			<div class="modal-content">
-	    				<div class="modal-header">
-	        				<h4 class="modal-title">Revoke Secret Key</h4>
-	      				</div>
-	      				<div class="modal-body">
-	        				<p>Are you sure you want to revoke the secret key for this admin?</p>
-	        				<br>
-	        				<button type="button" class="btn btn-warning button-revoke-confirm" data-dismiss="modal">Revoke key</button>
-	        				<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
-	        			</div>
-	    			</div>
-	  			</div>
+			<div class="col-xs-12">
+				<div id="revoke" class="modal fade" role="dialog" style="z-index: 15000; top:20%; left:10%;">
+		  			<div class="modal-dialog">
+		    			<div class="modal-content">
+		    				<div class="modal-header">
+		        				<h4 class="modal-title">Revoke Secret Key</h4>
+		      				</div>
+		      				<div class="modal-body">
+		        				<p>Are you sure you want to revoke the secret key for this admin?</p>
+		        				<br>
+		        				<button type="button" class="btn btn-warning button-revoke-confirm" data-dismiss="modal">Revoke key</button>
+		        				<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+		        			</div>
+		    			</div>
+		  			</div>
+				</div>
 			</div>
-			<div id="delete" class="modal fade" role="dialog" style="z-index: 15000; margin-top:100px;">
-	  			<div class="modal-dialog">
-	    			<div class="modal-content">
-	    				<div class="modal-header">
-	        				<h4 class="modal-title">Delete Admin</h4>
-	      				</div>
-	      				<div class="modal-body">
-	        				<p>Are you sure you want to delete this admin?</p>
-	        				<br>
-	        				<button type="button" class="btn btn-danger button-delete-confirm" data-dismiss="modal">Delete</button>
-	        				<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
-	        			</div>
-	    			</div>
-	  			</div>
+			<div class="col-xs-12">
+				<div id="delete" class="modal fade" role="dialog" style="z-index: 15000; top:20%; left:10%;">
+		  			<div class="modal-dialog">
+		    			<div class="modal-content">
+		    				<div class="modal-header">
+		        				<h4 class="modal-title">Delete Admin</h4>
+		      				</div>
+		      				<div class="modal-body">
+		        				<p>Are you sure you want to delete this admin?</p>
+		        				<br>
+		        				<button type="button" class="btn btn-danger button-delete-confirm" data-dismiss="modal">Delete</button>
+		        				<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+		        			</div>
+		    			</div>
+		  			</div>
+				</div>
 			</div>		
 		</div>
 	</div>

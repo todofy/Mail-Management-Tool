@@ -22,29 +22,28 @@ if (!isset($_CODE_API_)) {
 		<!-- Main workspace starts from here -->
 		<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
 			<div class="row">
-				<ol class="breadcrumb">
-				    <li><a href="dashboard.php">Home</a></li>
-				    <li class="active">API</li>
-				</ol>
-			</div>
-			<div class="row">
+				<div class="col-xs-12">
+					<ol class="breadcrumb">
+					    <li><a href="dashboard.php">Home</a></li>
+					    <li class="active">API</li>
+					</ol>
+				</div>			
 			    <div class="col-xs-9">
 			    	<h3>List of all APIs</h3>
 			    </div>
 			    <div class="col-xs-3">
 					<a href="api_add.php" type="button" class="btn btn-success" style="float:right; margin-right: 10px;">Add</a>
 				</div>
-			</div>
 			<?php
 			if(empty($apis))
-				echo '<div class="row">
-							<div class="col-xs-6 col-xs-offset-3">
-								<div class="alert alert-info" style="text-align: center;">No APIs created yet.<a href="api_add.php"> Create a new API.</a></div>
-							</div>
-						</div>';
+				echo '
+					<div class="col-xs-12"
+						<div class="col-xs-6 col-xs-offset-3">
+							<div class="alert alert-info" style="text-align: center;">No APIs created yet.<a href="api_add.php"> Create a new API.</a></div>
+						</div>
+					</div>';
 			else{
 				echo '
-				<div class="row">
 					<div class="col-xs-12">
 						<table class="table">
 							<tr style="background-color: #E0E0E0;">

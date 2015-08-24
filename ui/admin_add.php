@@ -22,16 +22,18 @@ if (!isset($_ADMIN_ADD_)) {
   	<!-- Main workspace starts from here -->
   	<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
   		<div class="row">
-  			<ol class="breadcrumb">
-  			    <li><a href="dashboard.php">Home</a></li>
-  			    <li class="active">Add Admin</li>
-  			</ol>
-  			<div class="col-xs-7">
+        <div class="col-xs-12">
+    			<ol class="breadcrumb">
+    			    <li><a href="dashboard.php">Home</a></li>
+    			    <li class="active">Add Admin</li>
+    			</ol>
+        </div>
+  			<div class="col-xs-12">
   				<h3>Add an admin</h3>
   				<form role="form" id="add" type="post">
     					<div class="form-group">
       					<label for="email"><h4>Email address:</h4></label>
-      					<input type="email" class="form-control" id="email" name="email" placeholder="someone@domain.com" style="width: 50%; min-width: 200px">
+      					<input type="email" class="form-control" id="email" name="email" placeholder="someone@domain.com" style="width: 35%; min-width: 200px">
     					</div>
     					<h4 class="control-label">Access rights:</h4>
     					<div class="form-group">

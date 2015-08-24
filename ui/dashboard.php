@@ -26,27 +26,33 @@ if (!isset($_CODE_DASHBOARD_)) {
 					<ol class="breadcrumb">
 					    <li class="active">Home</li>
 					</ol>
+				</div>
 				<?php 
 				if(empty($campaigns))
 					echo '
-						<div class="col-xs-6 col-xs-offset-3">
-							<div class="alert alert-info" style="text-align: center;">No campaigns started yet.</div>
+						<div class="col-xs-12">
+							<div class="col-xs-6 col-xs-offset-3">
+								<div class="alert alert-info" style="text-align: center;">No campaigns started yet.</div>
+							</div>
 						</div>';
 								
 				else{
 					echo '
-				    	<h3>Campaigns</h3>
-						<table class="table">
-							<tr style="background-color: #E0E0E0;">
-								<th class="col-xs-1"><center>#ID</center></th>
-								<th class="col-xs-3">Subject</th>
-								<th class="col-xs-1"><center>API Code</center></th>
-								<th class="col-xs-1"><center>Total mails</center></th>
-								<th class="col-xs-1"><center>Mails processed</center></th>
-								<th class="col-xs-1"><center>Link clicks</center></th>
-								<th class="col-xs-2"><center>Started On</center></th>
-								<th class="col-xs-2"><center>Finished On</center></th>
-							</tr>';
+						<div class="col-xs-12">
+				    		<h3>Campaigns</h3>
+				    	</div>
+				    	<div class="col-xs-12">
+							<table class="table">
+								<tr style="background-color: #E0E0E0;">
+									<th class="col-xs-1"><center>#ID</center></th>
+									<th class="col-xs-3">Subject</th>
+									<th class="col-xs-1"><center>API Code</center></th>
+									<th class="col-xs-1"><center>Total mails</center></th>
+									<th class="col-xs-1"><center>Mails processed</center></th>
+									<th class="col-xs-1"><center>Link clicks</center></th>
+									<th class="col-xs-2"><center>Started On</center></th>
+									<th class="col-xs-2"><center>Finished On</center></th>
+								</tr>';
 
 						foreach ($campaigns as $value) {
 							echo '<tr class="campaign-row" data-href="campaign_view.php?id='.$value['id'].'" style="cursor:pointer;">';
@@ -63,7 +69,8 @@ if (!isset($_CODE_DASHBOARD_)) {
 								echo '<td><center>In process</center></td>';
 							echo '</tr>';
 						}
-					echo '</table>';
+					echo '</table>
+					</div>';
 				}
 			?>
 		</div>
