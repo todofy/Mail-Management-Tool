@@ -35,6 +35,10 @@
   pointer-events:auto;
 }
 
+.sidebar-nav ul{
+  width: 100%;
+}
+
 #sidebar_menu li a, .sidebar-nav li a {
     color: #999;
     display: block;
@@ -51,7 +55,6 @@
     -ms-transition: background .5s;
     transition: background .5s;
 }
-
 
 .sidebar_name {
     padding-top: 20%;
