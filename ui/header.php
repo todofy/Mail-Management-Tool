@@ -37,8 +37,8 @@ if (!isset($_CODE_HEADER_)) {
 
 		    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
 				<div class="header-user-menu">
-					<span class="glyphicon glyphicon-cog"></span>
-					<ul class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+					<span class="glyphicon glyphicon-cog" id="cog-sym"></span>
+					<ul class="row" id="drop-menu">
 						<li><a href="profile.php">Profile</a></li>
 						<li><a href="logout.php">Logout</a></li>
 					</ul>
