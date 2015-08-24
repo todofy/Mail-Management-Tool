@@ -6,6 +6,12 @@
 
 			userMenu.addClass('show');
 
+			link = $('.header-user-dropdown .header-user-menu ul li a');
+			link.on('touchend', function(e){
+				window.location = $(this).attr("href");
+				e.preventDefault();
+				e.stopPropagation();
+			});
 			e.preventDefault();
 			e.stopPropagation();
 

@@ -27,7 +27,7 @@
 	float: left;
 	height: 60px;
 	width: 100%;
-	min-width: 150px;
+	min-width: 175px;
 	position: relative;
 	top: -15px;
 	margin-left: -35px;
@@ -85,17 +85,16 @@
 .header-user-dropdown .header-limiter .header-user-menu{
 	margin-top: -3px;
 	background-color: black;
-	width: 100%;
+	width: 60px;
 	height:40px;
 	float: right;
 	position: absolute;
-	right: 5px;
+	right: 0px;
 	border-radius:2px;
 }
 
-/*.header-user-dropdown .header-limiter .header-user-menu:before{
+.header-user-dropdown .header-limiter .header-user-menu:before{
 	content:'';
-	display: none;
 	width:0;
 	height:0;
 	top: 18px;
@@ -103,7 +102,7 @@
 	position:absolute;
 	border:5px solid transparent;
 	border-top-color:#fff;
-}*/
+}
 
 .header-user-dropdown .header-limiter .header-user-menu ul{
 	display: block;
