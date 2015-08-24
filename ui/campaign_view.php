@@ -22,28 +22,28 @@ if (!isset($_CAMPAIGN_VIEW_)) {
 		<!-- Main workspace starts from here -->
 		<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
 			<div class="row">
-				<ol class="breadcrumb">
-				    <li><a href="dashboard.php">Home</a></li>
-				    <li class="active">View Campaign</li>
-				</ol>
-			</div>
-			<div class="row">
-				<div class="col-xs-9">
-					<h3>Campaign #<?php echo $campaign_id?></h3>
+				<div class="col-xs-12">
+					<ol class="breadcrumb">
+					    <li><a href="dashboard.php">Home</a></li>
+					    <li class="active">View Campaign</li>
+					</ol>
 				</div>
-				<div class="col-xs-3">
-					<?php echo '<a href="#" type="button" class="btn btn-info button-view" role="button" data-toggle="modal" data-target="#preview" style="float:right; margin-right: 10px;" id="'.$template_id.'">View sample mail</a>';?>
-				</div>
-			</div>
-			<?php
+				<?php
 				if($error){
-					echo '<div class="row">
+					echo '<div class="col-xs-12">
 							<div class="col-xs-6 col-xs-offset-3">
 								<div class="alert alert-danger" style="text-align: center;">Campaign doesn\'t exist in database</div>
 							</div>
 						</div>';
 				}
 				else{
+				echo '
+					<div class="col-xs-9">
+						<h3>Campaign #'.$campaign_id.'</h3>
+					</div>
+					<div class="col-xs-3">';
+						echo '<a href="#" type="button" class="btn btn-info button-view" role="button" data-toggle="modal" data-target="#preview" style="float:right; margin-right: 10px;" id="'.$template_id.'">View sample mail</a>
+					</div>';
 					if(!empty($mails)){
 						echo '<div class="row">
 							<div class="col-xs-12">

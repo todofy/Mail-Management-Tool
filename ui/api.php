@@ -37,7 +37,7 @@ if (!isset($_CODE_API_)) {
 			<?php
 			if(empty($apis))
 				echo '
-					<div class="col-xs-12"
+					<div class="col-xs-12">
 						<div class="col-xs-6 col-xs-offset-3">
 							<div class="alert alert-info" style="text-align: center;">No APIs created yet.<a href="api_add.php"> Create a new API.</a></div>
 						</div>
@@ -75,20 +75,22 @@ if (!isset($_CODE_API_)) {
 				}
 			?>
 			</div>
-		<div id="delete" class="modal fade" role="dialog" style="z-index: 15000; margin-top:100px;">
-  			<div class="modal-dialog">
-    			<div class="modal-content">
-    				<div class="modal-header">
-        				<h4 class="modal-title">Delete API</h4>
-      				</div>
-      				<div class="modal-body">
-        				<p>Are you sure you want to delete this API?</p>
-        				<br>
-        				<button type="button" class="btn btn-danger button-delete-confirm" data-dismiss="modal">Delete</button>
-        				<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
-        			</div>
-    			</div>
-  			</div>
+		<div class="col-xs-12">
+			<div id="delete" class="modal fade" role="dialog" style="z-index: 15000; top:20%; left:10%;">
+	  			<div class="modal-dialog">
+	    			<div class="modal-content">
+	    				<div class="modal-header">
+	        				<h4 class="modal-title">Delete API</h4>
+	      				</div>
+	      				<div class="modal-body">
+	        				<p>Are you sure you want to delete this API?</p>
+	        				<br>
+	        				<button type="button" class="btn btn-danger button-delete-confirm" data-dismiss="modal">Delete</button>
+	        				<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+	        			</div>
+	    			</div>
+	  			</div>
+			</div>
 		</div>
 	</div>
 </div>

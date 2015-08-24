@@ -22,37 +22,34 @@ if (!isset($_API_VIEW_)) {
 		<!-- Main workspace starts from here -->
 		<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
 			<div class="row">
-				<ol class="breadcrumb">
-				    <li><a href="dashboard.php">Home</a></li>
-				    <li><a href="api.php">API</a></li>
-				    <li class="active">View</li>
-				</ol>
-			</div>
-			<div class="row">
-				<div class="row">
-					<div class="col-xs-9">
-						<h3>View API</h3>
-					</div>
-					<div class="col-xs-3">
-						<a href="api_edit.php?id= <?php echo $id;?>" type="button" class="btn btn-primary" style="float:right; margin-right: 25px;">Edit</a>
-					</div>
-					<div class="col-xs-12">
-						<div class="clearfix"></div>
-						<?php
-						    echo '<h4>API Name :&nbsp&nbsp '.$api_name.'</h4>';
-						    echo '<h4>API Code :&nbsp&nbsp '.$api_code.'</h4>';
-						    echo '<hr>';
-						    echo '<h4>PHP Example : </h4>';
-						    echo '<div class="well">';
-						    echo $php_example;
-						    echo '</div>';
-						    echo '<hr>';
-						    echo '<h4>API Response : </h4>';
-						    echo '<div class="well">';
-						    echo $template_text;
-						    echo '</div>';
-						?>
-					</div>
+				<div class="col-xs-12">
+					<ol class="breadcrumb">
+					    <li><a href="dashboard.php">Home</a></li>
+					    <li><a href="api.php">API</a></li>
+					    <li class="active">View</li>
+					</ol>
+				</div>
+				<div class="col-xs-9">
+					<h3>View API</h3>
+				</div>
+				<div class="col-xs-3">
+					<a href="api_edit.php?id= <?php echo $id;?>" type="button" class="btn btn-primary" style="float:right; margin-right: 5px;">Edit</a>
+				</div>
+				<div class="col-xs-12">
+				<?php
+				    echo '<h4>API Name :&nbsp&nbsp '.$api_name.'</h4>';
+				    echo '<h4>API Code :&nbsp&nbsp '.$api_code.'</h4>';
+				    echo '<hr>';
+				    echo '<h4>PHP Example : </h4>';
+				    echo '<div class="well">';
+				    echo $php_example;
+				    echo '</div>';
+				    echo '<hr>';
+				    echo '<h4>API Response : </h4>';
+				    echo '<div class="well">';
+				    echo $template_text;
+				    echo '</div>';
+				?>
 				</div>
 			</div>
 		</div>
