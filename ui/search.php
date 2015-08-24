@@ -276,7 +276,15 @@ if (!isset($_SEARCH_VIEW_)) {
         			</div>
     			</div>
   			</div>
-		</div>	
+		</div>
+	</div>
+	<div class="row"  id="warning-message">
+		<div class="col-xs-12">
+			<div class="well">
+				<h2>Please switch to landscape mode.</h2>
+			</div>
+		</div>
+	</div>	
 <script src="js/dashboard.js"></script>
 <script src="js/jAlert-v3.js"></script>
 <script src="js/jAlert-functions.js"></script>

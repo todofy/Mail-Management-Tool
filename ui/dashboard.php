@@ -13,7 +13,7 @@ if (!isset($_CODE_DASHBOARD_)) {
 </head>
 <body>
 
-	<div class="row">
+	<div class="row" id="container">
 		<?php
 		include __DIR__ .'/header.php';
 		include __DIR__ .'/sidebar.php';
@@ -75,6 +75,15 @@ if (!isset($_CODE_DASHBOARD_)) {
 			?>
 		</div>
 	</div>
+</div>
+
+<div class="row"  id="warning-message">
+	<div class="col-xs-12">
+		<div class="well">
+			<h2>Please switch to landscape mode.</h2>
+		</div>
+	</div>
+</div>
 <script src="js/dashboard.js"></script>
 </body>
 </html>

@@ -105,6 +105,13 @@ if (!isset($_CAMPAIGN_VIEW_)) {
   			</div>
 		</div>
 	</div>
+	<div class="row"  id="warning-message">
+		<div class="col-xs-12">
+			<div class="well">
+				<h2>Please switch to landscape mode.</h2>
+			</div>
+		</div>
+	</div>
 <script src="js/main.js"></script>
 <script src="js/template.js"></script>
 </body>

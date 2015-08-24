@@ -175,3 +175,11 @@
 	padding-right: 0px;
 }
 
+#warning-message { display: none; }
+@media only screen and (orientation:portrait){
+    #container { display:none; }
+    #warning-message { display:block; }
+}
+@media only screen and (orientation:landscape){
+    #warning-message { display:none; }
+}
