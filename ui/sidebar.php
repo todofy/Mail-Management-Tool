@@ -3,8 +3,7 @@ if (!isset($_CODE_SIDEBAR_)) {
     throw new Exception("Code file not included for sidebar.php!");
 }
 ?>
- 
-<link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
+
 <link href="css/sidebar.css" rel="stylesheet" type="text/css">
 
 
@@ -47,7 +46,4 @@ if (!isset($_CODE_SIDEBAR_)) {
         </div>
     </div>    
 </div>
-
-<!-- TODO: do something such that these scripts are always included at the bottom -->
-<script src="js/sidebar.js"></script>
 

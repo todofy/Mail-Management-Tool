@@ -43,7 +43,7 @@ if (!isset($_CAMPAIGN_CREATE_)) {
                     <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter subject for campaign" style="width:100%; max-width:450px;">                   
                 </div>
                 <div class="col-xs-12">
-                    <div class="form-group">
+                    <div class="form-group" style="padding-right:10px;">
                         <label><h4>Select API</h4></label>
                         <select class="form-control" name="api" style="width:auto; display:inline-block; margin-left: 10px;">
                             <?php
@@ -53,11 +53,11 @@ if (!isset($_CAMPAIGN_CREATE_)) {
                             ?>
                         </select>
                     </div>
-                    <div class="form-group" style="padding-left:10px;">
+                    <div class="form-group" style="padding-right:10px;">
                         <label for="NO_Mails" style="padding-top:0px; padding-right:5px;"><h4>Number Of Mails:</h4></label>
                         <input type="text" class="form-control" id="NO_mails" name="NO_Mails" style="width: 60%; max-width:50px;">
                     </div>
-                    <div class="form-group" style="padding-left:10px;">
+                    <div class="form-group">
                         <button type="submit" class="btn btn-success" value="create" id="create">Create</button> 
                     </div>
                 </div>

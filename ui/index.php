@@ -19,7 +19,7 @@
 <body>
   <section class="container">
     <div class="login">
-      <h1>Todofy Dashboard</h1>
+      <h1>Todofy</h1>
       <form method="post" action="index.php">
         <p><input type="text" name="login" value="" placeholder="Username or Email"></p>
         <p><input type="password" name="password" value="" placeholder="Password"></p>

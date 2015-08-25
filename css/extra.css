@@ -1,6 +1,5 @@
 @import url(//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic,400italic,600italic);
 
-@import url(//fonts.googleapis.com/css?family=Kaushan+Script);
 /*! 
  *   AdminLTE v1.2
  *   Author: AlmsaeedStudio.com
@@ -17,7 +16,7 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   -webkit-font-smoothing: antialiased;
   min-height: 100%;
-  background: #f9f9f9;
+  background: white;
 }
 a {
   color: #3c8dbc;
@@ -1006,6 +1005,7 @@ body > .header .logo .icon {
    All form elements including input, select, textarea etc.
 -----------------------------------------------------------------
 */
+/*
 .form-control {
   -webkit-border-radius: 0px !important;
   -moz-border-radius: 0px !important;
@@ -1036,9 +1036,9 @@ body > .header .logo .icon {
 .form-group.has-error .form-control {
   border-color: #f56954 !important;
   box-shadow: none;
-}
+}*/
 /* Input group */
-.input-group .input-group-addon {
+/*.input-group .input-group-addon {
   border-radius: 0;
   background-color: #f4f4f4;
 }

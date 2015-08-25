@@ -4,13 +4,13 @@ if (!isset($_CODE_HEADER_)) {
 }
 ?>
 
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="js/jquery-2.0.0.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="css/jAlert-v3.css" />
 	<link rel="stylesheet" href="css/header.css" type="text/css">
 	<link rel="stylesheet" href="css/content.css" type="text/css">
-
+	<link rel="stylesheet" href="css/extra.css" type="text/css">
 
 	<div id="header" class="col-xs-12 header-user-dropdown">
 		<div class="row header-limiter">
