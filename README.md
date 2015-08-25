@@ -1,4 +1,4 @@
-# mail-management-tool
+# mail-manager
 Server side Application for easily managing all mailing tasks of a web server. This tool will allow you to:
  - Create APIs that can be used to send mail.
  - Create / Edit templates for mails, using rich text editors.
@@ -9,5 +9,5 @@ Server side Application for easily managing all mailing tasks of a web server. T
 
 ## How to use?
 1. Install this php applciation on your server.
-2. Create APIs (Create Templates for APIs on the go)
+2. Create APIs
 3. Call them
