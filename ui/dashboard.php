@@ -21,7 +21,6 @@ if (!isset($_CODE_DASHBOARD_)) {
 
 		<!-- Main workspace starts from here -->
 		<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
-			<div class="row">
 				<div class="col-xs-12">
 					<ol class="breadcrumb">
 					    <li class="active">Home</li>
@@ -73,15 +72,14 @@ if (!isset($_CODE_DASHBOARD_)) {
 			?>
 		</div>
 	</div>
-</div>
 
-<div class="row"  id="warning-message">
-	<div class="col-xs-12">
-		<div class="well">
-			<h2>Please switch to landscape mode.</h2>
+	<div class="row"  id="warning-message">
+		<div class="col-xs-12">
+			<div class="well">
+				<h2>Please switch to landscape mode.</h2>
+			</div>
 		</div>
 	</div>
-</div>
 <script src="js/dashboard.js"></script>
 </body>
 </html>

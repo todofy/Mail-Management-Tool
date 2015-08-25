@@ -21,7 +21,6 @@ if (!isset($_API_EDIT_)) {
 
 		<!-- Main workspace starts from here -->
 		<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
-			<div class="row">
 				<div class="col-xs-12">
 					<ol class="breadcrumb">
 					    <li><a href="dashboard.php">Home</a></li>
@@ -58,7 +57,6 @@ if (!isset($_API_EDIT_)) {
 		  			<a href="api.php" class="btn btn-link" id="cancel">Cancel</a>
 		  		</div>
 			</div>
-		</div>
 		<div class="col-xs-12">
 			<div id="api-details" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="z-index: 15000; margin-top:40px;">
 	  			<div class="modal-dialog" style="left: 5%; width: 90%; overflow-y: initial;">

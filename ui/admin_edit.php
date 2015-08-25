@@ -21,7 +21,6 @@ if (!isset($_ADMIN_EDIT_)) {
 
   	<!-- Main workspace starts from here -->
   	<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
-  		<div class="row">
         <div class="col-xs-12">
     			<ol class="breadcrumb">
     			    <li><a href="dashboard.php">Home</a></li>
@@ -69,7 +68,6 @@ if (!isset($_ADMIN_EDIT_)) {
   			</div>
   		</div>		
   	</div>
-  </div>
 <div class="row"  id="warning-message">
   <div class="col-xs-12">
     <div class="well">

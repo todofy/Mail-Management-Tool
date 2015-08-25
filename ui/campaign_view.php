@@ -21,7 +21,6 @@ if (!isset($_CAMPAIGN_VIEW_)) {
 
 		<!-- Main workspace starts from here -->
 		<div id="content-wrapper" class="col-xs-10 col-xs-offset-2">
-			<div class="row">
 				<div class="col-xs-12">
 					<ol class="breadcrumb">
 					    <li><a href="dashboard.php">Home</a></li>
@@ -44,7 +43,7 @@ if (!isset($_CAMPAIGN_VIEW_)) {
 						echo '<a href="#" type="button" class="btn btn-info button-view" role="button" data-toggle="modal" data-target="#preview" style="float:right; margin-right: 10px;" id="'.$template_id.'">View sample mail</a>
 					</div>';
 					if(!empty($mails)){
-						echo '<div class="row">
+						echo '
 							<div class="col-xs-12">
 								<table class="table">
 									<tr style="background-color: #E0E0E0;">
@@ -75,8 +74,7 @@ if (!isset($_CAMPAIGN_VIEW_)) {
 									}
 									
 								echo '</table>
-							</div>
-						</div>';
+							</div>';
 					}
 					else{
 						echo '<div class="row">
@@ -106,7 +104,6 @@ if (!isset($_CAMPAIGN_VIEW_)) {
 			</div>
 		</div>
 	</div>
-</div>
 	<div class="row"  id="warning-message">
 		<div class="col-xs-12">
 			<div class="well">
