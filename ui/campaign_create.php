@@ -1,6 +1,6 @@
 <?php
 if (!isset($_CAMPAIGN_CREATE_)) {
-    throw new Exception("Code file not included for admin_add.php!");
+    throw new Exception("Code file not included for campaign_create.php!");
 }
 ?>
 
@@ -25,37 +25,51 @@ if (!isset($_CAMPAIGN_CREATE_)) {
         <div class="col-xs-12">
     			<ol class="breadcrumb">
     			    <li><a href="dashboard.php">Home</a></li>
-    			    <li class="active">Create Campaign</li>
+    			    <li class="active">Add Campaign</li>
     			</ol>
         </div>
   			<div class="col-xs-12">
-  				<h3>Create the Campaign</h3>
-  				<form role="form" id="add" type="post" action="" method="POST">
-            <?php
-            for($i=1 ; $i <= $noOfMails ; $i++)
-            {
-              echo ' <div class="col-xs-12">
-                      <table class="table">
-                        <tr style="background-color: #E0E0E0;">
-                          <th class="col-xs-1"><center>#Mail '.$i.'</center></th>
-                        </tr>
-                      </table>';
-              echo '<form role="form" id="mail"'.$i.'type="post">
-                  <div class="form-group">
-                    <label for="to"><h4>To:</h4></label>
-                    <input type="text" class="form-control" id="to" name="to" placeholder="someone@example.com" style="width: 35%; min-width: 200px">
-                  </div>';
-                  foreach ($params as $value) {
-                    $name = trim($value['name'],"{}");
-                    echo '<div class="form-group">
-                      <label for="params"><h4>'.$name.':</h4></label>
-                      <input type="text" class="form-control" id="params" name=" ' .$name.'" placeholder="" style="width: 35%; min-width: 200px">
-                    </div>'; 
-              }
-              echo '</form> </div>';
-            }
-    					?>
-            <input type="submit" class="btn btn-success" name = "Create" value="Create" id = "create">
+  				<h3>Add a Campaign</h3>
+          <ol class="breadcrumb">
+              <?php if(isset($_GET['err']))
+              echo $_GET['err'];
+              ?>
+          </ol>
+  				<form role="form" id="add" type="post" action="campaign_start.php" method="POST">
+    					<div class="form-group">
+      					<label for="secret-key"><h4>Secret Key:</h4></label>
+      					<input type="text" class="form-control" id="secret_key" name="secret_key" placeholder="" style="width: 35%; min-width: 200px">
+    					</div>
+              <div class="form-group">
+                <label for="email"><h4>From:</h4></label>
+                <input type="email" class="form-control" id="email" name="from" placeholder="someone@domain.com" style="width: 35%; min-width: 200px">
+              </div>
+              <div class="form-group">
+                <label for="subject"><h4>Subject:</h4></label>
+                <input type="text" class="form-control" id="subject" name="subject" placeholder="" style="width: 35%; min-width: 200px">
+              </div>
+              <div class="form-group">
+              <label class="control-label"><h4>Select API</h4></label>
+              <select class="form-control" name="api" style="width:auto; display:inline-block; margin-left: 10px;">
+                <?php
+                  foreach ($API as $value) {
+                    echo '<option>'.$value['code'].'</option>';
+                  }
+                ?>
+              </select>
+          </div>
+              <div class="form-group">
+                <label for="NO_Mails"><h4>Number Of Mails:</h4></label>
+                <input type="text" class="form-control" id="NO_mails" name="NO_Mails" placeholder="" style="width: 35%; min-width: 200px">
+              </div>
+    					<input type="submit" class="btn btn-success" name = "submit" value="Add" id = "add">
+
+    					<div class="clearfix"></div>
+    					<div class="bs-callout bs-callout-info">
+    						<h4>Note</h4>
+    						The secret key was sent to the admin's mail address. use the same secret key.
+    					</div>
+    					
   				</form>					
   			</div>
   		</div>
@@ -71,6 +85,6 @@ if (!isset($_CAMPAIGN_CREATE_)) {
 <script src="js/jAlert-v3.js"></script>
 <script src="js/jAlert-functions.js"></script>
 <script src="js/main.js"></script>
-<script src="js/campaign_create.js"></script>
+<script src="js/campaign_add.js"></script>
 </body>
 </html>

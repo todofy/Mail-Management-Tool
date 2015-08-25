@@ -129,7 +129,9 @@
 }
 
 #sidebar_menu li a{
-  padding-top: 10%;
+  height: 65px;
+  max-height: 65px;
+  padding-top: 25px;
   padding-bottom: 9%;
   line-height: 100%;
   font-size: 150%;

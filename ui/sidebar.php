@@ -23,7 +23,7 @@ if (!isset($_CODE_SIDEBAR_)) {
                     </a>
                 </li>
                 <li>
-                    <a href="#" style="font-size:15px;">
+                    <a href="campaign_create.php" style="font-size:15px;">
                        Send Mail<span class="sub_icon glyphicon glyphicon-envelope"></span>
                     </a>
                 </li>

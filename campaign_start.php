@@ -8,10 +8,10 @@ include __DIR__ .'/libs/database.php';
 include __DIR__ .'/libs/user.php';
 
 // including the code files
-include __DIR__ .'/code/campaign_add.php';
+include __DIR__ .'/code/campaign_start.php';
 include __DIR__ .'/code/sidebar.php';
 include __DIR__ .'/code/header.php';
 
 // including the ui files
-include __DIR__ .'/ui/campaign_add.php';
+include __DIR__ .'/ui/campaign_start.php';
 ?>
