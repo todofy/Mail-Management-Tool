@@ -63,19 +63,19 @@ if (!isset($_CODE_PROFILE_)) {
 		    				<div class="modal-body">
 		        				<form class="form-horizontal" role="form" id="change_pw" type="post">
 		  							<div class="form-group">
-		    							<label class="control-label col-xs-4" for="current"><h4>Current password:</h4></label>
+		    							<label class="control-label col-xs-4" for="current" style="padding-top:0px;"><h4>Current password:</h4></label>
 		    							<div class="col-xs-8">
 		    								<input type="password" class="form-control" id="current_pw" name="current_pw" placeholder="Enter current password">
 		    							</div>
 		    						</div>
 		    						<div class="form-group">
-			    						<label class="control-label col-xs-4" for="new"><h4>New password:</h4></label>
+			    						<label class="control-label col-xs-4" for="new" style="padding-top:0px;"><h4>New password:</h4></label>
 			    						<div class="col-xs-8">
 		    								<input type="password" class="form-control" id="new_pw" name="new_pw" placeholder="Enter new password">
 		    							</div>
 		  							</div>
 		  							<div class="form-group">
-		    							<label class="control-label col-xs-4" for="confirm"><h4>Confirm password:</h4></label>
+		    							<label class="control-label col-xs-4" for="confirm" style="padding-top:0px;"><h4>Confirm password:</h4></label>
 		    							<div class="col-xs-8">
 		    								<input type="password" class="form-control" id="confirm_pw" name="confirm_pw" placeholder="Confirm new password">
 		    							</div>

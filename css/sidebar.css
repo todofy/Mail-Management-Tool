@@ -3,7 +3,6 @@
     left: 0px;
     margin-left: 0px;
     margin-top: 0px;
-    height: 100%;
     z-index: 10;
 }
 
@@ -13,10 +12,15 @@
     padding-right: 0px;
     top: 0px;
     background: #222;
-    position: fixed;
     height: 100%;
+    position: fixed;
     transition: all .4s ease 0s;
     word-wrap : break-word;
+    overflow-y: auto;
+}
+
+#sidebar-wrapper::-webkit-scrollbar{
+  display: none;
 }
 
 .sidebar-nav {
