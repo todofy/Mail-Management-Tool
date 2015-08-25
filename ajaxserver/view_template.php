@@ -6,7 +6,7 @@
 	if(empty($result)){
 		$output['error'] = true;
 		$output['message'] = "Template doesn't exist in the database.";
-		$output['data'] = "Unable to load preview.";
+		$output['data'] = "Template doesn't exist in the database.";
 	}
 	else{
 		//get template text from database
