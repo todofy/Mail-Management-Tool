@@ -76,7 +76,7 @@ if (!isset($_CODE_TEMPLATE_)) {
 		</div>
 		<div class="col-xs-12">
 			<div id="preview" class="modal fade" role="dialog" style="z-index: 15000; margin-top:40px;">
-	  			<div class="modal-dialog" style="width: 90%; overflow-y: initial;">
+	  			<div class="modal-dialog" style="margin:auto; width: 90%; overflow-y: initial;">
 	    			<div class="modal-content">
 	    				<div class="modal-header">
 	        				<h4 class="modal-title">Preview Template</h4>
