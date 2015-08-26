@@ -18,6 +18,10 @@
 
 	// Get all APIs
 	$API = database::SQL("SELECT `code` FROM `api`");
+	if(empty($API))
+		$api_found = false;
+	else
+		$api_found = true;
 
 	$_CAMPAIGN_CREATE_ = true;
 ?>
