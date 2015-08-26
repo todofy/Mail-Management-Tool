@@ -10,7 +10,7 @@ if (!isset($_CODE_HEADER_)) {
 	<link rel="stylesheet" href="css/jAlert-v3.css" />
 	<link rel="stylesheet" href="css/header.css" type="text/css">
 	<link rel="stylesheet" href="css/content.css" type="text/css">
-	<link rel="stylesheet" href="css/extra.css" type="text/css">
+	<link rel="stylesheet" href="css/custom.css" type="text/css">
 
 	<div id="header" class="col-xs-12 header-user-dropdown">
 		<div class="row header-limiter">
