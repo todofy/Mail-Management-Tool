@@ -27,20 +27,16 @@ if (!isset($_CAMPAIGN_CREATE_)) {
       			    <li class="active">Create Campaign</li>
       			</ol>
         </div>
-        <?php
-        if($api_found)
-        {
-          echo '
   			<div class="col-xs-12">
   				  <h3>Create a Campaign</h3>
-    				<form class="form-inline" role="form" id="create_form" type="post" action="campaign_start.php" method="POST">
+    				<form class="form-inline" role="form" id="create" type="post" action="campaign_start.php" method="POST">
       					<div class="form-group col-xs-12">
           					<label class="col-sm-2" for="secret-key" style="padding-top:0px; padding-left:0px;"><h4>Secret Key:</h4></label>              
           					<input type="text" class="form-control" id="secret_key" name="secret_key" placeholder="Enter your secret key" style="width:100%; max-width:450px;">
       					</div>
                 <div class="form-group col-xs-12">
                     <label class="col-sm-2" for="email" style="padding-top:0px; padding-left:0px; "><h4>From:</h4></label>                    
-                    <input type="email" class="form-control" id="from" name="from" placeholder="someone@domain.com" style="width:100%; max-width:450px;">
+                    <input type="email" class="form-control" id="email" name="from" placeholder="someone@domain.com" style="width:100%; max-width:450px;">
                 </div>
                 <div class="form-group col-xs-12">
                     <label class="col-sm-2" for="subject" style="padding-top:0px; padding-left:0px;"><h4>Subject:</h4></label>            
@@ -49,12 +45,13 @@ if (!isset($_CAMPAIGN_CREATE_)) {
                 <div class="col-xs-12">
                     <div class="form-group" style="padding-right:10px;">
                         <label><h4>Select API</h4></label>
-                        <select class="form-control" name="api" style="width:auto; display:inline-block; margin-left: 10px;"> ';
-                          
+                        <select class="form-control" name="api" style="width:auto; display:inline-block; margin-left: 10px;">
+                            <?php
                               foreach ($API as $value) {
                                 echo '<option>'.$value['code'].'</option>';
                               }
-                        echo ' </select>
+                            ?>
+                        </select>
                     </div>
                     <div class="form-group" style="padding-right:10px;">
                         <label for="NO_Mails" style="padding-top:0px; padding-right:5px;"><h4>Number Of Mails:</h4></label>
@@ -66,15 +63,7 @@ if (!isset($_CAMPAIGN_CREATE_)) {
                 </div>
                         					
     				</form>				
-  			</div> ';
-      }
-      else
-      {
-        echo '<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-              <div class="alert alert-danger" style="text-align: center;">Create an API first</div>
-            </div>';
-      }
-      ?>
+  			</div>
   	</div>
 </div>
 <div class="row"  id="warning-message">
@@ -87,6 +76,6 @@ if (!isset($_CAMPAIGN_CREATE_)) {
 <script src="js/jAlert-v3.js"></script>
 <script src="js/jAlert-functions.js"></script>
 <script src="js/main.js"></script>
-<script src="js/create_campaign.js"></script>
+<script src="js/campaign_create.js"></script>
 </body>
 </html>

@@ -3,7 +3,11 @@ if (!isset($_CODE_HEADER_)) {
     throw new Exception("Code file not included for header.php!");
 }
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Todofy</title>
+    <link rel="icon" href="assets/icon.png">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="js/jquery-2.0.0.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -11,7 +15,8 @@ if (!isset($_CODE_HEADER_)) {
 	<link rel="stylesheet" href="css/header.css" type="text/css">
 	<link rel="stylesheet" href="css/content.css" type="text/css">
 	<link rel="stylesheet" href="css/custom.css" type="text/css">
-
+</head>
+<body>
 	<div id="header" class="col-xs-12 header-user-dropdown">
 		<div class="row header-limiter">
 			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
@@ -48,3 +53,5 @@ if (!isset($_CODE_HEADER_)) {
 	</div>
 <!-- TODO: do something such that these scripts are always included at the bottom -->
 <script src="js/header.js"></script>
+</body>
+</html>

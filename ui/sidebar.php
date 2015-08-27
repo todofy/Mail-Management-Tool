@@ -3,10 +3,13 @@ if (!isset($_CODE_SIDEBAR_)) {
     throw new Exception("Code file not included for sidebar.php!");
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="css/sidebar.css" rel="stylesheet" type="text/css">
+</head>
 
-<link href="css/sidebar.css" rel="stylesheet" type="text/css">
-
-
+<body>
 <div id="wrapper" class="col-xs-2">
     <div id="sidebar-wrapper" class="col-xs-2">
         <div class="col-xs-12" style="padding-left:0px; padding-right:0px;">
@@ -46,4 +49,6 @@ if (!isset($_CODE_SIDEBAR_)) {
         </div>
     </div>    
 </div>
+<body>
+</html>
 
