@@ -18,12 +18,14 @@ function validate_form()
 	//validate the secret key is not empty
 	if($.trim(secretKey.val())=="")
 	{
-		secretKey.css('border-color' , '#FF0000');
+		$('#secret-key-input').addClass("has-error");
 		success = false;
 	}
-	else
+	else if(){
+		//check if length of secret is 32 or not
+	}
 	{
-		//remove the error class or css
+		$('#secret-key-input').removeClass("has-error");
 	}
 	if($.trim(from.val())!="")
 	{
@@ -32,17 +34,17 @@ function validate_form()
 	    var pattern  = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
 	    if(!pattern.test(email))
 	    {
-	      from.css('border-color' , '#FF0000');
+	      $('#from-input').addClass("has-error");
 	      success = false;
 	    }
 	    else
 	    {
-	    	//remove the error class or css
+	    	$('#from-input').removeClass("has-error");
 	    }
 	}
 	if($.trim(mails.val())=="")
 	{
-		mails.css('border-color' , '#FF0000');
+		$('#mails-input').addClass("has-error");
 	    success = false;
 	}
 	else
@@ -50,12 +52,12 @@ function validate_form()
 		pattern = /^[0-9]*$/;
 		if(!pattern.test(mails.val()))
 		{
-			mails.css('border-color' , '#FF0000');
+			$('#mails-input').addClass("has-error");
 	      	success = false;
 		}
 		else
 		{
-			//remove the error class or css
+			$('#mails-input').removeClass("has-error");
 		}
 	}
 	return success;
