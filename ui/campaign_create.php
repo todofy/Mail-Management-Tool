@@ -68,7 +68,7 @@ if (!isset($_CAMPAIGN_CREATE_)) {
       }
       else{
         echo '<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-              <div class="alert alert-danger" style="text-align: center;">Create an API first.</div>
+              <div class="alert alert-danger" style="text-align: center;">No APIs available.<a href="api_add.php"> Create a new API.</a></div>
             </div>';
       }
       ?>

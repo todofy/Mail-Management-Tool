@@ -28,6 +28,15 @@ if (!isset($_API_ADD_)) {
 				    <li class="active">Add</li>
 				</ol>
 			</div>
+		<?php
+		if(empty($templates)){
+				echo '
+					<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+						<div class="alert alert-info" style="text-align: center;">No templates available.<a href="template_add.php"> Create a new template.</a></div>
+					</div>';
+		}
+		else{
+			echo '
 			<div class="col-xs-12">
 				<h3>Create API</h3>
 				<form role="form" type="post" id="create-api">
@@ -37,12 +46,11 @@ if (!isset($_API_ADD_)) {
 	  				</div>
 	  				<div class="form-group">
 	  					<label class="control-label"><h4>Select Template</h4></label>
-	  					<select class="form-control" name="template" style="width:auto; display:inline-block; margin-left: 10px;">
-	    					<?php
+	  					<select class="form-control" name="template" style="width:auto; display:inline-block; margin-left: 10px;">';
 	    						foreach ($templates as $value) {
 	    							echo '<option>'.$value['name'].'</option>';
 	    						}
-	    					?>
+	    				echo '
 	  					</select>
 	  					<a href="template_add.php" type="button" class="btn btn-link">Create a new Template</a>
 					</div>
@@ -62,7 +70,7 @@ if (!isset($_API_ADD_)) {
 	      				<div class="modal-body">
 	      					<div class="row">
 	      						<div class="col-xs-4">
-	      							<h5>Here's how you'd call the API</h5>
+	      							<h5>Here\'s how you\'d call the API</h5>
 	      							<div class="well" id="api-call" style="word-wrap: break-word;"></div>
 	      							<h5>PHP Example:</h5>
 	      							<div class="well" id="php-example" style="word-wrap: break-word;"></div>
@@ -76,7 +84,9 @@ if (!isset($_API_ADD_)) {
 	      				</div>
 	    			</div>
 	  			</div>
-			</div>
+			</div>';
+		}
+		?>
 		</div>
 	</div>
 	<div class="row"  id="warning-message">
