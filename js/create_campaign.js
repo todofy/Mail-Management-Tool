@@ -16,14 +16,12 @@ function validate_form()
 	var mails = $('#NO_mails');
 	var success = true;
 	//validate the secret key is not empty
-	if($.trim(secretKey.val())=="")
+	if($.trim(secretKey.val())=="" || secretKey.val().length!=32)
 	{
 		$('#secret-key-input').addClass("has-error");
 		success = false;
 	}
-	else if(){
-		//check if length of secret is 32 or not
-	}
+	else
 	{
 		$('#secret-key-input').removeClass("has-error");
 	}
