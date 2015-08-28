@@ -13,7 +13,7 @@ if (!isset($_CAMPAIGN_START_)) {
 </head>
 
 <body>
-<div class="row">
+<div class="row" id="container">
   	<?php
   	include __DIR__ .'/header.php';
   	include __DIR__ .'/sidebar.php';
@@ -56,11 +56,11 @@ if (!isset($_CAMPAIGN_START_)) {
                             <label for="params" style="padding-right:10px;"><h4>'.$name.':</h4></label>
                             <input type="text" class="form-control" id="params" name="payload['.$i.'].'.$name.'" placeholder="" style="width: 50%; min-width: 200px; margin-right: 20px;">
                           </div>'; 
-                    }
+                        }
                     echo '</div>';
                 }
         				?>
-                <a class="btn btn-success" id="start">Start</a>
+                <button class="btn btn-success" id="start">Start</button>
     				</form>					
   			</div>
         <div class="col-xs-12">
