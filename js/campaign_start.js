@@ -36,6 +36,7 @@ function validate_form()
     /*
         .addClass("has-error");
     */
+    var success = true;
     $('.form-control').each(function(){
         console.log($(this).val());
         var curId = $(this).attr('id');
@@ -70,5 +71,5 @@ function validate_form()
                 
         }
     }); 
-    return false;
+    return success;
 }
