@@ -46,10 +46,11 @@ if (!isset($_CAMPAIGN_START_)) {
                   echo '
                   <div style="background-color: #F5F5F5; padding: 10px; margin-bottom: 10px; border-radius: 10px; border: 1px solid #B9B9B9;">
                     <h3 style="margin-bottom:0px; margin-top:0px; text-align: right;">#'.($i+1).'</h3>    
-                      <div class="form-group col-xs-12" style="padding-left:0px;">
+                      <div class="form-group" style="padding-left:0px;">
                         <label for="to" style="padding-right:10px; margin-bottom:0px;"><h4>To:</h4></label>
-                        <input type="text" class="form-control" id="to" name="payload['.$i.'].to" placeholder="someone@example.com" style="width:100%; max-width:450px;">
-                      </div>';
+                        <input type="text" class="form-control" id="to" name="payload['.$i.'].to" placeholder="someone@example.com" style="width:70%; min-width:250px;">
+                      </div><br>';
+                      if(!empty($params)){
                         foreach ($params as $value) {
                           $name = trim($value['name'],"{}");
                           echo '<div class="form-group">
@@ -57,6 +58,7 @@ if (!isset($_CAMPAIGN_START_)) {
                             <input type="text" class="form-control" id="params" name="payload['.$i.'].'.$name.'" placeholder="" style="width: 50%; min-width: 200px; margin-right: 20px;">
                           </div>'; 
                         }
+                      }
                     echo '</div>';
                 }
         				?>
