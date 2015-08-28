@@ -9,7 +9,7 @@ $(document).ready(function(){
                         return { name: node.id, value: node.innerHTML };
                     }
                 });
-        jsonData = JSON.stringify({data: formData}, null, '\t');
+        jsonData = JSON.stringify(formData, null, '\t');
 
         request = new AJAX ('campaign_start', jsonData, function(d){
                 successAlert(d.message);
