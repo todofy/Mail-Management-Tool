@@ -35,7 +35,7 @@ if (!isset($_CAMPAIGN_START_)) {
             <a href="#" type="button" class="btn btn-info button-view" role="button" data-toggle="modal" data-target="#preview" style="float:right; margin-right: 10px;" <?php echo 'id="'.$template_id.'"';?> >View sample mail</a>
         </div>
         <div class="col-xs-12">
-    				<form role="form" id="start_campaign" type="post" method="POST">
+    				<form class="form-inline" role="form" id="start_campaign" type="post" method="POST">
                 <input type="text" class="form-control" name="secret_key" <?php echo 'value="'.$secret_key.'"';?> style="display: none;">
                 <input type="text" class="form-control" name="api_code" <?php echo 'value="'.$api_code.'"';?> style="display: none;">
                 <input type="text" class="form-control" name="subject" <?php echo 'value="'.$subject.'"';?> style="display: none;">
@@ -45,16 +45,16 @@ if (!isset($_CAMPAIGN_START_)) {
                 {
                   echo '
                   <div class="well">
-                    <h4 style="float:right; margin-top:0px;">#'.($i+1).'</h4>    
-                      <div class="form-group">
-                        <label for="to"><h4>To:</h4></label>
-                        <input type="text" class="form-control" id="to" name="payload['.$i.'].to" placeholder="someone@example.com" style="width: 35%; min-width: 200px">
+                    <h3 style="float:right; margin-top:0px;">#'.($i+1).'</h3>    
+                      <div class="form-group col-xs-12" style="padding-left:0px;">
+                        <label for="to" style="padding-right:10px; margin-bottom:0px;"><h4>To:</h4></label>
+                        <input type="text" class="form-control" id="to" name="payload['.$i.'].to" placeholder="someone@example.com" style="width:100%; max-width:450px;">
                       </div>';
                         foreach ($params as $value) {
                           $name = trim($value['name'],"{}");
                           echo '<div class="form-group">
-                            <label for="params"><h4>'.$name.':</h4></label>
-                            <input type="text" class="form-control" id="params" name="payload['.$i.'].'.$name.'" placeholder="" style="width: 35%; min-width: 200px">
+                            <label for="params" style="padding-right:10px;"><h4>'.$name.':</h4></label>
+                            <input type="text" class="form-control" id="params" name="payload['.$i.'].'.$name.'" placeholder="" style="width: 50%; min-width: 200px; margin-right: 20px;">
                           </div>'; 
                     }
                     echo '</div>';
