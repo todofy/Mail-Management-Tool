@@ -28,34 +28,57 @@ if (!isset($_CAMPAIGN_START_)) {
     			    <li class="active">Start Campaign</li>
     			</ol>
         </div>
-  			<div class="col-xs-12">
+  			<div class="col-xs-9">
     				<h3>Start Campaign</h3>
+        </div>
+        <div class="col-xs-3">
+            <a href="#" type="button" class="btn btn-info button-view" role="button" data-toggle="modal" data-target="#preview" style="float:right; margin-right: 10px;" <?php echo 'id="'.$template_id.'"';?> >View sample mail</a>
         </div>
         <div class="col-xs-12">
     				<form role="form" id="start_campaign" type="post" method="POST">
-              <?php
-              for($i=0 ; $i < $noOfMails ; $i++)
-              {
-                echo '
-                <div class="well">
-                  <h4 style="float:right; margin-top:0px;">#'.($i+1).'</h4>    
-                    <div class="form-group">
-                      <label for="to"><h4>To:</h4></label>
-                      <input type="text" class="form-control" id="to" name="mail['.$i.'].to" placeholder="someone@example.com" style="width: 35%; min-width: 200px">
-                    </div>';
-                      foreach ($params as $value) {
-                        $name = trim($value['name'],"{}");
-                        echo '<div class="form-group">
-                          <label for="params"><h4>'.$name.':</h4></label>
-                          <input type="text" class="form-control" id="params" name="mail['.$i.'].'.$name.'" placeholder="" style="width: 35%; min-width: 200px">
-                        </div>'; 
-                  }
-                  echo '</div>';
-              }
-      				?>
-              <a class="btn btn-success" id="start">Start</a>
+                <input type="text" class="form-control" name="api_code" <?php echo 'value="'.$api_code.'"';?> style="display: none;">
+                <input type="text" class="form-control" name="subject" <?php echo 'value="'.$subject.'"';?> style="display: none;">
+                <input type="text" class="form-control" name="from" <?php echo 'value="'.$from.'"';?> style="display: none;">
+                <?php
+                for($i=0 ; $i < $noOfMails ; $i++)
+                {
+                  echo '
+                  <div class="well">
+                    <h4 style="float:right; margin-top:0px;">#'.($i+1).'</h4>    
+                      <div class="form-group">
+                        <label for="to"><h4>To:</h4></label>
+                        <input type="text" class="form-control" id="to" name="payload['.$i.'].to" placeholder="someone@example.com" style="width: 35%; min-width: 200px">
+                      </div>';
+                        foreach ($params as $value) {
+                          $name = trim($value['name'],"{}");
+                          echo '<div class="form-group">
+                            <label for="params"><h4>'.$name.':</h4></label>
+                            <input type="text" class="form-control" id="params" name="payload['.$i.'].'.$name.'" placeholder="" style="width: 35%; min-width: 200px">
+                          </div>'; 
+                    }
+                    echo '</div>';
+                }
+        				?>
+                <a class="btn btn-success" id="start">Start</a>
     				</form>					
   			</div>
+        <div class="col-xs-12">
+            <div id="preview" class="modal fade" role="dialog" style="z-index: 15000; top:40px;">
+                <div class="modal-dialog" style="margin:auto; width: 90%; overflow-y: initial;">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Sample Mail</h4>
+                      </div>
+                      <div class="modal-body"style="overflow-y: auto;">
+                        <div class="well" id="template-preview" ></div>
+                      </div>
+                    <div class="modal-footer" style="margin-top: -20px;">
+                        <button type="button" class="btn btn-link" data-dismiss="modal">Back</button>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </div>
   	</div>
 </div>
   <div class="row"  id="warning-message">
@@ -70,5 +93,6 @@ if (!isset($_CAMPAIGN_START_)) {
 <script src="js/main.js"></script>
 <script src="js/form2js.js"></script>
 <script src="js/campaign_start.js"></script>
+<script src="js/template.js"></script>
 </body>
 </html>

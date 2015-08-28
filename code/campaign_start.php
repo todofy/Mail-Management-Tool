@@ -22,6 +22,7 @@
 	else
 	{
 		//get the default value
+		$from = DEFAULT_SENDER;
 	}
 	if(isset($_POST['subject'])&& trim($_POST['subject'])!="")
 	{
@@ -30,6 +31,7 @@
 	else
 	{
 		//get the default subject
+		$subject = DEFAULT_SUBJECT;
 	}
 	$success = true;
 	$err = "";
@@ -48,13 +50,13 @@
 		}
 	}
 	
-	$api = $_POST['api'];
+	$api_code = $_POST['api_code'];
 	//redirect if there is an error
 	$noOfMails = $_POST['NO_Mails'];
 	if(!$success)
 		redirect_to('campaign_create.php?err='.$err);
 	// get the template id
-	$result = database::SQL("SELECT `template_id` FROM  `api` WHERE `code` = ? LIMIT 1" , array('s' , $api));
+	$result = database::SQL("SELECT `template_id` FROM  `api` WHERE `code` = ? LIMIT 1" , array('s' , $api_code));
 	$template_id = $result[0]['template_id'];
 	//get the parameters
 	$params = database::SQL("SELECT `name` FROM  `api_params` WHERE `template_id` = ?" , array('i' , $template_id));

@@ -48,7 +48,7 @@ if (!isset($_CAMPAIGN_CREATE_)) {
                 <div class="col-xs-12">
                     <div class="form-group" style="padding-right:10px;">
                         <label><h4>Select API</h4></label>
-                        <select class="form-control" name="api" style="width:auto; display:inline-block; margin-left: 10px;">';
+                        <select class="form-control" name="api_code" style="width:auto; display:inline-block; margin-left: 10px;">';
                               foreach ($API as $value) {
                                 echo '<option>'.$value['code'].'</option>';
                               }
