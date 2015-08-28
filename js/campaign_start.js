@@ -9,8 +9,20 @@ $(document).ready(function(){
                         return { name: node.id, value: node.innerHTML };
                     }
                 });
-        jsonData = JSON.stringify(formData, null, '\t');
-        console.log(formData);
- 		console.log(jsonData);
+        jsonData = JSON.stringify({data: formData}, null, '\t');
+
+        request = new AJAX ('campaign_start', jsonData, function(d){
+                successAlert(d.message);
+                $(".closejAlert.ja_close").click(function(e){
+                    window.location="dashboard.php";
+                    e.preventDefault();
+                });
+                }, function(d){
+                    errorAlert(d.message);
+                    $(".closejAlert.ja_close").click(function(e){
+                        window.location="campaign_create.php";
+                        e.preventDefault();
+                    });
+                });
 	});
 });

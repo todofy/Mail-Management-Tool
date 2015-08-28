@@ -82,10 +82,10 @@ if($category == "delete_account"){
 	exit;
 }
 
-//delete queue call
-if($category == "delete_queue"){
+//start campaign call
+if($category == "campaign_start"){
 	database::Start();
-	include __DIR__ .'/delete_queue.php';
+	include __DIR__ .'/campaign_start';
 	echo json_encode($output);
 	exit;
 }

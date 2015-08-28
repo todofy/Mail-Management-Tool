@@ -36,6 +36,7 @@ if (!isset($_CAMPAIGN_START_)) {
         </div>
         <div class="col-xs-12">
     				<form role="form" id="start_campaign" type="post" method="POST">
+                <input type="text" class="form-control" name="secret_key" <?php echo 'value="'.$secret_key.'"';?> style="display: none;">
                 <input type="text" class="form-control" name="api_code" <?php echo 'value="'.$api_code.'"';?> style="display: none;">
                 <input type="text" class="form-control" name="subject" <?php echo 'value="'.$subject.'"';?> style="display: none;">
                 <input type="text" class="form-control" name="from" <?php echo 'value="'.$from.'"';?> style="display: none;">
