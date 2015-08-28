@@ -12,7 +12,6 @@ $(document).ready(function(){
                         }
                     });
             jsonData = JSON.stringify(formData, null, '\t');
-
             request = new AJAX ('campaign_start', jsonData, function(d){
                     successAlert(d.message);
                     $(".closejAlert.ja_close").click(function(e){
@@ -38,11 +37,9 @@ function validate_form()
     */
     var success = true;
     $('.form-control').each(function(){
-        console.log($(this).val());
         var curId = $(this).attr('id');
         if($.trim($(this).val())=="")
         {
-            console.log(curId);
             if(curId!="search_key")
             {
                 $(this).css('border-color' , 'red');
