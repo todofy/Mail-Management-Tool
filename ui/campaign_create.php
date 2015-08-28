@@ -31,7 +31,7 @@ if (!isset($_CAMPAIGN_CREATE_)) {
       if($api_found){
         echo '
   			<div class="col-xs-12">
-  				  <h3>Create a Campaign</h3>
+  				  <h3>Create Campaign</h3>
     				<form class="form-inline" role="form" id="create_form" type="post" action="campaign_start.php" method="POST">
       					<div class="form-group col-xs-12" id="secret-key-input">
           					<label class="col-sm-2" for="secret-key" style="padding-top:0px; padding-left:0px;"><h4>Secret Key:</h4></label>              
@@ -83,6 +83,6 @@ if (!isset($_CAMPAIGN_CREATE_)) {
 </div>
 <script src="js/jAlert-v3.js"></script>
 <script src="js/jAlert-functions.js"></script>
-<script src="js/create_campaign.js"></script>
+<script src="js/campaign_create.js"></script>
 </body>
 </html>

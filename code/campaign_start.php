@@ -39,7 +39,7 @@
 		$result = database::SQL("SELECT `secret` FROM `admin` where `id` = ?" , array('i' , $id));
 		if($result[0]['secret']!=$_POST['secret_key'])
 		{
-			$err = "wrong secret key";
+			$err = "Invalid secret key";
 			$success = false;
 		}
 		else
@@ -48,21 +48,9 @@
 		}
 	}
 	
-	if(isset($_POST['api']) && trim($_POST['api'])!="")
-		$api = $_POST['api'];
-	else
-	{
-		$success = false;
-		$err = "No api selected";
-	}
-	if(isset($_POST['NO_Mails']) && trim($_POST['NO_Mails'])!="")
-		$noOfMails = $_POST['NO_Mails'];
-	else
-	{
-		$success = false;
-		$err = "select no of mails to be sent";
-	}
+	$api = $_POST['api'];
 	//redirect if there is an error
+	$noOfMails = $_POST['NO_Mails'];
 	if(!$success)
 		redirect_to('campaign_create.php?err='.$err);
 	// get the template id

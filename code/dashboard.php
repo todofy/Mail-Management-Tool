@@ -9,10 +9,7 @@ if (!$sessObj->state) {
 $id = session::getUserID();
 $newuser = new user($id);
 
-$result = database::SQL("SELECT `secret` FROM `admin` WHERE `id`=? LIMIT 1",array('i',$id));
-$secret_key = $result[0]['secret'];
-
-$campaigns = database::SQL("SELECT `campaign`.`id` AS `id`, `subject`, `api_code`, `payload_length`, `mails_processed`, `time_started`, `time_finished` FROM `campaign`,`admin` WHERE `campaign`.`secret_key`=`admin`.`secret` AND `admin`.`secret`=? GROUP BY `campaign`.`id` ORDER BY `campaign`.`time_started` DESC",array('s',$secret_key));
+$campaigns = database::SQL("SELECT `id`, `subject`, `api_code`, `payload_length`, `mails_processed`, `time_started`, `time_finished` FROM `campaign` ORDER BY `time_started` DESC");
 
 if(!empty($campaigns)){
 	for ($i=0; $i < count($campaigns); $i++){
