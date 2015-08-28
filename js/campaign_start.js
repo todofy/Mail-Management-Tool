@@ -60,12 +60,12 @@ function validate_form()
                   success = false;
                 }
                 else{
-                    $(this).css('border-color' , 'white');
+                    $(this).css('border-color' , 'green');
                 }
             }
             else
             {
-                $(this).css('border-color' , 'white');
+                $(this).css('border-color' , 'green');
             }
                 
         }

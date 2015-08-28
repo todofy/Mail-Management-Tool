@@ -62,7 +62,7 @@ if (!isset($_CAMPAIGN_START_)) {
                     echo '</div>';
                 }
         				?>
-                <button class="btn btn-success" id="start">Start</button>
+                <a class="btn btn-success" id="start">Start</a>
     				</form>					
   			</div>
         <div class="col-xs-12">
