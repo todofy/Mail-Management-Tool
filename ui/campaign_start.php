@@ -47,13 +47,13 @@ if (!isset($_CAMPAIGN_START_)) {
                         $name = trim($value['name'],"{}");
                         echo '<div class="form-group">
                           <label for="params"><h4>'.$name.':</h4></label>
-                          <input type="text" class="form-control" id="params" name="mail['.$i.']'.$name.'" placeholder="" style="width: 35%; min-width: 200px">
+                          <input type="text" class="form-control" id="params" name="mail['.$i.'].'.$name.'" placeholder="" style="width: 35%; min-width: 200px">
                         </div>'; 
                   }
                   echo '</div>';
               }
       				?>
-              <button class="btn btn-success" id="start">Start</button>
+              <a class="btn btn-success" id="start">Start</a>
     				</form>					
   			</div>
   	</div>
@@ -68,6 +68,7 @@ if (!isset($_CAMPAIGN_START_)) {
 <script src="js/jAlert-v3.js"></script>
 <script src="js/jAlert-functions.js"></script>
 <script src="js/main.js"></script>
+<script src="js/form2js.js"></script>
 <script src="js/campaign_start.js"></script>
 </body>
 </html>

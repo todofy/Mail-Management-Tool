@@ -1,6 +1,7 @@
 $(document).ready(function(){ 
 	$("#start").click(function(e){
  		var jsonData = {};
+        /*
  		var formData = $("#start_campaign").serializeArray();
 		console.log(formData);
  
@@ -13,7 +14,19 @@ $(document).ready(function(){
  			} else {
      			jsonData[this.name] = this.value || '';
  			}
+
     	});
- 		//console.log(jsonData);
+        */
+        formData = form2js('start_campaign', '.', true,
+                function(node)
+                {
+                    if (node.id && node.id.match(/callbackTest/))
+                    {
+                        return { name: node.id, value: node.innerHTML };
+                    }
+                });
+        jsonData = JSON.stringify(formData, null, '\t');
+        console.log(formData);
+ 		console.log(jsonData);
 	});
 });
