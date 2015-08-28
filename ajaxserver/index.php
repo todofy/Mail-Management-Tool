@@ -85,7 +85,7 @@ if($category == "delete_account"){
 //start campaign call
 if($category == "campaign_start"){
 	database::Start();
-	include __DIR__ .'/campaign_start';
+	include __DIR__ .'/campaign_start.php';
 	echo json_encode($output);
 	exit;
 }

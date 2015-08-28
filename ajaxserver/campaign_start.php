@@ -1,6 +1,6 @@
 <?php
 
-$post = "data=".$data['data'];
+$post = "data=".$data;
 
 $url = $BASE_URL."api/";
 
