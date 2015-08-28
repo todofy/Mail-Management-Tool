@@ -83,7 +83,6 @@ if (!isset($_CAMPAIGN_CREATE_)) {
 </div>
 <script src="js/jAlert-v3.js"></script>
 <script src="js/jAlert-functions.js"></script>
-<script src="js/main.js"></script>
 <script src="js/create_campaign.js"></script>
 </body>
 </html>
