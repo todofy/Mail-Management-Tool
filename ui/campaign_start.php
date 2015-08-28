@@ -44,7 +44,7 @@ if (!isset($_CAMPAIGN_START_)) {
                 for($i=0 ; $i < $noOfMails ; $i++)
                 {
                   echo '
-                  <div class="well">
+                  <div style="background-color: #F5F5F5; padding: 10px; margin-bottom: 10px; border-radius: 10px; border: 1px solid #B9B9B9;">
                     <h3 style="float:right; margin-top:0px;">#'.($i+1).'</h3>    
                       <div class="form-group col-xs-12" style="padding-left:0px;">
                         <label for="to" style="padding-right:10px; margin-bottom:0px;"><h4>To:</h4></label>
