@@ -39,11 +39,11 @@ if (!isset($_CAMPAIGN_CREATE_)) {
       					</div>
                 <div class="form-group col-xs-12" id="from-input">
                     <label class="col-sm-2" for="email" style="padding-top:0px; padding-left:0px; "><h4>From:</h4></label>                    
-                    <input type="email" class="form-control" id="from" name="from" placeholder="someone@domain.com" style="width:100%; max-width:450px;">
+                    <input type="email" class="form-control" id="from" name="from" placeholder="'.DEFAULT_SENDER.'" style="width:100%; max-width:450px;">
                 </div>
                 <div class="form-group col-xs-12">
                     <label class="col-sm-2" for="subject" style="padding-top:0px; padding-left:0px;"><h4>Subject:</h4></label>            
-                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter subject for campaign" style="width:100%; max-width:450px;">                   
+                    <input type="text" class="form-control" id="subject" name="subject" placeholder="'.DEFAULT_SUBJECT.'" style="width:100%; max-width:450px;">                   
                 </div>
                 <div class="col-xs-12">
                     <div class="form-group" style="padding-right:10px;">
