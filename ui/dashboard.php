@@ -52,7 +52,10 @@ if (!isset($_CODE_DASHBOARD_)) {
 								</tr>';
 
 						foreach ($campaigns as $value) {
-							echo '<tr class="campaign-row" data-href="campaign_view.php?id='.$value['id'].'" style="cursor:pointer;">';
+							echo '<tr ';
+								if (isset($newuser->access[VIEW_CAMPAIGN]))
+									echo 'class="campaign-row" data-href="campaign_view.php?id='.$value['id'].'" style="cursor:pointer;"';
+							echo '>';
 							echo '<td>'.$value['id'].'</td>';
 							echo '<td>' .$value['subject'] .'</td>';
 							echo '<td><center>' .$value['api_code'] .'</center></td>';

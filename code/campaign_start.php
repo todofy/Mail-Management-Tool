@@ -8,13 +8,9 @@
 	$id = session::getUserID();
 	$newuser = new user($id);
 
-	//check if addding a campaign is a right
-	/*
-	if (!isset($newuser->access[ADD_CAMPAIGN])) {
+	if (!isset($newuser->access[CALL_CAMPAIGN])) {
 		redirect_to("_404.php");
 	}
-
-	*/
 
 	//validate the call
 	if(isset($_POST['from']) && trim($_POST['from'])!="")

@@ -8,6 +8,10 @@
 	$id = session::getUserID();
 	$newuser = new user($id);
 
+	if (!isset($newuser->access[VIEW_CAMPAIGN])) {
+		redirect_to("_404.php");
+	}
+
 	$campaign_id = $_GET['id'];
 	$error = false;
 	$result = database::SQL("SELECT `id` FROM `campaign` WHERE `id`=? LIMIT 1",array('s',$campaign_id));

@@ -24,11 +24,11 @@ if (!isset($_CODE_SIDEBAR_)) {
                        Dashboard<span class="sub_icon glyphicon glyphicon-home"></span>
                     </a>
                 </li>
-                <li>
-                    <a href="campaign_create.php" style="font-size:15px;">
-                       Send Mail<span class="sub_icon glyphicon glyphicon-envelope"></span>
-                    </a>
-                </li>
+                <?php
+                    if (isset($newuser->access[CALL_CAMPAIGN])){
+                        echo '<li><a href="campaign_create.php" style="font-size:15px;">Send Mail<span class="sub_icon glyphicon glyphicon-envelope"></span></a></li>';
+                    }
+                ?>
                 <li>
                     <a href="template.php" style="font-size:15px;">
                        Template<span class="sub_icon glyphicon glyphicon-pencil"></span>
@@ -45,11 +45,12 @@ if (!isset($_CODE_SIDEBAR_)) {
                         echo"<li><a href=\"{$row['link']}\">{$row['display_name']}<span class='sub_icon glyphicon glyphicon-user'></span></a></li>";
                     } 
                 ?>
-                <li>
-                    <a href="rabbitmq.php" style="font-size:15px;">
-                       Rabbit MQ<span class="sub_icon glyphicon glyphicon-wrench"></span>
-                    </a>
-                </li>  
+                <?php
+                    if (isset($newuser->access[RABBITMQ_ACCESS])){
+                        echo '<li><a href="rabbitmq.php" style="font-size:15px;">Rabbit MQ<span class="sub_icon glyphicon glyphicon-wrench"></span></a></li>';
+                    }
+                ?>
+                 
           </ul>
         </div>
     </div>    

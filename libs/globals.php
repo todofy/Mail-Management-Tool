@@ -54,6 +54,9 @@ if (!isset($_DEF_GLOBALS_)) {
 	define('DELETE_ADMIN', 'admin_delete');
 	define('EDIT_ADMIN', 'admin_edit');
 	define('REVOKE_ADMIN', 'admin_revoke');
+	define('VIEW_CAMPAIGN', 'campaign_view');
+	define('CALL_CAMPAIGN', 'campaign_call');
+	define('RABBITMQ_ACCESS', 'rabbitmq_access');
 	
 	define('SALT', 'namak');
 	define('REMEMBER_ME_COOKIE', 'remember');
