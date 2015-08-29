@@ -62,7 +62,7 @@ if (!isset($_CODE_TEMPLATE_)) {
 								echo '<td><center>' .date("D, d M 20y", $value['created_on']).'<br>'.date("h:i:s A (e)", $value['created_on']).'</center></td>';
 								echo '<td><center>' .date("D, d M 20y", $value['last_updated']).'<br>'.date("h:i:s A (e)", $value['last_updated']).'</center></td>';
 								echo '<td style="text-align:right;">';
-									echo '<a class="btn btn-info button-view" href="#" role="button" data-toggle="modal" data-target="#preview" id='.$value['id'].'>View</a> ';
+									echo '<a class="btn btn-info button-view" href="#" role="button" id='.$value['id'].'>View</a> ';
 									$edit = "template_edit.php?id=".$value['id'];
 									echo '<a class="btn btn-primary button-edit" href='.$edit.' role="button" id='.$value['id'].'>Edit</a> ';
 									echo '<a class="btn btn-danger button-delete" href="#" role="button" data-toggle="modal" data-target="#delete" id='.$value['id'].'>Delete</a> ';

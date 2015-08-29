@@ -7,10 +7,12 @@ $(document).ready(function() {
             {template_id : id},
             function(d) {
                 $('#wait-message').hide();
+                $("#preview").modal('show');
                 $("#template-preview").html(d.data);
                 $(".button-edit-secondary").attr("href", "template_edit.php?id="+id);
             }, function(d){
                 $('#wait-message').hide();
+                $("#preview").modal('show');
                 $("#template-preview").html(d.data);
         });
         e.preventDefault();
