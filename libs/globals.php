@@ -21,10 +21,11 @@ if (!isset($_DEF_GLOBALS_)) {
 	define('SALT_CSRF_TOKEN', md5('shiro'));
 	define('BASE_URL', 'http://test-mmt.cloudapp.net/Mail-Management-Tool/');
 	$BASE_URL = BASE_URL;
+	define('CAMPAIGN_START', $BASE_URL.'api/index.php');
 	define('API_LINK_URL', $BASE_URL.'links/index.php');
 	define('UNSUBSCRIBE_URL', $BASE_URL.'unsubscription.php');
 	define('DEFAULT_SENDER', 'noreply@todofy.org');
-	define('DEFAULT_SUBJECT', '');
+	define('DEFAULT_SUBJECT', 'TODOFY Mail');
 
 	// -- define logging related logs
 	define('LOG_FILE_NORMAL', __DIR__ .'/../logs/log_normal.log');

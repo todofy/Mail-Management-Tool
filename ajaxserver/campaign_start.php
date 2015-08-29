@@ -2,7 +2,7 @@
 
 $post = "data=".$data;
 
-$url = $BASE_URL."api/";
+$url = CAMPAIGN_START;
 
 $request=curl_init();
 curl_setopt($request, CURLOPT_URL, $url);

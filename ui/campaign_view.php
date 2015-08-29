@@ -65,7 +65,10 @@ if (!isset($_CAMPAIGN_VIEW_)) {
 											echo '<td style="color:red;">' .$value['description'] .'</td>';
 										echo '<td>'.$value['sent_to'].'</td>';
 										echo '<td><center>' .$value['clicks'] .'</center></td>';
-										echo '<td><center>' .date("D, d M 20y", $value['time_started']).'<br>'.date("h:i:s A (e)", $value['time_started']).'</center></td>';
+										if($value['time_started'] != null)
+											echo '<td><center>' .date("D, d M 20y", $value['time_started']).'<br>'.date("h:i:s A (e)", $value['time_started']).'</center></td>';
+										else
+											echo '<td><center> -NA- </center></td>';
 										if($value['time_finished'] != null)
 											echo '<td><center>' .date("D, d M 20y", $value['time_finished']).'<br>'.date("h:i:s A (e)", $value['time_finished']).'</center></td>';
 										else
