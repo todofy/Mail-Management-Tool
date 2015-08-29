@@ -17,13 +17,16 @@ $(document).ready(function() {
          			}
   	    	});
      			//console.log(jsonData);
+          $('#wait-message').show();
   		    request = new AJAX ('change_pw', jsonData, function(d){
+              $('#wait-message').hide();
               successAlert(d.message);
               $(".closejAlert.ja_close").click(function(e){
                   window.location="dashboard.php";
                   e.preventDefault();
                 });
               }, function(d){
+              $('#wait-message').hide();
               errorAlert(d.message);
               });
           e.preventDefault();	
@@ -50,13 +53,16 @@ $(document).ready(function() {
                   jsonData[this.name] = this.value || '';
               }
           });
+        $('#wait-message').show();
       request = new AJAX ('delete_account', jsonData, function(d){
+        $('#wait-message').hide();
         successAlert(d.message);
         $(".closejAlert.ja_close").click(function(e){
             window.location="logout.php";
             e.preventDefault();
             });
       },function(d){
+        $('#wait-message').hide();
         errorAlert(d.message);
       });
       e.preventDefault();

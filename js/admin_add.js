@@ -17,13 +17,16 @@ $(document).ready(function() {
          			}
   	    	});
      			//console.log(jsonData);
+          $('#wait-message').show();
   		    request = new AJAX ('add_admin', jsonData, function(d){
+              $('#wait-message').hide();
               successAlert(d.message);
               $(".closejAlert.ja_close").click(function(e){
                   window.location="admin_view.php";
                   e.preventDefault();
                 });
               }, function(d){
+              $('#wait-message').hide();
               errorAlert(d.message);
               });
           e.preventDefault();	

@@ -20,13 +20,16 @@ $(document).ready(function() {
            			}
     	    	});
        			//console.log(jsonData);
+            $('#wait-message').show();
             request = new AJAX ('edit_template', jsonData, function(d){
+                $('#wait-message').hide();
                 successAlert(d.message);
                 $(".closejAlert.ja_close").click(function(e){
                     window.location="template.php";
                     e.preventDefault();
                   });
                 }, function(d){
+                $('#wait-message').hide();
                 errorAlert(d.message);
                 }); 
             e.preventDefault(); 		    

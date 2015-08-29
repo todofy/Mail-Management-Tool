@@ -65,6 +65,13 @@ if (!isset($_TEMPLATE_ADD_)) {
 			</div>
 		</div>
 	</div>
+	<div class="col-xs-12"  id="wait-message" style="height:100%; position:fixed; left:0px; top:0px; background-color:rgba(0,0,0,0.3); z-index:100; display:none;">
+		<div class="col-xs-6 col-xs-offset-3 col-sm-12 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4" style="position: fixed; top:25%;">
+		    <div class="alert alert-info" style="padding: 15px;">
+		    	<h4 style="margin-bottom:0px;"><center>Processing...</center></h4>
+		    </div>
+	    </div>
+	</div>
 	<div class="row"  id="warning-message">
 		<div class="col-xs-12">
 			<div class="well">

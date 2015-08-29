@@ -12,13 +12,16 @@ $(document).ready(function(){
                         }
                     });
             jsonData = JSON.stringify(formData, null, '\t');
+            $('#wait-message').show();
             request = new AJAX ('campaign_start', jsonData, function(d){
+                    $('#wait-message').hide();
                     successAlert(d.message);
                     $(".closejAlert.ja_close").click(function(e){
                         window.location="dashboard.php";
                         e.preventDefault();
                     });
                     }, function(d){
+                        $('#wait-message').hide();
                         errorAlert(d.message);
                         $(".closejAlert.ja_close").click(function(e){
                             window.location="campaign_create.php";
