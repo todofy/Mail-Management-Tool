@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 22, 2015 at 10:13 AM
+-- Generation Time: Aug 29, 2015 at 01:02 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -33,7 +33,8 @@ CREATE TABLE IF NOT EXISTS `acl` (
   `name` varchar(15) NOT NULL,
   `description` text NOT NULL,
   `display_name` varchar(30) NOT NULL,
-  `link` varchar(100) NOT NULL
+  `link` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -45,7 +46,10 @@ INSERT INTO `acl` (`id`, `name`, `description`, `display_name`, `link`) VALUES
 (2, 'admin_add', 'Add an admin', 'Add an Admin', 'admin_add.php'),
 (3, 'admin_edit', 'Edit an admin', '', ''),
 (4, 'admin_revoke', 'Invalidate secret key for admin', '', ''),
-(5, 'admin_delete', 'Delete an admin', '', '');
+(5, 'admin_delete', 'Delete an admin', '', ''),
+(6, 'campaign_view', 'View a particular campaign''s all mails', '', ''),
+(7, 'campaign_call', 'Start a campaign', 'Send Mail', ''),
+(8, 'rabbitmq_access', 'Add or remove rabbitmq workers.', 'Rabbit MQ', '');
 
 -- --------------------------------------------------------
 
@@ -70,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`id`, `email`, `secret`, `password`, `salt`, `cookie`, `last_login`) VALUES
-(8, 'anshumanpattanayak@gmail.com', '7be1f7a994a0cb2d9921a19fef9c52ae', 'e5b725fd14b675a4085766f70883ba68', 'namak', '4841eb01d8b6d650d74929c5de860c82', 1440229600),
+(8, 'anshumanpattanayak@gmail.com', '7be1f7a994a0cb2d9921a19fef9c52ae', 'e5b725fd14b675a4085766f70883ba68', 'namak', '4841eb01d8b6d650d74929c5de860c82', 1440852133),
 (10, 'zsonix27@gmail.com', 'b7774c0b872fbf4821e6960ea3911e33', 'e5b725fd14b675a4085766f70883ba68', 'namak', '', 1440158479);
 
 -- --------------------------------------------------------
@@ -81,7 +85,8 @@ INSERT INTO `admin` (`id`, `email`, `secret`, `password`, `salt`, `cookie`, `las
 
 CREATE TABLE IF NOT EXISTS `admin_access` (
   `admin_id` int(11) NOT NULL,
-  `access_id` int(11) NOT NULL
+  `access_id` int(11) NOT NULL,
+  PRIMARY KEY (`admin_id`,`access_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -94,6 +99,9 @@ INSERT INTO `admin_access` (`admin_id`, `access_id`) VALUES
 (8, 3),
 (8, 4),
 (8, 5),
+(8, 6),
+(8, 7),
+(8, 8),
 (10, 1),
 (10, 4);
 
@@ -111,14 +119,15 @@ CREATE TABLE IF NOT EXISTS `api` (
   `created_on` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `template_id` (`template_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
 
 --
 -- Dumping data for table `api`
 --
 
 INSERT INTO `api` (`id`, `code`, `name`, `template_id`, `created_on`) VALUES
-(28, 'cc8ca', 'Stray', 41, 1440158163);
+(36, 'fac53', 'Test', 44, 1440733124),
+(37, '7ac3c', 'wer', 45, 1440772848);
 
 -- --------------------------------------------------------
 
@@ -132,7 +141,16 @@ CREATE TABLE IF NOT EXISTS `api_params` (
   `name` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `api_id` (`template_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+
+--
+-- Dumping data for table `api_params`
+--
+
+INSERT INTO `api_params` (`id`, `template_id`, `name`) VALUES
+(12, 44, '{{param1}}'),
+(13, 44, '{{param2}}'),
+(14, 44, '{{param3}}');
 
 -- --------------------------------------------------------
 
@@ -153,13 +171,6 @@ CREATE TABLE IF NOT EXISTS `campaign` (
   `time_finished` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `campaign`
---
-
-INSERT INTO `campaign` (`id`, `secret_key`, `api_code`, `sender`, `subject`, `payload_length`, `payload_sent`, `mails_processed`, `time_started`, `time_finished`) VALUES
-('52d4608da4', '7be1f7a994a0cb2d9921a19fef9c52ae', 'cc8ca', 'abc@gmail.com', 'Test mail', 4, 4, 4, 1440158209, NULL);
 
 -- --------------------------------------------------------
 
@@ -187,15 +198,7 @@ CREATE TABLE IF NOT EXISTS `links` (
   `template_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `template_id` (`template_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
-
---
--- Dumping data for table `links`
---
-
-INSERT INTO `links` (`id`, `href`, `url`, `template_id`) VALUES
-(11, 'href="http://www.google.co.in"', 'http://www.google.co.in', 41),
-(12, 'href="http://www.google.co.in"', 'http://www.google.co.in', 43);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -211,15 +214,6 @@ CREATE TABLE IF NOT EXISTS `link_hash` (
   PRIMARY KEY (`mail_id`,`link_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `link_hash`
---
-
-INSERT INTO `link_hash` (`mail_id`, `link_id`, `hash`, `clicks`) VALUES
-(258, 11, '018f890f4c5a28fe', 0),
-(260, 11, '6bedfdc626ff8e77', 0),
-(261, 11, '09dec6f224af6fe3', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -230,22 +224,12 @@ CREATE TABLE IF NOT EXISTS `mail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `campaign_id` varchar(11) NOT NULL,
   `payload` text NOT NULL,
-  `time_started` int(11) NOT NULL,
+  `time_started` int(11) DEFAULT NULL,
   `time_finished` int(11) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `campaign_id` (`campaign_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=262 ;
-
---
--- Dumping data for table `mail`
---
-
-INSERT INTO `mail` (`id`, `campaign_id`, `payload`, `time_started`, `time_finished`, `status`) VALUES
-(258, '52d4608da4', '{"to":"sertywwe@example.com"}', 1440162807, 1440162807, 1),
-(259, '52d4608da4', '{"to":"someone@example.com"}', 1440162807, NULL, 4),
-(260, '52d4608da4', '{"to":"som123eone@example.com"}', 1440162808, 1440162808, 1),
-(261, '52d4608da4', '{"to":"mer123ty@gmail.com"}', 1440162808, 1440162808, 1);
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=273 ;
 
 -- --------------------------------------------------------
 
@@ -269,7 +253,8 @@ INSERT INTO `mail_status` (`type`, `description`) VALUES
 (2, 'Wrong number or/and value of parameters passed.'),
 (3, '''to'' parameter not defined.'),
 (4, 'This email id has been unsubscribed.'),
-(5, 'API or template for it doesn''t exist in the database.');
+(5, 'API or template for it doesn''t exist in the database.'),
+(6, 'Incorrect email id specified for addressee.');
 
 -- --------------------------------------------------------
 
@@ -284,16 +269,15 @@ CREATE TABLE IF NOT EXISTS `template` (
   `created_on` int(11) NOT NULL,
   `last_updated` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
 
 --
 -- Dumping data for table `template`
 --
 
 INSERT INTO `template` (`id`, `name`, `template`, `created_on`, `last_updated`) VALUES
-(41, 'Demo', '<p><a href="http://www.google.co.in">http://www.google.co.in</a></p>', 1439809790, 1439810108),
-(42, 'teset', '<p><a href="mailto:asnd@fd.con">asnd@fd.con</a></p>\r\n<p></p>', 1439995436, 1440229607),
-(43, 'Test', '<p><a href="http://www.google.co.in">www.google.co.in</a></p>\r\n<p></p>', 1440229896, 1440229896);
+(44, 'test', '<p>Design your template here.</p>\r\n<p>{{param1}}</p>\r\n<p>{{param2}}</p>\r\n<p>{{param3}}</p>', 1440733109, 1440764510),
+(45, 'wer', '<p>Design your template here.</p>', 1440772833, 1440772833);
 
 -- --------------------------------------------------------
 
