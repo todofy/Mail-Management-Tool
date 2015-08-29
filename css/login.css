@@ -249,6 +249,26 @@ input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 
+.btn1{
+  font-weight: 500;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  -webkit-box-shadow: inset 0px -2px 0px 0px rgba(0, 0, 0, 0.09);
+  -moz-box-shadow: inset 0px -2px 0px 0px rgba(0, 0, 0, 0.09);
+  box-shadow: inset 0px -1px 0px 0px rgba(0, 0, 0, 0.09);
+}
+
+.btn1.btn-primary {
+  background-color: #3c8dbc;
+  border-color: #367fa9;
+}
+.btn1.btn-primary:hover,
+.btn1.btn-primary:active,
+.btn1.btn-primary.hover {
+  background-color: #367fa9;
+}
 
 /***** Media queries *****/
 

@@ -19,6 +19,8 @@
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/login.css">
+        <script src="js/jquery-2.0.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -71,12 +73,33 @@
 			                    </form>
 		                    </div>
                             <div class="row description" style="color:#fff;">
-                                <p>Forgot your password? <a href="index.php" style="color: rgb(222,152,151);">Click here to reset it</a>.</p>
+                                <p>Forgot your password? <a href="#"  data-toggle="modal" data-target="#forgot-pw" style="color: rgb(222,152,151);">Click here to reset it</a>.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>            
+        </div>
+        <div class="col-xs-12">
+            <div id="forgot-pw" class="modal fade" role="dialog" style="z-index: 15000; top:20%;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Forgot Password</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form" id="email" type="post">
+                                <div class="form-group col-xs-12" style="padding-right:0px;">
+                                    <label class="control-label" for="email"><h4>Enter email:</h4></label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="">
+                                </div>
+                                <button type="submit" class="btn1 btn-primary" value="Submit" data-dismiss="modal" id="btn">Done</button>
+                                <button type="button" class="btn1 btn-link" data-dismiss="modal">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

@@ -44,7 +44,12 @@ if (!isset($_CODE_SIDEBAR_)) {
                         if ($row['link'] == '') continue;
                         echo"<li><a href=\"{$row['link']}\">{$row['display_name']}<span class='sub_icon glyphicon glyphicon-user'></span></a></li>";
                     } 
-                ?> 
+                ?>
+                <li>
+                    <a href="rabbitmq.php" style="font-size:15px;">
+                       Rabbit MQ<span class="sub_icon glyphicon glyphicon-wrench"></span>
+                    </a>
+                </li>  
           </ul>
         </div>
     </div>    
