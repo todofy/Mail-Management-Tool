@@ -40,7 +40,7 @@ if (!isset($_CAMPAIGN_VIEW_)) {
 						<h3>Campaign #'.$campaign_id.'</h3>
 					</div>
 					<div class="col-xs-3">';
-						echo '<a href="#" type="button" class="btn btn-info button-view" role="button" data-toggle="modal" data-target="#preview" style="float:right; margin-right: 10px;" id="'.$template_id.'">View sample mail</a>
+						echo '<a href="#" type="button" class="btn btn-info button-view" role="button" style="float:right; margin-right: 10px;" id="'.$template_id.'">View sample mail</a>
 					</div>';
 					if(!empty($mails)){
 						echo '
