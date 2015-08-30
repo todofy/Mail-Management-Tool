@@ -88,12 +88,12 @@
                             <h4 class="modal-title">Forgot Password</h4>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal" role="form" id="email" type="post">
+                            <form class="form-horizontal" role="form" id="email" type="post" action="forgot_pw.php" method = "POST">
                                 <div class="form-group col-xs-12" style="padding-right:0px;">
                                     <label class="control-label" for="email"><h4>Enter email:</h4></label>
                                     <input type="email" class="form-control" id="email" name="email" placeholder="">
                                 </div>
-                                <button type="submit" class="btn1 btn-primary" value="Submit" data-dismiss="modal" id="btn">Done</button>
+                                <button type="submit" class="btn1 btn-primary" value="Submit" id="btn">Done</button>
                                 <button type="button" class="btn1 btn-link" data-dismiss="modal">Cancel</button>
                             </form>
                         </div>
