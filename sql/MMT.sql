@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 29, 2015 at 01:02 PM
+-- Generation Time: Aug 30, 2015 at 02:47 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -32,8 +32,6 @@ CREATE TABLE IF NOT EXISTS `acl` (
   `id` int(11) NOT NULL,
   `name` varchar(15) NOT NULL,
   `description` text NOT NULL,
-  `display_name` varchar(30) NOT NULL,
-  `link` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -41,15 +39,15 @@ CREATE TABLE IF NOT EXISTS `acl` (
 -- Dumping data for table `acl`
 --
 
-INSERT INTO `acl` (`id`, `name`, `description`, `display_name`, `link`) VALUES
-(1, 'admin_view', 'View all admins', 'View Admins', 'admin_view.php'),
-(2, 'admin_add', 'Add an admin', 'Add an Admin', 'admin_add.php'),
-(3, 'admin_edit', 'Edit an admin', '', ''),
-(4, 'admin_revoke', 'Invalidate secret key for admin', '', ''),
-(5, 'admin_delete', 'Delete an admin', '', ''),
-(6, 'campaign_view', 'View a particular campaign''s all mails', '', ''),
-(7, 'campaign_call', 'Start a campaign', 'Send Mail', ''),
-(8, 'rabbitmq_access', 'Add or remove rabbitmq workers.', 'Rabbit MQ', '');
+INSERT INTO `acl` (`id`, `name`, `description`) VALUES
+(1, 'admin_view', 'View all admins'),
+(2, 'admin_add', 'Add an admin'),
+(3, 'admin_edit', 'Edit an admin'),
+(4, 'admin_revoke', 'Invalidate secret key for admin'),
+(5, 'admin_delete', 'Delete an admin'),
+(6, 'campaign_view', 'View a particular campaign''s all mails'),
+(7, 'campaign_call', 'Start a campaign'),
+(8, 'unsub_emails', 'View unsubscribed emails and remove them');
 
 -- --------------------------------------------------------
 
@@ -74,8 +72,8 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`id`, `email`, `secret`, `password`, `salt`, `cookie`, `last_login`) VALUES
-(8, 'anshumanpattanayak@gmail.com', '7be1f7a994a0cb2d9921a19fef9c52ae', 'e5b725fd14b675a4085766f70883ba68', 'namak', '4841eb01d8b6d650d74929c5de860c82', 1440852133),
-(10, 'zsonix27@gmail.com', 'b7774c0b872fbf4821e6960ea3911e33', 'e5b725fd14b675a4085766f70883ba68', 'namak', '', 1440158479);
+(8, 'anshumanpattanayak@gmail.com', '7be1f7a994a0cb2d9921a19fef9c52ae', 'e5b725fd14b675a4085766f70883ba68', 'namak', '4841eb01d8b6d650d74929c5de860c82', 1440899011),
+(10, 'zsonix27@gmail.com', 'efa6f70cd7b5d6353038da6496ba3652', 'e5b725fd14b675a4085766f70883ba68', 'namak', '', 1440855574);
 
 -- --------------------------------------------------------
 
@@ -119,15 +117,14 @@ CREATE TABLE IF NOT EXISTS `api` (
   `created_on` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `template_id` (`template_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 --
 -- Dumping data for table `api`
 --
 
 INSERT INTO `api` (`id`, `code`, `name`, `template_id`, `created_on`) VALUES
-(36, 'fac53', 'Test', 44, 1440733124),
-(37, '7ac3c', 'wer', 45, 1440772848);
+(36, 'fac53', 'Test', 44, 1440733124);
 
 -- --------------------------------------------------------
 
@@ -171,6 +168,13 @@ CREATE TABLE IF NOT EXISTS `campaign` (
   `time_finished` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `campaign`
+--
+
+INSERT INTO `campaign` (`id`, `secret_key`, `api_code`, `sender`, `subject`, `payload_length`, `payload_sent`, `mails_processed`, `time_started`, `time_finished`) VALUES
+('eb92db83b1', '7be1f7a994a0cb2d9921a19fef9c52ae', 'fac53', 'noreply@todofy.org', 'TODOFY Mail', 1, 1, 0, 1440855644, NULL);
 
 -- --------------------------------------------------------
 
@@ -229,7 +233,14 @@ CREATE TABLE IF NOT EXISTS `mail` (
   `status` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `campaign_id` (`campaign_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=273 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=274 ;
+
+--
+-- Dumping data for table `mail`
+--
+
+INSERT INTO `mail` (`id`, `campaign_id`, `payload`, `time_started`, `time_finished`, `status`) VALUES
+(273, 'eb92db83b1', '{"to":"anshumanpattanayak@gmail.com","param1":"1","param2":"2","param3":"3"}', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -269,15 +280,14 @@ CREATE TABLE IF NOT EXISTS `template` (
   `created_on` int(11) NOT NULL,
   `last_updated` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=48 ;
 
 --
 -- Dumping data for table `template`
 --
 
 INSERT INTO `template` (`id`, `name`, `template`, `created_on`, `last_updated`) VALUES
-(44, 'test', '<p>Design your template here.</p>\r\n<p>{{param1}}</p>\r\n<p>{{param2}}</p>\r\n<p>{{param3}}</p>', 1440733109, 1440764510),
-(45, 'wer', '<p>Design your template here.</p>', 1440772833, 1440772833);
+(44, 'test', '<p>Design your template here.</p>\r\n<p>{{param1}}</p>\r\n<p>{{param2}}</p>\r\n<p>{{param3}}</p>', 1440733109, 1440764510);
 
 -- --------------------------------------------------------
 
@@ -288,6 +298,8 @@ INSERT INTO `template` (`id`, `name`, `template`, `created_on`, `last_updated`) 
 CREATE TABLE IF NOT EXISTS `unsubscribed` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(200) NOT NULL,
+  `time` int(11) NOT NULL,
+  `reason_id` int(11) NOT NULL,
   UNIQUE KEY `user_id_2` (`user_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
@@ -296,9 +308,28 @@ CREATE TABLE IF NOT EXISTS `unsubscribed` (
 -- Dumping data for table `unsubscribed`
 --
 
-INSERT INTO `unsubscribed` (`user_id`, `email`) VALUES
-(1, 'someone@example.com'),
-(2, 'mert@gmail.com');
+INSERT INTO `unsubscribed` (`user_id`, `email`, `time`, `reason_id`) VALUES
+(1, 'someone@example.com', 1440733124, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `unsub_reasons`
+--
+
+CREATE TABLE IF NOT EXISTS `unsub_reasons` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `reason` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `unsub_reasons`
+--
+
+INSERT INTO `unsub_reasons` (`id`, `reason`) VALUES
+(1, 'Not interested in mails from this sender.'),
+(2, 'Sender is annoying.');
 
 --
 -- Constraints for dumped tables

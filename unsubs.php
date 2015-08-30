@@ -8,10 +8,10 @@ include __DIR__ .'/libs/database.php';
 include __DIR__ .'/libs/user.php';
 
 // including the code files
-include __DIR__ .'/code/rabbitmq.php';
+include __DIR__ .'/code/unsubs.php';
 include __DIR__ .'/code/sidebar.php';
 include __DIR__ .'/code/header.php';
 
 // including the ui files
-include __DIR__ .'/ui/rabbitmq.php';
+include __DIR__ .'/ui/unsubs.php';
 ?>

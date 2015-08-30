@@ -39,15 +39,19 @@ if (!isset($_CODE_SIDEBAR_)) {
                        API<span class="sub_icon glyphicon glyphicon-file"></span>
                     </a>
                 </li> 
-                <?php 
-                    foreach ($newuser->access as $row) {
-                        if ($row['link'] == '') continue;
-                        echo"<li><a href=\"{$row['link']}\">{$row['display_name']}<span class='sub_icon glyphicon glyphicon-user'></span></a></li>";
-                    } 
+                <?php
+                    if (isset($newuser->access[VIEW_ADMIN])){
+                        echo '<li><a href="admin_view.php" style="font-size:15px;">View Admins<span class="sub_icon glyphicon glyphicon-user"></span></a></li>';
+                    }
                 ?>
                 <?php
-                    if (isset($newuser->access[RABBITMQ_ACCESS])){
-                        echo '<li><a href="rabbitmq.php" style="font-size:15px;">Rabbit MQ<span class="sub_icon glyphicon glyphicon-wrench"></span></a></li>';
+                    if (isset($newuser->access[ADD_ADMIN])){
+                        echo '<li><a href="admin_add.php" style="font-size:15px;">Add Admin<span class="sub_icon glyphicon glyphicon-user"></span></a></li>';
+                    }
+                ?>
+                <?php
+                    if (isset($newuser->access[UNSUB_EMAILS])){
+                        echo '<li><a href="unsubs.php" style="font-size:15px;">Unsubscribed Emails<span class="sub_icon glyphicon glyphicon-wrench"></span></a></li>';
                     }
                 ?>
                  

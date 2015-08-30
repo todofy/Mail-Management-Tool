@@ -90,6 +90,14 @@ if($category == "campaign_start"){
 	exit;
 }
 
+//remove unsubscription
+if($category == "remove_unsub"){
+	database::Start();
+	include __DIR__ .'/remove_unsub.php';
+	echo json_encode($output);
+	exit;
+}
+
 //List of all operations regarding templates
 $template_operations = array(
 	'view_template' => array('view_template'),

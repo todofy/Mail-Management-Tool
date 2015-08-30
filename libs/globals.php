@@ -19,7 +19,7 @@ if (!isset($_DEF_GLOBALS_)) {
 	
 	// --- GENERAL DEFINATIONS ----
 	define('SALT_CSRF_TOKEN', md5('shiro'));
-	define('BASE_URL', 'http://test-mmt.cloudapp.net/Mail-Management-Tool/');
+	define('BASE_URL', 'http://localhost/Mail-Management-Tool/');
 	$BASE_URL = BASE_URL;
 	define('CAMPAIGN_START', $BASE_URL.'api/index.php');
 	define('API_LINK_URL', $BASE_URL.'links/index.php');
@@ -56,7 +56,7 @@ if (!isset($_DEF_GLOBALS_)) {
 	define('REVOKE_ADMIN', 'admin_revoke');
 	define('VIEW_CAMPAIGN', 'campaign_view');
 	define('CALL_CAMPAIGN', 'campaign_call');
-	define('RABBITMQ_ACCESS', 'rabbitmq_access');
+	define('UNSUB_EMAILS', 'unsub_emails');
 	
 	define('SALT', 'namak');
 	define('REMEMBER_ME_COOKIE', 'remember');
