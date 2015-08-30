@@ -12,7 +12,7 @@ $time_started = $result[0]['time_started'];
 $current_time = time();
 $success = true;
 $err = "";
-if($current_time-$time_started < (15*60))
+if($current_time-$time_started> (15*60))
 {
 	$success = false;
 	$err = "Session ended. Retry!!";
