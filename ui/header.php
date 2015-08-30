@@ -24,9 +24,6 @@ if (!isset($_CODE_HEADER_)) {
 				<img id="logo" src="assets/logo.png">
 			</div>
 
-			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-			</div>
-
 			<div class="col-xs-5 col-sm-5 col-md-6 col-lg-6">
 				<form class="navbar-form" role="search" id="search" action = "search.php" method = "POST">
 		            <div class="input-group" id="search_bar">
@@ -39,6 +36,10 @@ if (!isset($_CODE_HEADER_)) {
 		            </div>
 		        </form>
 		    </div>
+
+		    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+				<span class="glyphicon glyphicon-bell" id="notification"></span>
+			</div>
 
 		    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
 				<div class="header-user-menu">
