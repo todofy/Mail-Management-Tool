@@ -1,8 +1,8 @@
 $(document).ready(function() {
-  	$("#save").click(function(e){
+  	$("#unsub").click(function(e){
   	 		  var jsonData = {};
-  	 		  var formData = $("#create-api").serializeArray();
-          
+  	 		  var formData = $("#unsubscribe").serializeArray();
+     
      			$.each(formData, function() {
           		if (jsonData[this.name]) {
              			if (!jsonData[this.name].push) {
@@ -13,18 +13,16 @@ $(document).ready(function() {
              			jsonData[this.name] = this.value || '';
          			}
   	    	});
-     			
+
           $('#wait-message').show();
-          request = new AJAX ('add_api', jsonData, function(d){
+  		    request = new AJAX ('unsubscribe', jsonData, function(d){
               $('#wait-message').hide();
-              $("#api-details").modal('show');
-              $("#api-call").html(d.data[0]);
-              $("#api-response").html(d.data[1]);
-              $("#php-example").html(d.data[2]);
+              $('#content-wrapper').hide();
+              $('#success-message').show();              
               }, function(d){
               $('#wait-message').hide();
               errorAlert(d.message);
-              }); 
-          e.preventDefault(); 		    
-  	  });
+              });
+          e.preventDefault();	
+		});
 });

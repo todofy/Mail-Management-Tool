@@ -90,6 +90,14 @@ if($category == "campaign_start"){
 	exit;
 }
 
+//unsubscription
+if($category == "unsubscribe"){
+	database::Start();
+	include __DIR__ .'/unsubscribe.php';
+	echo json_encode($output);
+	exit;
+}
+
 //remove unsubscription
 if($category == "remove_unsub"){
 	database::Start();

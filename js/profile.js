@@ -4,7 +4,6 @@ $(document).ready(function() {
         {
   	 		  var jsonData = {};
   	 		  var formData = $("#change_pw").serializeArray();
-    			//console.log(formData);
      
      			$.each(formData, function() {
           		if (jsonData[this.name]) {
@@ -16,7 +15,7 @@ $(document).ready(function() {
              			jsonData[this.name] = this.value || '';
          			}
   	    	});
-     			//console.log(jsonData);
+     			
           $('#wait-message').show();
   		    request = new AJAX ('change_pw', jsonData, function(d){
               $('#wait-message').hide();
@@ -41,7 +40,6 @@ $(document).ready(function() {
         if(pwd != ''){
           var jsonData = {};
           var formData = $("#delete_acc").serializeArray();
-          //console.log(formData);
      
           $.each(formData, function() {
               if (jsonData[this.name]) {
@@ -53,6 +51,7 @@ $(document).ready(function() {
                   jsonData[this.name] = this.value || '';
               }
           });
+          
         $('#wait-message').show();
       request = new AJAX ('delete_account', jsonData, function(d){
         $('#wait-message').hide();

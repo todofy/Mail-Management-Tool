@@ -13,7 +13,7 @@ $(document).ready(function() {
              			jsonData[this.name] = this.value || '';
          			}
   	    	});
-     			//console.log(jsonData);
+     			
           $('#wait-message').show();
           request = new AJAX ('edit_api', jsonData, function(d){
               $('#wait-message').hide();

@@ -4,7 +4,6 @@ $(document).ready(function() {
         {
   	 		  var jsonData = {};
   	 		  var formData = $("#add").serializeArray();
-    			//console.log(formData);
      
      			$.each(formData, function() {
           		if (jsonData[this.name]) {
@@ -16,7 +15,7 @@ $(document).ready(function() {
              			jsonData[this.name] = this.value || '';
          			}
   	    	});
-     			//console.log(jsonData);
+          
           $('#wait-message').show();
   		    request = new AJAX ('add_admin', jsonData, function(d){
               $('#wait-message').hide();
