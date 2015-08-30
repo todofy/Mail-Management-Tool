@@ -48,25 +48,18 @@
                                 if($success)
                                 {
                                     echo '
-                                    <div class="modal-body">
-                                        <form class="form-horizontal" role="form" id="change_pw" type="post">
-                                            
-                                            <div class="form-group">
-                                                <label class="control-label col-xs-4" for="new" style="padding-top:0px;"><h4>New password:</h4></label>
-                                                <div class="col-xs-8">
-                                                    <input type="password" class="form-control" id="new_pw" name="new_pw" placeholder="Enter new password">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-xs-4" for="confirm" style="padding-top:0px;"><h4>Confirm password:</h4></label>
-                                                <div class="col-xs-8">
-                                                    <input type="password" class="form-control" id="confirm_pw" name="confirm_pw" placeholder="Confirm new password">
-                                                </div>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary" value="Submit" id="btn">Done</button>
-                                            <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
-                                        </form>
-                                    </div> ';
+                                    <form role="form" action="" method="post" class="login-form" id="confirm_pass">
+                                    <input type="text" class="form-control" name="email_id"'.'value="'.$email.'"'.'style="display: none;">
+                                    <div class="form-group">
+                                        <label class="sr-only" for="form-username">Password</label>
+                                        <input type="password" name="new_pass" placeholder="Password" class="form-username form-control" id="new_pw">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="form-password">Confirm Password</label>
+                                        <input type="password" name="Confirm_pass" placeholder="Confirm Password" class="form-password form-control" id="confirm_pw">
+                                    </div>
+                                    <a href="#" class="btn" id = "confirm" >Done</a>
+                                </form>';
                                 }
                                 else
                                 {
@@ -79,5 +72,10 @@
                 </div>
             </div>
         </div>
+<script src="js/jAlert-v3.js"></script>
+<script src="js/jAlert-functions.js"></script>
+<script src="js/main.js"></script>
+<script src="js/form2js.js"></script>
+<script src="js/confirm_pass.js"></script>
     </body>
 </html>
