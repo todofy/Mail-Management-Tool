@@ -23,7 +23,7 @@ $callback = function($message){
 	$result = database::SQL("SELECT `status` FROM `mail` WHERE `id`=? LIMIT 1",array('i',$mail_id));
 	if($result[0]['status']==0){
 		//process the mail
-		echo "\n";
+		echo "\n\n";
 		echo $mail_id.' received.';
 		//update the time_started for this mail
 		$time_started = time();
@@ -65,17 +65,18 @@ $callback = function($message){
 
 			//send mail
 			$headers = "From: " .$from. "\r\n";
-			$headers .= "Reply-To: contact@todofy.org\r\n";
-			$headers .= "Return-Path: return@todofy.org\r\n";
 			$headers .= "MIME-Version: 1.0\r\n";
 			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+			$mail_success = mail($to,$subject,$mail,$headers);
 			
-			// Update database
-			if(mail($to,$subject,$mail,$headers)) {
+			//update database
+			if($mail_success){
 				$time_finished = time();
-				$result = database::SQL("UPDATE `mail` SET `time_finished`=?,`status`=1 WHERE `id`=?",array('ii',$time_finished, $mail_id));
-				$result = database::SQL("UPDATE `campaign` SET `mails_processed`=`mails_processed`+1 WHERE `id`=?",array('s', $campaign_id));
-			} else{
+				$result = database::SQL("UPDATE `mail` SET `time_finished`=?,`status`=1 WHERE `id`=?",array('ii',$time_finished,$mail_id));
+				$result = database::SQL("UPDATE `campaign` SET `mails_processed`=`mails_processed`+1 WHERE `id`=?",array('s',$campaign_id));
+			}
+			else{
 				$time_finished = time();
 				$result = database::SQL("UPDATE `mail` SET `time_finished`=?,`status`=6 WHERE `id`=?",array('ii',$time_finished,$mail_id));
 				$result = database::SQL("UPDATE `campaign` SET `mails_processed`=`mails_processed`+1 WHERE `id`=?",array('s',$campaign_id));
