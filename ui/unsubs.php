@@ -24,11 +24,11 @@ if (!isset($_UNSUBS_ACCESS_)) {
 			<div class="col-xs-12">
 				<ol class="breadcrumb">
 				    <li><a href="dashboard.php">Home</a></li>
-				    <li class="active">Unsubscribed Emails</li>
+				    <li class="active">Unsubscriptions</li>
 				</ol>
 			</div>			
 		    <div class="col-xs-12">
-		    	<h3>Unsubscribed Emails</h3>
+		    	<h3>Unsubscriptions</h3>
 		    </div>
 			<?php
 			if(empty($unsubs))

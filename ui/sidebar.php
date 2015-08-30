@@ -41,17 +41,12 @@ if (!isset($_CODE_SIDEBAR_)) {
                 </li> 
                 <?php
                     if (isset($newuser->access[VIEW_ADMIN])){
-                        echo '<li><a href="admin_view.php" style="font-size:15px;">View Admins<span class="sub_icon glyphicon glyphicon-user"></span></a></li>';
-                    }
-                ?>
-                <?php
-                    if (isset($newuser->access[ADD_ADMIN])){
-                        echo '<li><a href="admin_add.php" style="font-size:15px;">Add Admin<span class="sub_icon glyphicon glyphicon-user"></span></a></li>';
+                        echo '<li><a href="admin_view.php" style="font-size:15px;">Admins<span class="sub_icon glyphicon glyphicon-user"></span></a></li>';
                     }
                 ?>
                 <?php
                     if (isset($newuser->access[UNSUB_EMAILS])){
-                        echo '<li><a href="unsubs.php" style="font-size:15px;">Unsubscribed Emails<span class="sub_icon glyphicon glyphicon-remove-circle"></span></a></li>';
+                        echo '<li><a href="unsubs.php" style="font-size:15px;">Unsubscriptions<span class="sub_icon glyphicon glyphicon-remove-circle"></span></a></li>';
                     }
                 ?>
                  

@@ -24,6 +24,7 @@ if (!isset($_ADMIN_ADD_)) {
         <div class="col-xs-12">
     			<ol class="breadcrumb">
     			    <li><a href="dashboard.php">Home</a></li>
+              <li><a href="admin_view.php">View Admins</a></li>
     			    <li class="active">Add Admin</li>
     			</ol>
         </div>
