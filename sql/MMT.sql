@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Aug 30, 2015 at 02:47 AM
--- Server version: 5.6.12-log
--- PHP Version: 5.4.12
+-- Host: 127.0.0.1
+-- Generation Time: Aug 30, 2015 at 10:22 AM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `mmt`
 --
-CREATE DATABASE IF NOT EXISTS `mmt` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `mmt`;
 
 -- --------------------------------------------------------
 
@@ -72,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`id`, `email`, `secret`, `password`, `salt`, `cookie`, `last_login`) VALUES
-(8, 'anshumanpattanayak@gmail.com', '7be1f7a994a0cb2d9921a19fef9c52ae', 'e5b725fd14b675a4085766f70883ba68', 'namak', '4841eb01d8b6d650d74929c5de860c82', 1440899011),
+(8, 'anshumanpattanayak@gmail.com', '7be1f7a994a0cb2d9921a19fef9c52ae', 'e5b725fd14b675a4085766f70883ba68', 'namak', '4841eb01d8b6d650d74929c5de860c82', 1440922215),
 (10, 'zsonix27@gmail.com', 'efa6f70cd7b5d6353038da6496ba3652', 'e5b725fd14b675a4085766f70883ba68', 'namak', '', 1440855574);
 
 -- --------------------------------------------------------
@@ -266,6 +264,20 @@ INSERT INTO `mail_status` (`type`, `description`) VALUES
 (4, 'This email id has been unsubscribed.'),
 (5, 'API or template for it doesn''t exist in the database.'),
 (6, 'Incorrect email id specified for addressee.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pass_verify`
+--
+
+CREATE TABLE IF NOT EXISTS `pass_verify` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `email_id` varchar(30) NOT NULL,
+  `hash` varchar(16) NOT NULL,
+  `time_started` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
