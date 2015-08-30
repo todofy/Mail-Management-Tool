@@ -19,7 +19,7 @@ if (!isset($_DEF_GLOBALS_)) {
 	
 	// --- GENERAL DEFINATIONS ----
 	define('SALT_CSRF_TOKEN', md5('shiro'));
-	define('BASE_URL', 'http://localhost/Mail-Management-Tool/');
+	define('BASE_URL', 'http://test-mmt.cloudapp.net/Mail-Management-Tool/');
 	$BASE_URL = BASE_URL;
 	define('CAMPAIGN_START', $BASE_URL.'api/index.php');
 	define('API_LINK_URL', $BASE_URL.'links/index.php');
