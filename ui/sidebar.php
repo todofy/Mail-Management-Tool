@@ -51,7 +51,7 @@ if (!isset($_CODE_SIDEBAR_)) {
                 ?>
                 <?php
                     if (isset($newuser->access[UNSUB_EMAILS])){
-                        echo '<li><a href="unsubs.php" style="font-size:15px;">Unsubscribed Emails<span class="sub_icon glyphicon glyphicon-wrench"></span></a></li>';
+                        echo '<li><a href="unsubs.php" style="font-size:15px;">Unsubscribed Emails<span class="sub_icon glyphicon glyphicon-remove-circle"></span></a></li>';
                     }
                 ?>
                  
