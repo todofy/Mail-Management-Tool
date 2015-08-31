@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 30, 2015 at 10:22 AM
+-- Generation Time: Aug 31, 2015 at 08:20 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -61,6 +61,8 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `salt` varchar(16) NOT NULL,
   `cookie` varchar(32) NOT NULL DEFAULT '',
   `last_login` int(11) DEFAULT NULL,
+  `token` varchar(16) NOT NULL,
+  `token_timeset` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
@@ -69,9 +71,9 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `email`, `secret`, `password`, `salt`, `cookie`, `last_login`) VALUES
-(8, 'anshumanpattanayak@gmail.com', '7be1f7a994a0cb2d9921a19fef9c52ae', 'e5b725fd14b675a4085766f70883ba68', 'namak', '4841eb01d8b6d650d74929c5de860c82', 1440922215),
-(10, 'zsonix27@gmail.com', 'efa6f70cd7b5d6353038da6496ba3652', 'e5b725fd14b675a4085766f70883ba68', 'namak', '', 1440855574);
+INSERT INTO `admin` (`id`, `email`, `secret`, `password`, `salt`, `cookie`, `last_login`, `token`, `token_timeset`) VALUES
+(8, 'anshumanpattanayak@gmail.com', '7be1f7a994a0cb2d9921a19fef9c52ae', 'e5b725fd14b675a4085766f70883ba68', 'namak', '4841eb01d8b6d650d74929c5de860c82', 1440956592, '', 0),
+(10, 'zsonix27@gmail.com', 'efa6f70cd7b5d6353038da6496ba3652', 'b3347f62f534eb90ecb5a865b4adba02', '3736b31b', '', 1441044383, 'a68ffe4e59079e02', 1441044181);
 
 -- --------------------------------------------------------
 
@@ -115,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `api` (
   `created_on` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `template_id` (`template_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
 
 --
 -- Dumping data for table `api`
@@ -268,20 +270,6 @@ INSERT INTO `mail_status` (`type`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pass_verify`
---
-
-CREATE TABLE IF NOT EXISTS `pass_verify` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `email_id` varchar(30) NOT NULL,
-  `hash` varchar(16) NOT NULL,
-  `time_started` int(11) NOT NULL,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `template`
 --
 
@@ -292,7 +280,7 @@ CREATE TABLE IF NOT EXISTS `template` (
   `created_on` int(11) NOT NULL,
   `last_updated` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=48 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=45 ;
 
 --
 -- Dumping data for table `template`
@@ -314,7 +302,7 @@ CREATE TABLE IF NOT EXISTS `unsubscribed` (
   `reason_id` int(11) NOT NULL,
   UNIQUE KEY `user_id_2` (`user_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `unsubscribed`
