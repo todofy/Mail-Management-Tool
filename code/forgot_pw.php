@@ -21,9 +21,7 @@ if($success)
 {
 	//now genrate a link
 	$hash = login::getHash(16);
-	$url = $BASE_URL."check_pw.php?link=".$hash;
-	//delete any previous entry in the table with the same email id ie tried befire but not verified
-	$result = database::SQL('DELETE FROM `pass_verify` WHERE `email_id` = ? ' , array('s' , $email));
+	$url = $BASE_URL."reset_pw.php?link=".$hash;
 	//get the template
 	$template = "<a href='".$url."'>click on this link to verify</a>";
 	//send the mail @todo
@@ -39,14 +37,10 @@ if($success)
 		//mail sent successfully
 		//save the email , time and the hash in the database
 		$t = time();
-		$result = database::SQL("INSERT INTO `pass_verify`(`email_id` , `hash` , `time_started` ) VALUES (? , ? , ?)" , array('ssi' , $email , $hash , $t ));
+		$result = database::SQL("UPDATE `admin` SET `token` = ?  , `token_timeset` = ? WHERE `id` = ? LIMIT 1" , array('sii' , $hash , $t , $user_id ));
 		// @todo verify that number of rows affected = 1
-		//get the id of the SQL entry : might be useful later on
-		$result = database::SQL("SELECT `user_id` FROM `pass_verify` WHERE `email_id` = ? LIMIT 1" , array('s' , $email));
-		$verify_id = $result[0]['user_id'];
 	} else{
 		$success = false;
-		$t = time();
 		$err = "Could not send the mail. Make sure you have entered a valid email address";
 	}
 }

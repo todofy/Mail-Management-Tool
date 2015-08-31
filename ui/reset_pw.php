@@ -33,26 +33,37 @@ if (!isset($_RESET_PW_)) {
 				<div class="col-xs-8 col-sm-8 col-md-9 col-lg-9"></div>
 			</div>
 		</div>
-		<div id="content-wrapper" class="col-xs-12">
-			<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-				<h2>Reset Password</h2>
-				<form class="form-inline" role="form" type="post" id="reset_pw">
-					<div class="form-group col-xs-12">
-	    				<label class="col-sm-3" for="new_pw" style="padding-top:0px; padding-left:0px;"\><h4>New Password:</h4></label>              
-          				<input type="password" class="form-control" id="new_pw" name="new_pw" style="width:100%; max-width:450px;">
+		<?php
+            if($success)
+            {
+                echo '
+				<div id="content-wrapper" class="col-xs-12">
+					<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+						<h2>Reset Password</h2>
+						<form class="form-inline" role="form" type="post" id="reset_pw">
+						<input type="text" id = "token" class="form-control" name="token"'.'value="'.$hash.'"'.'style="display: none;">
+							<div class="form-group col-xs-12">
+			    				<label class="col-sm-3" for="new_pw" style="padding-top:0px; padding-left:0px;"\><h4>New Password:</h4></label>              
+		          				<input type="password" class="form-control" id="new_pw" name="new_pw" style="width:100%; max-width:450px;">
+							</div>
+							<div class="form-group col-xs-12">
+			    				<label class="col-sm-3" for="confirm_pw" style="padding-top:0px; padding-left:0px;"\><h4>Confirm Password:</h4></label>              
+		          				<input type="password" class="form-control" id="confirm_pw" name="confirm_pw" style="width:100%; max-width:450px;">
+							</div>
+						</form>
+			  			<button type="submit" class="btn btn-primary" value="Submit" id="reset">Reset</button>
 					</div>
-					<div class="form-group col-xs-12">
-	    				<label class="col-sm-3" for="confirm_pw" style="padding-top:0px; padding-left:0px;"\><h4>Confirm Password:</h4></label>              
-          				<input type="password" class="form-control" id="confirm_pw" name="confirm_pw" style="width:100%; max-width:450px;">
-					</div>
-				</form>
-	  			<button type="submit" class="btn btn-primary" value="Submit" id="reset">Reset</button>
-			</div>
-		</div>
-	</div>
-	<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" style="margin-top: 5%;">
-		<div class="alert alert-danger" style="text-align: center;">Password reset token has expired.<a>Resend password reset link</a></div>
-	</div>
+				</div>
+			</div> ';
+			}
+		else
+		{
+			echo '
+			<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" style="margin-top: 5%;">
+				<div class="alert alert-danger" style="text-align: center;">Password reset token has expired.<a>Resend password reset link</a></div>
+			</div>';
+		}
+	?>
 	<div class="col-xs-12"  id="wait-message" style="height:100%; position:fixed; left:0px; top:0px; background-color:rgba(0,0,0,0.3); z-index:100; display:none;">
 		<div class="col-xs-6 col-xs-offset-3 col-sm-12 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4" style="position: fixed; top:25%;">
 		    <div class="alert alert-info" style="padding: 15px;">

@@ -36,7 +36,18 @@ $output = array(
 
 
 $sessObj = new session();
-
+$data = json_decode($_POST['data'], true);
+$category = $data['category'];
+$data = $data['data'];
+//confirm password reset call 
+//it does not require a session to be set
+if($category == "reset_pw")
+{
+	database::Start();
+	include __DIR__.'/reset_pw.php';
+	echo json_encode($output);
+	exit;
+}
 // If not logged in send back error message
 if (!$sessObj->state) {
 	$output['error'] = true;
@@ -53,7 +64,7 @@ if (!isset($_POST['data'])) {
 	exit;
 }
 
-$data = json_decode($_POST['data'], true);
+
 if (!isset($data['category']) || !isset($data['data'])) {
 	$output['error'] = true;
 	$output['message'] = 'Invalid request made! Check data sent again!';
@@ -61,8 +72,7 @@ if (!isset($data['category']) || !isset($data['data'])) {
 	exit;
 }
 
-$category = $data['category'];
-$data = $data['data'];
+
 
 //change password call
 if($category == "change_pw"){
