@@ -39,6 +39,17 @@ $sessObj = new session();
 $data = json_decode($_POST['data'], true);
 $category = $data['category'];
 $data = $data['data'];
+
+//forgot password call
+//it does not require a session to be set
+if($category == "forgot_pw")
+{
+	database::start();
+	include __DIR__.'/forgot_pw.php';
+	echo json_encode($output);
+	exit;
+}
+
 //confirm password reset call 
 //it does not require a session to be set
 if($category == "reset_pw")

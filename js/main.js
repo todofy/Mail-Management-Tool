@@ -27,6 +27,7 @@ AJAX.prototype.trigger = function() {
 					if (typeof _this.successCallback  == 'function') _this.successCallback(obj);
 				}
 			} catch (ex) {
+				alert(this.response);
 				// TODO connect this to a notification later
 				alert('Unable to parse response from server. Invalid Response From Server');
 				if (typeof _this.failureCallback  == 'function') _this.failureCallback();

@@ -21,6 +21,8 @@
         <link rel="stylesheet" href="css/login.css">
         <script src="js/jquery-2.0.0.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/forgot_pw.js"></script>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -88,12 +90,12 @@
                             <h4 class="modal-title">Forgot Password</h4>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal" role="form" id="email" type="post" action="forgot_pw.php" method = "POST">
+                            <form class="form-horizontal" role="form" id="forgot_pw" type="post" action="" method = "POST">
                                 <div class="form-group col-xs-12" style="padding-right:0px;">
                                     <label class="control-label" for="email"><h4>Enter email:</h4></label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="">
+                                    <input type="email" class="form-control" id="regis_email" name="email" placeholder="">
                                 </div>
-                                <button type="submit" class="btn1 btn-primary" value="Submit" id="btn">Done</button>
+                                <a href = "#" class="btn1 btn-primary" id="reset">Done</a>
                                 <button type="button" class="btn1 btn-link" data-dismiss="modal">Cancel</button>
                             </form>
                         </div>
