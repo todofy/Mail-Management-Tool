@@ -4,7 +4,6 @@ $(document).ready(function() {
         {
   	 		  var jsonData = {};
   	 		  var formData = $("#forgot_pw").serializeArray();
-    			console.log(formData);
      
      			$.each(formData, function() {
           		if (jsonData[this.name]) {
@@ -16,7 +15,6 @@ $(document).ready(function() {
              			jsonData[this.name] = this.value || '';
          			}
   	    	});
-     			console.log(jsonData);
           $('#wait-message').show();
   		    request = new AJAX ('forgot_pw', jsonData, function(d){
               $('#wait-message').hide();
@@ -61,5 +59,5 @@ function validate()
       email.css('backgroung_color' , 'green');
       return true;
     }
-}
+  }
 }

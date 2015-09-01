@@ -93,7 +93,7 @@
                                     <label class="control-label" for="email"><h4>Enter email:</h4></label>
                                     <input type="email" class="form-control" id="regis_email" name="email" placeholder="">
                                 </div>
-                                <button type="button" href = "#" class="btn1 btn-primary" data-dismiss="modal" id="reset">Done</button>
+                                <button type="button" class="btn1 btn-primary" data-dismiss="modal" id="reset">Done</button>
                                 <button type="button" class="btn1 btn-link" data-dismiss="modal">Cancel</button>
                             </form>
                         </div>

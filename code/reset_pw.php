@@ -2,7 +2,7 @@
 //get the hash
 if(!isset($_GET['link']))
 	redirect_to("index.php");
-$hash = $_GET['link'];
+$hash = $_GET['token'];
 //check this hash in the database
 $result = database::SQL("SELECT `email` , `token_timeset` FROM `admin` WHERE `token` = ? LIMIT 1" , array('s' , $hash));
 if(empty($result))

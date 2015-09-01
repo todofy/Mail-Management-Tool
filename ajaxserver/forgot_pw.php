@@ -13,9 +13,9 @@ else
 	$user_id = $result[0]['id'];
 	//now genrate a link
 	$hash = login::getHash(16);
-	$url = $BASE_URL."reset_pw.php?link=".$hash;
+	$url = $BASE_URL."reset_pw.php?token=".$hash;
 	//get the template
-	$template = "<a href='".$url."'>click on this link to verify</a>";
+	$template = "<a href='".$url."'>Click here to reset your password.</a>";
 	//send the mail @todo
 	$to = $email; 
 	$from = DEFAULT_SENDER ; 
