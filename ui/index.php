@@ -104,4 +104,8 @@
             </div>
         </div>
     </body>
+    <script src="js/jAlert-v3.js"></script>
+    <script src="js/jAlert-functions.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/forgot_pw.js"></script>
 </html>
