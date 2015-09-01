@@ -22,7 +22,7 @@ if (!isset($_RESET_PW_)) {
 </head>
 
 <body>
-	<div class="row" id="container">
+	<div class="row">
 
 		<div  id="header" class="col-xs-12 header-user-dropdown">
 			<div class="row header-limiter">
