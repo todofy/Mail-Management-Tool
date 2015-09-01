@@ -21,8 +21,6 @@
         <link rel="stylesheet" href="css/login.css">
         <script src="js/jquery-2.0.0.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/forgot_pw.js"></script>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
