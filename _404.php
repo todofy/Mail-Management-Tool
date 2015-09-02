@@ -1,7 +1,8 @@
 <?php
 
-// TODO - log data about 404 encounter and where user are coming from
+// including the code files
+include __DIR__ .'/code/_404.php';
 
+// including the ui files
+include __DIR__ .'/ui/_404.php';
 ?>
-
-<h1> 404! Quieried File not found! </h4>
