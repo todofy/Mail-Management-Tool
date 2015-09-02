@@ -54,6 +54,7 @@ if (!isset($_CODE_UNSUB_)) {
 	    				}
 	  			echo '</div>
 				</form>
+				<br>
 	  			<button type="submit" class="btn btn-danger" value="Submit" id="unsub">Unsubscribe</button>
 			</div>';
 		}

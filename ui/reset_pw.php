@@ -51,6 +51,7 @@ if (!isset($_RESET_PW_)) {
 		          				<input type="password" class="form-control" id="confirm_pw" name="confirm_pw" style="width:100%; max-width:450px;">
 							</div>
 						</form>
+						<br>
 			  			<button type="submit" class="btn btn-primary" value="Submit" id="reset">Reset</button>
 					</div>
 				</div>
@@ -59,8 +60,8 @@ if (!isset($_RESET_PW_)) {
 		else
 		{
 			echo '
-			<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" style="margin-top: 5%;">
-				<div class="alert alert-danger" style="text-align: center;">Password reset token has expired.<a>Resend password reset link</a></div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" style="margin-top: 10%;">
+				<div class="alert alert-danger" style="text-align: center;">Password reset token has expired. <a>Resend password reset link</a></div>
 			</div>';
 		}
 	?>
