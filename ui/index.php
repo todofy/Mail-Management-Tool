@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/login.css">
+        <link rel="stylesheet" href="css/jAlert-v3.css">
         <script src="js/jquery-2.0.0.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
 
