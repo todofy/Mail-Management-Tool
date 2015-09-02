@@ -1,6 +1,6 @@
 <?php
 //get the hash
-if(!isset($_GET['link']))
+if(!isset($_GET['token']))
 	redirect_to("index.php");
 $hash = $_GET['token'];
 //check this hash in the database
