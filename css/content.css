@@ -4,7 +4,9 @@
 	margin-left: 0px;
 	height: auto;
 	overflow-x: auto;
-    transition: width 0.4s;
+	float: right;
+    transition: all 0.3s ease 0s;
+    -webkit-transition: all 0.3s ease 0s;
 }
 
 

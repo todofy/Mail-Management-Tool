@@ -1,5 +1,5 @@
 #wrapper {
-    transition: all .4s ease 0s;
+    transition: all .3s ease 0s;
     left: 0px;
     margin-left: 0px;
     margin-top: 0px;
@@ -14,13 +14,17 @@
     background: #222;
     height: 100%;
     position: fixed;
-    transition: all .4s ease 0s;
+    transition: all .3s ease 0s;
     word-wrap : break-word;
     overflow-y: auto;
 }
 
 #sidebar-wrapper::-webkit-scrollbar{
   display: none;
+}
+
+#sidebar-wrapper.go-up{
+  height: 65px;
 }
 
 .sidebar-nav {
@@ -113,17 +117,18 @@
 
 
 #main_icon
-{
-    padding-top: 10%;
-    transition: transform 0.4s;
-    -webkit-transition: transform 0.4s;
+{   
+    font-size: 15px;
+    padding-top: 5px;
+    transition: transform 0.3s ease 0s;
+    -webkit-transition: transform 0.3s ease 0s;
 }
 
 #main_icon.flip{
-   transform: rotateY(180deg) translateX(8px);
-   -webkit-transform: rotateY(180deg) translateX(8px); /* Safari and Chrome */
-   -o-transform: rotateY(180deg) translateX(8px); /* Opera */
-   -moz-transform: rotateY(180deg) translateX(8px); /* Firefox */
+   transform: rotateX(180deg);
+   -webkit-transform: rotateX(180deg); /* Safari and Chrome */
+   -o-transform: rotateX(180deg); /* Opera */
+   -moz-transform: rotateX(180deg); /* Firefox */
 }
 
 .sub_icon

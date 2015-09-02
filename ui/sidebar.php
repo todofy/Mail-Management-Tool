@@ -7,6 +7,7 @@ if (!isset($_CODE_SIDEBAR_)) {
 <html lang="en">
 <head>
   <link href="css/sidebar.css" rel="stylesheet" type="text/css">
+  <script src="js/sidebar.js"></script>
 </head>
 
 <body>
@@ -14,10 +15,10 @@ if (!isset($_CODE_SIDEBAR_)) {
     <div id="sidebar-wrapper" class="col-xs-2">
         <div class="col-xs-12" style="padding-left:0px; padding-right:0px;">
           <ul id="sidebar_menu" class="sidebar-nav sidebar-name">
-              <li class="sidebar-nav sidebar-brand"><a id="menu-toggle" href="javascript:void(0)" style="pointer-events:none;">Menu<span id="main_icon" class="sub_icon"></span></a></li>
+              <li class="sidebar-nav sidebar-brand"><a id="menu-toggle" href="javascript:void(0)">Menu<span id="main_icon" class="sub_icon glyphicon glyphicon-chevron-up"></span></a></li>
           </ul>
         </div>
-        <div class="col-xs-12" style="padding-left:0px; padding-right:0px;">
+        <div class="col-xs-12" style="padding-left:0px; padding-right:0px;" id="menu">
           <ul class="sidebar-nav" id="sidebar">
                 <li>
                     <a href="dashboard.php" style="font-size:15px;">
