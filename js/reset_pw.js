@@ -36,6 +36,36 @@ $(document).ready(function() {
           return false;
         }
 		});
+
+  $("#resend").click(function(e){
+          var jsonData = {};
+          var email = $('#resend').val();
+          var formData = array("email" => email);
+          $.each(formData, function() {
+              if (jsonData[this.name]) {
+                  if (!jsonData[this.name].push) {
+                      jsonData[this.name] = [jsonData[this.name]];
+                  }
+                  jsonData[this.name].push(this.value || '');
+              } else {
+                  jsonData[this.name] = this.value || '';
+              }
+          });
+          $('#wait-message').show();
+          request = new AJAX ('forgot_pw', jsonData, function(d){
+              $('#wait-message').hide();
+              successAlert(d.message);
+              $(".closejAlert.ja_close").click(function(e){
+                  window.location="index.php";
+                  e.preventDefault();
+                });
+              }, function(d){
+              $('#wait-message').hide();
+              errorAlert(d.message);
+              });
+          e.preventDefault(); 
+    });
+
 });
 
 function validate_password()

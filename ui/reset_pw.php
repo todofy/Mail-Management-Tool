@@ -61,7 +61,7 @@ if (!isset($_RESET_PW_)) {
 		{
 			echo '
 			<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" style="margin-top: 7.5%;">
-				<div class="alert alert-danger" style="text-align: center;">Password reset token has expired. <a>Resend password reset link</a></div>
+				<div class="alert alert-danger" style="text-align: center;">Password reset token has expired. <a href="#" id = "resend" value = "'.$email.'">Resend password reset link</a></div>
 			</div>';
 		}
 	?>
