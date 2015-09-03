@@ -44,10 +44,31 @@
 	    	$result = database::SQL("INSERT into admin_access values (?,?)",array('is',$id,$access));
 	    }
 
-	    // TODO - send a mail to new admin along with details and password.
-
-   		$output['error'] = false;
-    	$output['message'] = 'Successfully added! A Mail has been sent to ' .$email .' with account details';
+	    //send the password to their email
+		$template = "The password for your account on todofy is : ".$password."<br> Secret Key for the admin : ".$secret;
+		//send the mail
+		$to = $email; 
+		$from = DEFAULT_SENDER ; 
+		$subject = DEFAULT_SUBJECT ; 
+		$headers = "From: " .$from. "\r\n";
+		$headers .= "Reply-To: contact@todofy.org\r\n";
+		$headers .= "Return-Path: return@todofy.org\r\n";
+		$headers .= "MIME-Version: 1.0\r\n";
+		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+		if(mail($to,$subject,$template,$headers)) {
+			//mail sent successfully
+			$output['error'] = false;
+    		$output['message'] = 'Successfully added! A Mail has been sent to ' .$email .' with account details';
+		}
+		else
+		{
+			//delete the entry for this admin
+			$result = database::SQL("DELETE FROM admin WHERE id = ? LIMIT 1" , array('i' , $id));
+			//delete the accesses
+			$result = database::SQL("DELETE FROM admin_access WHERE admin_id = ?" , array('i' , $id));
+			$output['error'] = true ; 
+			$output['message'] = "Mail cannot be sent. Check if vallid email is provided !!";
+		}
 	    
 	}
 
