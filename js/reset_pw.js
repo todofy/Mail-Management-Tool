@@ -39,8 +39,8 @@ $(document).ready(function() {
 
   $("#resend").click(function(e){
           var jsonData = {};
-          var email = $('#resend').val();
-          var formData = array("email" => email);
+          var formData = $("#email_form").serializeArray();
+          console.log(formData);
           $.each(formData, function() {
               if (jsonData[this.name]) {
                   if (!jsonData[this.name].push) {
@@ -51,6 +51,7 @@ $(document).ready(function() {
                   jsonData[this.name] = this.value || '';
               }
           });
+          console.log(jsonData);
           $('#wait-message').show();
           request = new AJAX ('forgot_pw', jsonData, function(d){
               $('#wait-message').hide();
