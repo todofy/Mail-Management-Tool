@@ -17,6 +17,7 @@
     transition: all .3s ease 0s;
     word-wrap : break-word;
     overflow-y: auto;
+    opacity: 1;
 }
 
 #sidebar-wrapper::-webkit-scrollbar{
@@ -25,6 +26,7 @@
 
 #sidebar-wrapper.go-up{
   height: 65px;
+  opacity: 0.5;
 }
 
 .sidebar-nav {

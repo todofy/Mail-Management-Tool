@@ -70,3 +70,24 @@ $(document).ready(function() {
     }
     });
 });
+
+//function to validate the password form
+function validate_form_pw()
+{
+  var current_pw = $('#current_pw').val();
+  var new_pw = $('#new_pw').val();
+  var confirm_pw = $('#confirm_pw').val();
+  if(current_pw == ''){
+    alert('Enter your current password.');
+  }
+  else if(new_pw == ''){
+    alert('Enter a new password.');
+  }
+  else if(new_pw != confirm_pw){
+    alert('Passwords don\'t match.');
+  }
+  else{
+    return true;
+  }
+  return false;
+}

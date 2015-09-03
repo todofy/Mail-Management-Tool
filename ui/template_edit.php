@@ -19,10 +19,10 @@ if (!isset($_TEMPLATE_EDIT_)) {
         	"advlist autolink lists link image charmap print preview hr anchor pagebreak",
         	"searchreplace wordcount visualblocks visualchars code",
         	"insertdatetime media nonbreaking save table contextmenu directionality",
-        	"emoticons template paste textcolor colorpicker textpattern imagetools"
+        	"emoticons template paste textcolor colorpicker textpattern imagetools fullscreen"
     	],
     	toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-    	toolbar2: "print preview media | forecolor backcolor emoticons",
+    	toolbar2: "print preview media | forecolor backcolor emoticons | fullscreen",
     	image_advtab: true,
     	templates: [
 	        {title: 'Test template 1', content: 'Test 1'},

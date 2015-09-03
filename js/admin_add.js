@@ -36,3 +36,26 @@ $(document).ready(function() {
         }
 		});
 });
+
+//function to validate the add/edit form
+function validate_form()
+{
+  var email= $('#email').val();
+  var pattern  = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+  if (email == '') {
+            alert('Please enter a email address');
+        }
+    else if(!pattern.test(email))
+    {
+      alert('Please enter a valid email adddress');
+    }
+    else if($('input[type=checkbox]:checked').length == 0)
+    {
+      alert('Select atleast one of the accessess');
+    }
+    else
+    {
+      return true;
+    }
+    return false;
+}

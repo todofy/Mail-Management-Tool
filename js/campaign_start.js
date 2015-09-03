@@ -24,7 +24,6 @@ $(document).ready(function(){
                         $('#wait-message').hide();
                         errorAlert(d.message);
                         $(".closejAlert.ja_close").click(function(e){
-                            window.location="campaign_create.php";
                             e.preventDefault();
                         });
                     });
