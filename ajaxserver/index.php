@@ -34,9 +34,23 @@ $output = array(
 	'data' => null
 	);
 
+// Check if the request has required credentials
+if (!isset($_POST['data'])) {
+	$output['error'] = true;
+	$output['message'] = 'Invalid request made! Check data sent again!';
+	echo json_encode($output);
+	exit;
+}
 
-$sessObj = new session();
 $data = json_decode($_POST['data'], true);
+
+if (!isset($data['category']) || !isset($data['data'])) {
+	$output['error'] = true;
+	$output['message'] = 'Invalid request made! Check data sent again!';
+	echo json_encode($output);
+	exit;
+}
+
 $category = $data['category'];
 $data = $data['data'];
 
@@ -59,6 +73,9 @@ if($category == "reset_pw")
 	echo json_encode($output);
 	exit;
 }
+
+$sessObj = new session();
+
 // If not logged in send back error message
 if (!$sessObj->state) {
 	$output['error'] = true;
@@ -66,24 +83,6 @@ if (!$sessObj->state) {
 	echo json_encode($output);
 	exit;
 }
-
-// Check if the request has required credentials
-if (!isset($_POST['data'])) {
-	$output['error'] = true;
-	$output['message'] = 'Invalid request made! Check data sent again!';
-	echo json_encode($output);
-	exit;
-}
-
-
-if (!isset($data['category']) || !isset($data['data'])) {
-	$output['error'] = true;
-	$output['message'] = 'Invalid request made! Check data sent again!';
-	echo json_encode($output);
-	exit;
-}
-
-
 
 //change password call
 if($category == "change_pw"){
