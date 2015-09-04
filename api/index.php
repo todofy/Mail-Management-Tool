@@ -9,9 +9,6 @@ include __DIR__ .'/../libs/session.php';
 include __DIR__ .'/../libs/globals.php';
 include __DIR__ .'/../libs/user.php';
 include __DIR__ .'/../libs/database.php';
-require_once __DIR__ .'/../rabbitmq/vendor/autoload.php';
-use PhpAmqpLib\Connection\AMQPConnection;
-use PhpAmqpLib\Message\AMQPMessage;
 
 database::Start();
 
@@ -65,34 +62,15 @@ $payload_length = count($payload);
 $time_started = time();
 $campaign_id = login::getHash(10);
 $result = database::SQL("INSERT INTO `campaign`(`id`,`secret_key`,`api_code`,`sender`,`subject`,`payload_length`,`time_started`) VALUES(?,?,?,?,?,?,?)",array('sssssii',$campaign_id,$secret_key,$api_code,$from,$subject,$payload_length,$time_started));
+$payload = json_encode($payload);
 
-//declare queue
-$connection = new AMQPConnection('localhost', 5672, 'guest', 'guest');
-$channel = $connection->channel();
-$channel->queue_declare('mailing_queue', false, true, false, false);
-
-//generate new mail ids for each entry in payload
-for($i=0; $i<$payload_length; $i++) {
-	//insert into database each mail
-	$payload_json = json_encode($payload[$i]);
-	$result = database::SQL("INSERT INTO `mail`(`campaign_id`,`payload`) VALUES(?,?)",array('ss',$campaign_id,$payload_json));
-}
-
-//push the mail ids into message queue according to current campaign id
-$result = database::SQL("SELECT `id` FROM `mail` WHERE `campaign_id`=?",array('s',$campaign_id));
-foreach($result as $value) { 
-	$mail_id = $value['id'];
-	$message = new AMQPMessage($mail_id);
-	$channel->basic_publish($message, '', 'mailing_queue');
-	$result = database::SQL("UPDATE `campaign` SET `payload_sent`=`payload_sent`+1 WHERE `id`=?",array('s',$campaign_id));
-}
-
-$channel->close();
-$connection->close();
-
+//send output
 $output['error'] = false;
 $output['message'] = $campaign_id;
 echo json_encode($output);
+
+//start the vent
+exec("php ../rabbitmq/vent.php $campaign_id $payload");
 
 exit;
 ?>
