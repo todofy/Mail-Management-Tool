@@ -15,6 +15,22 @@ if (!isset($_TEMPLATE_EDIT_)) {
 		tinymce.init({
     	selector: "textarea",
     	theme: "modern",
+    	style_formats: [
+                { title: 'Tahoma', inline: 'span', styles: { 'font-family': 'Tahoma'} },
+                { title: 'Times New Roman', inline: 'span', styles: { 'font-family': 'Times New Roman'} },
+                { title: 'Arial', inline: 'span', styles: { 'font-family': 'Arial'} },
+                { title: 'Arial Black', inline: 'span', styles: { 'font-family': 'Arial Black'} },
+                { title: 'Comic Sans MS', inline: 'span', styles: { 'font-family': 'Comic Sans MS'} },
+                { title: 'Verdana', inline: 'span', styles: { 'font-family': 'Verdana'} },
+                { title: 'Courier New', inline: 'span', styles: { 'font-family': 'Courier New'} },
+                { title: '8px', inline: 'span', styles: { 'font-size': '8px'} },
+                { title: '10px', inline: 'span', styles: { 'font-size': '10px'} },
+                { title: '12px', inline: 'span', styles: { 'font-size': '12px'} },
+                { title: '14px', inline: 'span', styles: { 'font-size': '14px'} },
+                { title: '18px', inline: 'span', styles: { 'font-size': '18px'} },
+                { title: '24px', inline: 'span', styles: { 'font-size': '24px'} },
+                { title: '36px', inline: 'span', styles: { 'font-size': '36px'} }
+            ],
     	plugins: [
         	"advlist autolink lists link image charmap print preview hr anchor pagebreak",
         	"searchreplace wordcount visualblocks visualchars code",
