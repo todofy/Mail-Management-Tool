@@ -50,7 +50,7 @@
 					<p><span style="font-size: 14px; font-family: \'Comic Sans MS\';">Your randomly generated password is <span style="color: #0000ff;">'.$password.'</span> and secret key for API calls is <span style="color: #0000ff;">'.$secret.'</span>.</span></p>
 					<p><em><span style="font-size: 14px; font-family: \'Comic Sans MS\';">(You can change your password by logging in and going to \'Profile\'. You can also view your access rights in your profile section.)</span></em></p>
 					<p></p>
-					<p><span style="font-size: 12px; font-family: Verdana;"><a title="Todofy" href="'..$BASE_URL'" target="_blank">Click this link to go to Todofy homepage</a></span></p>';
+					<p><span style="font-size: 12px; font-family: Verdana;"><a title="Todofy" href="'.$BASE_URL.'" target="_blank">Click this link to go to Todofy homepage</a></span></p>';
 		//send the mail
 		$to = $email; 
 		$from = DEFAULT_SENDER ; 

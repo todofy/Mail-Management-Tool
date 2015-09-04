@@ -18,7 +18,8 @@
 		$result = database::SQL("UPDATE campaign SET secret_key = ? WHERE secret_key = ?",array('ss',$new_secret,$old_secret));
 
 		// send a mail to this admin regarding new API key and things
-		$template = "Your secret key has been revoked. New secret key is : ".$new_secret;
+		$template = '<p><span style="font-family: \'Comic Sans MS\'; font-size: 14px;">Your secret key for API calls from Todofy has been revoked.</span></p>
+					<p><span style="font-family: \'Comic Sans MS\'; font-size: 14px;">Your new secret key is <span style="color: #0000ff;">'.$new_secret.'</span>.</span></p>';
 		$to = $email; 
 		$from = DEFAULT_SENDER ; 
 		$subject = DEFAULT_SUBJECT ; 
