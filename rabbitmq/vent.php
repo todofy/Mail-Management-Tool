@@ -12,8 +12,11 @@ use PhpAmqpLib\Message\AMQPMessage;
 database::Start();
 
 //get campaign_id and payload passed in arguments array
-$campaign_id = $argv[1];
-$payload = json_decode($argv[2],true);
+//$campaign_id = $argv[1];
+//$payload = json_decode($argv[2],true);
+$campaign_id = '0572051252';
+$string = '[{"to":"anshumanpattanayak@gmail.com"},{"to":"anshuman@gmail.com"}]';
+$payload = json_decode($string,true);
 $payload_length = count($payload);
 
 $connection = new AMQPConnection('localhost', 5672, 'guest', 'guest');
