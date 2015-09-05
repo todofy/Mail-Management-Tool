@@ -82,7 +82,7 @@ if (!isset($_CAMPAIGN_VIEW_)) {
 					else{
 						echo '<div class="row">
 								<div class="col-xs-6 col-xs-offset-3">
-									<div class="alert alert-info" style="text-align: center;">Mail ids are not retrieved yet.</div>
+									<div class="alert alert-info" style="text-align: center;">Mail ids not retrieved yet.</div>
 								</div>
 							</div>';
 					}

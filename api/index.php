@@ -70,7 +70,7 @@ $output['message'] = $campaign_id;
 echo json_encode($output);
 
 //start the vent
-exec("php ../rabbitmq/vent.php $campaign_id $payload");
+exec("php ../rabbitmq/vent.php $campaign_id $payload > $BASE_URL/logs 2>&1 & echo $!",$op);
 
 exit;
 ?>

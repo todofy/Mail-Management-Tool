@@ -11,15 +11,15 @@ use PhpAmqpLib\Message\AMQPMessage;
 
 database::Start();
 
-$connection = new AMQPConnection('localhost', 5672, 'guest', 'guest');
-$channel = $connection->channel();
-$channel->queue_declare('mailing_queue', false, true, false, false);
-$channel->exchange_declare('sink_ack', 'fanout', false, false, false);
-
 //get campaign_id and payload passed in arguments array
 $campaign_id = $argv[1];
 $payload = json_decode($argv[2],true);
 $payload_length = count($payload);
+
+$connection = new AMQPConnection('localhost', 5672, 'guest', 'guest');
+$channel = $connection->channel();
+$channel->queue_declare('mailing_queue', false, true, false, false);
+$channel->exchange_declare('sink_ack', 'fanout', false, false, false);
 
 //generate new mail ids for each entry in payload
 for($i=0; $i<$payload_length; $i++) {
@@ -37,11 +37,11 @@ else{
 }
 
 //start the sink
-exec("php sink.php $campaign_id");
+exec("php sink.php $campaign_id > $BASE_URL/logs 2>&1 & echo $!",$op);
 
 //spawn workers
 for ($i=0; $i < $workers; $i++) { 
-	exec("php worker.php");
+	$op = exec("php worker.php > $BASE_URL/logs 2>&1 & echo $!", $op);
 }
 
 //push the mail ids into message queue according to current campaign id

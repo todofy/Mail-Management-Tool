@@ -11,12 +11,12 @@ use PhpAmqpLib\Message\AMQPMessage;
 
 database::Start();
 
+$campaign_id = $argv[1];
+
 $connection = new AMQPConnection('localhost', 5672, 'guest', 'guest');
 $channel = $connection->channel();
 $channel->exchange_declare('worker_ack', 'fanout', false, false, false);
 $channel->exchange_declare('sink_ack', 'fanout', false, false, false);
-
-$campaign_id = $argv[1];
 
 list($queue_sink, ,) = $channel->queue_declare("", false, false, true, false);
 $channel->queue_bind($queue_sink, 'sink_ack');
