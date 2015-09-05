@@ -64,13 +64,13 @@ $campaign_id = login::getHash(10);
 $result = database::SQL("INSERT INTO `campaign`(`id`,`secret_key`,`api_code`,`sender`,`subject`,`payload_length`,`time_started`) VALUES(?,?,?,?,?,?,?)",array('sssssii',$campaign_id,$secret_key,$api_code,$from,$subject,$payload_length,$time_started));
 $payload = json_encode($payload);
 
+//start the vent
+exec("php ../rabbitmq/vent.php $campaign_id $payload > $BASE_URL/logs 2>&1 & echo $!",$op);
+
 //send output
 $output['error'] = false;
 $output['message'] = $campaign_id;
 echo json_encode($output);
-
-//start the vent
-exec("php ../rabbitmq/vent.php $campaign_id $payload > $BASE_URL/logs 2>&1 & echo $!",$op);
 
 exit;
 ?>
