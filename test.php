@@ -5,14 +5,16 @@ include __DIR__ .'/libs/globals.php';
 include __DIR__ .'/libs/session.php';
 include __DIR__ .'/libs/user.php';
 
-$data = array('secret_key' => '7be1f7a994a0cb2d9921a19fef9c52ae', 'api_code' => 'cc8ca', 'subject' => 'Test mail','from' => 'anshumanpattanayak@gmail.com',
+$data = array('secret_key' => '7be1f7a994a0cb2d9921a19fef9c52ae', 'api_code' => 'a1700', 'subject' => 'Test mail','from' => 'anshumanpattanayak@gmail.com',
 				'payload' => array(
-					array('to' => 'anshumanpattanayak@gmail.com')
+					array('to' => 'anshumanpattanayak@gmail.com'),
+					array('to' => 'anshuman@gmail.com')
 					));
 
 $jsonData = json_encode($data);
 
-//echo $jsonData;
+/*$string = '[{"to":"anshumanpattanayak@gmail.com"},{"to":"anshuman@gmail.com"}]';*/
+
 
 $url = $BASE_URL."api/";
 
