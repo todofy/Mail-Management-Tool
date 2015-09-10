@@ -4,7 +4,6 @@ $(document).ready(function() {
         {
   	 		  var jsonData = {};
   	 		  var formData = $("#reset_pw").serializeArray();
-    			console.log(formData);
      
      			$.each(formData, function() {
           		if (jsonData[this.name]) {
@@ -16,7 +15,6 @@ $(document).ready(function() {
              			jsonData[this.name] = this.value || '';
          			}
   	    	});
-     			console.log(jsonData);
           $('#wait-message').show();
   		    request = new AJAX ('reset_pw', jsonData, function(d){
               $('#wait-message').hide();
@@ -40,7 +38,6 @@ $(document).ready(function() {
   $("#resend").click(function(e){
           var jsonData = {};
           var formData = $("#email_form").serializeArray();
-          console.log(formData);
           $.each(formData, function() {
               if (jsonData[this.name]) {
                   if (!jsonData[this.name].push) {
@@ -51,7 +48,6 @@ $(document).ready(function() {
                   jsonData[this.name] = this.value || '';
               }
           });
-          console.log(jsonData);
           $('#wait-message').show();
           request = new AJAX ('forgot_pw', jsonData, function(d){
               $('#wait-message').hide();

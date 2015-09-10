@@ -48,7 +48,7 @@ function validate()
   else
   {
     //check if a valid email
-    var pattern  = /^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/; 
+    var pattern  = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/; 
     if(!pattern.test(email.val()))
     {
       email.css('backgroung_color' , 'red');
